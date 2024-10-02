@@ -8,7 +8,6 @@
   services.flatpak = {
     enable = true;
     update = {
-      onActivation = true;
       auto = {
         enable = true;
         onCalendar = "daily";
@@ -22,21 +21,24 @@
  # Flatpaks
   services.flatpak.packages = [
     "com.jeffser.Alpaca"
+    "co.logonoff.awakeonlan"
     "com.bitwarden.desktop"
     "org.gnome.DejaDup"
     "com.discordapp.Discord"
-    "org.DolphinEmu.dolphin-emu"
     "com.github.tchx84.Flatseal"
     "nl.hjdskes.gcolor3"
     "io.github.shiftey.Desktop"
     "org.gnupg.GPA"
+    "com.heroicgameslauncher.hgl"
     "org.libreoffice.LibreOffice"
-    "io.gitlab.librewolf-community"   
+    "io.gitlab.librewolf-community"
+    "net.lutris.Lutris"   
     "md.obsidian.Obsidian"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
-    "org.ryujinx.Ryujinx"
+    "org.libretro.RetroArch"
     "org.signal.Signal"
+    "com.valvesoftware.Steam"
     "me.kozec.syncthingtk"
     "com.vscodium.codium"
   ];
