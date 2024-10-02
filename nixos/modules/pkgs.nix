@@ -34,10 +34,10 @@
     "io.gitlab.librewolf-community"   
     "net.lutris.Lutris"
     "md.obsidian.Obsidian"
-    "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
     "org.signal.Signal"
+    "me.kozec.syncthingtk"
     "com.vscodium.codium"
   ];
 
