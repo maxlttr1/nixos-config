@@ -27,7 +27,7 @@
     "org.DolphinEmu.dolphin-emu"
     "com.github.tchx84.Flatseal"
     "nl.hjdskes.gcolor3"
-    "com.github.Murmele.Gittyup"
+    "io.github.shiftey.Desktop"
     "org.gnupg.GPA"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"   
