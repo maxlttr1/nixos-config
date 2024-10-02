@@ -23,6 +23,7 @@
   services.flatpak.packages = [
     "com.jeffser.Alpaca"
     "com.bitwarden.desktop"
+    "org.gnome.DejaDup"
     "com.discordapp.Discord"
     "org.DolphinEmu.dolphin-emu"
     "com.github.tchx84.Flatseal"
@@ -33,6 +34,7 @@
     "io.gitlab.librewolf-community"   
     "net.lutris.Lutris"
     "md.obsidian.Obsidian"
+    "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
     "org.signal.Signal"
@@ -59,6 +61,7 @@
     python312
     python312Packages.pip
     python312Packages.pytest
+    tree
     unzip
     vkbasalt
     wget
