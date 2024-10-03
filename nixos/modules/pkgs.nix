@@ -7,9 +7,11 @@
   # Enable flatpak
   services.flatpak = {
     enable = true;
-    update.auto = {
-      enable = true;
-      onCalendar = "daily";
+    update = {
+      auto = {
+        enable = true;
+        onCalendar = "daily";
+      };
     };
     remotes = [{
       name = "flathub-beta"; location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
@@ -23,7 +25,6 @@
     "com.bitwarden.desktop"
     "org.gnome.DejaDup"
     "com.discordapp.Discord"
-    "org.DolphinEmu.dolphin-emu"
     "com.github.tchx84.Flatseal"
     "nl.hjdskes.gcolor3"
     "io.github.shiftey.Desktop"
@@ -31,11 +32,11 @@
     "com.heroicgameslauncher.hgl"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
-    "com.moonlight_stream.Moonlight"
+    "net.lutris.Lutris"   
     "md.obsidian.Obsidian"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
-    "org.ryujinx.Ryujinx"
+    "org.libretro.RetroArch"
     "org.signal.Signal"
     "com.valvesoftware.Steam"
     "me.kozec.syncthingtk"
