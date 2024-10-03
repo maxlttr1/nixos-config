@@ -23,7 +23,7 @@
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
-          ./configuration.nix
+          ./configurations/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
