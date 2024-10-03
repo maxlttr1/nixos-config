@@ -14,16 +14,11 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   }; 
   
-  outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
+  outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:{
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
-          ./configurations/configuration.nix
+          ./configurations/configuration-pc.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -34,5 +29,13 @@
           nix-flatpak.nixosModules.nix-flatpak
         ];
       };
-    };
+      
+      nixosConfigurations."server-maxlttr" = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs; };
+        modules = [ 
+          ./configurations/configuration.nix
+        ];
+      };
+
+  };
 }
