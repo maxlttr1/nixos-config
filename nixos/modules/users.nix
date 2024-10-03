@@ -21,4 +21,10 @@
       hashedPassword = "$y$j9T$C.hdJNazMc6Ny3iZbIx0Z1$M1spP1E6rPPALuNFAKmOCT0TkDe8upj.TIlnI7xMNb4";
     };  
   };
+
+  security.sudo.wheelNeedsPassword = true;
+  security.sudo.execWheelOnly = true;
+
+  # Restrict access to nix daemon
+  nix.settings.allowed-users = [ "@wheel" ];
 }
