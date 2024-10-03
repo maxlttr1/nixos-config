@@ -10,7 +10,7 @@
   };
   services.displayManager.defaultSession = "xfce";
 
-  xdg.portal.extraPortals = [ "xdg-desktop-portal-kde" ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
 
   xdg.portal.enable = true;
 
