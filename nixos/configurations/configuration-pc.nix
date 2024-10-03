@@ -26,6 +26,7 @@
       ../modules/podman.nix
       ../modules/ssh.nix
       ../modules/stylix.nix
+      ../modules/tailscale.nix
       ../modules/thermald.nix
       ../modules/timezone-locales.nix
       ../modules/tlp.nix
