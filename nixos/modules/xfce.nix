@@ -7,7 +7,7 @@
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ xdg-desktop-portal-kde ];
+  xdg.portal.extraPortals = [ "xdg-desktop-portal-kde" ];
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-gtk
   ];
