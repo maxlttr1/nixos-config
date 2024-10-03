@@ -15,7 +15,6 @@
       ../modules/gamemode.nix
       ../modules/gnome.nix
       ../modules/grub.nix
-      ../modules/home.nix
       ../modules/intel.nix
       ../modules/kernel-latest.nix
       #../modules/nvidia.nix
