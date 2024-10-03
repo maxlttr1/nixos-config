@@ -1,19 +1,19 @@
-{ config, pkgs, inputs, ... }:
+{ inputs, outputs, lib, config, pkgs, ...  }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/stylix.nix
-      ./modules/pkgs.nix
-      ./modules/laptop.nix
-      ./modules/services.nix
-      ./modules/users.nix
-      ./modules/system.nix
-      ./modules/display.nix
-      ./modules/security.nix
-      ./modules/networking.nix 
-      ./modules/defaults.nix
+      ../hardware-configuration.nix
+      ../modules/stylix.nix
+      ../modules/pkgs.nix
+      ../modules/laptop.nix
+      ../modules/services.nix
+      ../modules/users.nix
+      ../modules/system.nix
+      ../modules/display.nix
+      ../modules/security.nix
+      ../modules/networking.nix 
+      ../modules/defaults.nix
     ];
   
   system.autoUpgrade = {
