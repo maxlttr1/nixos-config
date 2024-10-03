@@ -14,32 +14,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   }; 
   
-<<<<<<< HEAD
-  outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:{
-      nixosConfigurations = {
-        pc-maxlttr = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs; };
-          modules = [ 
-            ./configs/configuration.nix
-            ./modules
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.maxlttr = import ./modules/home.nix;
-            } 
-            stylix.nixosModules.stylix
-            nix-flatpak.nixosModules.nix-flatpak
-          ];
-        };
-
-        #"server" = nixpkgs.lib.nixosSystem {
-        #  specialArgs = {inherit inputs; };
-        #  modules = [ 
-        #    ./configuration-server.nix
-        #  ];
-        #};
-=======
   outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:
     let
       system = "x86_64-linux";
@@ -59,7 +33,6 @@
           stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
         ];
->>>>>>> parent of 39c940c (final)
       };
     };
 }
