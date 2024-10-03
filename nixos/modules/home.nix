@@ -2,7 +2,7 @@
 
 {
   home.username = "maxlttr";
-  home.homeDirectory = "/home/maxlttr";
+  #home.homeDirectory = "/home/maxlttr";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 

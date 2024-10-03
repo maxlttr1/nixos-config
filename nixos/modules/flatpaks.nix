@@ -1,4 +1,4 @@
-'{
+{
    # Enable flatpak
   services.flatpak = {
     enable = true;
@@ -12,4 +12,4 @@
       name = "flathub-beta"; location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
     }];
   };
-};
+}

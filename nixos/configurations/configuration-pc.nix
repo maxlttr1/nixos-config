@@ -4,7 +4,30 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
-      ../modules
+      ../modules/apparmor.nix
+      ../modules/cups.nix
+      ../modules/default.nix
+      ../modules/firewall.nix
+      ../modules/flatpaks.nix
+      ../modules/gamemode.nix
+      ../modules/gnome.nix
+      ../modules/grub.nix
+      ../modules/home.nix
+      ../modules/intel.nix
+      ../modules/kernel-latest.nix
+      ../modules/nvidia.nix
+      ../modules/pipewire.nix
+      ../modules/pkgs-base.nix
+      ../modules/pkgs-gaming.nix
+      ../modules/pkgs-pc.nix
+      ../modules/podman.nix
+      ../modules/ssh.nix
+      ../modules/stylix.nix
+      ../modules/thermald.nix
+      ../modules/timezone-locales.nix
+      ../modules/tlp.nix
+      ../modules/users.nix
+
     ];
 
   networking.hostName = "pc-maxlttr";

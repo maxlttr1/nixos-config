@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   # Enable containers
   virtualisation.containers.enable = true;  
