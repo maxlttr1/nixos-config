@@ -1,1 +1,4 @@
-{services.tailscale.enable = true;}
+{
+  services.tailscale.enable = true;
+  trustedInterfaces = [ "tailscale0" ];
+}
