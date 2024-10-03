@@ -30,7 +30,7 @@
       ../modules/timezone-locales.nix
       ../modules/tlp.nix
       ../modules/users.nix
-      ../modules.xfce.nix
+      ../modules/xfce.nix
     ];
 
   networking.hostName = "pc-maxlttr";
