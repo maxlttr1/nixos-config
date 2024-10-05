@@ -15,10 +15,10 @@
   }; 
   
   outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:{
-      nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
-          ./configurations/configuration-pc.nix
+          ./configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -29,13 +29,5 @@
           nix-flatpak.nixosModules.nix-flatpak
         ];
       };
-      
-      nixosConfigurations."server-maxlttr" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs; };
-        modules = [ 
-          ./configurations/configuration.nix
-        ];
-      };
-
   };
 }
