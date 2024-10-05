@@ -15,7 +15,7 @@
   }; 
   
   outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:{
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
           ./configuration.nix
