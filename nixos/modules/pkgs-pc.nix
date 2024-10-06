@@ -23,9 +23,9 @@
   ];
 
 environment.systemPackages = with pkgs; [
-  android-tools
   python312
   python312Packages.pip
   python312Packages.pytest
+  universal-android-debloater
   ];
 }
