@@ -15,6 +15,7 @@
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
     "md.obsidian.Obsidian"
+    "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
     "org.signal.Signal"
