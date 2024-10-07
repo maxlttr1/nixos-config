@@ -24,6 +24,7 @@
   ];
 
 environment.systemPackages = with pkgs; [
+  gnomeExtensions.gsconnect
   python312
   python312Packages.pip
   python312Packages.pytest
