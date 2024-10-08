@@ -8,9 +8,13 @@
 
   # Packages that should be installed to the user profile.
   home.packages = [
-    pkgs.htop
-    pkgs.fortune
   ];
+
+  programs.git = {
+    enable = true;
+    userEmail = "maxime.lettier@protonmail.com";
+    userName = "maxlttr1";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
