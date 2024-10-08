@@ -23,6 +23,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.maxlttr = import ./modules/home.nix;
+            home-manager.backupFileExtension= "backup";
           }
         ];
       };
