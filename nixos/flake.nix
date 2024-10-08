@@ -25,13 +25,13 @@
         modules = [ 
           ./configuration.nix
           {
-            system.stateVersion = "24.05";
-            users.users."${username}".isNormalUser = true;
-            networking.hostName = "pc-maxlttr";
-            fileSystems."/".device = "/dev/sda";  # Root filesystem
-            boot.loader.grub.enable = true;        # Enable GRUB
-            boot.loader.grub.devices = [ "/dev/sda" ];  # Device for GRUB installation
-            boot.loader.grub.useOSProber = true;   # Enable OS detection
+            #system.stateVersion = "24.05";
+            #users.users."${username}".isNormalUser = true;
+            #networking.hostName = "pc-maxlttr";
+            #fileSystems."/".device = "/dev/sda";  # Root filesystem
+            #boot.loader.grub.enable = true;        # Enable GRUB
+            #boot.loader.grub.devices = [ "/dev/sda" ];  # Device for GRUB installation
+            #boot.loader.grub.useOSProber = true;   # Enable OS detection
           }
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
