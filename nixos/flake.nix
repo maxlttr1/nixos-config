@@ -12,7 +12,7 @@
     };  
   }; 
   
-  outputs = @inputs{ self, nixpkgs, home-manager, nix-flatpak, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
     let
       username = "maxlttr";
 
