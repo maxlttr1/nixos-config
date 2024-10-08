@@ -9,7 +9,7 @@
     home-manager.url = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    }  
+    };  
   }; 
   
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs:{
