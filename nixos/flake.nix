@@ -12,12 +12,18 @@
     }  
   }; 
   
-  outputs = { self, nixpkgs, nix-flatpak, ... }@inputs:{
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs:{
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
           ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jdoe = import ./home.nix;
+          }
         ];
       };
   };
