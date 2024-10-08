@@ -7,7 +7,6 @@
       ./modules/apparmor.nix
       ./modules/auto-upgrade.nix
       ./modules/cups.nix
-      ./modules/default.nix
       ./modules/experimental-features.nix
       ./modules/firewall.nix
       ./modules/flatpaks.nix
@@ -25,7 +24,6 @@
       ./modules/pkgs-pc.nix
       ./modules/podman.nix
       ./modules/ssh.nix
-      ./modules/stylix.nix
       ./modules/tailscale.nix
       ./modules/thermald.nix
       ./modules/timezone-locales.nix
