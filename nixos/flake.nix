@@ -38,7 +38,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."$(username)" = import ./modules/home.nix;
+            home-manager.users."${username}" = import ./modules/home.nix;
             home-manager.backupFileExtension= "backup";
           }
         ];
