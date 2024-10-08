@@ -6,7 +6,7 @@
   home.username = "maxlttr";
   home.homeDirectory = "/home/maxlttr";
 
-  backupFileExtension = "backup"
+  backupFileExtension = "backup";
 
   # Packages that should be installed to the user profile.
   home.packages = [
