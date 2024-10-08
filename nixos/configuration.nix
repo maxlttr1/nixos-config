@@ -12,9 +12,10 @@
       ./modules/firewall.nix
       ./modules/flatpaks.nix
       ./modules/gamemode.nix
-      ./modules/gnome.nix
+      #./modules/gnome.nix
       ./modules/grub.nix
       ./modules/intel.nix
+      ./modules/kde-plasma.nix
       ./modules/kernel-latest.nix
       #./modules/nvidia.nix
       ./modules/pipewire.nix
@@ -29,7 +30,6 @@
       ./modules/timezone-locales.nix
       ./modules/tlp.nix
       ./modules/users.nix
-      #./modules/xfce.nix
     ];
 
   networking.hostName = "pc-maxlttr";
