@@ -3,10 +3,10 @@
 {
   # Enable the OpenSSH daemon.
   services.openssh = {
-    enable = false;
+    enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       AllowUsers = [ "maxlttr" "guest" ]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = false;
       X11Forwarding = false;
