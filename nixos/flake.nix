@@ -24,7 +24,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.maxlttr = import ./modules/home.nix;
+            #home-manager.users.maxlttr = import ./modules/home.nix;
           } 
           stylix.nixosModules.stylix
         ];
