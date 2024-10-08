@@ -36,5 +36,6 @@ environment.systemPackages = with pkgs; [
   python312Packages.pip
   python312Packages.pytest
   universal-android-debloater
+  unzip
   ];
 }
