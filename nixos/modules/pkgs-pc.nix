@@ -25,6 +25,7 @@
     "com.protonvpn.www"
     "org.signal.Signal"
     "me.kozec.syncthingtk"
+    "com.github.d4nj1.tlpui"
     "com.vscodium.codium"
     "org.kde.yakuake"
   ];
