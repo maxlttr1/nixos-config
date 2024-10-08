@@ -7,7 +7,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   }; 
   
-  outputs = { self, nixpkgs, home-manager, stylix, nix-flatpak, ... }@inputs:{
+  outputs = { self, nixpkgs, nix-flatpak, ... }@inputs:{
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [ 
