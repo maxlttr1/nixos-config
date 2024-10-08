@@ -30,6 +30,7 @@
       ./modules/thermald.nix
       ./modules/timezone-locales.nix
       ./modules/tlp.nix
+      ./modules/touchpad.nix
       ./modules/users.nix
     ];
 
