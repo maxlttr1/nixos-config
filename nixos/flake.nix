@@ -22,7 +22,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jdoe = import ./home.nix;
+            home-manager.users.jdoe = import ./modules/home.nix;
           }
         ];
       };
