@@ -25,12 +25,11 @@
     "com.protonvpn.www"
     "org.signal.Signal"
     "me.kozec.syncthingtk"
+    "com.visualstudio.code"
     "org.kde.yakuake"
   ];
 
 environment.systemPackages = with pkgs; [
-  gnomeExtensions.gsconnect
-  jetbrains.pycharm-community-bin
   python312
   python312Packages.pip
   python312Packages.pytest
