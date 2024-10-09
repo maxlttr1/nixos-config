@@ -20,7 +20,7 @@
     "org.kde.kontact"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
-    "com.jetbrains.PyCharm-Community"
+    #"com.jetbrains.PyCharm-Community"
     "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
