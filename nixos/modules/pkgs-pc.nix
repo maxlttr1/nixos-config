@@ -18,6 +18,7 @@
     "org.kde.kdenlive"
     "org.kde.kleopatra"
     "org.kde.kontact"
+    "org.kde.kweather"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
     "org.gnome.World.PikaBackup"
