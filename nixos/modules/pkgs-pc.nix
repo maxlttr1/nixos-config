@@ -20,7 +20,6 @@
     "org.kde.kontact"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
-    "com.jetbrains.PyCharm-Community"
     "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "com.protonvpn.www"
@@ -31,6 +30,7 @@
 
 environment.systemPackages = with pkgs; [
   gnomeExtensions.gsconnect
+  jetbrains.pycharm-community-bin
   python312
   python312Packages.pip
   python312Packages.pytest
