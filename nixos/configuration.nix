@@ -28,6 +28,7 @@
       ./modules/touchpad.nix
       ./modules/common/users.nix
       ./modules/common/state-version.nix
+      ./modules/common/grub.nix
     ];
 
   #networking.hostName = "pc-maxlttr";
