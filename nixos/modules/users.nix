@@ -12,6 +12,7 @@
       packages = with pkgs; [
       ];
     };
+  };
 
   security.sudo.wheelNeedsPassword = true;
   security.sudo.execWheelOnly = true;
