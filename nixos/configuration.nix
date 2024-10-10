@@ -26,7 +26,7 @@
       ./modules/common/timezone-locales.nix
       ./modules/tlp.nix
       ./modules/touchpad.nix
-      ./modules/common/users.nix
+      ./modules/common
     ];
 
   #networking.hostName = "pc-maxlttr";
