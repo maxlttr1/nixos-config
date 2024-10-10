@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Additional groups to be created automatically by the system
-  users.groups.guest = {};
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     maxlttr = {
@@ -15,12 +12,6 @@
       packages = with pkgs; [
       ];
     };
-    guest = {
-      isSystemUser = true;
-      group = "guest";
-      hashedPassword = "$y$j9T$C.hdJNazMc6Ny3iZbIx0Z1$M1spP1E6rPPALuNFAKmOCT0TkDe8upj.TIlnI7xMNb4";
-    };  
-  };
 
   security.sudo.wheelNeedsPassword = true;
   security.sudo.execWheelOnly = true;
