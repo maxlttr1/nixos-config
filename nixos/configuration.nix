@@ -29,7 +29,7 @@
       ./modules/common/users.nix
     ];
 
-  networking.hostName = "pc-maxlttr";
+  #networking.hostName = "pc-maxlttr";
   
 # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
