@@ -21,7 +21,7 @@
     in
     {
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs; };
+        specialArgs = {inherit inputs username; };
         modules = [ 
           ./configuration.nix
           {
