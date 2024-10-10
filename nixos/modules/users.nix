@@ -1,11 +1,10 @@
-{ config, pkgs, ... }:
+{ username, ... }:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
-    maxlttr = {
+    "${username}" = {
       isNormalUser = true;
-      description = "Maxime Lettier";
       createHome = true;
       extraGroups = [ "networkmanager" "wheel" ];
       hashedPassword = "$y$j9T$6TwmToZanSqm1UVXXVkYc.$C35LtiPxiVzVXhZW1GpGWAVG9bKhAA3B2tvSM60Q.eC";
