@@ -22,7 +22,7 @@
     in
     {
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs username; };
+        specialArgs = {inherit inputs username grub-disk; };
         modules = [ 
           ./configuration.nix
           {
