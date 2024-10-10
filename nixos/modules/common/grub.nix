@@ -1,3 +1,5 @@
+{ grub-disk, ... }
+
 {
   boot.loader.grub.enable = true;        # Enable GRUB
   boot.loader.grub.devices = [ "${grub-disk}" ];  # Device for GRUB in>
