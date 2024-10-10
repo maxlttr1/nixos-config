@@ -11,16 +11,13 @@
       ./modules/firewall.nix
       ./modules/flatpaks.nix
       ./modules/gamemode.nix
-      #./modules/gnome.nix
       ./modules/grub.nix
       ./modules/intel.nix
       ./modules/kde-plasma.nix
       ./modules/kernel-latest.nix
       ./modules/network-manager.nix
-      #./modules/nvidia.nix
       ./modules/pipewire.nix
       ./modules/pkgs-base.nix
-      ./modules/pkgs-gaming.nix
       ./modules/pkgs-pc.nix
       ./modules/podman.nix
       ./modules/ssh.nix
