@@ -11,7 +11,7 @@
       ./modules/firewall.nix
       ./modules/flatpaks.nix
       ./modules/gamemode.nix
-      ./modules/grub.nix
+      #./modules/grub.nix
       ./modules/intel.nix
       ./modules/kde-plasma.nix
       ./modules/kernel-latest.nix
