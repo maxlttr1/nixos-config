@@ -23,7 +23,7 @@
       ./modules/ssh.nix
       ./modules/tailscale.nix
       ./modules/thermald.nix
-      ./modules/timezone-locales.nix
+      ./modules/common/timezone-locales.nix
       ./modules/tlp.nix
       ./modules/touchpad.nix
       ./modules/common/users.nix
