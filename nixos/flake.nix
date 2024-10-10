@@ -18,6 +18,7 @@
       hostname = "pc-maxlttr";
       # Replace with the fitting architecture
       system = "x86_64-linux";
+      grub-disk = "/dev/sda";
     in
     {
       nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
@@ -27,7 +28,7 @@
           {
             networking.hostName = "${hostname}";
             boot.loader.grub.enable = true;        # Enable GRUB
-            boot.loader.grub.devices = [ "/dev/sda" ];  # Device for GRUB installation
+            boot.loader.grub.devices = [ "${grub-disk}" ];  # Device for GRUB installation
             boot.loader.grub.useOSProber = true;   # Enable OS detection
             boot.loader.grub.configurationLimit = 10;
           }
