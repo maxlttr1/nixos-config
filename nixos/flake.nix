@@ -15,7 +15,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
     let
       username = "maxlttr";
-
+      hostname = "pc-maxlttr";
       # Replace with the fitting architecture
       system = "x86_64-linux";
     in
@@ -27,7 +27,7 @@
           {
             #system.stateVersion = "24.05";
             #users.users."${username}".isNormalUser = true;
-            #networking.hostName = "pc-maxlttr";
+            networking.hostName = "${hostname}";
             boot.loader.grub.enable = true;        # Enable GRUB
             boot.loader.grub.devices = [ "/dev/sda" ];  # Device for GRUB installation
             boot.loader.grub.useOSProber = true;   # Enable OS detection
