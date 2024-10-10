@@ -16,7 +16,6 @@
     let
       username = "maxlttr";
       hostname = "pc-maxlttr";
-      # Replace with the fitting architecture
       system = "x86_64-linux";
       grub-disk = "/dev/sda";
     in
