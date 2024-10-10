@@ -25,13 +25,6 @@
         specialArgs = {inherit inputs username grub-disk; };
         modules = [ 
           ./configuration.nix
-          {
-            networking.hostName = "${hostname}";
-#            boot.loader.grub.enable = true;        # Enable GRUB
-#            boot.loader.grub.devices = [ "${grub-disk}" ];  # Device for GRUB installation
-#            boot.loader.grub.useOSProber = true;   # Enable OS detection
-#            boot.loader.grub.configurationLimit = 10;
-          }
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
