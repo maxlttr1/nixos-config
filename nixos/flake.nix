@@ -25,8 +25,6 @@
         modules = [ 
           ./configuration.nix
           {
-            #system.stateVersion = "24.05";
-            #users.users."${username}".isNormalUser = true;
             networking.hostName = "${hostname}";
             boot.loader.grub.enable = true;        # Enable GRUB
             boot.loader.grub.devices = [ "/dev/sda" ];  # Device for GRUB installation
