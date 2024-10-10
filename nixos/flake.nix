@@ -21,7 +21,7 @@
       grub-disk = "/dev/sda";
     in
     {
-      nixosConfigurations."pc-maxlttr" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs username grub-disk; };
         modules = [ 
           ./configuration.nix
