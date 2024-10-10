@@ -1,4 +1,4 @@
-{ grub-disk, ... }
+{ grub-disk, ... }:
 
 {
   boot.loader.grub.enable = true;        # Enable GRUB
