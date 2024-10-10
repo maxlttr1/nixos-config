@@ -30,11 +30,20 @@
     "org.kde.yakuake"
   ];
 
-environment.systemPackages = with pkgs; [
-  python312
-  python312Packages.pip
-  python312Packages.pytest
-  universal-android-debloater
-  unzip
+  environment.systemPackages = with pkgs; [
+    python312
+    python312Packages.pip
+    python312Packages.pytest
+    universal-android-debloater
+    unzip
   ];
+  
+  {
+  # Open ports in the firewall for kde connect
+  networking.firewall = rec {
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+}
+
 }
