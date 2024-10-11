@@ -22,7 +22,7 @@
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username grub-disk kernel; };
+        specialArgs = { inherit inputs username hostname grub-disk kernel; };
         modules = [
           ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
