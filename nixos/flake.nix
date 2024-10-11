@@ -24,7 +24,7 @@
         specialArgs = {inherit inputs username grub-disk; };
         modules = [
           {
-            boot.kernelPackages = pkgs.linuxPackages_latest;
+            boot.kernelPackages = nixpkgs.linuxPackages_latest;
           } 
           ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
