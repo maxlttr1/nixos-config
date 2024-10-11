@@ -18,7 +18,7 @@
       hostname = "pc-maxlttr";
       system = "x86_64-linux";
       grub-disk = "/dev/sda";
-      kernel = "linuxPackages"
+      kernel = "linuxPackages";
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
