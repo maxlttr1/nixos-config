@@ -15,7 +15,7 @@
       ./modules/intel.nix
       ./modules/kde-plasma.nix
       #./modules/kernel-latest.nix
-      ./modules/network-manager.nix
+      ./modules/common/network-manager.nix
       ./modules/pipewire.nix
       ./modules/pkgs-base.nix
       ./modules/pkgs-pc.nix
