@@ -22,7 +22,6 @@
       ./modules/podman.nix
       ./modules/ssh.nix
       ./modules/tailscale.nix
-      ./modules/thermald.nix
       ./modules/common/timezone-locales.nix
       ./modules/tlp.nix
       ./modules/touchpad.nix
