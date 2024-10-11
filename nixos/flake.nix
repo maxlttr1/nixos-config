@@ -18,10 +18,11 @@
       hostname = "pc-maxlttr";
       system = "x86_64-linux";
       grub-disk = "/dev/sda";
+      
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs username grub-disk; };
+        specialArgs = {inherit inputs username grub-disk nixpkgs; };
         modules = [
           {
             boot.kernelPackages = nixpkgs.linuxPackages_latest;
