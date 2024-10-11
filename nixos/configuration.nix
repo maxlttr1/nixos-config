@@ -29,6 +29,7 @@
       ./modules/common/state-version.nix
       ./modules/common/grub.nix
       ./modules/common/kernel.nix
+      ./modules.common/hostname.nix
     ];
 
   #networking.hostName = "pc-maxlttr";
