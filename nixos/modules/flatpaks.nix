@@ -8,8 +8,5 @@
         onCalendar = "daily";
       };
     };
-    remotes = [{
-      name = "flathub-beta"; location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-    }];
   };
 }
