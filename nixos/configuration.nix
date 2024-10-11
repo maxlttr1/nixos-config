@@ -14,7 +14,7 @@
       #./modules/grub.nix
       ./modules/intel.nix
       ./modules/kde-plasma.nix
-      ./modules/kernel-latest.nix
+      #./modules/kernel-latest.nix
       ./modules/network-manager.nix
       ./modules/pipewire.nix
       ./modules/pkgs-base.nix
