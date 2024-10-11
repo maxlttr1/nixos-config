@@ -22,7 +22,10 @@
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs username grub-disk; };
-        modules = [ 
+        modules = [
+          {
+            boot.kernelPackages = pkgs.linuxPackages_latest;
+          } 
           ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
