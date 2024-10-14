@@ -5,7 +5,6 @@
   services.flatpak.packages = [
     "com.jeffser.Alpaca"
     "co.logonoff.awakeonlan"
-    "org.kde.cantor"
     "com.bitwarden.desktop"
     "org.gnome.DejaDup"
     "com.discordapp.Discord"
@@ -14,10 +13,7 @@
     "nl.hjdskes.gcolor3"
     "io.github.shiftey.Desktop"
     "org.kde.isoimagewriter"
-    "org.kde.kalgebra"
-    "org.kde.kdenlive"
     "org.kde.kleopatra"
-    "org.kde.kontact"
     "org.kde.kweather"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
