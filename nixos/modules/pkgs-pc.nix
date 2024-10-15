@@ -23,7 +23,7 @@
     "com.protonvpn.www"
     "org.signal.Signal"
     "me.kozec.syncthingtk"
-    #"com.visualstudio.code"
+    "com.visualstudio.code"
     "org.kde.yakuake"
   ];
 
