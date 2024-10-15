@@ -5,6 +5,7 @@
   services.flatpak.packages = [
     "com.jeffser.Alpaca"
     "co.logonoff.awakeonlan"
+    "com.usebottles.bottles"
     "com.bitwarden.desktop"
     "org.gnome.DejaDup"
     "com.discordapp.Discord"
@@ -19,6 +20,7 @@
     "io.gitlab.librewolf-community"
     "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
+    "flathub me.proton.Pass"
     "com.protonvpn.www"
     "org.signal.Signal"
     "me.kozec.syncthingtk"
