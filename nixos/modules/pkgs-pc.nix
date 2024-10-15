@@ -6,7 +6,6 @@
     "com.jeffser.Alpaca"
     "co.logonoff.awakeonlan"
     "com.usebottles.bottles"
-    "com.bitwarden.desktop"
     "org.gnome.DejaDup"
     "com.discordapp.Discord"
     "org.kde.filelight"
