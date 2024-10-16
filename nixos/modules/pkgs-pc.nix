@@ -28,11 +28,16 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    curl
+    fastfetch
+    git
     python312
     python312Packages.pip
     python312Packages.pytest
+    tree
     universal-android-debloater
     unzip
+    wget
   ];
   
   # Open ports in the firewall for kde connect
