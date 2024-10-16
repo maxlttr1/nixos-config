@@ -11,10 +11,8 @@
       ./modules/firewall.nix
       ./modules/flatpaks.nix
       ./modules/gamemode.nix
-      #./modules/grub.nix
       ./modules/intel.nix
       ./modules/kde-plasma.nix
-      #./modules/kernel-latest.nix
       ./modules/common/network-manager.nix
       ./modules/pipewire.nix
       ./modules/pkgs.nix
