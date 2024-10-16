@@ -17,7 +17,7 @@
       #./modules/kernel-latest.nix
       ./modules/common/network-manager.nix
       ./modules/pipewire.nix
-      ./modules/pkgs-pc.nix
+      ./modules/pkgs.nix
       ./modules/podman.nix
       ./modules/ssh.nix
       ./modules/tailscale.nix
