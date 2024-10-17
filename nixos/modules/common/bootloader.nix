@@ -13,7 +13,6 @@
     grub = {
       enable = true;
       configurationLimit = 10;
-      device = "${grub-disk}";
     }
   };
 }
