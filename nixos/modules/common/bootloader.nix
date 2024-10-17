@@ -14,7 +14,7 @@
       grub = {
       enable = true;
       configurationLimit = 10;
-      }
-    }
+      };
+    };
   };
 }
