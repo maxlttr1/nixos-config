@@ -28,7 +28,6 @@
           ./modules/apparmor.nix
           ./modules/auto-upgrade.nix
           ./modules/cups.nix
-          ./modules/experimental-features.nix
           ./modules/firewall.nix
           ./modules/flatpaks.nix
           ./modules/gamemode.nix

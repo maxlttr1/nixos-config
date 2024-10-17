@@ -1,5 +1,6 @@
 {
  imports = [
+   ./experimental-features.nix
    ./grub.nix  
    ./hostname.nix  
    ./kernel.nix  
