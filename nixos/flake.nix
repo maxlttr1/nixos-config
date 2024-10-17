@@ -24,7 +24,24 @@
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs username hostname grub-disk kernel; };
         modules = [
-          ./configuration.nix
+          ./hardware-configuration.nix
+          ./modules/apparmor.nix
+          ./modules/auto-upgrade.nix
+          ./modules/cups.nix
+          ./modules/experimental-features.nix
+          ./modules/firewall.nix
+          ./modules/flatpaks.nix
+          ./modules/gamemode.nix
+          ./modules/intel.nix
+          ./modules/kde-plasma.nix
+          ./modules/pipewire.nix
+          ./modules/pkgs.nix
+          ./modules/podman.nix
+          ./modules/ssh.nix
+          ./modules/tailscale.nix
+          ./modules/tlp.nix
+          ./modules/touchpad.nix
+          ./common
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
