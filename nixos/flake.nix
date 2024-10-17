@@ -24,7 +24,6 @@
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs username hostname grub-disk kernel; };
         modules = [
-          #./hardware-configuration.nix
           ./modules/apparmor.nix
           ./modules/auto-upgrade.nix
           ./modules/cups.nix
