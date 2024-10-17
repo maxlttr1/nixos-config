@@ -23,7 +23,7 @@
       };
     in
     {
-      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."${settings.hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs username hostname grub-disk kernel; };
         modules = [
           ./modules/apparmor.nix
@@ -46,7 +46,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${username}" = import ./modules/home.nix;
+            home-manager.users."${settings.username}" = import ./modules/home.nix;
             home-manager.backupFileExtension= "backup";
           }
         ];
