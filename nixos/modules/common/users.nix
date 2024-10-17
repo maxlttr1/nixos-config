@@ -7,7 +7,7 @@
       isNormalUser = true;
       createHome = true;
       extraGroups = [ "networkmanager" "wheel" ];
-      initialHashedPassword = "$y$j9T$FNklRaiyPvHgR8ueH12z2/$q8k1QXd/CIbwQqV8rdEzGeAOVVL3N9cBa1pP4zyz0m8";
+      initialHashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
       packages = with pkgs; [
       ];
     };
