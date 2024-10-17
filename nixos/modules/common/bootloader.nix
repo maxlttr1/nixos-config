@@ -16,10 +16,4 @@
         device = "${grub-disk}";
       };
     };
-#    { 
-#      grub = {
-#        enable = true;
-#        configurationLimit = 10;
-#      };
-#    };
 }
