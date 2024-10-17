@@ -41,7 +41,7 @@
           ./modules/tailscale.nix
           ./modules/tlp.nix
           ./modules/touchpad.nix
-          ./common
+          ./modules/common
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
