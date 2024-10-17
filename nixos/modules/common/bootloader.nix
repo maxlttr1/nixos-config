@@ -10,4 +10,4 @@
     grub.enable = true;
     grub.device = "${grub-disk}";
   };
-
+}
