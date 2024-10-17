@@ -10,7 +10,10 @@
     efi.canTouchEfiVariables = true;
   } else {
     # BIOS mode
-    grub.enable = true;
+    grub = {
+      enable = true;
+      configurationLimit = 10;
+    }
     grub.device = "${grub-disk}";
   };
 }
