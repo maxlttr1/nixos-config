@@ -1,4 +1,4 @@
-{ grub-disk, ... }:
+{ settings, ... }:
 
 {
   boot.loader = if builtins.pathExists "/sys/firmware/efi" then {
@@ -13,7 +13,7 @@
       grub = {
         enable = true;
         configurationLimit = 10;
-        device = "${grub-disk}";
+        device = "${settings.grub-disk}";
       };
     };
 }

@@ -1,3 +1,3 @@
-{ hostname, ... }:
+{ settings, ... }:
 
-{networking.hostName = "${hostname}";}
+{networking.hostName = "${settings.hostname}";}

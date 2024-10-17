@@ -1,3 +1,3 @@
-{ pkgs, kernel, ... }:
+{ pkgs, settings, ... }:
 
-{boot.kernelPackages = pkgs."${kernel}";}
+{boot.kernelPackages = pkgs."${settings.kernel}";}

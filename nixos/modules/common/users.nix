@@ -1,9 +1,9 @@
-{ username, pkgs, ... }:
+{ settings, pkgs, ... }:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
-    "${username}" = {
+    "${settings.username}" = {
       isNormalUser = true;
       createHome = true;
       extraGroups = [ "networkmanager" "wheel" ];
