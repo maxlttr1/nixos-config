@@ -1,19 +1,12 @@
 { grub-disk, ... }:
 
 {
-  boot.loader = if (builtins.pathExists "/sys/firmware/efi") then {
-    # UEFI mode
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
-    }
-    efi.canTouchEfiVariables = true;
-  } else {
-    # BIOS mode
+  boot.loader = { 
+    if (builtins.pathExists "/sys/firmware/efi") then {efi.canTouchEfiVariables = true;}
     grub = {
       enable = true;
       configurationLimit = 10;
+      device = "${grub-disk}";
     }
-    grub.device = "${grub-disk}";
   };
 }
