@@ -1,8 +1,12 @@
 { grub-disk, ... }:
 
 {
-  boot.loader = { 
-    if (builtins.pathExists "/sys/firmware/efi") then {
+  boot.loader = 
+    let
+      isUEFI = builtins.pathExists "/sys/firmware/efi";
+    in 
+  { 
+    if isUEFI then {
       efi.canTouchEfiVariables = true;
       grub = {
         efiSupport = true;
