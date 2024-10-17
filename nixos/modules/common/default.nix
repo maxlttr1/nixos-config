@@ -1,5 +1,6 @@
 {
  imports = [
+   ../../hardware-configuration.nix
    ./experimental-features.nix
    ./firewall.nix
    ./grub.nix  
