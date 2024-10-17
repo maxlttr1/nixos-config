@@ -4,7 +4,7 @@
   boot.loader = if (builtins.pathExists "/sys/firmware/efi") then {
     # UEFI mode
     systemd-boot.enable = true;
-    efi.canTouchEfiVariables
+    efi.canTouchEfiVariables = true;
   } else {
     # BIOS mode
     grub.enable = true;
