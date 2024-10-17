@@ -1,5 +1,5 @@
 {
- imports : [
+ imports = [
    ./grub.nix  
    ./hostname.nix  
    ./kernel.nix  
