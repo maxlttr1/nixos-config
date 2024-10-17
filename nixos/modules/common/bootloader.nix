@@ -2,7 +2,10 @@
 
 {
   boot.loader = { 
-    if (builtins.pathExists "/sys/firmware/efi") then {efi.canTouchEfiVariables = true;}
+    if (builtins.pathExists "/sys/firmware/efi") then {
+      efi.canTouchEfiVariables = true;
+      grub.efiSupport = true;
+    }
     grub = {
       enable = true;
       configurationLimit = 10;
