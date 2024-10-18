@@ -18,6 +18,7 @@
         username = "maxlttr";
         hostname = "pc-maxlttr";
         system = "x86_64-linux";
+        isUEFI = true;
         grub-disk = "/dev/sda"; #Only for BIOS mode
         kernel = "linuxPackages";
       };
