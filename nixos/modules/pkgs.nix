@@ -46,6 +46,16 @@
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
+ 
+  services.flatpak = {
+    enable = true;
+    update = {
+      auto = {
+        enable = true;
+        onCalendar = "daily";
+      };
+    };
+  };
 
 
 }
