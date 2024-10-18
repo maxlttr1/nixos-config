@@ -29,7 +29,6 @@
           ./modules/apparmor.nix
           ./modules/auto-upgrade.nix
           ./modules/cups.nix
-          ./modules/flatpaks.nix
           ./modules/gamemode.nix
           ./modules/intel.nix
           ./modules/kde-plasma.nix
