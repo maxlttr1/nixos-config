@@ -1,4 +1,4 @@
-{ isUEFI, settings, ... }:
+{ pkgs, isUEFI, settings, ... }:
 
 {
   boot.loader = if isUEFI then {
@@ -14,6 +14,7 @@
         enable = true;
         configurationLimit = 10;
         device = settings.grub-disk;
+        boot.loader.grub.theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
       };
     };
 }
