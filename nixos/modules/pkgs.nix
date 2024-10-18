@@ -28,6 +28,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    cantarell-fonts
     curl
     fastfetch
     git
