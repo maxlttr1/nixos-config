@@ -14,7 +14,7 @@
         enable = true;
         configurationLimit = 10;
         device = settings.grub-disk;
-        boot.loader.grub.theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
       };
     };
 }
