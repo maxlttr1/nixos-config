@@ -14,7 +14,6 @@
   
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
     let
-      isUEFI = builtins.pathExists "/sys/firmware/efi";
       settings = {
         username = "maxlttr";
         hostname = "pc-maxlttr";
@@ -23,6 +22,7 @@
         grub-disk = "/dev/sda"; #Only for BIOS mode
         kernel = "linuxPackages";
       };
+      isUEFI = builtins.pathExists "/sys/firmware/efi";
     in
     {
       nixosConfigurations."${settings.hostname}" = nixpkgs.lib.nixosSystem {

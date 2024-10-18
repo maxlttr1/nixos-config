@@ -1,7 +1,7 @@
-{ settings, ... }:
+{ isUEFI, settings, ... }:
 
 {
-  boot.loader = if settings.isUEFI then {
+  boot.loader = if isUEFI then {
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
