@@ -14,18 +14,19 @@
   
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
     let
+      isUEFI = builtins.pathExists "/sys/firmware/efi";
       settings = {
         username = "maxlttr";
         hostname = "pc-maxlttr";
         system = "x86_64-linux";
-        isUEFI = true;
+        #isUEFI = false;
         grub-disk = "/dev/sda"; #Only for BIOS mode
         kernel = "linuxPackages";
       };
     in
     {
       nixosConfigurations."${settings.hostname}" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs settings; };
+        specialArgs = { inherit inputs isUEFI settings; };
         modules = [
           ./modules/apparmor.nix
           ./modules/auto-upgrade.nix
