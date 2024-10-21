@@ -15,6 +15,8 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
   }; 
   
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
@@ -43,12 +45,14 @@
           ./modules/pkgs.nix
           ./modules/podman.nix
           ./modules/ssh.nix
+          ./modules/stylix.nix
           ./modules/tailscale.nix
           ./modules/tlp.nix
           ./modules/touchpad.nix
           ./modules/virt-manager.nix
           ./modules/common
           ./disko.nix
+          inputs.stylix.nixosModules.stylix
           inputs.disko.nixosModules.disko
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
