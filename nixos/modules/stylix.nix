@@ -1,6 +1,6 @@
 {
   stylix = { 
     enable = true;
-    wallapaper = ./wallpaper.jpg;
+    image = ./wallpaper.jpg;
   };
 }
