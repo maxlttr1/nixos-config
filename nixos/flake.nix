@@ -10,6 +10,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };  
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
@@ -42,6 +46,8 @@
           ./modules/tlp.nix
           ./modules/touchpad.nix
           ./modules/common
+          ./disko.nix
+          inputs.disko.nixosModules.disko
           nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
