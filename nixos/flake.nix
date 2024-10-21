@@ -19,7 +19,7 @@
     stylix.url = "github:danth/stylix";
   }; 
   
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
       settings = {
         username = "maxlttr";
@@ -54,8 +54,8 @@
           ./disko.nix
           inputs.stylix.nixosModules.stylix
           inputs.disko.nixosModules.disko
-          nix-flatpak.nixosModules.nix-flatpak
-          home-manager.nixosModules.home-manager
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
