@@ -45,11 +45,21 @@
           {
             systemMonitor = {
               sensors = [
-              {
-                name = "cpu/all/usage";
-                color = "255,43,39";
-                label = "CPU %";
-              }
+                {
+                  name = "cpu/all/usage";
+                  color = "255,43,39";
+                  label = "CPU %";
+                }
+                {
+                  name = "gpu/all/usage";
+                  color = "285,186,39";
+                  label = "GPU %";
+                }
+                {
+                  name = "ram/all/usage";
+                  color = "39, 255, 204";
+                  lalbel = "RAM %";
+                }
               ];
             };
           }
