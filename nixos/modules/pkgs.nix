@@ -26,10 +26,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-    [General]
-    background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/stylix/contents/images/4000x2000.png
-    '')
     bibata-cursors
     curl
     fastfetch
