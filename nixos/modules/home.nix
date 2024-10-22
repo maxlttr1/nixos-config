@@ -20,7 +20,7 @@
       };
       iconTheme = "Papirus-Dark";
     };
-    kscreenlocker.appearance.wallpaper = ../wallpaper.jpg;
+    kscreenlocker.appearance.wallpaper = ../wallpaper.png;
     panels = [
       # Windows-like panel at the bottom
       {

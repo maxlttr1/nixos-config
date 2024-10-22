@@ -3,6 +3,6 @@
 {
   stylix = { 
     enable = true;
-    image = ../wallpaper.jpg;
+    image = ../wallpaper.png;
   };
 }
