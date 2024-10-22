@@ -25,7 +25,7 @@
     fonts = {
       general = {
         family = "JetBrains Mono";
-        pointSize = 12;
+        pointSize = 10;
       };
     };
     kscreenlocker.appearance.wallpaper = ../wallpaper.jpeg;
