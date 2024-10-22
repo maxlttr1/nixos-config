@@ -28,7 +28,7 @@
   environment.systemPackages = with pkgs; [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.maxlttr" ''
       [General]
-      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/MilkyWay/contents/images/5120x2880.png
+      background=../wallpaper.jpg
     '')
     bibata-cursors
     curl
