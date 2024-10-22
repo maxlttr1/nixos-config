@@ -8,7 +8,7 @@
     #acceleration = "rocm"; #supported by most modern AMD GPUs
     #acceleration = "cuda"; #supported by most modern NVIDIA GPUs
   };
-  
+
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
@@ -17,6 +17,8 @@
     "me.proton.Pass"
     "org.signal.Signal"
   ];
+  
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     kdePackages.alpaka
