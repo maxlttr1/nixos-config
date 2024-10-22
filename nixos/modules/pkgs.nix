@@ -15,7 +15,7 @@
     "org.kde.isoimagewriter"
     "org.kde.kleopatra"
     "org.libreoffice.LibreOffice"
-    "io.gitlab.librewolf-community"
+    #"io.gitlab.librewolf-community"
     "com.github.marhkb.Pods"
     "me.proton.Pass"
     "com.protonvpn.www"
@@ -32,6 +32,7 @@
     git
     jetbrains-mono
     jdk #Java LTS
+    librewolf
     papirus-icon-theme
     python312
     python312Packages.pip
