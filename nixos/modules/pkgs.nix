@@ -16,7 +16,6 @@
     "org.kde.kleopatra"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
-    "org.gnome.World.PikaBackup"
     "com.github.marhkb.Pods"
     "me.proton.Pass"
     "com.protonvpn.www"
