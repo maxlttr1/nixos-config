@@ -12,6 +12,7 @@
 
   programs.plasma = {
     enable = true;
+    startup.startupScript = { yakuake };
     workspace = {
       #clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       cursor = {
