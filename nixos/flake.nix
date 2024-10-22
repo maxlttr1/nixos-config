@@ -46,6 +46,7 @@
           ./modules/kde-plasma.nix
           ./modules/pipewire.nix
           ./modules/pkgs.nix
+          ./modules/plasma-manager.nix
           ./modules/podman.nix
           ./modules/ssh.nix
           ./modules/stylix.nix
