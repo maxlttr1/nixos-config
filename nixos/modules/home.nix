@@ -46,18 +46,30 @@
           "org.kde.plasma.pager"
           "org.kde.plasma.marginsseparator"
           {
+            systemMonitor = {
+              sensors = {
+                {
+                name = "cpu/all/usage";
+                color = "180,190,254";
+                label = "CPU %";
+                }
+              };
+            };
+          }
+          }
+          {
             systemTray.items = {
               # We explicitly show bluetooth and battery
               shown = [
                 "org.kde.plasma.networkmanagement"
                 "org.kde.plasma.volume"
+                "org.kde.plasma.brightness"
                 "org.kde.plasma.battery"
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.notifications" 
               ];
               # And explicitly hide networkmanagement and volume
               hidden = [
-                
               ];
             };
           }
