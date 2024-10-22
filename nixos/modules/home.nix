@@ -18,9 +18,15 @@
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
-      lookAndFeel = "org.kde.breeze.desktop";
+      lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
       wallpaper = ../wallpaper.jpeg;
+    };
+    fonts = {
+      general = {
+        family = "JetBrains Mono";
+        pointSize = 12;
+      };
     };
     kscreenlocker.appearance.wallpaper = ../wallpaper.jpeg;
     panels = [
