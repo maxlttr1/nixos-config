@@ -26,7 +26,6 @@
     bottles
     curl
     deja-dup
-    kdePackages.falkon
     fastfetch
     kdePackages.filelight
     git
