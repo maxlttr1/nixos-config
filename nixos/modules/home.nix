@@ -58,7 +58,7 @@
                 {
                   name = "ram/all/usage";
                   color = "39, 255, 204";
-                  lalbel = "RAM %";
+                  label = "RAM %";
                 }
               ];
             };
