@@ -47,13 +47,13 @@
           "org.kde.plasma.marginsseparator"
           {
             systemMonitor = {
-              sensors = {
-                
+              sensors = [
+              {
                 name = "cpu/all/usage";
                 color = "180,190,254";
                 label = "CPU %";
-                
-              };
+              }
+              ];
             };
           }
           {
