@@ -28,7 +28,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    bibata-cursors
     curl
     fastfetch
     git
