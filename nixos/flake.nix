@@ -25,15 +25,12 @@
         username = "maxlttr";
         hostname = "pc-maxlttr";
         system = "x86_64-linux";
-        #isUEFI = false;
-        grub-disk = "/dev/sda"; #Only for BIOS mode
         kernel = "linuxPackages";
       };
-      isUEFI = builtins.pathExists "/sys/firmware/efi";
     in
     {
       nixosConfigurations."${settings.hostname}" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs isUEFI settings; };
+        specialArgs = { inherit inputs settings; };
         modules = [
           ./modules/apparmor.nix
           ./modules/auto-upgrade.nix
