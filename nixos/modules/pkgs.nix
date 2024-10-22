@@ -26,10 +26,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.maxlttr" ''
-      [General]
-      background=../wallpaper.jpg
-    '')
     bibata-cursors
     curl
     fastfetch
