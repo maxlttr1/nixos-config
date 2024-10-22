@@ -20,7 +20,7 @@
       };
       iconTheme = "Papirus-Dark";
     };
-     panels = [
+    panels = [
       # Windows-like panel at the bottom
       {
         #location = "floating";
@@ -65,7 +65,34 @@
           }   
         ];
       }
-     ];
+    ];
+    powerdevil = {
+      AC = {
+        powerButtonAction = "sleep";
+        whenLaptopLidClosed = "sleep";
+        autoSuspend = {
+          action = "sleep";
+          idleTimeout = 900;
+        };
+      };
+      battery = {
+        powerButtonAction = "sleep";
+        whenSleepingEnter = "standbyThenHibernate";
+        whenLaptopLidClosed = "sleep";
+        autoSuspend = {
+          action = "sleep";
+          idleTimeout = 300;
+        };
+      };
+      lowBattery = {
+        powerButtonAction = "hibernate";
+        whenLaptopLidClosed = "hibernate";
+        autoSuspend = {
+          action = "sleep";
+          idleTimeout = 120;
+        };
+      };
+    };
   };
 
   programs.git = {
