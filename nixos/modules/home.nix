@@ -55,16 +55,14 @@
           }
           {
             systemTray.items = {
-              # We explicitly show bluetooth and battery
               shown = [
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.volume"
-                "org.kde.plasma.brightness"
+                "org.kde.plasma.notifications"
                 "org.kde.plasma.battery"
+                "org.kde.plasma.brightness"
+                "org.kde.plasma.volume"
                 "org.kde.plasma.bluetooth"
-                "org.kde.plasma.notifications" 
+                "org.kde.plasma.networkmanagement"
               ];
-              # And explicitly hide networkmanagement and volume
               hidden = [
               ];
             };
