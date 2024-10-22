@@ -20,6 +20,53 @@
       };
       iconTheme = "Papirus-Dark";
     };
+     panels = [
+      # Windows-like panel at the bottom
+      {
+        location = "bottom";
+        widgets = [
+          {
+            name = "org.kde.plasma.kickoff";
+            config = {
+              General = {
+                icon = "nix-snowflake-white";
+                alphaSort = true;
+              };
+            };
+          }
+          {
+            iconTasks = {
+              launchers = [
+                "applications:org.kde.dolphin.desktop"
+                "applications:org.kde.konsole.desktop"
+              ];
+            };
+          }
+          "org.kde.plasma.marginsseparator"
+          {
+            digitalClock = {
+              calendar.firstDayOfWeek = "sunday";
+              time.format = "12h";
+            };
+          }
+          {
+            systemTray.items = {
+              # We explicitly show bluetooth and battery
+              shown = [
+                "org.kde.plasma.battery"
+                "org.kde.plasma.bluetooth"
+              ];
+              # And explicitly hide networkmanagement and volume
+              hidden = [
+                "org.kde.plasma.networkmanagement"
+                "org.kde.plasma.volume"
+              ];
+            };
+          }
+        ];
+        hiding = "autohide";
+      }
+     ];
   };
 
   programs.git = {
