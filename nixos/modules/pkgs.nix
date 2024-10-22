@@ -1,5 +1,16 @@
 { pkgs, ... }:
 
+let
+  background-package = pkgs.stdenvNoCC.mkDerivation {
+    name = "background-image";
+    src = ../.;
+    dontUnpack = true;
+    installPhase = ''
+      cp $src/wallpaper.jpg $out
+    '';
+  };
+in
+
 {
   # Flatpaks
   services.flatpak.packages = [
@@ -26,10 +37,12 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.maxlttr" ''
-    [General]
-    background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/stylix/contents/images/4000x2000.png
-    '')
+    (
+      pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.maxlttr" ''
+        [General]
+        background = ${background-package}
+      ''
+    )
     bibata-cursors
     curl
     fastfetch
