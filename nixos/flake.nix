@@ -16,8 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix/cf8b6e2d4e8aca8ef14b839a906ab5eb98b08561";
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,14 +46,12 @@
           ./modules/pkgs.nix
           ./modules/podman.nix
           ./modules/ssh.nix
-          ./modules/stylix.nix
           ./modules/tailscale.nix
           ./modules/tlp.nix
           ./modules/touchpad.nix
           ./modules/virt-manager.nix
           ./modules/common
           ./disko.nix
-          inputs.stylix.nixosModules.stylix
           inputs.disko.nixosModules.disko
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.home-manager.nixosModules.home-manager
