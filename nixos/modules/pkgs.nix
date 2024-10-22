@@ -1,16 +1,5 @@
 { pkgs, ... }:
 
-let
-  background-package = pkgs.stdenvNoCC.mkDerivation {
-    name = "background-image";
-    src = ./.;
-    dontUnpack = true;
-    installPhase = ''
-      cp $src/wallpaper.jpg $out
-    '';
-  };
-in
-
 {
   # Flatpaks
   services.flatpak.packages = [
@@ -37,12 +26,6 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    (
-      pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.maxlttr" ''
-        [General]
-        background = ${background-package}
-      ''
-    )
     bibata-cursors
     curl
     fastfetch
