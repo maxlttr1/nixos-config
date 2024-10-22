@@ -23,7 +23,7 @@
      panels = [
       # Windows-like panel at the bottom
       {
-        location = [ "bottom" "floating" ];
+        location = [ "floating" ];
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
