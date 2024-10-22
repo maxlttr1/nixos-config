@@ -88,7 +88,7 @@
         powerButtonAction = "hibernate";
         whenLaptopLidClosed = "hibernate";
         autoSuspend = {
-          action = "sleep";
+          action = "hibernate";
           idleTimeout = 120;
         };
       };
