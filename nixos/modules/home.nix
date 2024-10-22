@@ -34,23 +34,20 @@
               };
             };
           }
+          "org.kde.plasma.pager"
           {
             iconTasks = {
               launchers = [
-                "applications:org.kde.dolphin.desktop"
-                "applications:org.kde.konsole.desktop"
               ];
             };
           }
-          "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.pager"
           "org.kde.plasma.marginsseparator"
           {
             systemMonitor = {
               sensors = [
               {
                 name = "cpu/all/usage";
-                color = "180,190,254";
+                color = "255,43,39";
                 label = "CPU %";
               }
               ];
