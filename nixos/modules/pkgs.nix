@@ -3,7 +3,7 @@
 let
   background-package = pkgs.stdenvNoCC.mkDerivation {
     name = "background-image";
-    src = ../.;
+    src = ./.;
     dontUnpack = true;
     installPhase = ''
       cp $src/wallpaper.jpg $out
