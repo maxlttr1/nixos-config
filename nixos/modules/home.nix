@@ -20,7 +20,7 @@
       };
       iconTheme = "Papirus-Dark";
     };
-    programs.plasma.kscreenlocker.appearance.wallpaper = ../wallpaper.jpg;
+    kscreenlocker.appearance.wallpaper = ../wallpaper.jpg;
     panels = [
       # Windows-like panel at the bottom
       {
