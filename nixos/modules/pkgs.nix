@@ -28,10 +28,12 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    bibata-cursors
     curl
     fastfetch
     git
     jdk #Java LTS
+    papirus-icon-theme
     python312
     python312Packages.pip
     python312Packages.pytest
