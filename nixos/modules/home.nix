@@ -18,6 +18,7 @@
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
+      lookAndFeel = "org.kde.breeze.desktop";
       iconTheme = "Papirus-Dark";
       wallpaper = ../wallpaper.jpeg;
     };

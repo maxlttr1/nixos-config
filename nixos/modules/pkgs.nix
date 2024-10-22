@@ -30,6 +30,7 @@
     curl
     fastfetch
     git
+    jetbrains-mono
     jdk #Java LTS
     papirus-icon-theme
     python312
