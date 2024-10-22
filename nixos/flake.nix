@@ -17,6 +17,12 @@
     };
 
     stylix.url = "github:danth/stylix/cf8b6e2d4e8aca8ef14b839a906ab5eb98b08561";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, ... }:
@@ -57,6 +63,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${settings.username}" = import ./modules/home.nix;
+            home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
             home-manager.backupFileExtension= "backup";
           }
         ];
