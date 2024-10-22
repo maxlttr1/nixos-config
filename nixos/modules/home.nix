@@ -19,6 +19,7 @@
         size = 32;
       };
       iconTheme = "Papirus-Dark";
+      wallpaper = ../wallpaper.jpeg;
     };
     kscreenlocker.appearance.wallpaper = ../wallpaper.jpeg;
     panels = [

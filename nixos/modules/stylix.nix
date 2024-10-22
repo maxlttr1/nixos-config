@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-  stylix = { 
-    enable = true;
-    image = ../wallpaper.jpeg;
-  };
+  #stylix = { 
+  #  enable = true;
+  #  image = ../wallpaper.jpeg;
+  #};
 }
