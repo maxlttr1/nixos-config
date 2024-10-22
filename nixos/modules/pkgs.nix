@@ -15,7 +15,6 @@
     "com.discordapp.Discord"
     "com.github.tchx84.Flatseal"
     "me.proton.Pass"
-    "org.signal.Signal"
   ];
   
   nixpkgs.config.allowUnfree = true;
