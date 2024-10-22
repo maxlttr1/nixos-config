@@ -26,6 +26,10 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+    [General]
+    background=../wallpaper.jpg
+    '')
     bibata-cursors
     curl
     fastfetch
