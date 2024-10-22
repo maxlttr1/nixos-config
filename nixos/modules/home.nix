@@ -43,7 +43,8 @@
             };
           }
           "org.kde.plasma.marginsseparator"
-          
+          "org.kde.plasma.pager"
+          "org.kde.plasma.marginsseparator"
           {
             systemTray.items = {
               # We explicitly show bluetooth and battery
@@ -52,13 +53,7 @@
                 "org.kde.plasma.volume"
                 "org.kde.plasma.battery"
                 "org.kde.plasma.bluetooth"
-                "org.kde.plasma.notifications"
-                {
-                  digitalClock = {
-                  calendar.firstDayOfWeek = "monday";
-                  time.format = "24h";
-                  };
-                }    
+                "org.kde.plasma.notifications" 
               ];
               # And explicitly hide networkmanagement and volume
               hidden = [
@@ -66,6 +61,12 @@
               ];
             };
           }
+          {
+            digitalClock = {
+              calendar.firstDayOfWeek = "monday";
+              time.format = "24h";
+            };
+          }   
         ];
       }
      ];
