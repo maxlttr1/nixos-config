@@ -16,7 +16,7 @@
       clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       cursor = {
         theme = "Bibata-Modern-Ice";
-        size = 64;
+        size = 25;
       };
       iconTheme = "Papirus-Dark";
     };
