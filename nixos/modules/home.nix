@@ -43,17 +43,6 @@
           }
           "org.kde.plasma.marginsseparator"
           {
-            systemMonitor = {
-              sensors = [
-                {
-                  name = "ram/all/usage";
-                  color = "255,43,39";
-                  label = "RAM %";
-                }
-              ];
-            };
-          }
-          {
             systemTray.items = {
               shown = [
                 "org.kde.plasma.notifications"
@@ -62,6 +51,7 @@
                 "org.kde.plasma.volume"
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.networkmanagement"
+                "org.kde.plasma.kdeconnect"
               ];
               hidden = [
               ];
