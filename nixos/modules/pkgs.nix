@@ -42,6 +42,7 @@
     python312
     python312Packages.pip
     python312Packages.pytest
+    kdePackages.qtwebengine
     syncthingtray
     tree
     universal-android-debloater
