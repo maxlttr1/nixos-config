@@ -1,45 +1,51 @@
 { pkgs, ... }:
 
 {
+
+  services.ollama = {
+    enable = true;
+    acceleration = false;
+    #acceleration = "rocm"; #supported by most modern AMD GPUs
+    #acceleration = "cuda"; #supported by most modern NVIDIA GPUs
+  };
+  
   # Flatpaks
   services.flatpak.packages = [
-    "com.jeffser.Alpaca"
     "co.logonoff.awakeonlan"
-    "com.usebottles.bottles"
-    "org.gnome.DejaDup"
     "com.discordapp.Discord"
-    "org.kde.filelight"
     "com.github.tchx84.Flatseal"
-    "nl.hjdskes.gcolor3"
-    "io.github.shiftey.Desktop"
-    "org.kde.isoimagewriter"
-    "org.kde.kleopatra"
-    "org.libreoffice.LibreOffice"
-    #"io.gitlab.librewolf-community"
-    "com.github.marhkb.Pods"
     "me.proton.Pass"
-    "com.protonvpn.www"
     "org.signal.Signal"
-    "me.kozec.syncthingtk"
-    "com.visualstudio.code"
-    "org.kde.yakuake"
   ];
 
   environment.systemPackages = with pkgs; [
+    kdePackages.alpaka
     bibata-cursors
+    bottles
     curl
+    deja-dup
     fastfetch
+    kdePackages.filelight
     git
+    kdePackages.isoimagewriter
     jetbrains-mono
     jdk #Java LTS
+    kdePackages.kleopatra
+    kdePackages.kcolorpicker
+    libreoffice-qt-fresh
     librewolf
     papirus-icon-theme
+    pods
+    protonvpn-gui
     python312
     python312Packages.pip
     python312Packages.pytest
+    syncthingtray
     tree
     universal-android-debloater
     unzip
+    vscode
+    kdePackages.yakuake
     wget
   ];
   
