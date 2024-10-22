@@ -64,7 +64,7 @@
             home-manager.useUserPackages = true;
             home-manager.users."${settings.username}" = import ./modules/home.nix;
             home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-            home-manager.backupFileExtension= "backup";
+            #home-manager.backupFileExtension= "backup";
           }
         ];
       };
