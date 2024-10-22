@@ -56,7 +56,6 @@
               };
             };
           }
-          }
           {
             systemTray.items = {
               # We explicitly show bluetooth and battery
