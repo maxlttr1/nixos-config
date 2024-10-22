@@ -14,7 +14,6 @@
     "io.github.shiftey.Desktop"
     "org.kde.isoimagewriter"
     "org.kde.kleopatra"
-    "org.kde.kweather"
     "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
     "org.gnome.World.PikaBackup"
