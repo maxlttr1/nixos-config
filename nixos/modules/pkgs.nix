@@ -9,6 +9,8 @@
     #acceleration = "cuda"; #supported by most modern NVIDIA GPUs
   };
 
+  programs.steam.enable = true;
+
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
@@ -35,6 +37,7 @@
     kdePackages.kcolorpicker
     libreoffice-qt-fresh
     librewolf
+    mangohud
     papirus-icon-theme
     pods
     protonvpn-gui
