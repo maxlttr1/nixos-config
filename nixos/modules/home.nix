@@ -29,6 +29,7 @@
       };
     };
     kscreenlocker.appearance.wallpaper = ../wallpaper.jpeg;
+    krunner.position = "center";
     panels = [
       # Windows-like panel at the bottom
       {
