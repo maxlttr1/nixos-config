@@ -37,7 +37,6 @@
         specialArgs = { inherit inputs settings; };
         modules = [
           ./modules/apparmor.nix
-          ./modules/auto-upgrade.nix
           ./modules/cups.nix
           ./modules/gamemode.nix
           ./modules/intel.nix
