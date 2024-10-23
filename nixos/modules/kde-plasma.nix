@@ -11,4 +11,10 @@
   services.xserver.displayManager.gdm.wayland = true;
 
   programs.kdeconnect.enable = true;
+
+  # Open ports in the firewall for kde connect
+  networking.firewall = rec {
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
 }
