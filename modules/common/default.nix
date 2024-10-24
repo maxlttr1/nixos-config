@@ -6,6 +6,7 @@
    ./firewall.nix
    ./hostname.nix  
    ./kernel.nix  
+   ./optimise.nix
    ./network-manager.nix  
    ./pkgs-base.nix
    ./state-version.nix  
