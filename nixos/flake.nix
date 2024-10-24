@@ -34,9 +34,9 @@
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
+            specialArgs = { inherit inputs settings; };
           in
             nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/thinkpad
                 inputs.disko.nixosModules.disko
