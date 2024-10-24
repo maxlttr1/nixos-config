@@ -26,13 +26,13 @@
   outputs = inputs@{ self, nixpkgs, ... }:
     {
       nixosConfigurations = {
-        settings.hostname = 
+        thinkpad = 
           let
             settings = {
-            username = "maxlttr";
-            hostname = "pc-maxlttr";
-            system = "x86_64-linux";
-            kernel = "linuxPackages";
+              username = "maxlttr";
+              hostname = "pc-maxlttr";
+              system = "x86_64-linux";
+              kernel = "linuxPackages";
             };
           in
             nixpkgs.lib.nixosSystem {
