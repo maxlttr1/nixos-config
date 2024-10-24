@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -24,7 +25,7 @@
     };
   }; 
   
-  outputs = inputs@{ self, nixpkgs, ... }:#nixpkgs-unstable, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
     {
       nixosConfigurations = {
         thinkpad = 
@@ -35,12 +36,19 @@
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
-            #pkgs = nixpkgs.legacyPackages.${settings.system};
+            overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            };
           in
             nixpkgs.lib.nixosSystem {
+              system = settings.system;
               specialArgs = { inherit inputs settings; }; #pkgs; };
               modules = [
                 ./hosts/thinkpad
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
@@ -64,6 +72,7 @@
             pkgs = nixpkgs.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
+              system = settings.system;
               specialArgs = { inherit inputs settings pkgs; };
               modules = [
                 ./hosts/dell-3050
