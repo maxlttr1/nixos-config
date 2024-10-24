@@ -24,41 +24,33 @@
   }; 
   
   outputs = inputs@{ self, nixpkgs, ... }:
-    #let
-    #  settings = {
-    #    username = "maxlttr";
-    #    hostname = "pc-maxlttr";
-    #    system = "x86_64-linux";
-    #   kernel = "linuxPackages";
-    #  };
-    #in
     {
       nixosConfigurations = {
         settings.hostname = 
-        let
-          settings = {
+          let
+            settings = {
             username = "maxlttr";
             hostname = "pc-maxlttr";
             system = "x86_64-linux";
             kernel = "linuxPackages";
-          };
-        in
-          nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs settings; };
-            modules = [
-              ./hosts/thinkpad
-              inputs.disko.nixosModules.disko
-              inputs.nix-flatpak.nixosModules.nix-flatpak
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users."${settings.username}" = import ./modules/home.nix;
-                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-                home-manager.backupFileExtension= "backup";
-              }
-            ];
-          };
+            };
+          in
+            nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs settings; };
+              modules = [
+                ./hosts/thinkpad
+                inputs.disko.nixosModules.disko
+                inputs.nix-flatpak.nixosModules.nix-flatpak
+                inputs.home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users."${settings.username}" = import ./modules/home.nix;
+                  home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                  home-manager.backupFileExtension= "backup";
+                }
+              ];
+            };
       };
     };
 }
