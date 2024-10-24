@@ -26,7 +26,7 @@
   outputs = inputs@{ self, nixpkgs, ... }:
     {
       nixosConfigurations = {
-        thinkpad = 
+        pc-maxlttr = 
           let
             settings = {
               username = "maxlttr";
