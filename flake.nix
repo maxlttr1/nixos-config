@@ -35,7 +35,7 @@
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
-            pkgs = nixpkgs-unstable.legacyPackages.${settings.system};
+            pkgs = nixpkgs.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs settings pkgs; };
