@@ -2,7 +2,10 @@
   description = "Coucou";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-24.05";
+      unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
@@ -34,6 +37,7 @@
               system = "x86_64-linux";
               kernel = "linuxPackages_testing";
             };
+            pkgs = nixpkgs.unstable.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs settings; };
@@ -49,6 +53,23 @@
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
                 }
+              ];
+            };
+        server = 
+          let
+            settings = {
+              username = "maxlttr";
+              hostname = "server-maxlttr";
+              system = "x86_64-linux";
+              kernel = "linuxPackages_hardkernel_latest";
+            };
+            pkgs = nixpkgs.legacyPackages.${settings.system};
+          in
+            nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs settings; };
+              modules = [
+                ./hosts/thinkpad
+                inputs.disko.nixosModules.disko
               ];
             };
       };
