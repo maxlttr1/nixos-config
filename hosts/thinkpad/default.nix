@@ -16,5 +16,5 @@
     ../../modules/touchpad.nix
     ../../modules/virt-manager.nix
     ../../modules/common
-  ]
+  ];
 }
