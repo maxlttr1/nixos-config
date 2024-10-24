@@ -24,7 +24,7 @@
     };
   }; 
   
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
     {
       nixosConfigurations = {
         thinkpad = 
@@ -35,7 +35,7 @@
               system = "x86_64-linux";
               kernel = "linuxPackages_testing";
             };
-            pkgs = nixpkgs.unstable.legacyPackages.${settings.system};
+            pkgs = nixpkgs-unstable.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs settings pkgs; };
