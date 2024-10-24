@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  pkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   programs.steam.enable = true;
 
