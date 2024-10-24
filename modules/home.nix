@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  wallpaper = ../wallpaper.jpg;
+  wallpaper = ../wallpapers/wallpaper.jpg;
 in
 
 {
