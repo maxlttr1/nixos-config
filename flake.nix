@@ -61,7 +61,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_hardkernel_latest";
+              kernel = "linuxPackages_latest_hardened";
             };
             pkgs = nixpkgs.legacyPackages.${settings.system};
           in
