@@ -26,11 +26,11 @@
   outputs = inputs@{ self, nixpkgs, ... }:
     {
       nixosConfigurations = {
-        coucou = 
+        thinkpad = 
           let
             settings = {
               username = "maxlttr";
-              hostname = "coucou";
+              hostname = "thinkpad-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
