@@ -66,7 +66,7 @@
             nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs settings pkgs; };
               modules = [
-                ./hosts/thinkpad
+                ./hosts/dell-3050
                 inputs.disko.nixosModules.disko
               ];
             };
