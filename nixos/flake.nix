@@ -43,22 +43,22 @@
             kernel = "linuxPackages";
           };
         in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/thinkpad
-            inputs.disko.nixosModules.disko
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${settings.username}" = import ./modules/home.nix;
-              home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-              home-manager.backupFileExtension= "backup";
-            }
-          ];
-        };
+          nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs settings; };
+            modules = [
+              ./hosts/thinkpad
+              inputs.disko.nixosModules.disko
+              inputs.nix-flatpak.nixosModules.nix-flatpak
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users."${settings.username}" = import ./modules/home.nix;
+                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                home-manager.backupFileExtension= "backup";
+              }
+            ];
+          };
       };
     };
 }
