@@ -6,7 +6,7 @@
     fastfetch
     git
     jdk #Java LTS
-    linux-firmware
+    #linux-firmware
     python312
     python312Packages.pip
     python312Packages.pytest
