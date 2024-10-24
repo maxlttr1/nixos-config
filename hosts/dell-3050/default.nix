@@ -2,6 +2,7 @@
   imports = [
     #./hardware-configuration.nix
     ./disko.nix
+    ./mount.nix
     ../../modules/apparmor.nix
     ../../modules/intel.nix
     ../../ollama.nix
