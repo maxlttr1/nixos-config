@@ -34,7 +34,7 @@
               username = "maxlttr";
               hostname = "thinkpad-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
