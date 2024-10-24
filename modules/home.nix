@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  wallpaper = ../wallpaper.jpg;
+in
+
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -20,7 +24,7 @@
       };
       lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
-      wallpaper = ../wallpaper.jpeg;
+      inherit wallpaper;
     };
     fonts = {
       general = {
@@ -28,7 +32,7 @@
         pointSize = 10;
       };
     };
-    kscreenlocker.appearance.wallpaper = ../wallpaper.jpeg;
+    kscreenlocker.appearance.wallpaper = wallpaper;
     krunner.position = "center";
     panels = [
       # Windows-like panel at the bottom
