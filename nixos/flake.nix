@@ -43,9 +43,6 @@
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 {
-                  networking.hostName = settings.hostname;
-                }
-                {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users."${settings.username}" = import ./modules/home.nix;
