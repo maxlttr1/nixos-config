@@ -33,7 +33,7 @@
               username = "maxlttr";
               hostname = "thinkpad-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_testing";
+              kernel = "linuxPackages_latest";
             };
             pkgs = nixpkgs-unstable.legacyPackages.${settings.system};
           in
