@@ -38,7 +38,7 @@
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
-                inherit system;
+                system = settings.system;
                 config.allowUnfree = true;
               };
             };
