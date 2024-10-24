@@ -7,7 +7,7 @@
     ../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
-    ../../modules/pipewire.nixs
+    ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     ../../modules/podman.nix
     ../../modules/ssh.nix
