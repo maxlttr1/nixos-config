@@ -2,10 +2,8 @@
   description = "Coucou";
 
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-24.05";
-      unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
@@ -40,7 +38,7 @@
             pkgs = nixpkgs.unstable.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs settings; };
+              specialArgs = { inherit inputs settings pkgs; };
               modules = [
                 ./hosts/thinkpad
                 inputs.disko.nixosModules.disko
@@ -66,7 +64,7 @@
             pkgs = nixpkgs.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs settings; };
+              specialArgs = { inherit inputs settings pkgs; };
               modules = [
                 ./hosts/thinkpad
                 inputs.disko.nixosModules.disko
