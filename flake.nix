@@ -2,7 +2,7 @@
   description = "Coucou";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
@@ -32,7 +32,7 @@
               username = "maxlttr";
               hostname = "thinkpad-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_testing";
             };
           in
             nixpkgs.lib.nixosSystem {
