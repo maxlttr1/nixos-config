@@ -41,6 +41,7 @@
               specialArgs = { inherit inputs settings pkgs; };
               modules = [
                 ./hosts/thinkpad
+                ./modules/common/allow-unfree.nix
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
