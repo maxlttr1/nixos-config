@@ -7,7 +7,7 @@
     ../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
-    ../../ollama.nix
+    ../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     ../../modules/podman.nix
