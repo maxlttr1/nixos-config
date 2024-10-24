@@ -38,7 +38,7 @@
             #pkgs = nixpkgs.legacyPackages.${settings.system};
           in
             nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs setting; }; #pkgs; };
+              specialArgs = { inherit inputs settings; }; #pkgs; };
               modules = [
                 ./hosts/thinkpad
                 inputs.disko.nixosModules.disko
