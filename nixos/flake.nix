@@ -37,21 +37,22 @@
         settings.hostname = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs settings; };
           modules = [
-            ./modules/apparmor.nix
-            ./modules/cups.nix
-            ./modules/gamemode.nix
-            ./modules/intel.nix
-            ./modules/kde-plasma.nix
-            ./modules/pipewire.nix
-            ./modules/pkgs.nix
-            ./modules/podman.nix
-            ./modules/ssh.nix
-            ./modules/tailscale.nix
-            ./modules/tlp.nix
-            ./modules/touchpad.nix
-            ./modules/virt-manager.nix
-            ./modules/common
-            ./disko.nix
+            #./modules/apparmor.nix
+            #./modules/cups.nix
+            #./modules/gamemode.nix
+            #./modules/intel.nix
+            #./modules/kde-plasma.nix
+            #./modules/pipewire.nix
+            #./modules/pkgs.nix
+            #./modules/podman.nix
+            #./modules/ssh.nix
+            #./modules/tailscale.nix
+            #./modules/tlp.nix
+            #./modules/touchpad.nix
+            #./modules/virt-manager.nix
+            #./modules/common
+            #./disko.nix
+            ./hosts/thinkpad
             inputs.disko.nixosModules.disko
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.home-manager.nixosModules.home-manager
