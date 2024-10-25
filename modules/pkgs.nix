@@ -18,6 +18,7 @@
       bibata-cursors
       bottles
       deja-dup
+      fwupd
       kdePackages.filelight
       kdePackages.isoimagewriter
       jetbrains-mono
@@ -27,6 +28,7 @@
       librewolf
       mangohud
       papirus-icon-theme
+      pciutils
       pods
       protonvpn-gui
       kdePackages.qtwebengine
