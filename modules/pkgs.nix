@@ -13,12 +13,10 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      aha
       kdePackages.alpaka
       bibata-cursors
       bottles
       deja-dup
-      fwupd
       kdePackages.filelight
       kdePackages.isoimagewriter
       jetbrains-mono
