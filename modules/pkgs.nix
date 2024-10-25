@@ -31,6 +31,7 @@
       kdePackages.qtwebengine
       syncthingtray
       universal-android-debloater
+      ventoy
       vscode
       kdePackages.yakuake
     ])
