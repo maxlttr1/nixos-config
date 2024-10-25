@@ -45,7 +45,7 @@
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
-              specialArgs = { inherit inputs settings; }; #pkgs; };
+              specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/thinkpad
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
@@ -78,7 +78,7 @@
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
-              specialArgs = { inherit inputs settings; }; #pkgs; };
+              specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/asus
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
