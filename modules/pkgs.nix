@@ -26,7 +26,6 @@
       librewolf
       mangohud
       papirus-icon-theme
-      pciutils
       pods
       protonvpn-gui
       kdePackages.qtwebengine
