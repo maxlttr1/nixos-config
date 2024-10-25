@@ -13,6 +13,7 @@
 
   environment.systemPackages = 
     (with pkgs; [
+      aha
       kdePackages.alpaka
       bibata-cursors
       bottles
