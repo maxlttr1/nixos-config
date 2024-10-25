@@ -14,6 +14,7 @@
   environment.systemPackages = 
     (with pkgs; [
       kdePackages.alpaka
+      kdePackages.bluedevil
       bibata-cursors
       bottles
       deja-dup
