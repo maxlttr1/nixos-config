@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./disko.nix
     ../../modules/apparmor.nix
+    ../../modules/bluetooth.nix
     ../../modules/cups.nix
     ../../modules/gamemode.nix
     ../../modules/intel.nix
