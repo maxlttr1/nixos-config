@@ -17,6 +17,7 @@
       bibata-cursors
       bottles
       deja-dup
+      github-desktop
       kdePackages.filelight
       kdePackages.isoimagewriter
       jetbrains-mono
