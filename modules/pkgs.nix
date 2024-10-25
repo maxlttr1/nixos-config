@@ -27,6 +27,7 @@
       mangohud
       papirus-icon-theme
       pods
+      protonplus
       protonvpn-gui
       kdePackages.qtwebengine
       syncthingtray
