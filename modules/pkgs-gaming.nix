@@ -9,7 +9,9 @@
 
   environment.systemPackages = 
     (with pkgs; [
+      gamescope
       goverlay
+      lutris
       mangohud
     ])
     ++
