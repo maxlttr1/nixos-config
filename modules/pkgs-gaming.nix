@@ -11,7 +11,9 @@
   #    #gamescopeSession.enable = true;
   #  };
   #};
-
+  services.flatpak = {
+    enable = true;
+  };
   # Flatpaks
   services.flatpak.packages = [
     #com.valvesoftware.Steam
