@@ -8,7 +8,7 @@
     };
     steam = {
       enable = true;
-      gamescopeSession.enable = true;
+      #gamescopeSession.enable = true;
     };
   };
 
