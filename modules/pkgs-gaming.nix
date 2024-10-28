@@ -11,14 +11,12 @@
   #    #gamescopeSession.enable = true;
   #  };
   #};
-  services.flatpak = {
-    enable = true;
-  };
+
   # Flatpaks
   services.flatpak.packages = [
-    #com.valvesoftware.Steam
-    org.freedesktop.Platform.VulkanLayer.MangoHud
-    org.freedesktop.Platform.VulkanLayer.gamescope 
+    "com.valvesoftware.Steam"
+    "org.freedesktop.Platform.VulkanLayer.MangoHud"
+    "org.freedesktop.Platform.VulkanLayer.gamescope"
   ];
 
   environment.systemPackages = 
