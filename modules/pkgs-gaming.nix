@@ -14,7 +14,7 @@
 
   # Flatpaks
   services.flatpak.packages = [
-    com.valvesoftware.Steam
+    #com.valvesoftware.Steam
     org.freedesktop.Platform.VulkanLayer.MangoHud
     org.freedesktop.Platform.VulkanLayer.gamescope 
   ];
