@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.steam.enable = true;
-
+  
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
