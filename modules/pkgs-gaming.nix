@@ -10,9 +10,9 @@
   environment.systemPackages = 
     (with pkgs; [
       goverlay
+      mangohud
     ])
     ++
     (with pkgs.unstable; [
-      mangohud
     ]);
 }
