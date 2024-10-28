@@ -16,8 +16,7 @@
   services.flatpak.packages = [
     com.valvesoftware.Steam
     org.freedesktop.Platform.VulkanLayer.MangoHud
-    org.freedesktop.Platform.VulkanLayer.gamescope
-    
+    org.freedesktop.Platform.VulkanLayer.gamescope 
   ];
 
   environment.systemPackages = 
