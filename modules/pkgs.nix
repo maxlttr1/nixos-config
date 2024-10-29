@@ -16,6 +16,7 @@
       kdePackages.bluedevil
       bibata-cursors
       bottles
+      corectrl
       deja-dup
       firefox
       kdePackages.filelight
