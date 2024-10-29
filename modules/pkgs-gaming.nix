@@ -25,7 +25,7 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      #goverlay
+      corectrl
       lutris
       mangohud
     ])
