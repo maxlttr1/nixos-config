@@ -14,7 +14,6 @@
   hardware.xone.enable = true; # support for the xbox controller USB dongle
   #services.getty.autologinUser = "maxlttr";
   environment = {
-    systemPackages = pkgs.mangohud;
     loginShellInit = ''
       [[ "$(tty)" = "/dev/tty1" ]] && ./gs.sh
     '';
