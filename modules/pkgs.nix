@@ -19,6 +19,7 @@
       corectrl
       deja-dup
       firefox
+      google-authenticator
       kdePackages.filelight
       kdePackages.isoimagewriter
       jetbrains-mono
