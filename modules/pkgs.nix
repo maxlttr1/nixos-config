@@ -1,30 +1,28 @@
 { pkgs, ... }:
 
 {
-  
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
+    "com.usebottles.bottles"
     "com.discordapp.Discord"
+    "org.mozilla.firefox"
     "com.github.tchx84.Flatseal"
+    "org.kde.kleopatra"
+    "io.gitlab.librewolf-community"
     "me.proton.Pass"
+    "com.protonvpn.www"
+    "com.visualstudio.code"
+    "org.kde.yakuake"
   ];
 
   environment.systemPackages = 
     (with pkgs; [
       kdePackages.bluedevil
       bibata-cursors
-      bottles
-      firefox
       google-authenticator
       jetbrains-mono
-      kdePackages.kleopatra
-      librewolf
       papirus-icon-theme
-      protonplusde
-      protonvpn-gui
-      vscode
-      kdePackages.yakuake
     ])
     ++
     (with pkgs.unstable; [
