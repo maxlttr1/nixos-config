@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -10,4 +12,10 @@
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+  ];
 }
