@@ -10,6 +10,7 @@
       PasswordAuthentication = true;
       AllowUsers = [ "${settings.username}" ]; # Allows all users by default. Can be [ "user1" "user2" ]
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      services.openssh.settings.KbdInteractiveAuthentication = false; #Specifies whether keyboard-interactive authentication is allowed
     };
   }; 
 
