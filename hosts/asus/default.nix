@@ -8,7 +8,6 @@
     ../../modules/cups.nix
     ../../modules/firejail.nix
     ../../modules/gamemode.nix
-    ../../modules/home.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/pipewire.nix
