@@ -67,7 +67,7 @@
               username = "maxlttr";
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages_hardened";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
