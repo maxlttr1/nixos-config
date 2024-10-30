@@ -12,30 +12,17 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      kdePackages.alpaka
       kdePackages.bluedevil
       bibata-cursors
       bottles
-      corectrl
-      deja-dup
       firefox
       google-authenticator
-      kdePackages.filelight
-      kdePackages.isoimagewriter
       jetbrains-mono
       kdePackages.kleopatra
-      kdePackages.kcolorpicker
-      libreoffice-qt-fresh
       librewolf
-      mangohud
       papirus-icon-theme
-      pods
-      protonplus
+      protonplusde
       protonvpn-gui
-      kdePackages.qtwebengine
-      syncthingtray
-      universal-android-debloater
-      ventoy-full
       vscode
       kdePackages.yakuake
     ])
