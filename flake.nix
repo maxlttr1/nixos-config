@@ -34,7 +34,7 @@
               username = "maxlttr";
               hostname = "thinkpad-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages_hardened";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
@@ -67,7 +67,7 @@
               username = "maxlttr";
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest_hardened";
+              kernel = "linuxPackages_hardened";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
@@ -100,7 +100,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest_hardened";
+              kernel = "linuxPackages_hardened";
             };
             pkgs = nixpkgs.legacyPackages.${settings.system};
           in
