@@ -5,7 +5,6 @@
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
     "com.usebottles.bottles"
-    "com.gitlab.davem.ClamTk"
     "com.discordapp.Discord"
     "org.mozilla.firefox"
     "com.github.tchx84.Flatseal"
