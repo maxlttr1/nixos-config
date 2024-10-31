@@ -14,10 +14,10 @@
   };
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    "emojier"
+    #emojier
     kate
     khelpcenter
-    kwrite
-    xterm
+    #kwrite
+    #xterm
   ];
 }
