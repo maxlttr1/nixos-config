@@ -8,7 +8,6 @@
     "com.discordapp.Discord"
     "org.mozilla.firefox"
     "com.github.tchx84.Flatseal"
-    "org.kde.kleopatra"
     "io.gitlab.librewolf-community"
     "me.proton.Pass"
     "com.protonvpn.www"
