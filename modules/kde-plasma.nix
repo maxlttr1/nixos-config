@@ -18,6 +18,6 @@
     kate
     khelpcenter
     #kwrite
-    #xterm
+    xterm
   ];
 }
