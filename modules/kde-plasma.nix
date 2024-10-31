@@ -14,10 +14,9 @@
   };
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    #emojier
+    ark
+    elisa
     kate
     khelpcenter
-    #kwrite
-    xterm
   ];
 }
