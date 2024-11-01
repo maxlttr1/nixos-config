@@ -18,7 +18,6 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      atlauncher
       lutris
       mangohud
     ])
