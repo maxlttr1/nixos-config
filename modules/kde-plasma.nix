@@ -14,7 +14,7 @@
   };
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    ark
+    #ark
     elisa
     kate
     khelpcenter
