@@ -20,7 +20,6 @@
       google-authenticator
       jetbrains-mono
       papirus-icon-theme
-      scrcpy
     ])
     ++
     (with pkgs.unstable; [
