@@ -13,6 +13,8 @@
     "com.protonvpn.www"
     "com.visualstudio.code"
     "org.kde.yakuake"
+    "dev.zed.Zed"
+    "io.github.zen_browser.zen"
   ];
 
   environment.systemPackages = 
