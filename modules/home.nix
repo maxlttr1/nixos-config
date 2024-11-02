@@ -2,7 +2,7 @@
 
 #let
 #  wallpaper = ../wallpaper.png;
-#in
+#lin
 
 {
   # Home Manager needs a bit of information about you and the
