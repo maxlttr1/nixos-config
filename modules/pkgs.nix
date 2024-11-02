@@ -5,7 +5,6 @@
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
     "com.discordapp.Discord"
-    "com.github.tchx84.Flatseal"
     "io.gitlab.librewolf-community"
     "com.moonlight_stream.Moonlight"
     "com.protonvpn.www"
