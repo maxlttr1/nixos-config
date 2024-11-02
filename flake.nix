@@ -26,7 +26,7 @@
     };
   }; 
   
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     {
       nixosConfigurations = {
         thinkpad-maxlttr = 
