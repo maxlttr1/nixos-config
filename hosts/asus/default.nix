@@ -2,7 +2,6 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
-    ../../modules/apparmor.nix
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/cups.nix
