@@ -11,7 +11,7 @@
     ../../modules/kde-plasma.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
-    ../../modules/pkgs-gaming.nix
+    #../../modules/pkgs-gaming.nix
     ../../modules/podman.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
