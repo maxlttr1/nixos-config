@@ -20,9 +20,9 @@
       jetbrains-mono
       papirus-icon-theme
     ])
-    /*++
+    ++
     (with pkgs.unstable; [
-    ])*/;
+    ]);
  
   services.flatpak = {
     enable = true;

@@ -21,7 +21,7 @@
       lutris
       mangohud
     ])
-    /*++
+    ++
     (with pkgs.unstable; [
-    ])*/;
+    ]);
 }
