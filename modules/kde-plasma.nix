@@ -18,6 +18,6 @@
     elisa
     kate
     khelpcenter
-    krdp
+    #krdp
   ];
 }
