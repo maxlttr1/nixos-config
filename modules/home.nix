@@ -23,7 +23,7 @@
         size = 32;
       };
       lookAndFeel = "org.kde.breezedark.desktop";
-      #iconTheme = "Papirus-Dark";
+      iconTheme = "Papirus-Dark";
       #inherit wallpaper;
     };
     fonts = {
