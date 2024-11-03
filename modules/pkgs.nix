@@ -4,8 +4,8 @@
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
-    "com.discordapp.Discord"
     "io.gitlab.librewolf-community"
+    "io.github.milkshiift.GoofCord"
     "com.moonlight_stream.Moonlight"
     "com.protonvpn.www"
     "com.visualstudio.code"
