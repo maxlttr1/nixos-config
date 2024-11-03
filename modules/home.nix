@@ -2,7 +2,7 @@
 
 let
   wallpaper = ../wallpaper.png;
-lin
+in
 
 {
   # Home Manager needs a bit of information about you and the
