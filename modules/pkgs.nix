@@ -9,7 +9,6 @@
     "com.moonlight_stream.Moonlight"
     "com.protonvpn.www"
     "com.visualstudio.code"
-    "org.kde.yakuake"
   ];
 
   environment.systemPackages = 
@@ -19,6 +18,7 @@
       google-authenticator
       jetbrains-mono
       papirus-icon-theme
+      kdePackages.yakuake
     ])
     ++
     (with pkgs.unstable; [
