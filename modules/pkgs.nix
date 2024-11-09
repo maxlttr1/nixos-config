@@ -5,6 +5,7 @@
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
     "io.gitlab.librewolf-community"
+    "org.mozilla.firefox"
     "io.github.milkshiift.GoofCord"
     "com.moonlight_stream.Moonlight"
     "com.protonvpn.www"
