@@ -7,8 +7,8 @@
     ../../modules/cups.nix
     ../../modules/firejail.nix
     ../../modules/gamemode.nix
-    ../../modules/intel.nix
     ../../modules/kde-plasma.nix
+    ../../modules/nvidia.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     #../../modules/pkgs-gaming.nix
