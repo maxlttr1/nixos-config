@@ -29,39 +29,6 @@
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
     {
       nixosConfigurations = {
-        thinkpad-maxlttr = 
-          let
-            settings = {
-              username = "maxlttr";
-              hostname = "thinkpad-maxlttr";
-              system = "x86_64-linux";
-              kernel = "linuxPackages_hardened";
-            };
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
-                system = settings.system;
-                config.allowUnfree = true;
-              };
-            };
-          in
-            nixpkgs.lib.nixosSystem {
-              system = settings.system;
-              specialArgs = { inherit inputs settings; };
-              modules = [
-                ./hosts/thinkpad
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-                inputs.disko.nixosModules.disko
-                inputs.nix-flatpak.nixosModules.nix-flatpak
-                inputs.home-manager.nixosModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users."${settings.username}" = import ./modules/home.nix;
-                  home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-                  home-manager.backupFileExtension= "backup";
-                }
-              ];
-            };
         asus-maxlttr = 
           let
             settings = {
@@ -95,22 +62,37 @@
                 }
               ];
             };
-        server-maxlttr = 
+        desktop-maxlttr = 
           let
             settings = {
               username = "maxlttr";
-              hostname = "server-maxlttr";
+              hostname = "desktop-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_hardened";
+              kernel = "linuxPackages";
             };
-            pkgs = nixpkgs.legacyPackages.${settings.system};
+            overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
-              specialArgs = { inherit inputs settings pkgs; };
+              specialArgs = { inherit inputs settings; };
               modules = [
-                ./hosts/dell-3050
+                ./hosts/asus
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
+                inputs.nix-flatpak.nixosModules.nix-flatpak
+                inputs.home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users."${settings.username}" = import ./modules/home.nix;
+                  home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                  home-manager.backupFileExtension= "backup";
+                }
               ];
             };
       };
