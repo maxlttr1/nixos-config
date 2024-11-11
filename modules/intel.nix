@@ -1,5 +1,5 @@
 {
-   # Enable opengl
+  # Enable opengl
   #hardware.graphics.enable = true; #> NixOS 24.11
   hardware.opengl.enable = true;
  
