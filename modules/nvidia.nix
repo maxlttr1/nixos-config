@@ -1,3 +1,5 @@
+{ config, lib, pkgs, ... }:
+
 {
   # Enable opengl
   #hardware.graphics.enable = true; #> NixOS 24.11
