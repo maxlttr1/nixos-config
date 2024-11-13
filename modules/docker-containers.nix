@@ -26,6 +26,20 @@
           "--runtime=nvidia"
         ];
       };
+
+      ollama = {
+        hostname = "ollama";
+        image = "ollama/ollama";
+        cmd = [
+            "--gpus=all"
+        ];
+        volumes = [
+          "/home/maxlttr/.docker/ollama:/root/.ollama"
+        ];
+        ports = [
+          "11434:11434"
+        ];
+      };
     };
   };
 
