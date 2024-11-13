@@ -28,7 +28,7 @@
     backend = "docker";
     containers = {
       jellyfin = {
-        autoStart = True;
+        autoStart = true;
         hostname = "jellyfin";
         image = "lscr.io/linuxserver/jellyfin:latest";
         environment = {
