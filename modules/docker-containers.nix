@@ -1,6 +1,8 @@
 { pkgs, ...}:
 
 {
+  hardware.nvidia-container-toolkit.enable = true;
+
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
@@ -12,7 +14,7 @@
           PUID="1000";
           PGID="1000";
           TZ="Etc/UTC";
-          NVIDIA_VISIBLE_DEVICES="all";
+          #NVIDIA_VISIBLE_DEVICES="all";
         };
         volumes = [
           "/home/maxlttr/.docker/jellyfin/library:/config"
@@ -24,6 +26,7 @@
         ];
         cmd = [
           "--runtime=nvidia"
+          "--device=nvidia.com/gpu=all"
         ];
       };
 
@@ -31,7 +34,8 @@
         hostname = "open-webui";
         image = "ghcr.io/open-webui/open-webui:ollama";
         cmd = [
-            "--gpus=all"
+            #"--gpus=all"
+            "--device=nvidia.com/gpu=all"
             "--add-host=host.docker.internal:host-gateway"
         ];
         volumes = [
@@ -45,7 +49,7 @@
     };
   };
 
-  environment.systemPackages = [
+  /*environment.systemPackages = [
     pkgs.nvidia-container-toolkit
-  ];
+  ];*/
 }
