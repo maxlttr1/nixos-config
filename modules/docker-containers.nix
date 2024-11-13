@@ -1,3 +1,5 @@
+{ pkgs, ...}:
+
 {
   virtualisation.oci-containers = {
     backend = "docker";
@@ -10,6 +12,7 @@
           PUID="1000";
           PGID="1000";
           TZ="Etc/UTC";
+          NVIDIA_VISIBLE_DEVICES="all";
         };
         volumes = [
           "/home/maxlttr/.docker/jellyfin/library:/config"
@@ -19,7 +22,14 @@
         ports = [
           "8096:8096"
         ];
+        cmd = [
+          "--runtime=nvidia"
+        ]
       };
     };
   };
+
+  environment.systemPackages = [
+    pkgs.nvidia-container-toolkit
+  ];
 }
