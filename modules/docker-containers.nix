@@ -29,13 +29,14 @@
 
       open-webui = {
         hostname = "open-webui";
-        image = "ghcr.io/open-webui/open-webui:cuda";
+        image = "ghcr.io/open-webui/open-webui:ollama";
         cmd = [
             "--gpus=all"
             "--add-host=host.docker.internal:host-gateway"
         ];
         volumes = [
           "/home/maxlttr/.docker/open-webui:/app/backend/data"
+          "/home/maxlttr/.docker/ollama:/root/.ollama"
         ];
         ports = [
           "3000:8080"
