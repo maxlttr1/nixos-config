@@ -1,7 +1,11 @@
 {
   services.syncthing = {
-    enable = false;
+    enable = true;
     openDefaultPorts = true;
+    settings.gui = {
+      user = "maxlttr";
+      password = "passwd";
+    };
   };
 
   /*networking.firewall.allowedTCPPorts = [ 8384 22000 ];
