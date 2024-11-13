@@ -32,9 +32,9 @@
         hostname = "jellyfin";
         image = "lscr.io/linuxserver/jellyfin:latest";
         environment = {
-          PUID=1000;
-          PGID=1000;
-          TZ=Etc/UTC;
+          PUID="1000";
+          PGID="1000";
+          TZ="Etc/UTC";
         };
         volumes = [
           "/home/maxlttr/.docker/jellyfin/library:/config"
