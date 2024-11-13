@@ -27,17 +27,18 @@
         ];
       };
 
-      ollama = {
-        hostname = "ollama";
-        image = "ollama/ollama";
+      open-webui = {
+        hostname = "open-webui";
+        image = "ghcr.io/open-webui/open-webui:cuda";
         cmd = [
             "--gpus=all"
+            "--add-host=host.docker.internal:host-gateway"
         ];
         volumes = [
-          "/home/maxlttr/.docker/ollama:/root/.ollama"
+          "/home/maxlttr/.docker/open-webui:/app/backend/data"
         ];
         ports = [
-          "11434:11434"
+          "3000:8080"
         ];
       };
     };
