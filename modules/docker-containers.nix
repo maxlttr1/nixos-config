@@ -24,7 +24,7 @@
         ];
         cmd = [
           "--runtime=nvidia"
-        ]
+        ];
       };
     };
   };
