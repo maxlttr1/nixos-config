@@ -5,6 +5,8 @@
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/cups.nix
+    ../../modules/docker.nix
+    ../../modules/docker-containers.nix
     ../../modules/firejail.nix
     ../../modules/gamemode.nix
     ../../modules/intel.nix
@@ -12,7 +14,6 @@
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     #../../modules/pkgs-gaming.nix
-    ../../modules/podman.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
     ../../modules/tlp.nix
