@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  # Enable containers
+ /*# Enable containers
   virtualisation.containers.enable = true;  
   virtualisation = {
     podman = {
@@ -20,15 +20,34 @@
     docker-compose #start group of containers for dev
     podman-compose #start group of containers for dev
     podman-tui #status of the containers in the terminal
-  ];
+  ];*/
 
-  virtualisation.oci-containers.backend = "podman";
-  virtualisation.oci-containers.containers = {
-    container-name = {
-      image = "hello-world";
-      autoStart = true;
-      #ports = [ "127.0.0.1:1234:1234" ];
+  virtualisation.docker.enable = true;
+
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      jellyfin = {
+        autoStart = True;
+        hostname = "jellyfin";
+        image = "lscr.io/linuxserver/jellyfin:latest";
+        environment = {
+          PUID=1000;
+          PGID=1000;
+          TZ=Etc/UTC;
+        };
+        volumes = [
+          "/home/maxlttr/.docker/jellyfin/library:/config"
+          "/home/maxlttr/Videos:/data/tvshows"
+          "/home/maxlttr/Videos:/data/movies"
+        ];
+        ports = [
+          "8096:8096"
+        ];
+      }
     };
-  };
+
+
+
 
 }
