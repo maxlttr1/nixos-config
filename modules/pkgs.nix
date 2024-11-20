@@ -4,21 +4,20 @@
   # Flatpaks
   services.flatpak.packages = [
     "co.logonoff.awakeonlan"
-    "io.gitlab.librewolf-community"
-    "org.mozilla.firefox"
-    "io.github.milkshiift.GoofCord"
-    "com.moonlight_stream.Moonlight"
-    "com.protonvpn.www"
-    "com.visualstudio.code"
   ];
 
   environment.systemPackages = 
     (with pkgs; [
       kdePackages.bluedevil
       bibata-cursors
+      discord
+      firefox
       google-authenticator
       jetbrains-mono
+      moonlight-qt
       papirus-icon-theme
+      protonvpn-gui
+      vscode
       kdePackages.yakuake
     ])
     ++
