@@ -14,6 +14,7 @@
       firefox
       google-authenticator
       jetbrains-mono
+      librewolf
       moonlight-qt
       papirus-icon-theme
       protonvpn-gui
