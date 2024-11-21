@@ -3,7 +3,7 @@
 {
   # Flatpaks
   services.flatpak.packages = [
-    "co.logonoff.awakeonlan"
+    #"co.logonoff.awakeonlan"
   ];
 
   environment.systemPackages = 
