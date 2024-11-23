@@ -21,4 +21,6 @@
     ../../modules/virt-manager.nix
     ../../modules/common
   ];
+
+  boot.resumeDevice = lib.mkDefault "/dev/sda"; #if not, the 2 swap are in conflict to resume the device
 }

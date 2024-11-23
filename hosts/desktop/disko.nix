@@ -1,7 +1,6 @@
 { lib, ...}:
 
 {
-  boot.resumeDevice = lib.mkDefault "/dev/sda"; #if not, the 2 swap are in conflict to resume the device
   disko.devices = {
     disk = {
       one = {
