@@ -53,7 +53,7 @@
         content = {
           type = "gpt";
           partitions = {
-            BOOT = {
+            boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
             };
@@ -63,6 +63,14 @@
               content = {
                 type = "mdraid";
                 name = "boot";
+              };
+            };
+            plainSwap = {
+              size = "32G";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true; # resume from hiberation from this device
               };
             };
             mdadm = {
@@ -75,7 +83,7 @@
           };
         };
       };
-      two = {
+    two = {
         type = "disk";
         device = "/dev/sdb";
         content = {
@@ -93,6 +101,14 @@
                 name = "boot";
               };
             };
+            plainSwap = {
+              size = "32G";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true; # resume from hiberation from this device
+              };
+            };
             mdadm = {
               size = "100%";
               content = {
@@ -103,7 +119,6 @@
           };
         };
       };
-    };
     mdadm = {
       boot = {
         type = "mdadm";
