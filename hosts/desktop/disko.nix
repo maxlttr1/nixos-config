@@ -49,7 +49,7 @@
     disk = {
       disk1 = {
         type = "disk";
-        device = "/dev/my-disk";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -87,7 +87,7 @@
       };
       disk2 = {
         type = "disk";
-        device = "/dev/my-disk2";
+        device = "/dev/sdb";
         content = {
           type = "gpt";
           partitions = {
