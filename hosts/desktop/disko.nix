@@ -47,9 +47,9 @@
 {
   disko.devices = {
     disk = {
-      one = {
+      disk1 = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/my-disk";
         content = {
           type = "gpt";
           partitions = {
@@ -58,11 +58,13 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "500M";
+              size = "512M";
               type = "EF00";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
             plainSwap = {
@@ -83,10 +85,9 @@
           };
         };
       };
-    };
-    two = {
+      disk2 = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/my-disk2";
         content = {
           type = "gpt";
           partitions = {
@@ -95,11 +96,13 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "500M";
+              size = "512M";
               type = "EF00";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
             plainSwap = {
@@ -122,27 +125,19 @@
       };
     };
     mdadm = {
-      boot = {
-        type = "mdadm";
-        level = 1;
-        metadata = "1.0";
-        content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = "/boot";
-        };
-      };
       raid1 = {
         type = "mdadm";
         level = 1;
         content = {
           type = "gpt";
-          partitions.primary = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
+          partitions = {
+            primary = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+              };
             };
           };
         };
