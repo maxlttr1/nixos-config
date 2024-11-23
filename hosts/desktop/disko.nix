@@ -83,6 +83,7 @@
           };
         };
       };
+    };
     two = {
         type = "disk";
         device = "/dev/sdb";
@@ -119,6 +120,7 @@
           };
         };
       };
+    };
     mdadm = {
       boot = {
         type = "mdadm";
