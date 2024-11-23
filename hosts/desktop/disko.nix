@@ -47,7 +47,7 @@
 {
   disko.devices = {
     disk = {
-      disk1 = {
+      one = {
         type = "disk";
         device = "/dev/sda";
         content = {
@@ -58,13 +58,11 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "512M";
+              size = "500M";
               type = "EF00";
               content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                type = "mdraid";
+                name = "boot";
               };
             };
             plainSwap = {
@@ -85,7 +83,7 @@
           };
         };
       };
-      disk2 = {
+      two = {
         type = "disk";
         device = "/dev/sdb";
         content = {
@@ -96,13 +94,11 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "512M";
+              size = "500M";
               type = "EF00";
               content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                type = "mdraid";
+                name = "boot";
               };
             };
             plainSwap = {
@@ -125,19 +121,27 @@
       };
     };
     mdadm = {
+      boot = {
+        type = "mdadm";
+        level = 1;
+        metadata = "1.0";
+        content = {
+          type = "filesystem";
+          format = "vfat";
+          mountpoint = "/boot";
+        };
+      };
       raid1 = {
         type = "mdadm";
         level = 1;
         content = {
           type = "gpt";
-          partitions = {
-            primary = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
+          partitions.primary = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
             };
           };
         };
