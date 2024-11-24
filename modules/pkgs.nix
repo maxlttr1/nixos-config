@@ -15,7 +15,7 @@
       google-authenticator
       jetbrains-mono
       librewolf
-      moonlight-qt
+      #moonlight-qt
       papirus-icon-theme
       protonvpn-gui
       vscode
