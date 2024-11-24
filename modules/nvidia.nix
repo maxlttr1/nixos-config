@@ -27,4 +27,7 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # Thermald proactively prevents overheating on Intel CPUs and works well with other tools
+  services.thermald.enable = true;
 }
