@@ -13,11 +13,17 @@
       discord
       firefox
       google-authenticator
+      jdk #Java LTS
       jetbrains-mono
       librewolf
       #moonlight-qt
+      #linux-firmware
       papirus-icon-theme
       protonvpn-gui
+      python312
+      python312Packages.matplotlib
+      python312Packages.pip
+      python312Packages.pytest
       vscode
       kdePackages.yakuake
     ])
