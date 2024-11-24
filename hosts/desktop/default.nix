@@ -17,8 +17,8 @@
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
-    ../../modules/touchpad.nix
-    ../../modules/virt-manager.nix
+    #../../modules/touchpad.nix
+    #../../modules/virt-manager.nix
     ../../modules/common
   ];
 
