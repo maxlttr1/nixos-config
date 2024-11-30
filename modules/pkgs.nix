@@ -16,7 +16,7 @@
       jdk #Java LTS
       jetbrains-mono
       librewolf
-      moonlight-qt
+      #moonlight-qt
       #linux-firmware
       papirus-icon-theme
       protonvpn-gui
