@@ -2,8 +2,7 @@
 
 {
   # Enable opengl
-  #hardware.graphics.enable = true; #> NixOS 24.11
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Drivers
   services.xserver.videoDrivers = [ "nvidia" ];
