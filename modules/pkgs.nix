@@ -22,6 +22,7 @@
       protonvpn-gui
       python312
       python312Packages.matplotlib
+      python312Packages.numpy
       python312Packages.pip
       python312Packages.pytest
       vscode
