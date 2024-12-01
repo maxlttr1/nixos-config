@@ -20,7 +20,7 @@
       #linux-firmware
       papirus-icon-theme
       protonvpn-gui
-      python312
+      python312Full
       python312Packages.matplotlib
       python312Packages.numpy
       python312Packages.pip
