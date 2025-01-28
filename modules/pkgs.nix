@@ -10,9 +10,12 @@
     (with pkgs; [
       kdePackages.bluedevil
       bibata-cursors
+      curl
       discord
+      fastfetch
       firefox
-      google-authenticator
+      git
+      #google-authenticator
       jdk #Java LTS
       jetbrains-mono
       librewolf
@@ -25,7 +28,10 @@
       python312Packages.numpy
       python312Packages.pip
       python312Packages.pytest
+      tree
+      unzip
       vscode
+      wget
       kdePackages.yakuake
     ])
     ++

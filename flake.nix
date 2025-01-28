@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
@@ -50,7 +48,7 @@
               modules = [
                 ./hosts/asus
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-                inputs.disko.nixosModules.disko
+                #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 {
