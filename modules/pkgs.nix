@@ -20,7 +20,6 @@
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
-      python312Full
       tree
       unzip
       vscode
