@@ -1,7 +1,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./disko.nix
+    ../../modules/common
+    #./disko.nix
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/cups.nix
@@ -20,6 +21,5 @@
     ../../modules/tlp.nix
     ../../modules/touchpad.nix
     ../../modules/virt-manager.nix
-    ../../modules/common
   ];
 }
