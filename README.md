@@ -9,9 +9,6 @@ Welcome to my NixOS configuration repository! This repository contains my person
 - **Disko**: Simplifies disk management and partitioning.
 - **Various Utilities**: Includes a wide range of utilities and tools for development, gaming, system management, and more.
 
-
-Certainly! Below is a sample README file for your GitHub repository that describes your NixOS configuration using Flakes, Home Manager, Disko, and various utilities. The goal is to make it as configurable as possible for different hosts with many options to choose from.
-
 # NixOS Configuration
 
 Welcome to my NixOS configuration repository! This repository contains my personal NixOS setup, designed to be highly configurable and adaptable for different hosts. It leverages Nix Flakes, Home Manager, Disko, and various utilities to provide a flexible and powerful environment.
