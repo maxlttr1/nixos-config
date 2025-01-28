@@ -18,9 +18,6 @@
       #google-authenticator
       jdk #Java LTS
       jetbrains-mono
-      librewolf
-      #moonlight-qt
-      #linux-firmware
       papirus-icon-theme
       protonvpn-gui
       python312Full
