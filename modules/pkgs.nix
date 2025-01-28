@@ -24,10 +24,6 @@
       papirus-icon-theme
       protonvpn-gui
       python312Full
-      python312Packages.matplotlib
-      python312Packages.numpy
-      python312Packages.pip
-      python312Packages.pytest
       tree
       unzip
       vscode
