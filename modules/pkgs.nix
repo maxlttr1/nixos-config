@@ -8,7 +8,7 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      kdePackages.bluedevil
+      kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
       curl
       discord
