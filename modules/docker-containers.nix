@@ -27,6 +27,19 @@
           "--device=/dev/dri:/dev/dri"
         ];
       };
+      portainer = {
+        hostname = "portainer";
+        autoStart = false;
+        image = "portainer/portainer-ce:2.21.5";
+        ports = [
+          "8000:8000"
+          "9443:9443"
+        ];
+        volumes = [
+          "/var/run/docker.sock:/var/run/docker.sock"
+          "portainer_data:/data"
+        ];
+      };
     };
   };
 }
