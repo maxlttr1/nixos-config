@@ -60,25 +60,25 @@
         # uBlock Origin:
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "force_installed";
+          installation_mode = "normal_installed";
         };
         
         # Unhook (YouTube Disabler):
         "unhook@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/unhook/latest.xpi";
-          installation_mode = "force_installed";
+          installation_mode = "normal_installed";
         };
 
         # Proton Pass (Password Manager):
         "protonpass@protonmail.com" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
-          installation_mode = "force_installed";
+          installation_mode = "normal_installed";
         };
 
         # SponsorBlock (Skip YouTube sponsor segments):
         "sponsorblock@sponsor.rix0r" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
-          installation_mode = "force_installed";
+          installation_mode = "normal_installed";
         };
       };
 
