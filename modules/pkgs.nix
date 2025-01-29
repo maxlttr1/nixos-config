@@ -122,7 +122,7 @@
         "privacy.trackingprotection.pbmode.enabled" = true; # Enables tracking protection in Private Browsing mode
         "privacy.trackingprotection.socialtracking.enabled" = true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
         "signon.rememberSignons" = false; 
-        "toolkit.telemetry.enabled" = False; # Do not send telemetry data to Mozilla
+        "toolkit.telemetry.enabled" = false; # Do not send telemetry data to Mozilla
       };
     };
   };
