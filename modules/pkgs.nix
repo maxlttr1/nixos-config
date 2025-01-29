@@ -1,5 +1,16 @@
 { pkgs, ... }:
 
+let
+    lock-false = {
+      Value = false;
+      Status = "locked";
+    };
+    lock-true = {
+      Value = true;
+      Status = "locked";
+    };
+in
+
 {
   # Flatpaks
   services.flatpak.packages = [
@@ -86,8 +97,8 @@
       # Check about:config for options.
       Preferences = { 
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
-        "browser.contentblocking.fingerprinting.preferences.ui.enabled" = true;
-        "browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled" = true;
+        "browser.contentblocking.fingerprinting.preferences.ui.enabled" = lock-true;
+        "browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled" = lock-true;
         "browser.formfill.enable" = lock-false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
         "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
@@ -102,27 +113,27 @@
         "browser.search.suggest.enabled.private" = lock-false;
         "browser.topsites.contile.enabled" = lock-false; # Disables the Top Sites feature, meaning users won’t see suggested sites based on their browsing habits on the New Tab Page
         "browser.translations.neverTranslateLanguages" = [ "en" "fr" ];
-        "datareporting.healthreport.uploadEnabled" = False; # Disables data collection
-        "extensions.formautofill.addresses.enabled" = false;
-        "extensions.formautofill.creditCards.enabled" = false;
+        "datareporting.healthreport.uploadEnabled" = lock-false; # Disables data collection
+        "extensions.formautofill.addresses.enabled" = lock-false;
+        "extensions.formautofill.creditCards.enabled" = lock-false;
         "extensions.pocket.enabled" = lock-false; # Disables Pocket integration in Firefox
-        "identity.fxaccounts.enabled" = false; # Disable Firefox accounts
-        "identity.fxaccounts.oauth.enabled" = false;
-        "identity.fxaccounts.pairing.enable" = false;
-        "media.hardware-video-decoding.enabled" = true;
+        "identity.fxaccounts.enabled" = lock-false; # Disable Firefox accounts
+        "identity.fxaccounts.oauth.enabled" = lock-false;
+        "identity.fxaccounts.pairing.enable" = lock-false;
+        "media.hardware-video-decoding.enabled" = lock-true;
         "network.cookie.cookieBehavior" = 1; # Block third-party cookies (default)
-        "network.trr.disable-ECS" = true;
+        "network.trr.disable-ECS" = lock-true;
         "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
         "network.trr.mode" = 2; # Enable DNS over HTTPS (DoH) for all queries
-        "privacy.firstparty.isolate" = true; # Isolates cookies and storage for each site, improving privacy by preventing cross-site tracking
-        "privacy.donottrackheader.enabled" = true; # Sends a Do Not Track request in the HTTP header
-        "privacy.resistFingerprinting" = true; # Reduces your device's unique signature (blocks certain data like screen resolution, time zone, etc.)
-        "privacy.trackingprotection.enabled"= true;
-        "privacy.trackingprotection.cryptomining.enabled" = true; # Blocks cryptomining scripts 
-        "privacy.trackingprotection.pbmode.enabled" = true; # Enables tracking protection in Private Browsing mode
-        "privacy.trackingprotection.socialtracking.enabled" = true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
-        "signon.rememberSignons" = false; 
-        "toolkit.telemetry.enabled" = false; # Do not send telemetry data to Mozilla
+        "privacy.firstparty.isolate" = lock-true; # Isolates cookies and storage for each site, improving privacy by preventing cross-site tracking
+        "privacy.donottrackheader.enabled" = lock-true; # Sends a Do Not Track request in the HTTP header
+        "privacy.resistFingerprinting" = lock-true; # Reduces your device's unique signature (blocks certain data like screen resolution, time zone, etc.)
+        "privacy.trackingprotection.enabled"= lock-true;
+        "privacy.trackingprotection.cryptomining.enabled" = lock-true; # Blocks cryptomining scripts 
+        "privacy.trackingprotection.pbmode.enabled" = lock-true; # Enables tracking protection in Private Browsing mode
+        "privacy.trackingprotection.socialtracking.enabled" = lock-true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
+        "signon.rememberSignons" = lock-false; 
+        "toolkit.telemetry.enabled" = lock-false; # Do not send telemetry data to Mozilla
       };
     };
   };
