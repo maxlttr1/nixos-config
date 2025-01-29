@@ -12,14 +12,14 @@
     ../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
+    ../../modules/laptop.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     #../../modules/pkgs-gaming.nix
     #../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
-    ../../modules/tlp.nix
     ../../modules/touchpad.nix
-    ../../modules/virt-manager.nix
+    #../../modules/virt-manager.nix
   ];
 }
