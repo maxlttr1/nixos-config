@@ -85,7 +85,6 @@
       /* ---- PREFERENCES ---- */
       # Check about:config for options.
       Preferences = { 
-        "network.cookie.cookieBehavior" = 1; # Block third-party cookies (default)
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
         "browser.contentblocking.fingerprinting.preferences.ui.enabled" = true;
         "browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled" = true;
@@ -111,6 +110,7 @@
         "identity.fxaccounts.oauth.enabled" = false;
         "identity.fxaccounts.pairing.enable" = false;
         "media.hardware-video-decoding.enabled" = true;
+        "network.cookie.cookieBehavior" = 1; # Block third-party cookies (default)
         "network.trr.disable-ECS" = true;
         "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
         "network.trr.mode" = 2; # Enable DNS over HTTPS (DoH) for all queries
