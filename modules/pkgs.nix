@@ -26,7 +26,6 @@ in
       fastfetch
       ffmpeg
       git
-      #google-authenticator
       jdk #Java LTS
       jetbrains-mono
       papirus-icon-theme
@@ -77,7 +76,7 @@ in
         # Unhook (YouTube Disabler):
         "unhook@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/unhook/latest.xpi";
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
         };
 
         # Proton Pass (Password Manager):
