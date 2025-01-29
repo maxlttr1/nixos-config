@@ -6,13 +6,46 @@
     #"co.logonoff.awakeonlan"
   ];
 
+  environment.systemPackages = 
+    (with pkgs; [
+      kdePackages.bluedevil #Bluetooth for kde
+      bibata-cursors
+      curl
+      discord
+      fastfetch
+      ffmpeg
+      git
+      #google-authenticator
+      jdk #Java LTS
+      jetbrains-mono
+      papirus-icon-theme
+      protonvpn-gui
+      tree
+      unzip
+      vscode
+      wget
+      kdePackages.yakuake
+    ])
+    ++
+    (with pkgs.unstable; [
+    ]);
+ 
+  services.flatpak = {
+    enable = true;
+    update = {
+      auto = {
+        enable = true;
+        onCalendar = "daily";
+      };
+    };
+  };
+
   programs.firefox = {
     enable = true;
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1; # Use the file picker offered by the XDG Desktop Portal framework
     };
     languagePacks = [ "en-US" ];
-    
     
     /* ---- POLICIES ---- */
     # Check about:policies#documentation for options.
@@ -81,40 +114,6 @@
         "privacy.trackingprotection.socialtracking.enabled" = true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
         "signon.rememberSignons" = false; 
         "toolkit.telemetry.enabled" = False; # Do not send telemetry data to Mozilla
-      };
-    };
-  };
-
-  environment.systemPackages = 
-    (with pkgs; [
-      kdePackages.bluedevil #Bluetooth for kde
-      bibata-cursors
-      curl
-      discord
-      fastfetch
-      ffmpeg
-      git
-      #google-authenticator
-      jdk #Java LTS
-      jetbrains-mono
-      papirus-icon-theme
-      protonvpn-gui
-      tree
-      unzip
-      vscode
-      wget
-      kdePackages.yakuake
-    ])
-    ++
-    (with pkgs.unstable; [
-    ]);
- 
-  services.flatpak = {
-    enable = true;
-    update = {
-      auto = {
-        enable = true;
-        onCalendar = "daily";
       };
     };
   };
