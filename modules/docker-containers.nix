@@ -45,11 +45,11 @@
         autoStart = false;
         image = "dockurr/windows";
         environment = {
-          #VERSION = "11";
-          VERSION = "https://example.com/win.iso";
+          VERSION = "11";
+          #VERSION = "https://example.com/win.iso";
           DISK_SIZE = "64G";
-          RAM_SIZE =  "8G";
-          CPU_CORES = "4";
+          RAM_SIZE =  "4G";
+          CPU_CORES = "2";
         ports = [
           "8006:8006"
           "3389:3389/tcp"
