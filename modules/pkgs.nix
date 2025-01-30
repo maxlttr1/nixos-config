@@ -106,16 +106,16 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
         };
-        "unhook@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/unhook/latest.xpi";
+        "myallychou@gmail.com" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4263531/youtube_recommended_videos-1.6.7.xpi";
           installation_mode = "force_installed";
         };
-        "protonpass@protonmail.com" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
+        "	78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4423344/proton_pass-1.28.0.xpi";
           installation_mode = "force_installed";
         };
-        "sponsorblock@sponsor.rix0r" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+        "sponsorBlocker@ajay.app" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4422523/sponsorblock-5.11.2.xpi";
           installation_mode = "force_installed";
         };
       };
