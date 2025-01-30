@@ -26,7 +26,6 @@ in
       fastfetch
       ffmpeg
       git
-      jdk #Java LTS
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
