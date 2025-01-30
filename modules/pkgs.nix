@@ -64,7 +64,7 @@ in
       "AutofillAddressEnabled" =  true;
       "AutofillCreditCardEnabled" = true;
       "BackgroundAppUpdate" = false;
-      "BlockAboutAddons" = true;
+      "BlockAboutAddons" = false;
       "BlockAboutProfiles" =  true;
       "Cookies" = {
         #"Allow" = ["http://example.org/"];
@@ -147,7 +147,7 @@ in
       "HttpsOnlyMode" = "enabled";
       "ManagedBookmarks" = [
         {
-          "name" = "My favs";
+          "name" = "Social";
           "children" = [
             {
               "url" = "youtube.com";
