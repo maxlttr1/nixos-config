@@ -71,12 +71,12 @@ in
         #"AllowSession": ["http://example.edu/"];
         #"Block" = ["http://example.edu/"];
         "Locked" = true;
-        "Behavior" = "reject";
-        "BehaviorPrivateBrowsing" = "reject";
+        "Behavior" = "reject-tracker";
+        "BehaviorPrivateBrowsing" = "reject-tracker";
       };
       "DisableAppUpdate" = true;
       "DisableFeedbackCommands" = true;
-      "DisableFirefoxAccounts" = false;
+      "DisableFirefoxAccounts" = true;
       "DisableFirefoxScreenshots" = true;
       "DisableFirefoxStudies" = true;
       "DisableFormHistory" = true; # Turn off saving information on web forms and the search bar
@@ -110,7 +110,7 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/file/4263531/youtube_recommended_videos-1.6.7.xpi";
           installation_mode = "force_installed";
         };
-        "	78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+        "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/file/4423344/proton_pass-1.28.0.xpi";
           installation_mode = "force_installed";
         };
@@ -160,7 +160,7 @@ in
       "NoDefaultBookmarks" = true;
       "OfferToSaveLoginsDefault" = false;
       "OverrideFirstRunPage" = ""; # If the value is an empty string (“”), the first run page is not displayed
-      "PasswordManagerEnabled" = true;
+      "PasswordManagerEnabled" = false;
       "PostQuantumKeyAgreementEnabled" = true;
       "PrivateBrowsingModeAvailability" = 1; # 0 (Private Browsing mode is available), 1 (Private Browsing mode not available), and 2(Private Browsing mode is forced)
       "PromptForDownloadLocation" = true;
