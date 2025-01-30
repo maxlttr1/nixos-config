@@ -7,7 +7,7 @@ services:
     environment:
       VERSION: "11"
       DISK_SIZE: "48G"
-      RAM_SIZE: "2G"
+      RAM_SIZE: "1G"
       CPU_CORES: "2"
       REGION: "en-US"
       KEYBOARD: "fr"
