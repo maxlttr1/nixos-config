@@ -55,16 +55,6 @@ in
 
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1; # Use the file picker offered by the XDG Desktop Portal framework
-      "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
-      "browser.contentblocking.fingerprinting.preferences.ui.enabled" = lock-true;
-      "browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled" = lock-true;
-      "browser.topsites.contile.enabled" = lock-false; # Disables the Top Sites feature, meaning users won’t see suggested sites based on their browsing habits on the New Tab Page
-      "media.hardware-video-decoding.enabled" = lock-true;
-      "network.trr.disable-ECS" = lock-true;
-      "privacy.firstparty.isolate" = lock-true; # Isolates cookies and storage for each site, improving privacy by preventing cross-site tracking
-      "privacy.donottrackheader.enabled" = lock-true; # Sends a Do Not Track request in the HTTP header
-      "privacy.resistFingerprinting" = lock-true; # Reduces your device's unique signature (blocks certain data like screen resolution, time zone, etc.)
-      "privacy.trackingprotection.socialtracking.enabled" = lock-true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
     };
 
     languagePacks = [ "en-US" ];
@@ -189,6 +179,18 @@ in
         "MoreFromMozilla" = false;
         "FirefoxLabs" = false;
         "Locked" = true;
+      };
+      Preferences = { 
+        "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+        "browser.contentblocking.fingerprinting.preferences.ui.enabled" = lock-true;
+        "browser.contentblocking.reject-and-isolate-cookies.preferences.ui.enabled" = lock-true;
+        "browser.topsites.contile.enabled" = lock-false; # Disables the Top Sites feature, meaning users won’t see suggested sites based on their browsing habits on the New Tab Page
+        "media.hardware-video-decoding.enabled" = lock-true;
+        "network.trr.disable-ECS" = lock-true;
+        "privacy.firstparty.isolate" = lock-true; # Isolates cookies and storage for each site, improving privacy by preventing cross-site tracking
+        "privacy.donottrackheader.enabled" = lock-true; # Sends a Do Not Track request in the HTTP header
+        "privacy.resistFingerprinting" = lock-true; # Reduces your device's unique signature (blocks certain data like screen resolution, time zone, etc.)
+        "privacy.trackingprotection.socialtracking.enabled" = lock-true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
       };
     };
   };
