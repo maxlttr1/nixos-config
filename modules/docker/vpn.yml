@@ -1,0 +1,36 @@
+name: vpn_stack
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+      - WIREGUARD_ENDPOINT_IP=107.175.69.20
+      - WIREGUARD_ENDPOINT_PORT=51820
+      - WIREGUARD_PUBLIC_KEY=XWmrz9lUWW423HVnY0qKwErZcTEgs0gRifTrsX85LG4=
+      - WIREGUARD_PRIVATE_KEY=EKViEOODpYFcsSTFa5gxhU19uwK6tMuzEgdqT4kUnU4=
+      - WIREGUARD_PRESHARED_KEY=S/e70Ee+Ihk+fWlbgojwmoyDhNRTTFKMeWeDsVN4JEo=
+      - WIREGUARD_ADDRESSES=10.8.0.2/24
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+    restart: always
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ~/.config/deluge/config:/config
+      - ~/Syncthing/movies:/downloads
+
+    network_mode: "service:gluetun"
+    restart: always

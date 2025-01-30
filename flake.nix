@@ -22,16 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    arion = {
-      url = "github:hercules-ci/arion";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    compose2nix = {
-      url = "github:aksiksi/compose2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
@@ -61,7 +51,6 @@
                 #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
-                inputs.arion.nixosModules.arion
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
