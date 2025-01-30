@@ -21,6 +21,7 @@ in
     (with pkgs; [
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
+      inputs.compose2nix.packages.x86_64-linux.default
       curl
       discord
       fastfetch

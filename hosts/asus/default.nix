@@ -7,7 +7,7 @@
     ../../modules/clamav.nix
     ../../modules/cups.nix
     ../../modules/docker.nix
-    ../../modules/docker-containers.nix
+    #../../modules/docker-containers.nix
     #../../modules/firejail.nix
     ../../modules/gamemode.nix
     ../../modules/intel.nix
