@@ -32,6 +32,7 @@ in
       protonvpn-gui
       tree
       unzip
+      vlc
       vscode
       wget
       kdePackages.yakuake
