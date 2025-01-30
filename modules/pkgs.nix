@@ -52,7 +52,7 @@ in
 
   programs.firefox = {
     enable = true;
-    /*
+    
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1; # Use the file picker offered by the XDG Desktop Portal framework
     };
@@ -76,7 +76,7 @@ in
       };
       "DisableAppUpdate" = true;
       "DisableFeedbackCommands" = true;
-      "DisableFirefoxAccounts" = true;
+      "DisableFirefoxAccounts" = false;
       "DisableFirefoxScreenshots" = true;
       "DisableFirefoxStudies" = true;
       "DisableFormHistory" = true; # Turn off saving information on web forms and the search bar
@@ -142,7 +142,7 @@ in
         "Locked" = true;
         /*"Additional": ["http://example.org/",
                      "http://example.edu/"],*/
-        /*"StartPage" = "previous-session";
+        "StartPage" = "previous-session";
       };
       "HttpsOnlyMode" = "enabled";
       "ManagedBookmarks" = [
@@ -197,6 +197,6 @@ in
         "privacy.resistFingerprinting" = lock-true; # Reduces your device's unique signature (blocks certain data like screen resolution, time zone, etc.)
         "privacy.trackingprotection.socialtracking.enabled" = lock-true; # locks social media tracking, including cookies and scripts used by social media platforms to track users across different websites
       };
-    };*/
+    };
   };
 }
