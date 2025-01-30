@@ -1,12 +1,12 @@
 { pkgs, ...}:
 
 {
-  hardware.nvidia-container-toolkit.enable = true;
+  #hardware.nvidia-container-toolkit.enable = true;
 
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
-      jellyfin = {
+      /*jellyfin = {
         autoStart = false;
         hostname = "jellyfin";
         image = "lscr.io/linuxserver/jellyfin:latest";
@@ -26,7 +26,7 @@
         cmd = [
           "--device=/dev/dri:/dev/dri"
         ];
-      };
+      };*/
       portainer = {
         hostname = "portainer";
         autoStart = false;
@@ -60,7 +60,7 @@
           "--device=/dev/net/tun"
           "--cap-add=NET_ADMIN"
         ];
-        }
+        };
       };
     };
   };
