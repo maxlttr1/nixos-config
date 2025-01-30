@@ -61,8 +61,8 @@ in
     
     policies = {
       "AppAutoUpdate" = true;
-      "AutofillAddressEnabled" =  true;
-      "AutofillCreditCardEnabled" = true;
+      "AutofillAddressEnabled" =  false;
+      "AutofillCreditCardEnabled" = false;
       "BackgroundAppUpdate" = false;
       "BlockAboutAddons" = false;
       "BlockAboutProfiles" =  true;
@@ -168,6 +168,11 @@ in
       "SearchEngines" = {
         "Default" = "DuckDuckGo";
         "PreventInstalls" = true; 
+        "Remove" = [
+          "Google"
+          "Bing"
+          "Wikipedia"
+        ];
       };
       "SearchSuggestEnabled" = false;
       "TranslateEnabled" = false;
