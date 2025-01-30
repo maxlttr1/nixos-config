@@ -160,7 +160,7 @@ in
       "NoDefaultBookmarks" = true;
       "OfferToSaveLoginsDefault" = true;
       "OverrideFirstRunPage" = ""; # If the value is an empty string (“”), the first run page is not displayed
-      "PasswordManagerEnabled" = false;
+      "PasswordManagerEnabled" = true;
       "PostQuantumKeyAgreementEnabled" = true;
       "PrivateBrowsingModeAvailability" = 1; # 0 (Private Browsing mode is available), 1 (Private Browsing mode not available), and 2(Private Browsing mode is forced)
       "PromptForDownloadLocation" = true;
