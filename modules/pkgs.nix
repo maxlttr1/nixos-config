@@ -101,7 +101,7 @@ in
       };
       # Check about:support for extension/add-on ID strings.
       ExtensionSettings = {
-        "*".installation_mode = "blocked"; # blocks all addons except the ones specified below        
+        #"*".installation_mode = "blocked"; # blocks all addons except the ones specified below        
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
