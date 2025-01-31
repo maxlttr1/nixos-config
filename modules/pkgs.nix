@@ -24,6 +24,7 @@ in
       discord
       git
       jetbrains-mono
+      ktailctl
       papirus-icon-theme
       protonvpn-gui
       vlc

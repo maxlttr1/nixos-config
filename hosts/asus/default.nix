@@ -8,7 +8,7 @@
     ../../modules/cups.nix
     ../../modules/docker
     #../../modules/firejail.nix
-    ../../modules/gamemode.nix
+    #../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
