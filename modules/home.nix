@@ -69,7 +69,7 @@ in
     panels = [
       # Windows-like panel at the bottom
       {
-        location = "floating";
+        location = "bottom";
         floating = true;
         widgets = [
           {
