@@ -21,19 +21,13 @@ in
     (with pkgs; [
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
-      curl
       discord
-      fastfetch
-      ffmpeg
       git
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
-      tree
-      unzip
       vlc
       vscode
-      wget
       kdePackages.yakuake
     ])
     ++
