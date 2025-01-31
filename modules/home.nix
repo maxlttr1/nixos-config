@@ -35,7 +35,7 @@ in
         pointSize = 10;
       };
     };
-    input.touchpads = [
+    /*input.touchpads = [
       {
         enable = true;
         disableWhileTyping = true;
@@ -50,7 +50,7 @@ in
         productId = "0c6c";
         vendorId = "04f3";
       }
-    ];
+    ];*/
     kscreenlocker.appearance = {
       inherit wallpaper;
       showMediaControls = false;
