@@ -37,18 +37,18 @@ in
     };
     input.touchpads = [
       {
-        disableWhileTyping = true;
         enable = true;
+        disableWhileTyping = true;
         leftHanded = false;
-        middleMouseEmulation = false;
+        #middleMouseEmulation = false;
         naturalScroll = true;
         pointerSpeed = 0;
         tapToClick = true;
         tapAndDrag = true;
         scrollSpeed = 5;
-        productId = null;
-        vendorId = null;
-        name = null;
+        name = "Elan Microelectronics Corp. ELAN:ARM-M4";
+        productId = "0c6c";
+        vendorId = "04f3";
       }
     ];
     kscreenlocker.appearance = {
