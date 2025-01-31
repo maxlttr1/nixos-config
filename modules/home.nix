@@ -40,7 +40,7 @@ in
         disableWhileTyping = true;
         enable = true;
         leftHanded = false;
-        middleMouseEmulation = false;
+        #middleMouseEmulation = false;
         naturalScroll = true;
         pointerSpeed = 0;
         tapToClick = true;
