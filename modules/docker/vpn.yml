@@ -20,7 +20,7 @@ services:
       - 8112:8112
       - 6881:6881
       - 6881:6881/udp
-    restart: always
+    restart: unless-stopped
   deluge:
     image: lscr.io/linuxserver/deluge:latest
     container_name: deluge
@@ -33,4 +33,4 @@ services:
       - ~/Syncthing/movies:/downloads
 
     network_mode: "service:gluetun"
-    restart: always
+    restart: unless-stopped

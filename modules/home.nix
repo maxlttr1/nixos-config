@@ -99,10 +99,10 @@ in
         };
       };
       lowBattery = {
-        powerButtonAction = "hibernate";
-        whenLaptopLidClosed = "hibernate";
+        powerButtonAction = "sleep";
+        whenLaptopLidClosed = "sleep";
         autoSuspend = {
-          action = "hibernate";
+          action = "sleep";
           idleTimeout = 120;
         };
       };
