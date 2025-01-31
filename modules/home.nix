@@ -22,22 +22,52 @@ in
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
+      theme = "breeze-dark";
+      colorScheme = "BreezeDark";
       lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
       inherit wallpaper;
     };
+    immutableByDefault = true;
     fonts = {
       general = {
         family = "JetBrains Mono";
         pointSize = 10;
       };
     };
-    kscreenlocker.appearance.wallpaper = wallpaper;
+    input.touchpads = [
+      {
+        disableWhileTyping = true;
+        enable = true;
+        leftHanded = false;
+        middleMouseEmulation = false;
+        naturalScroll = true;
+        pointerSpeed = 0;
+        tapToClick = true;
+        tapAndDrag = true;
+        scrollSpeed = 5;
+      }
+    ];
+    kscreenlocker.appearance = {
+      inherit wallpaper;
+      showMediaControls = false;
+
+    };
+    kwin.nightLight = {
+      enable = true;
+      location.latitude = 46.04;
+      location.longitude = 0.69;
+      mode = "location";
+      temperature.day = 5700;
+      temperature.night = 2800;
+    };
     krunner.position = "center";
+    spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
     panels = [
       # Windows-like panel at the bottom
       {
-        location = null;
+        location = "bottom";
+        floating = true;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
