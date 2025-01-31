@@ -55,8 +55,8 @@ in
     };
     kwin.nightLight = {
       enable = true;
-      location.latitude = 46.04;
-      location.longitude = 0.69;
+      location.latitude = "46.04";
+      location.longitude = "0.69";
       mode = "location";
       temperature.day = 5700;
       temperature.night = 2800;
