@@ -19,5 +19,7 @@
     kate
     khelpcenter
     #krdp
+    oxygen
+    plasma-browser-integration
   ];
 }
