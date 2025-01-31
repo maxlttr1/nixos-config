@@ -40,12 +40,15 @@ in
         disableWhileTyping = true;
         enable = true;
         leftHanded = false;
-        #middleMouseEmulation = false;
+        middleMouseEmulation = false;
         naturalScroll = true;
         pointerSpeed = 0;
         tapToClick = true;
         tapAndDrag = true;
         scrollSpeed = 5;
+        productId = null;
+        vendorId = null;
+        name = null;
       }
     ];
     kscreenlocker.appearance = {
