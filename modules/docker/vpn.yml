@@ -29,7 +29,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - ~/.config/deluge/config:/config
+      - ~/Syncthing/docker/.config/deluge/config:/config
       - ~/Syncthing/movies:/downloads
 
     network_mode: "service:gluetun"
