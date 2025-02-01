@@ -144,8 +144,8 @@ in
 
   programs.git = {
     enable = true;
-    userEmail = "maxime.lettier@etu.univ-nantes.fr";
-    userName = "Maxime Lettier";
+    userEmail = "maxime.lettier@protonmail.com";
+    userName = "Maxime";
   };
 
   # This value determines the Home Manager release that your
