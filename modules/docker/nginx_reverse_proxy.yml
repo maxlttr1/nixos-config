@@ -1,0 +1,14 @@
+name: nginx_reverse_proxy
+
+services:
+  app:
+    container_name: nginx_reverse_proxy
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ~/.config/nginx_reverse_proxy/data:/data
+      - ~/.config/nginx_reverse_proxy/letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
