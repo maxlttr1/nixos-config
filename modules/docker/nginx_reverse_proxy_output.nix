@@ -13,8 +13,8 @@
   virtualisation.oci-containers.containers."nginx_reverse_proxy" = {
     image = "docker.io/jc21/nginx-proxy-manager:latest";
     volumes = [
-      "/home/maxlttr/.config/nginx_reverse_proxy/data:/data:rw"
-      "/home/maxlttr/.config/nginx_reverse_proxy/letsencrypt:/etc/letsencrypt:rw"
+      "/home/maxlttr/Syncthing/docker/.config/nginx_reverse_proxy/data:/data:rw"
+      "/home/maxlttr/Syncthing/docker/.config/nginx_reverse_proxy/letsencrypt:/etc/letsencrypt:rw"
     ];
     ports = [
       "80:80/tcp"

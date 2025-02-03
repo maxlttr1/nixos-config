@@ -7,4 +7,6 @@
    #./portainer_output.nix
    ./vpn_output.nix
   ];
+
+  # Run with compose2nix: compose2nix -inputs input.yml -output output.nix -runtime docker
 }

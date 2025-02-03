@@ -18,7 +18,7 @@
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/home/maxlttr/.config/jellyfin/library:/config:rw"
+      "/home/maxlttr/Syncthing/docker/.config/jellyfin/library:/config:rw"
       "/home/maxlttr/Syncthing/movies:/data/movies:rw"
     ];
     ports = [

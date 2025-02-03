@@ -24,7 +24,7 @@ in
       discord
       git
       jetbrains-mono
-      ktailctl
+      #ktailctl
       papirus-icon-theme
       protonvpn-gui
       vlc

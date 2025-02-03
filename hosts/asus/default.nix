@@ -17,7 +17,7 @@
     #../../modules/pkgs-gaming.nix
     #../../modules/ssh.nix
     ../../modules/syncthing.nix
-    ../../modules/tailscale.nix
+    #../../modules/tailscale.nix
     ../../modules/touchpad.nix
     #../../modules/virt-manager.nix
   ];

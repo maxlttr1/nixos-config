@@ -18,7 +18,7 @@
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/home/maxlttr/.config/deluge/config:/config:rw"
+      "/home/maxlttr/Syncthing/docker/.config/deluge/config:/config:rw"
       "/home/maxlttr/Syncthing/movies:/downloads:rw"
     ];
     dependsOn = [
