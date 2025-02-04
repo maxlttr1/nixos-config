@@ -6,7 +6,7 @@
    #./nginx_reverse_proxy_output.nix
    #./pi-hole_output.nix
    #./portainer_output.nix
-   ./uptime-kuma.nix
+   ./uptime-kuma_output.nix
    #./vpn_output.nix
   ];
 
