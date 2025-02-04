@@ -6,8 +6,9 @@
    ./firewall.nix
    ./hostname.nix  
    ./kernel.nix  
+   ./network-manager.nix 
    ./optimise.nix
-   ./network-manager.nix  
+   ./pkgs-base.nix
    ./state-version.nix  
    ./timezone-locales.nix  
    ./users.nix

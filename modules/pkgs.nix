@@ -22,7 +22,6 @@ in
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
       discord
-      git
       jetbrains-mono
       #ktailctl
       papirus-icon-theme
