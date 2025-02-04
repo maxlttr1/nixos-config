@@ -54,15 +54,14 @@ in
     kscreenlocker.appearance = {
       inherit wallpaper;
       showMediaControls = false;
-
     };
     kwin.nightLight = {
       enable = true;
       location.latitude = "46.04";
       location.longitude = "0.69";
       mode = "location";
-      temperature.day = 5700;
-      temperature.night = 3000;
+      temperature.day = 5500;
+      temperature.night = 3500;
     };
     krunner.position = "center";
     spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";

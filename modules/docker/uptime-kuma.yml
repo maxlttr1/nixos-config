@@ -1,0 +1,11 @@
+name: uptime-kuma
+
+services:
+  portainer:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - ~/Syncthing/docker/.config/uptime-kuma/uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: unless-stopped
