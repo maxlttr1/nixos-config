@@ -44,7 +44,7 @@
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
-              specialArgs = { inherit inputs settings; };
+              specialArgs = { inherit inputs config pkgs settings; };
               modules = [
                 ./hosts/asus
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
@@ -54,9 +54,7 @@
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users."${settings.username}" = import ./modules/home.nix {
-                    inherit config pkgs settings;
-                  };
+                  home-manager.users."${settings.username}" = import ./modules/home.nix { inherit config pkgs settings; };
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
                 }
