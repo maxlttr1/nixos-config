@@ -2,6 +2,7 @@ name: vpn_stack
 
 services:
   gluetun:
+    container_name: gluetun
     image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN
