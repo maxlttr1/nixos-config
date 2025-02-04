@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 let
   wallpaper = ../wallpaper.jpg;
@@ -14,7 +14,7 @@ in
   home.packages = [
   ];
 
-  programs.plasma = {
+  programs.plasma = if ("${settings.hostname}" == "server-maxlttr") then {
     enable = true;
     workspace = {
       #clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
@@ -139,7 +139,8 @@ in
         };
       };
     };
-  };
+  }
+  else null;
 
   programs.git = {
     enable = true;
@@ -159,5 +160,4 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }
