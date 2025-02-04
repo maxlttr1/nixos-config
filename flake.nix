@@ -55,7 +55,7 @@
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users."${settings.username}" = import ./modules/home.nix {
-                    inherit settings; # Pass settings to home.nix
+                    inherit config pkgs settings;
                   };
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
