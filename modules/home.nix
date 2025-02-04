@@ -2,6 +2,7 @@
 
 let
   wallpaper = ../wallpaper.jpg;
+  hostName = config.networking.hostName;
 in
 
 {
@@ -14,7 +15,7 @@ in
   home.packages = [
   ];
 
-  programs.plasma = if (config.networking.hostName == "server-maxlttr") then {
+  programs.plasma = if (hostName == "server-maxlttr") then {
     enable = true;
     workspace = {
       #clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
