@@ -60,11 +60,11 @@
                 }
               ];
             };
-        desktop-maxlttr = 
+        server-maxlttr = 
           let
             settings = {
               username = "maxlttr";
-              hostname = "desktop-maxlttr";
+              hostname = "server-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
@@ -79,15 +79,15 @@
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
-                ./hosts/desktop
+                ./hosts/asus
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-                inputs.disko.nixosModules.disko
+                #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users."${settings.username}" = import ./modules/home.nix;
+                  home-manager.users."${settings.username}" = import ./modules/home-server.nix;
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
                 }
