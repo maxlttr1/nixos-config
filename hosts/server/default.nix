@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hardware-configuration.nix
     ../../modules/apparmor.nix
     #../../modules/bluetooth.nix
     ../../modules/clamav.nix
@@ -10,7 +11,6 @@
     ../../modules/fail2ban.nix
     #../../modules/firejail.nix
     #../../modules/gamemode.nix
-    ../../modules/home.nix
     ../../modules/intel.nix
     #../../modules/kde-plasma.nix
     #../../modules/laptop.nix
