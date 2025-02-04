@@ -14,6 +14,7 @@
     image = "louislam/uptime-kuma:1";
     volumes = [
       "/home/maxlttr/Syncthing/docker/.config/uptime-kuma/uptime-kuma:/app/data:rw"
+      "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
       "3001:3001/tcp"
