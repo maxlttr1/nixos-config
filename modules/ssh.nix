@@ -5,7 +5,7 @@
   services.openssh = {
     enable = true;
     ports = [ 22 ];
-    openFirewall = false;
+    openFirewall = true;
     settings = {
       PasswordAuthentication = true;
       AllowUsers = [ "${settings.username}" ]; # Allows all users by default. Can be [ "user1" "user2" ]
