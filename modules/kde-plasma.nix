@@ -3,10 +3,7 @@
 {
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "${import ../packages/sddm-theme.nix { inherit pkgs; }}";
-  };
+  services.displayManager.sddm.enable = true;
 
   environment.systemPackages = 
     (with pkgs; [
