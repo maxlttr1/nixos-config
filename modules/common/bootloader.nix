@@ -15,7 +15,7 @@ in
     grub = {
       enable = true;
       theme = xenlism-grub-theme;
-      device = "${settings.disk}";
+      device = "nodev";
       efiSupport = true;
       #efiInstallAsRemovable = true;
       configurationLimit = 15;
