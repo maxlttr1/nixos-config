@@ -9,7 +9,7 @@ in
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "tokyo-night-sddm";
+    theme = "${import ./packages/sddm-theme.nix { inherit pkgs; }}";
   };
 
   environment.systemPackages = with pkgs; [ tokyo-night-sddm ];
