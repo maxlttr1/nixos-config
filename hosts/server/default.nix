@@ -19,7 +19,6 @@
     #../../modules/pipewire.nix
     #../../modules/pkgs-gaming.nix
     #../../modules/pkgs.nix
-    #../../modules/shell.nix
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     #../../modules/tailscale.nix

@@ -21,7 +21,6 @@ in
     (with pkgs; [
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
-      jetbrains.clion
       discord
       jetbrains-mono
       #ktailctl
