@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, fetchFromGitHub }:
 
 pkgs.stdenv.mkDerivation {
   name = "sddm-theme";
