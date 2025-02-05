@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ./packages/sddm-theme.nix { };
+  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../packages/sddm-theme.nix { };
 in
 
 {
