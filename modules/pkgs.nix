@@ -23,7 +23,6 @@ in
       bibata-cursors
       discord
       jetbrains-mono
-      mytheme
       papirus-icon-theme
       protonvpn-gui
       vlc
