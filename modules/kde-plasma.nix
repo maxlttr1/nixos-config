@@ -1,15 +1,11 @@
 { pkgs, ... }:
 
-let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../packages/sddm-theme.nix { };
-in
-
 {
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "${import ./packages/sddm-theme.nix { inherit pkgs; }}";
+    theme = "${import ../packages/sddm-theme.nix { inherit pkgs; }}";
   };
 
   environment.systemPackages = with pkgs; [ tokyo-night-sddm ];
