@@ -27,6 +27,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };*/
+
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
@@ -53,11 +58,12 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/asus
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable sddm-sugar-candy-nix.overlays.default ]; })
                 #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 #inputs.sops-nix.nixosModules.sops
+                inputs.sddm-sugar-candy-nix.nixosModules.default
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;

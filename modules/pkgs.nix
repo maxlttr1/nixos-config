@@ -18,9 +18,6 @@ in
   ];
 
   environment.systemPackages = 
-    let
-      mytheme = pkgs.callPackage ./packages/sddm-theme {};
-    in
     (with pkgs; [
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
