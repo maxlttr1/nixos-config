@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
@@ -51,6 +56,7 @@
                 #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
+                inputs.sops-nix.nixosModules.sops
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
@@ -84,6 +90,7 @@
                 #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
+                inputs.sops-nix.nixosModules.sops
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
