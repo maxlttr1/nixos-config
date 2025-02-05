@@ -27,11 +27,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };*/
-
-    sddm-sugar-candy-nix = {
-      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   }; 
   
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
@@ -63,14 +58,6 @@
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 #inputs.sops-nix.nixosModules.sops
-                inputs.sddm-sugar-candy-nix.nixosModules.default
-                {
-                  nixpkgs = {
-                    overlays = [
-                      inputs.sddm-sugar-candy-nix.overlays.default
-                    ];
-                  };
-                }
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;

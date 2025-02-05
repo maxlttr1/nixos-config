@@ -1,22 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    sugarCandyNix = {
-      enable = true; # This set SDDM's theme to "sddm-sugar-candy-nix".
-      settings = {
-        Background = lib.cleanSource ../wallpaper.jpg;
-        ScreenWidth = 1920;
-        ScreenHeight = 1080;
-        FormPosition = "left";
-        HaveFormBackground = true;
-        PartialBlur = true;
-      };
-    };
-  };
+  services.displayManager.sddm.enable = true;
 
   programs.kdeconnect.enable = true;
 
