@@ -5,7 +5,7 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "Elegant";
+    theme = "mytheme-sddm-theme";
   };
 
   programs.kdeconnect.enable = true;

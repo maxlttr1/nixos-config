@@ -18,12 +18,15 @@ in
   ];
 
   environment.systemPackages = 
+    let
+      mytheme = pkgs.callPackage ./packages/sddm-theme {};
+    in
     (with pkgs; [
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
       discord
-      elegant-sddm # sddm theme
       jetbrains-mono
+      mytheme
       papirus-icon-theme
       protonvpn-gui
       vlc
