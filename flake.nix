@@ -39,6 +39,7 @@
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
+              disk = "/dev/nvme0n1";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
@@ -73,6 +74,7 @@
               hostname = "server-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
+              disk = "/dev/sda";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
