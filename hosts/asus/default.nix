@@ -20,7 +20,7 @@
     #../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
     #../../modules/shell.nix
-    #../../modules/ssh.nix
+    ../../modules/ssh.nix
     ../../modules/syncthing.nix
     #../../modules/tailscale.nix
     ../../modules/touchpad.nix
