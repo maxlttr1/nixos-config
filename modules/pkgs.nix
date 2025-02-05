@@ -22,8 +22,8 @@ in
       kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
       discord
+      elegant-sddm # sddm theme
       jetbrains-mono
-      #ktailctl
       papirus-icon-theme
       protonvpn-gui
       vlc
