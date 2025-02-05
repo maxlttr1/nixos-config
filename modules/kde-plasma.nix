@@ -8,8 +8,6 @@
     theme = "${import ../packages/sddm-theme.nix { inherit pkgs; }}";
   };
 
-  environment.systemPackages = with pkgs; [ tokyo-night-sddm ];
-
   programs.kdeconnect.enable = true;
 
   # Open ports in the firewall for kde connect
