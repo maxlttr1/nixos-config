@@ -58,12 +58,19 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/asus
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.sddm-sugar-candy-nix.overlays.default ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 #inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 #inputs.sops-nix.nixosModules.sops
                 inputs.sddm-sugar-candy-nix.nixosModules.default
+                {
+                  nixpkgs = {
+                    overlays = [
+                      sddm-sugar-candy-nix.overlays.default
+                    ];
+                  };
+                }
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
