@@ -17,7 +17,7 @@ in
       theme = xenlism-grub-theme;
       device = "${settings.disk}";
       efiSupport = true;
-      efiInstallAsRemovable = true;
+      #efiInstallAsRemovable = true;
       configurationLimit = 15;
       useOSProber = true;
     };
