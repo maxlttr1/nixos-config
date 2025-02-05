@@ -1,9 +1,18 @@
 { pkgs, ... }:
 
+let
+  tokyo-night-sddm = pkgs.libsForQt5.callPackage ./packages/sddm-theme.nix { };
+in
+
 {
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "tokyo-night-sddm";
+  };
+
+  environment.systemPackages = with pkgs; [ tokyo-night-sddm ];
 
   programs.kdeconnect.enable = true;
 
