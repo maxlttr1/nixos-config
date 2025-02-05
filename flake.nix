@@ -67,7 +67,7 @@
                 {
                   nixpkgs = {
                     overlays = [
-                      sddm-sugar-candy-nix.overlays.default
+                      inputs.sddm-sugar-candy-nix.overlays.default
                     ];
                   };
                 }
