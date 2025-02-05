@@ -1,7 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/apparmor.nix
+    #../../modules/apparmor.nix
     #../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/common
