@@ -1,4 +1,4 @@
-{ pkgs, settings, ... }:
+{ pkgs, ... }:
 
 let
   xenlism-grub-theme = pkgs.fetchFromGitHub
