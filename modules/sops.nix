@@ -1,10 +1,6 @@
 { pkgs, inputs, config, settings, ... }:
 
-{
-    imports = [
-        inputs.sops-nix.nixosModules.sops
-    ];
-
+{   
     # See /run/secrets for the decrypted files
 
     sops.defaultSopsFile = ../secrets/secrets.yaml;
@@ -15,7 +11,7 @@
         #neededForUsers = true;
         owner = config.users.users.maxlttr.name;
     };
-    
+
     sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
         owner = config.users.users.maxlttr.name;
     };
