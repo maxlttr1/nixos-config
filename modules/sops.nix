@@ -15,7 +15,7 @@
         #neededForUsers = true;
         owner = config.users.users.maxlttr.name;
     };
-    sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
+    sops.secrets."vpn/*" = {
         owner = config.users.users.maxlttr.name;
     };
 }
