@@ -14,7 +14,8 @@
 
     sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
         owner = "vpn_stack-gluetun";
-    #config.users.users.maxlttr.name;
+        path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
+        # owenr = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_ENDPOINT_IP" = {
         owner = "vpn_stack-gluetun";
