@@ -1,4 +1,4 @@
-{ settings, pkgs, ... }:
+{ settings, pkgs, config, ... }:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -7,7 +7,8 @@
       isNormalUser = true;
       createHome = true;
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "syncthing" ];
-      initialHashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
+      #initialHashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
+      hashedPasswordFile = config.sops.secrets.passwd.path;
       packages = with pkgs; [
       ];
     };

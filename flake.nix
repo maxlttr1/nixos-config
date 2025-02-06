@@ -23,10 +23,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    /*sops-nix = {
+    sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };*/
+    };
 
     nix-mineral = {
       url = "github:cynicsketch/nix-mineral"; # Refers to the main branch and is updated to the latest commit when you use "nix flake update" 

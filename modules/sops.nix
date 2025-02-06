@@ -1,3 +1,18 @@
+{ pkgs, inputs, config, settings, ... }:
+
 {
-    sops.defaultSopsFile = ./secrets/example.yaml;
+    import = [
+        inputs.sops-nix.nixosModules.sops
+    ];
+
+    # See /run/secrets for the decrypted files
+
+    sops.defaultSopsFile = ./secrets/test.yaml;
+    sops.defaultSopsFormat = "yaml";
+    sops.age.keyFile = "/home/"${settings.username}"/.config/sops/age/keys.txt";
+
+    sops.secrets.passwd = {
+        neededForUsers = true;
+    };
+    sops.secrets."myservice/mysubdir/mysecret" = {};
 }
