@@ -7,7 +7,7 @@
 
     # See /run/secrets for the decrypted files
 
-    sops.defaultSopsFile = ./secrets/test.yaml;
+    sops.defaultSopsFile = ../secrets/test.yaml;
     sops.defaultSopsFormat = "yaml";
     sops.age.keyFile = "/home/"${settings.username}"/.config/sops/age/keys.txt";
 
