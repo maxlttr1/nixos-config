@@ -3,6 +3,14 @@
 {   
     # See /run/secrets for the decrypted files
 
+    /*let
+    userExists = builtins.pathExists "/home/${settings.username}";
+    in
+        {
+        sops.age.keyFile = if userExists then "/home/${settings.username}/.config/sops/age/keys.txt" else "/etc/sops/age/keys.txt";
+        }*/
+
+
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
     sops.age.keyFile = "/home/${settings.username}/.config/sops/age/keys.txt";
