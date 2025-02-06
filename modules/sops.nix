@@ -15,5 +15,7 @@
         #neededForUsers = true;
         owner = config.users.users.maxlttr.name;
     };
-    sops.secrets."myservice/mysubdir/mysecret" = {};
+    sops.secrets.vpn = {
+        owner = config.users.users.maxlttr.name;
+    };
 }
