@@ -9,10 +9,11 @@
 
     sops.defaultSopsFile = "../secrets/test.yaml";
     sops.defaultSopsFormat = "yaml";
-    sops.age.keyFile = "/home/maxlttr/.config/sops/age/keys.txt";
+    sops.age.keyFile = "/home/"${settings.username}"/.config/sops/age/keys.txt";
 
     sops.secrets.passwd = {
-        neededForUsers = true;
+        #neededForUsers = true;
+        owner = config.users.users.maxlttr.name;
     };
     sops.secrets."myservice/mysubdir/mysecret" = {};
 }
