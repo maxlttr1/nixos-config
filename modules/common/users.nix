@@ -1,6 +1,10 @@
 { settings, pkgs, config, ... }:
 
 {
+  import = [
+        inputs.sops-nix.nixosModules.sops
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     "${settings.username}" = {
