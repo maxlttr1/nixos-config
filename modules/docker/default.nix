@@ -3,11 +3,11 @@
    ./docker.nix
    #./dockur_output.nix
    ./jellyfin_output.nix
-   #./nginx_reverse_proxy_output.nix
-   #./pi-hole_output.nix
-   #./portainer_output.nix
+   ./nginx_reverse_proxy_output.nix
+   ./pi-hole_output.nix
+   ./portainer_output.nix
    ./uptime-kuma_output.nix
-   #./vpn_output.nix
+   ./vpn_output.nix
    ./watchtower_output.nix
   ];
 
