@@ -5,10 +5,6 @@ let
 in
 
 {
-  imports = [
-        inputs.sops-nix.nixosModules.sops
-    ];
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "maxlttr";
@@ -147,10 +143,8 @@ in
 
   programs.git = {
     enable = true;
-    userEmail = config.sops.secrets."git/userEmail".path;
-    #"maxime.lettier@protonmail.com";
-    userName = config.sops.secrets."git/userName".path;
-    #"Maxime";
+    userEmail = "maxime.lettier@protonmail.com";
+    userName = "Maxime";
   };
 
   # This value determines the Home Manager release that your
