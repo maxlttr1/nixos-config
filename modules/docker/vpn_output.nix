@@ -48,7 +48,7 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = builtins.readFile config.sops.secrets."vpn.WIREGUARD_ADDRESSES".path;
+      "WIREGUARD_ADDRESSES" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ADDRESSES".path;
       "WIREGUARD_ENDPOINT_IP" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ENDPOINT_IP".path;
       "WIREGUARD_ENDPOINT_PORT" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ENDPOINT_PORT".path;
       "WIREGUARD_PRESHARED_KEY" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_PRESHARED_KEY".path;
