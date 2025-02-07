@@ -21,24 +21,24 @@
     };
 
     sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
         #path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
         # owenr = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_ENDPOINT_IP" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_ENDPOINT_PORT" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_PRESHARED_KEY" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_PRIVATE_KEY" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_PUBLIC_KEY" = {
-        owner = "vpn_stack-gluetun";
+        owner = config.users.users.maxlttr.name;
     };
 
     sops.templates."vpn/WIREGUARD_ADDRESSES" = {
