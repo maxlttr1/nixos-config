@@ -48,12 +48,12 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ADDRESSES".path;
-      "WIREGUARD_ENDPOINT_IP" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ENDPOINT_IP".path;
-      "WIREGUARD_ENDPOINT_PORT" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_ENDPOINT_PORT".path;
-      "WIREGUARD_PRESHARED_KEY" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_PRESHARED_KEY".path;
-      "WIREGUARD_PRIVATE_KEY" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_PRIVATE_KEY".path;
-      "WIREGUARD_PUBLIC_KEY" = builtins.readFile config.sops.secrets."vpn/WIREGUARD_PUBLIC_KEY".path;
+      "WIREGUARD_ADDRESSES" = config.sops.secrets."vpn/WIREGUARD_ADDRESSES".content;
+      "WIREGUARD_ENDPOINT_IP" = config.sops.secrets."vpn/WIREGUARD_ENDPOINT_IP".content;
+      "WIREGUARD_ENDPOINT_PORT" = config.sops.secrets."vpn/WIREGUARD_ENDPOINT_PORT".content;
+      "WIREGUARD_PRESHARED_KEY" = config.sops.secrets."vpn/WIREGUARD_PRESHARED_KEY".content;
+      "WIREGUARD_PRIVATE_KEY" = config.sops.secrets."vpn/WIREGUARD_PRIVATE_KEY".content;
+      "WIREGUARD_PUBLIC_KEY" = config.sops.secrets."vpn/WIREGUARD_PUBLIC_KEY".content;
     };
     ports = [
       "8112:8112/tcp"

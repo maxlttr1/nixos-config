@@ -13,7 +13,7 @@
 
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
-    sops.age.keyFile = "/home/${settings.username}/.config/sops/age/keys.txt";
+    sops.age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
 
     sops.secrets.passwd = {
         #neededForUsers = true;
@@ -22,7 +22,7 @@
 
     sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
         owner = "vpn_stack-gluetun";
-        path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
+        #path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
         # owenr = config.users.users.maxlttr.name;
     };
     sops.secrets."vpn/WIREGUARD_ENDPOINT_IP" = {
@@ -40,4 +40,6 @@
     sops.secrets."vpn/WIREGUARD_PUBLIC_KEY" = {
         owner = "vpn_stack-gluetun";
     };
+
+    
 }
