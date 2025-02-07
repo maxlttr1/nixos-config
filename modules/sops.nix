@@ -13,7 +13,7 @@
 
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
-    sops.age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    sops.age.keyFile = "/etc/sops/keys.txt";
 
     sops.secrets.passwd = {
         #neededForUsers = true;
@@ -41,5 +41,45 @@
         owner = "vpn_stack-gluetun";
     };
 
-    
+    sops.templates."vpn/WIREGUARD_ADDRESSES" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_ADDRESSES"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
+
+    sops.templates."vpn/WIREGUARD_ENDPOINT_IP" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_ENDPOINT_IP"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
+
+    sops.templates."vpn/WIREGUARD_ENDPOINT_PORT" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_ENDPOINT_PORT"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
+
+    sops.templates."vpn/WIREGUARD_PRESHARED_KEY" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_PRESHARED_KEY"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
+
+    sops.templates."vpn/WIREGUARD_PRIVATE_KEY" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_PRIVATE_KEY"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
+
+    sops.templates."vpn/WIREGUARD_PUBLIC_KEY" = {
+        content = ''
+            "${config.sops.placeholder."vpn/WIREGUARD_PUBLIC_KEY"}"
+        '';
+        owner = config.users.users.maxlttr.name;
+    };
 }
