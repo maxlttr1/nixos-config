@@ -48,12 +48,12 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = config.sops.templates."vpn/WIREGUARD_ADDRESSES";
-      "WIREGUARD_ENDPOINT_IP" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_IP";
-      "WIREGUARD_ENDPOINT_PORT" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_PORT";
-      "WIREGUARD_PRESHARED_KEY" = config.sops.templates."vpn/WIREGUARD_PRESHARED_KEY";
-      "WIREGUARD_PRIVATE_KEY" = config.sops.templates."vpn/WIREGUARD_PRIVATE_KEY";
-      "WIREGUARD_PUBLIC_KEY" = config.sops.templates."vpn/WIREGUARD_PUBLIC_KEY";
+      "WIREGUARD_ADDRESSES" = ${config.sops.templates."vpn/WIREGUARD_ADDRESSES"};
+      "WIREGUARD_ENDPOINT_IP" = ${config.sops.templates."vpn/WIREGUARD_ENDPOINT_IP"};
+      "WIREGUARD_ENDPOINT_PORT" = ${config.sops.templates."vpn/WIREGUARD_ENDPOINT_PORT"};
+      "WIREGUARD_PRESHARED_KEY" = ${config.sops.templates."vpn/WIREGUARD_PRESHARED_KEY"};
+      "WIREGUARD_PRIVATE_KEY" = ${config.sops.templates."vpn/WIREGUARD_PRIVATE_KEY"};
+      "WIREGUARD_PUBLIC_KEY" = ${config.sops.templates."vpn/WIREGUARD_PUBLIC_KEY"};
     };
     ports = [
       "8112:8112/tcp"
