@@ -13,12 +13,12 @@
   virtualisation.oci-containers.containers."portainer" = {
     image = "portainer/portainer-ce:2.21.5";
     environment = {
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PGID" = "100";
+      "PUID" = "1001";
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/home/maxlttr/.config/portainer/portainer_data:/data:rw"
+      "/home/maxlttr/Syncthing/docker/.config/portainer/portainer_data:/data:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [

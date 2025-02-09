@@ -26,8 +26,8 @@ services:
     image: lscr.io/linuxserver/deluge:latest
     container_name: deluge
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=100
       - TZ=Etc/UTC
     volumes:
       - ~/Syncthing/docker/.config/deluge/config:/config

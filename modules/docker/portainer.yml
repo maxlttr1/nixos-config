@@ -5,8 +5,8 @@ services:
     image: portainer/portainer-ce:2.21.5
     container_name: portainer
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=100
       - TZ=Etc/UTC
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

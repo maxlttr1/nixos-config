@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Runtime
@@ -13,8 +13,8 @@
   virtualisation.oci-containers.containers."deluge" = {
     image = "lscr.io/linuxserver/deluge:latest";
     environment = {
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PGID" = "100";
+      "PUID" = "1001";
       "TZ" = "Etc/UTC";
     };
     volumes = [
@@ -22,11 +22,11 @@
       "/home/maxlttr/Syncthing/movies:/downloads:rw"
     ];
     dependsOn = [
-      "vpn_stack-gluetun"
+      "gluetun"
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network=container:vpn_stack-gluetun"
+      "--network=container:gluetun"
     ];
   };
   systemd.services."docker-deluge" = {
@@ -43,13 +43,18 @@
       "docker-compose-vpn_stack-root.target"
     ];
   };
-  virtualisation.oci-containers.containers."vpn_stack-gluetun" = {
+  virtualisation.oci-containers.containers."gluetun" = {
     image = "qmcgaw/gluetun";
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
+      "WIREGUARD_ADDRESSES" = "!!!!!!!!!!!!!!!!!";
+      "WIREGUARD_ENDPOINT_IP" = "!!!!!!!!!!!!!!!!!";
+      "WIREGUARD_ENDPOINT_PORT" = "!!!!!!!!!!!!!!!!!";
+      "WIREGUARD_PRESHARED_KEY" = "!!!!!!!!!!!!!!!!!";
+      "WIREGUARD_PRIVATE_KEY" = "!!!!!!!!!!!!!!!!!";
+      "WIREGUARD_PUBLIC_KEY" = "!!!!!!!!!!!!!!!!!";
     };
-    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
       "8112:8112/tcp"
       "6881:6881/tcp"
@@ -63,7 +68,7 @@
       "--network=vpn_stack_default"
     ];
   };
-  systemd.services."docker-vpn_stack-gluetun" = {
+  systemd.services."docker-gluetun" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";
