@@ -13,10 +13,10 @@
   virtualisation.oci-containers.containers."deluge" = {
     image = "lscr.io/linuxserver/deluge:latest";
     environment = {
-      "PGID" = "100";
-      "PUID" = "1001";
-      "TZ" = "Etc/UTC";
+      "VPN_SERVICE_PROVIDER" = "custom";
+      "VPN_TYPE" = "wireguard";
     };
+    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     volumes = [
       "/home/maxlttr/Syncthing/docker/.config/deluge/config:/config:rw"
       "/home/maxlttr/Syncthing/movies:/downloads:rw"
