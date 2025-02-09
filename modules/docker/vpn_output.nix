@@ -13,10 +13,10 @@
   virtualisation.oci-containers.containers."deluge" = {
     image = "lscr.io/linuxserver/deluge:latest";
     environment = {
-      "VPN_SERVICE_PROVIDER" = "custom";
-      "VPN_TYPE" = "wireguard";
+      "PGID" = "100";
+      "PUID" = "1001";
+      "TZ" = "Etc/UTC";
     };
-    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     volumes = [
       "/home/maxlttr/Syncthing/docker/.config/deluge/config:/config:rw"
       "/home/maxlttr/Syncthing/movies:/downloads:rw"
@@ -48,13 +48,8 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_ENDPOINT_IP" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_ENDPOINT_PORT" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PRESHARED_KEY" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PRIVATE_KEY" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PUBLIC_KEY" = "!!!!!!!!!!!!!!!!!";
     };
+    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
       "8112:8112/tcp"
       "6881:6881/tcp"
