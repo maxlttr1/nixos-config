@@ -48,30 +48,6 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-
-      /*"WIREGUARD_ADDRESSES" = config.sops.templates."vpn/WIREGUARD_ADDRESSES".content;
-      "WIREGUARD_ENDPOINT_IP" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_IP".content;
-      "WIREGUARD_ENDPOINT_PORT" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_PORT".content;
-      "WIREGUARD_PRESHARED_KEY" = config.sops.templates."vpn/WIREGUARD_PRESHARED_KEY".content;
-      "WIREGUARD_PRIVATE_KEY" = config.sops.templates."vpn/WIREGUARD_PRIVATE_KEY".content;
-      "WIREGUARD_PUBLIC_KEY" = config.sops.templates."vpn/WIREGUARD_PUBLIC_KEY".content;
-      
-      "VPN_SERVICE_PROVIDER" = "custom";
-      "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = "10.8.0.2/24";
-      "WIREGUARD_ENDPOINT_IP" = "107.175.69.20";
-      "WIREGUARD_ENDPOINT_PORT" = "51820";
-      "WIREGUARD_PRESHARED_KEY" = "S/e70Ee+Ihk+fWlbgojwmoyDhNRTTFKMeWeDsVN4JEo=";
-      "WIREGUARD_PRIVATE_KEY" = "EKViEOODpYFcsSTFa5gxhU19uwK6tMuzEgdqT4kUnU4=";
-      "WIREGUARD_PUBLIC_KEY" = "XWmrz9lUWW423HVnY0qKwErZcTEgs0gRifTrsX85LG4=";
-
-      WIREGUARD_ADDRESSES="10.8.0.2/24"
-      WIREGUARD_ENDPOINT_IP="107.175.69.20"
-      WIREGUARD_ENDPOINT_PORT="51820"
-      WIREGUARD_PRESHARED_KEY="S/e70Ee+Ihk+fWlbgojwmoyDhNRTTFKMeWeDsVN4JEo="
-      WIREGUARD_PRIVATE_KEY="EKViEOODpYFcsSTFa5gxhU19uwK6tMuzEgdqT4kUnU4"
-      WIREGUARD_PUBLIC_KEY="XWmrz9lUWW423HVnY0qKwErZcTEgs0gRifTrsX85LG4"
-      */
     };
     environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
