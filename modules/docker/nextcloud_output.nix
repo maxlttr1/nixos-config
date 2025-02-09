@@ -13,8 +13,8 @@
   virtualisation.oci-containers.containers."nextcloud" = {
     image = "lscr.io/linuxserver/nextcloud:latest";
     environment = {
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PGID" = "100";
+      "PUID" = "1001";
       "TZ" = "Europe/Paris";
     };
     volumes = [
