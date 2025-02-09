@@ -20,6 +20,12 @@
         owner = config.users.users.maxlttr.name;
     };
 
+    sops.secrets."vpn.env" = {
+        owner = config.users.users.maxlttr.name;
+        #path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
+        # owenr = config.users.users.maxlttr.name;
+    };
+    /*
     sops.secrets."vpn/WIREGUARD_ADDRESSES" = {
         owner = config.users.users.maxlttr.name;
         #path = "${config.home.homeDirectory}/.secrets/vpn/WIREGUARD_ADDRESSES";
@@ -82,4 +88,5 @@
         '';
         owner = config.users.users.maxlttr.name;
     };
+    */
 }
