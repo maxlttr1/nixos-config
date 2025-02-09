@@ -48,16 +48,16 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      /*
+
       "WIREGUARD_ADDRESSES" = config.sops.templates."vpn/WIREGUARD_ADDRESSES".content;
       "WIREGUARD_ENDPOINT_IP" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_IP".content;
       "WIREGUARD_ENDPOINT_PORT" = config.sops.templates."vpn/WIREGUARD_ENDPOINT_PORT".content;
       "WIREGUARD_PRESHARED_KEY" = config.sops.templates."vpn/WIREGUARD_PRESHARED_KEY".content;
       "WIREGUARD_PRIVATE_KEY" = config.sops.templates."vpn/WIREGUARD_PRIVATE_KEY".content;
       "WIREGUARD_PUBLIC_KEY" = config.sops.templates."vpn/WIREGUARD_PUBLIC_KEY".content;
-      */
+      
     };
-    environmentFiles = [ config.sops.secrets."vpn.env".path ];
+    #environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
       "8112:8112/tcp"
       "6881:6881/tcp"
