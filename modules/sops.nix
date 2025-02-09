@@ -9,7 +9,7 @@
 
     sops.secrets.passwd = {
         #neededForUsers = true;
-        owner = "${settings.username}"
+        owner = "${settings.username}";
         #config.users.users.maxlttr.name;
     };
 
