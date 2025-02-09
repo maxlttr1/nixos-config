@@ -10,7 +10,7 @@ services:
       - TZ=Europe/Paris
     volumes:
       - ~/Syncthing/docker/.config/nextcloud/config:/config
-      - ~/Syncthing:/data
+      - ~/Syncthing/nextcloud:/data
     ports:
       - 8888:443
     restart: unless-stopped

@@ -18,8 +18,8 @@
       "TZ" = "Europe/Paris";
     };
     volumes = [
-      "/home/maxlttr/Syncthing:/data:rw"
       "/home/maxlttr/Syncthing/docker/.config/nextcloud/config:/config:rw"
+      "/home/maxlttr/Syncthing/nextcloud:/data:rw"
     ];
     ports = [
       "8888:443/tcp"
