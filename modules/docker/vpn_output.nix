@@ -55,7 +55,7 @@
       "WIREGUARD_PRIVATE_KEY" = config.sops.templates."vpn/WIREGUARD_PRIVATE_KEY".content;
       "WIREGUARD_PUBLIC_KEY" = config.sops.templates."vpn/WIREGUARD_PUBLIC_KEY".content;
     };*/
-    environmentFiles = config.sops.secrets."vpn.env".path;
+    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
       "8112:8112/tcp"
       "6881:6881/tcp"
