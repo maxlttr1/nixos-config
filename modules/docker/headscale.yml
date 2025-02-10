@@ -1,0 +1,13 @@
+name: headscale
+
+services:
+  headscale:
+    image: headscale/headscale
+    restart: unless-stopped
+    container_name: headscale
+    ports:
+      - "0.0.0.0:8080:8080"
+      - "0.0.0.0:9090:9090"
+    volumes:
+      - ~/Syncthing/docker/.config/headscale:/etc/headscale
+    command: serve
