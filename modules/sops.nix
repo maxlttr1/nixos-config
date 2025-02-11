@@ -15,4 +15,14 @@
     sops.secrets."vpn.env" = {
         owner = "${settings.username}"; 
     };
+
+    sops.secrets."ssh_public" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/id_rsa.pub";
+    };
+
+    sops.secrets."ssh_private" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/id_rsa";
+    };
 }
