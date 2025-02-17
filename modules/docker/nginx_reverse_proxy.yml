@@ -4,7 +4,8 @@ services:
   app:
     container_name: nginx_reverse_proxy
     image: 'docker.io/jc21/nginx-proxy-manager:latest'
-    network_mode: nginx
+    networks:
+      - nginx
     ports:
       - '80:80'
       - '81:81'
