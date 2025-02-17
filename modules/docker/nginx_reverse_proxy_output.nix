@@ -23,8 +23,7 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=app"
-      "--network=nginx_reverse_proxy_default"
+      "--network=host"
     ];
   };
   systemd.services."docker-nginx_reverse_proxy" = {
@@ -34,33 +33,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-nginx_reverse_proxy_default.service"
-    ];
-    requires = [
-      "docker-network-nginx_reverse_proxy_default.service"
-    ];
     partOf = [
       "docker-compose-nginx_reverse_proxy-root.target"
     ];
     wantedBy = [
       "docker-compose-nginx_reverse_proxy-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-nginx_reverse_proxy_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f nginx_reverse_proxy_default";
-    };
-    script = ''
-      docker network inspect nginx_reverse_proxy_default || docker network create nginx_reverse_proxy_default
-    '';
-    partOf = [ "docker-compose-nginx_reverse_proxy-root.target" ];
-    wantedBy = [ "docker-compose-nginx_reverse_proxy-root.target" ];
   };
 
   # Root service
