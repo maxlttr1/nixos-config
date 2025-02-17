@@ -12,7 +12,7 @@
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       KbdInteractiveAuthentication = false; #Specifies whether keyboard-interactive authentication is allowed
       X11Forwarding = false;
-      UseDns = true;
+      UseDns = false;
       startWhenNeeded = true;
     };
   }; 
