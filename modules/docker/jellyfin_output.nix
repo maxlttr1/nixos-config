@@ -13,8 +13,8 @@
   virtualisation.oci-containers.containers."jellyfin" = {
     image = "lscr.io/linuxserver/jellyfin:latest";
     environment = {
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PGID" = "1001";
+      "PUID" = "100";
       "TZ" = "Etc/UTC";
     };
     volumes = [
