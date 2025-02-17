@@ -28,7 +28,7 @@
     extraOptions = [
       "--device=/dev/dri:/dev/dri:rwm"
       "--network-alias=jellyfin"
-      "--network=nginx"
+      "--network=nginx_reverse_proxy_nginx"
     ];
   };
   systemd.services."docker-jellyfin" = {

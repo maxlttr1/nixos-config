@@ -5,7 +5,7 @@ services:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     networks: 
-      - nginx
+      - nginx_reverse_proxy_nginx
     environment:
       - PUID=1001
       - PGID=100
@@ -20,5 +20,5 @@ services:
     restart: unless-stopped
 
 networks:
-  nginx:
+  nginx_reverse_proxy_nginx:
     external: true
