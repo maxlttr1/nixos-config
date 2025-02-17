@@ -4,6 +4,7 @@ services:
   portainer:
     image: portainer/portainer-ce:2.21.5
     container_name: portainer
+    network_mode: nginx
     environment:
       - PUID=1001
       - PGID=100

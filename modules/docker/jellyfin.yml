@@ -4,6 +4,7 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
+    network_mode: nginx
     environment:
       - PUID=1001
       - PGID=100

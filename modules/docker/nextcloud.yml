@@ -4,6 +4,7 @@ services:
   nextcloud:
     image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
+    network_mode: nginx
     environment:
       - PUID=1001
       - PGID=100

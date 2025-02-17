@@ -4,6 +4,7 @@ services:
   gluetun:
     container_name: gluetun
     image: qmcgaw/gluetun
+    network_mode: nginx
     cap_add:
       - NET_ADMIN
     devices:
