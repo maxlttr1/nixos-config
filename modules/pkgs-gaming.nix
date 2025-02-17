@@ -18,8 +18,8 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      lutris
-      mangohud
+      #lutris
+      #mangohud
     ])
     ++
     (with pkgs.unstable; [
