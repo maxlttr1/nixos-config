@@ -4,8 +4,6 @@ services:
   app:
     container_name: nginx_reverse_proxy
     image: 'docker.io/jc21/nginx-proxy-manager:latest'
-    networks:
-      - nginx
     ports:
       - '80:80'
       - '81:81'
@@ -14,7 +12,18 @@ services:
       - ~/Syncthing/docker/.config/nginx_reverse_proxy/data:/data
       - ~/Syncthing/docker/.config/nginx_reverse_proxy/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
-
-networks:
-  nginx:
-    driver: bridge
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=Etc/UTC
+    volumes:
+      - ~/Syncthing/docker/.config/jellyfin/library:/config
+      - ~/Syncthing/movies:/data/movies
+    ports:
+      - 8096:8096
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
