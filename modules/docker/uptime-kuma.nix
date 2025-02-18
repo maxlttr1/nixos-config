@@ -17,12 +17,12 @@
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
-      "3001:3001/tcp"
+      "127.0.0.1:3001:3001/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=portainer"
-      "--network=uptime-kuma_default"
+      "--network=nginx_reverse_proxy_nginx"
     ];
   };
   systemd.services."docker-uptime-kuma" = {
@@ -32,33 +32,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-uptime-kuma_default.service"
-    ];
-    requires = [
-      "docker-network-uptime-kuma_default.service"
-    ];
     partOf = [
       "docker-compose-uptime-kuma-root.target"
     ];
     wantedBy = [
       "docker-compose-uptime-kuma-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-uptime-kuma_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f uptime-kuma_default";
-    };
-    script = ''
-      docker network inspect uptime-kuma_default || docker network create uptime-kuma_default
-    '';
-    partOf = [ "docker-compose-uptime-kuma-root.target" ];
-    wantedBy = [ "docker-compose-uptime-kuma-root.target" ];
   };
 
   # Root service

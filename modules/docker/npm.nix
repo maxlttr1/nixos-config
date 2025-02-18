@@ -18,7 +18,7 @@
     ];
     ports = [
       "80:80/tcp"
-      "81:81/tcp"
+      "127.0.0.1:81:81/tcp"
       "443:443/tcp"
     ];
     log-driver = "journald";

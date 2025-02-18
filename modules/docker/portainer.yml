@@ -4,7 +4,8 @@ services:
   portainer:
     image: portainer/portainer-ce:2.21.5
     container_name: portainer
-    network_mode: nginx
+    networks: 
+      - nginx_reverse_proxy_nginx
     environment:
       - PUID=1001
       - PGID=100
@@ -13,6 +14,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/Syncthing/docker/.config/portainer/portainer_data:/data
     ports:
-      - 8000:8000
-      - 9443:9443
+      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:9443:9443"
     restart: unless-stopped
+  
+networks:
+  nginx_reverse_proxy_nginx:
+    external: true

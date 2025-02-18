@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Runtime
@@ -51,16 +51,16 @@
     };
     environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
-      "8112:8112/tcp"
-      "6881:6881/tcp"
-      "6881:6881/udp"
+      "127.0.0.1:8112:8112/tcp"
+      "127.0.0.1:6881:6881/tcp"
+      "127.0.0.1:6881:6881/udp"
     ];
     log-driver = "journald";
     extraOptions = [
       "--cap-add=NET_ADMIN"
       "--device=/dev/net/tun:/dev/net/tun:rwm"
       "--network-alias=gluetun"
-      "--network=vpn_stack_default"
+      "--network=nginx_reverse_proxy_nginx"
     ];
   };
   systemd.services."docker-gluetun" = {
@@ -70,33 +70,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-vpn_stack_default.service"
-    ];
-    requires = [
-      "docker-network-vpn_stack_default.service"
-    ];
     partOf = [
       "docker-compose-vpn_stack-root.target"
     ];
     wantedBy = [
       "docker-compose-vpn_stack-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-vpn_stack_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f vpn_stack_default";
-    };
-    script = ''
-      docker network inspect vpn_stack_default || docker network create vpn_stack_default
-    '';
-    partOf = [ "docker-compose-vpn_stack-root.target" ];
-    wantedBy = [ "docker-compose-vpn_stack-root.target" ];
   };
 
   # Root service

@@ -4,7 +4,8 @@ services:
   nextcloud:
     image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
-    network_mode: nginx
+    networks: 
+      - nginx_reverse_proxy_nginx
     environment:
       - PUID=1001
       - PGID=100
@@ -13,5 +14,9 @@ services:
       - ~/Syncthing/docker/.config/nextcloud/config:/config
       - ~/Syncthing/nextcloud:/data
     ports:
-      - 8888:443
+      - "127.0.0.1:8888:443"
     restart: unless-stopped
+
+networks:
+  nginx_reverse_proxy_nginx:
+    external: true

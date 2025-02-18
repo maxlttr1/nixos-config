@@ -30,7 +30,7 @@
     extraOptions = [
       "--cap-add=NET_ADMIN"
       "--network-alias=pihole"
-      "--network=pi-hole_default"
+      "--network=nginx_reverse_proxy_nginx"
     ];
   };
   systemd.services."docker-pihole" = {
@@ -40,33 +40,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-pi-hole_default.service"
-    ];
-    requires = [
-      "docker-network-pi-hole_default.service"
-    ];
     partOf = [
       "docker-compose-pi-hole-root.target"
     ];
     wantedBy = [
       "docker-compose-pi-hole-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-pi-hole_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f pi-hole_default";
-    };
-    script = ''
-      docker network inspect pi-hole_default || docker network create pi-hole_default
-    '';
-    partOf = [ "docker-compose-pi-hole-root.target" ];
-    wantedBy = [ "docker-compose-pi-hole-root.target" ];
   };
 
   # Root service

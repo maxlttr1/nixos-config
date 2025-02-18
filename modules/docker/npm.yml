@@ -1,0 +1,20 @@
+name: nginx_reverse_proxy
+
+services:
+  app:
+    container_name: nginx_reverse_proxy
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    networks:
+      - nginx
+    ports:
+      - '80:80'
+      - '127.0.0.1:81:81'
+      - '443:443'
+    volumes:
+      - ~/Syncthing/docker/.config/nginx_reverse_proxy/data:/data
+      - ~/Syncthing/docker/.config/nginx_reverse_proxy/letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+
+networks:
+  nginx:
+    driver: bridge

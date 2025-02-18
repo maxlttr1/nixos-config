@@ -4,10 +4,15 @@ services:
   watchtower:
     container_name: watchtower
     image: containrrr/watchtower
-    network_mode: nginx
+    networks: 
+      - nginx_reverse_proxy_nginx
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ = "Europe/Paris"
       - WATCHTOWER_CLEANUP = "true"
       - WATCHTOWER_SCHEDULE = "0 0 4 * * *"
+
+networks:
+  nginx_reverse_proxy_nginx:
+    external: true
