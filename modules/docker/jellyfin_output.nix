@@ -28,7 +28,7 @@
     extraOptions = [
       "--device=/dev/dri:/dev/dri:rwm"
       "--network-alias=jellyfin"
-      "--network=nginx_reverse_proxy_nginx"
+      "--network=jellyfin_default"
     ];
   };
   systemd.services."docker-jellyfin" = {
@@ -38,12 +38,33 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
+    after = [
+      "docker-network-jellyfin_default.service"
+    ];
+    requires = [
+      "docker-network-jellyfin_default.service"
+    ];
     partOf = [
       "docker-compose-jellyfin-root.target"
     ];
     wantedBy = [
       "docker-compose-jellyfin-root.target"
     ];
+  };
+
+  # Networks
+  systemd.services."docker-network-jellyfin_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f jellyfin_default";
+    };
+    script = ''
+      docker network inspect jellyfin_default || docker network create jellyfin_default
+    '';
+    partOf = [ "docker-compose-jellyfin-root.target" ];
+    wantedBy = [ "docker-compose-jellyfin-root.target" ];
   };
 
   # Root service
