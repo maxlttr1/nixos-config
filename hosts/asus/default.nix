@@ -24,6 +24,6 @@
     ../../modules/syncthing.nix
     #../../modules/tailscale.nix
     ../../modules/touchpad.nix
-    #../../modules/virt-manager.nix
+    ../../modules/virt-manager.nix
   ];
 }
