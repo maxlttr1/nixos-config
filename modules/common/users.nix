@@ -6,7 +6,7 @@
     "${settings.username}" = {
       isNormalUser = true;
       createHome = true;
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "syncthing" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "syncthing" ];
       #initialHashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
       hashedPasswordFile = config.sops.secrets.passwd.path;
       packages = with pkgs; [
