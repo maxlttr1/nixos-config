@@ -14,6 +14,19 @@ in
   home.packages = [
   ];
 
+  programs.eza = {
+    enable = true;
+    git = true;
+  };
+  
+  programs.zoxide.enable = true;
+
+  programs.zellij.enable = true;
+
+  programs.bat.enable = true;
+
+  programs.fzf.enable = true;
+
   programs.plasma = {
     enable = true;
     workspace = {

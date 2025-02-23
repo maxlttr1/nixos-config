@@ -19,13 +19,9 @@ in
 
   environment.systemPackages = 
     (with pkgs; [
-      #kdePackages.bluedevil #Bluetooth for kde
-      bat
       bibata-cursors
       discord
-      eza
       filelight
-      fzf
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
@@ -33,8 +29,6 @@ in
       vlc
       vscode
       kdePackages.yakuake
-      zellij
-      zoxide
     ])
     ++
     (with pkgs.unstable; [
