@@ -8,11 +8,9 @@
     ../../modules/cups.nix
     #./disko.nix
     ../../modules/docker
-    ../../modules/eza.nix
     ../../modules/fail2ban.nix
     #../../modules/firejail.nix
     ../../modules/fish.nix
-    ../../modules/fzf.nix
     #../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
@@ -29,6 +27,5 @@
     ../../modules/touchpad.nix
     #../../modules/virt-manager.nix
     ../../modules/virtualbox.nix
-    ../../modules/zellij.nix
   ];
 }

@@ -23,7 +23,9 @@ in
       bat
       bibata-cursors
       discord
+      eza
       filelight
+      fzf
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
@@ -31,6 +33,7 @@ in
       vlc
       vscode
       kdePackages.yakuake
+      zellij
       zoxide
     ])
     ++
