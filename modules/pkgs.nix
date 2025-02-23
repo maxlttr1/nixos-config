@@ -19,15 +19,18 @@ in
 
   environment.systemPackages = 
     (with pkgs; [
-      kdePackages.bluedevil #Bluetooth for kde
+      #kdePackages.bluedevil #Bluetooth for kde
       bibata-cursors
       discord
+      filelight
       jetbrains-mono
       papirus-icon-theme
       protonvpn-gui
+      tldr
       vlc
       vscode
       kdePackages.yakuake
+      zoxide
     ])
     ++
     (with pkgs.unstable; [
