@@ -2,7 +2,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/apparmor.nix
-    ../../modules/bat.nix
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/common

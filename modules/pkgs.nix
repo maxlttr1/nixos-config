@@ -20,6 +20,7 @@ in
   environment.systemPackages = 
     (with pkgs; [
       #kdePackages.bluedevil #Bluetooth for kde
+      bat
       bibata-cursors
       discord
       filelight
