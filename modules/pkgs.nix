@@ -36,7 +36,7 @@ in
       ranger
       ripgrep
       tldr
-      tor
+      tor-browser
       universal-android-debloater
       veracrypt
       vlc
