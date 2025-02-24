@@ -5,7 +5,7 @@
 
   # Launches fish unless the parent process is already fish 
 
-  programs.bash = {
+  /*programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then
@@ -13,5 +13,5 @@
         exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
       fi
     '';
-  };
+  };*/
 }

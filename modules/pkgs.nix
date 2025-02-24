@@ -19,17 +19,31 @@ in
 
   environment.systemPackages = 
     (with pkgs; [
+      bat
+      black
       bibata-cursors
       discord
+      eza
+      fd
       filelight
+      fzf
+      gcc
+      jetbrains.clion
       jetbrains-mono
-      nodejs
+      pandoc
       papirus-icon-theme
       protonvpn-gui
+      ranger
+      ripgrep
       tldr
+      tor
+      universal-android-debloater
+      veracrypt
       vlc
       vscode
       kdePackages.yakuake
+      zellij
+      z-lua
     ])
     ++
     (with pkgs.unstable; [
