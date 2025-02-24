@@ -23,6 +23,7 @@ in
       discord
       filelight
       jetbrains-mono
+      nodePackages.md-to-pdf
       papirus-icon-theme
       protonvpn-gui
       tldr
