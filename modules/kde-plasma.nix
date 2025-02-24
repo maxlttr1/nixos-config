@@ -27,7 +27,6 @@
     elisa
     kate
     khelpcenter
-    konsole
     #krdp
     oxygen
     plasma-browser-integration
