@@ -15,6 +15,7 @@
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
+    ../../modules/ld.nix
     #../../modules/nvidia.nix
     #../../modules/ollama.nix
     ../../modules/pipewire.nix
