@@ -34,7 +34,7 @@ in
       papirus-icon-theme
       protonvpn-gui
       ranger
-      ripgrep
+      ripgrep-all
       tldr
       tor-browser
       universal-android-debloater
