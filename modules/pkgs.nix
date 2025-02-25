@@ -19,6 +19,7 @@ in
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
+    "com.pojtinger.felicitas.Multiplex"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
