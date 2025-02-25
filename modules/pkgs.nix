@@ -15,6 +15,14 @@ in
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
+    com.jetbrains.CLion
+    org.kde.filelight
+    com.github.tchx84.Flatseal
+    io.github.milkshiift.GoofCord
+    com.protonvpn.www
+    org.torproject.torbrowser-launcher
+    org.videolan.VLC
+    com.vscodium.codium
   ];
 
   environment.systemPackages = 
@@ -22,24 +30,18 @@ in
       bat
       black
       bibata-cursors
-      discord
       eza
       fd
-      filelight
       fzf
       gcc
-      jetbrains.clion
       jetbrains-mono
       pandoc
       papirus-icon-theme
-      protonvpn-gui
       ranger
       ripgrep-all
       tldr
-      tor-browser
       universal-android-debloater
       veracrypt
-      vlc
       vscode
       kdePackages.yakuake
       zellij
