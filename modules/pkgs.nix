@@ -36,6 +36,7 @@ in
       jetbrains-mono
       pandoc
       papirus-icon-theme
+      powershell
       ranger
       ripgrep-all
       tldr
