@@ -30,6 +30,15 @@ in
       bibata-cursors
       eza
       fd
+      fishPlugins.z
+      fishPlugins.transient-fish
+      fishPlugins.tide
+      fishPlugins.sponge
+      fishPlugins.humantime-fish
+      fishPlugins.gruvbox
+      fishPlugins.fish-you-should-use
+      fishPlugins.fish-bd
+      fishPlugins.colored-man-pages
       fzf
       gcc
       htop
@@ -45,7 +54,6 @@ in
       vscodium
       kdePackages.yakuake
       zellij
-      z-lua
     ])
     ++
     (with pkgs.unstable; [
