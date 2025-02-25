@@ -22,7 +22,6 @@ in
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
-    "com.vscodium.codium"
   ];
 
   environment.systemPackages = 
@@ -42,7 +41,7 @@ in
       tldr
       universal-android-debloater
       veracrypt
-      vscode
+      vscodium
       kdePackages.yakuake
       zellij
       z-lua
