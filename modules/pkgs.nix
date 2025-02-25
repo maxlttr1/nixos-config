@@ -37,6 +37,7 @@ in
       jetbrains-mono
       pandoc
       papirus-icon-theme
+      protonvpn-gui
       ranger
       ripgrep-all
       tldr
