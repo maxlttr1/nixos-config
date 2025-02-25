@@ -19,7 +19,6 @@ in
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
-    "com.pojtinger.felicitas.Multiplex"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
   ];
@@ -37,7 +36,6 @@ in
       jetbrains-mono
       pandoc
       papirus-icon-theme
-      protonvpn-gui
       ranger
       ripgrep-all
       tldr
