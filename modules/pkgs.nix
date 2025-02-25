@@ -42,7 +42,6 @@ in
       universal-android-debloater
       veracrypt
       vscodium
-      wireguard-ui
       kdePackages.yakuake
       zellij
       z-lua
