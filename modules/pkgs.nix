@@ -34,6 +34,7 @@ in
       fd
       fzf
       gcc
+      htop
       jetbrains-mono
       pandoc
       papirus-icon-theme
