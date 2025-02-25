@@ -15,14 +15,14 @@ in
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
-    com.jetbrains.CLion
-    org.kde.filelight
-    com.github.tchx84.Flatseal
-    io.github.milkshiift.GoofCord
-    com.protonvpn.www
-    org.torproject.torbrowser-launcher
-    org.videolan.VLC
-    com.vscodium.codium
+    "com.jetbrains.CLion"
+    "org.kde.filelight"
+    "com.github.tchx84.Flatseal"
+    "io.github.milkshiift.GoofCord"
+    "com.protonvpn.www"
+    "org.torproject.torbrowser-launcher"
+    "org.videolan.VLC"
+    "com.vscodium.codium"
   ];
 
   environment.systemPackages = 
