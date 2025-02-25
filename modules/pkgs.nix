@@ -31,7 +31,6 @@ in
       eza
       fd
       fishPlugins.z
-      fishPlugins.transient-fish
       fishPlugins.tide
       fishPlugins.sponge
       fishPlugins.humantime-fish
