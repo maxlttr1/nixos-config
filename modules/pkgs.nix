@@ -28,6 +28,7 @@ in
       bat
       black
       bibata-cursors
+      curl
       eza
       fastfetch
       fd
@@ -58,6 +59,7 @@ in
       universal-android-debloater
       veracrypt
       vscodium
+      wget
       kdePackages.yakuake
       zellij
     ])
