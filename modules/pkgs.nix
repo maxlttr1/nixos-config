@@ -44,7 +44,6 @@ in
       fishPlugins.forgit # Utility tool powered by fzf for using git interactively
       fishPlugins.puffer # Typing consecutive dots after .. will automatically expand to ../..
       fishPlugins.sponge # Keeps your fish shell history clean from typos
-      fishPlugins.transient-fish # Take advantage of two-line prompt
       fishPlugins.z
       fzf
       gcc
