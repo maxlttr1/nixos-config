@@ -29,6 +29,7 @@ in
       black
       bibata-cursors
       eza
+      fastfetch
       fd
       fishPlugins.autopair # Auto-complete matching pairs in the Fish command line
       fishPlugins.bang-bang # !! replaced by last command
