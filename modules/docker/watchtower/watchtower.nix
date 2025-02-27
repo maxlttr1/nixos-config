@@ -23,19 +23,40 @@
     log-driver = "journald";
     extraOptions = [
       "--network-alias=watchtower"
-      "--network=nginx_reverse_proxy_nginx"
+      "--network=watchtower_default"
     ];
   };
   systemd.services."docker-watchtower" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "no";
     };
+    after = [
+      "docker-network-watchtower_default.service"
+    ];
+    requires = [
+      "docker-network-watchtower_default.service"
+    ];
     partOf = [
       "docker-compose-watchtower-root.target"
     ];
     wantedBy = [
       "docker-compose-watchtower-root.target"
     ];
+  };
+
+  # Networks
+  systemd.services."docker-network-watchtower_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f watchtower_default";
+    };
+    script = ''
+      docker network inspect watchtower_default || docker network create watchtower_default
+    '';
+    partOf = [ "docker-compose-watchtower-root.target" ];
+    wantedBy = [ "docker-compose-watchtower-root.target" ];
   };
 
   # Root service

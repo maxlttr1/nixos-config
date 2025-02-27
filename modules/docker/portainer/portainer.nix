@@ -11,7 +11,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."portainer" = {
-    image = "portainer/portainer-ce:2.21.5";
+    image = "portainer/portainer-ce:latest";
     environment = {
       "PGID" = "100";
       "PUID" = "1001";
@@ -22,13 +22,12 @@
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
-      "127.0.0.1:8000:8000/tcp"
-      "127.0.0.1:9443:9443/tcp"
+      "9443:9443/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=portainer"
-      "--network=nginx_reverse_proxy_nginx"
+      "--network=portainer_default"
     ];
   };
   systemd.services."docker-portainer" = {
@@ -38,12 +37,33 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
+    after = [
+      "docker-network-portainer_default.service"
+    ];
+    requires = [
+      "docker-network-portainer_default.service"
+    ];
     partOf = [
       "docker-compose-portainer-root.target"
     ];
     wantedBy = [
       "docker-compose-portainer-root.target"
     ];
+  };
+
+  # Networks
+  systemd.services."docker-network-portainer_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f portainer_default";
+    };
+    script = ''
+      docker network inspect portainer_default || docker network create portainer_default
+    '';
+    partOf = [ "docker-compose-portainer-root.target" ];
+    wantedBy = [ "docker-compose-portainer-root.target" ];
   };
 
   # Root service

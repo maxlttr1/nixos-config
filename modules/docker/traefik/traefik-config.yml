@@ -26,6 +26,6 @@ certificatesResolvers:
   myresolver:
     acme:
       email: maxime.lettier@protonmail.com
-      storage: acme.json
+      storage: /var/traefik/certs/acme.json
       httpChallenge:
         entryPoint: web

@@ -6,16 +6,14 @@ services:
     container_name: nginx
     networks:
       - traefik_proxy
-    ports:
-      - "127.0.0.1:7777:80"
     labels:
       - traefik.enable=true
       - traefik.http.routers.nginx-http.rule=Host(`nginx.maxlttr7.duckdns.org`)
       - traefik.http.routers.nginx-http.entrypoints=web
-      #- traefik.https.routers.nginx-https.rule=Host(`nginx.maxlttr7.duckdns.org`)
-      #- traefik.http.routers.nginx-https.entrypoints=websecure
-      #- traefik.http.routers.nginx-https.tls=true
-      #- traefik.http.routers.nginx-https.tls.certresolver=myresolver
+      - traefik.http.routers.nginx-https.tls=true
+      - traefik.http.routers.nginx-https.tls.certresolver=myresolver
+      - traefik.http.routers.nginx-https.entrypoints=websecure
+      - traefik.http.routers.nginx-https.rule=Host(`nginx.maxlttr7.duckdns.org`)
     restart: unless-stopped
 
 networks:
