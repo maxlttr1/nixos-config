@@ -26,13 +26,10 @@
     ];
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.jellyfin-http.entrypoints" = "web";
-      "traefik.http.routers.jellyfin-http.rule" = "Host(`jellyfin.maxlttr7.duckdns.org`)";
       "traefik.http.routers.jellyfin-https.entrypoints" = "websecure";
       "traefik.http.routers.jellyfin-https.rule" = "Host(`jellyfin.maxlttr7.duckdns.org`)";
       "traefik.http.routers.jellyfin-https.tls" = "true";
       "traefik.http.routers.jellyfin-https.tls.certresolver" = "myresolver";
-      "traefik.http.services.jellyfin-http.loadbalancer.server.port" = "8096";
       "traefik.http.services.jellyfin-https.loadbalancer.server.port" = "8096";
     };
     log-driver = "journald";
