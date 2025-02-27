@@ -1,3 +1,7 @@
+global:
+  sendAnonymousUsage: false
+log:
+  level: DEBUG
 api:
   dashboard: true
   insecure: true
@@ -15,15 +19,13 @@ entryPoints:
 
 providers:
   docker:
+    endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
 
 certificatesResolvers:
   letencrypt:
     acme:
-      email: youremail@email.com
+      email: maxime.lettier@protonmail.com
       storage: acme.json
-      #dnsChallenge:
-      #  provider: cloudflare
-      #  delayBeforeCheck: 10
       httpChallenge:
         entryPoint: web

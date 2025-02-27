@@ -2,10 +2,11 @@
  imports = [
    ./docker.nix
    ./jellyfin.nix
-   ./nextcloud.nix
-   ./npm.nix
+   #./nextcloud.nix
+   #./npm.nix
    ./pihole.nix
    ./portainer.nix
+   ./test.nix
    ./traefik.nix
    ./uptime-kuma.nix
    ./vpn.nix

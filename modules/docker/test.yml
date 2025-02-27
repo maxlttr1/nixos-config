@@ -1,0 +1,20 @@
+name: nginx
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - traefik_proxy
+    ports:
+      - "127.0.0.1:7777:80"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx-http.rule=Host(`nginx.maxlttr7.duckdns.org`)
+      - traefik.http.routers.nginx-http.entrypoints=web
+    restart: unless-stopped
+
+networks:
+  traefik_proxy:
+    external: true
+

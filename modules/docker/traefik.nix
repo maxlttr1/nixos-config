@@ -14,7 +14,7 @@
     image = "traefik:latest";
     volumes = [
       "/home/maxlttr/Syncthing/docker/.config/traefik/acme.json:/acme.json:rw"
-      "/home/maxlttr/nix-config/modules/docker/traefik.yml:/etc/traefik/traefik.yml:rw"
+      "/home/maxlttr/nix-config/modules/docker/traefik-config.yml:/etc/traefik/traefik.yml:ro"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
@@ -22,7 +22,6 @@
       "443:443/tcp"
       "8080:8080/tcp"
     ];
-    cmd = [ "--configFile=/etc/traefik/traefik.yml" ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=reverse-proxy"
