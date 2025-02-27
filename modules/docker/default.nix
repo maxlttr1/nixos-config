@@ -6,6 +6,7 @@
    ./npm.nix
    ./pihole.nix
    ./portainer.nix
+   ./traefik.nix
    ./uptime-kuma.nix
    ./vpn.nix
    ./watchtower.nix
