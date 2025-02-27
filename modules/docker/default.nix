@@ -3,10 +3,10 @@
    ./docker.nix
    ./jellyfin.nix
    #./nextcloud.nix
+   ./nginx.nix
    #./npm.nix
    ./pihole.nix
    ./portainer.nix
-   ./test.nix
    ./traefik.nix
    ./uptime-kuma.nix
    ./vpn.nix
