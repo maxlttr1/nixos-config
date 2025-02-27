@@ -21,7 +21,6 @@ in
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "com.protonvpn.www"
-    "com.valvesoftware.Steam"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
   ];
