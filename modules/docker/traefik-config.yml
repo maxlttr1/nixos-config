@@ -23,9 +23,9 @@ providers:
     exposedByDefault: false
 
 certificatesResolvers:
-  letencrypt:
+  myresolver:
     acme:
       email: maxime.lettier@protonmail.com
       storage: acme.json
       httpChallenge:
-        entryPoint: web
+      entryPoint: web

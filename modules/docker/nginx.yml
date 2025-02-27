@@ -12,6 +12,10 @@ services:
       - traefik.enable=true
       - traefik.http.routers.nginx-http.rule=Host(`nginx.maxlttr7.duckdns.org`)
       - traefik.http.routers.nginx-http.entrypoints=web
+      #- traefik.https.routers.nginx-https.rule=Host(`nginx.maxlttr7.duckdns.org`)
+      #- traefik.http.routers.nginx-https.entrypoints=websecure
+      #- traefik.http.routers.nginx-https.tls=true
+      #- traefik.http.routers.nginx-https.tls.certresolver=myresolver
     restart: unless-stopped
 
 networks:
