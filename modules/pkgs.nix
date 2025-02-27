@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
     lock-false = {
@@ -25,11 +25,14 @@ in
     "org.videolan.VLC"
   ];
 
+  environment.defaultPackages = lib.mkForce [];
+
   environment.systemPackages = 
     (with pkgs; [
       bat
       black
       bibata-cursors
+      compose2nix
       curl
       eza
       fastfetch
@@ -60,6 +63,7 @@ in
       tldr
       universal-android-debloater
       veracrypt
+      vim
       vscodium
       wget
       kdePackages.yakuake
