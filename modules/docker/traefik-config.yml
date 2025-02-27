@@ -28,4 +28,4 @@ certificatesResolvers:
       email: maxime.lettier@protonmail.com
       storage: acme.json
       httpChallenge:
-      entryPoint: web
+        entryPoint: web
