@@ -1,7 +1,7 @@
 name: traefik
 
 services:
-  reverse-proxy:
+  ttraefik:
     image: traefik:latest
     container_name: traefik
     networks:
@@ -13,7 +13,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik-config.yml:/etc/traefik/traefik.yml:ro
-      - ~/Syncthing/docker/.config/traefik/acme.json:/acme.json
+      #- ./acme.json:/acme.json
+      - /Syncthing/docker/.config/traefik/acme.json:/acme.json
     restart: unless-stopped
 
 networks:
