@@ -10,6 +10,7 @@
     group = "syncthing";
     dataDir = "/home/${settings.username}/.syncthing";   # Custom data directory for Syncthing
     configDir = "/home/${settings.username}/.config/syncthing";  # Custom config directory
+    guiAddress = "0.0.0.0:8384";
   };
   networking.firewall.allowedTCPPorts = [ 8384 ];
 }
