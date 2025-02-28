@@ -87,7 +87,7 @@
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
-                ./hosts/asus
+                ./hosts/server
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 #inputs.disko.nixosModules.disko
                 #inputs.nix-flatpak.nixosModules.nix-flatpak
