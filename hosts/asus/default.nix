@@ -1,13 +1,13 @@
 {
   imports = [
     ./hardware-configuration.nix
+    #./disko.nix
     ../../modules/apparmor.nix
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/common
     ../../modules/cups.nix
-    #./disko.nix
-    ../../modules/docker
+    ../../modules/docker/docker.nix
     ../../modules/fail2ban.nix
     #../../modules/firejail.nix
     ../../modules/fish.nix
