@@ -73,7 +73,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_hardened";
+              kernel = "linuxPackages";
               disk = "/dev/sda";
             };
             overlay-unstable = final: prev: {
@@ -93,13 +93,13 @@
                 #inputs.nix-flatpak.nixosModules.nix-flatpak
                 #inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
-                {
+                /*{
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users."${settings.username}" = import ./modules/homes/home-server.nix;
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
-                }
+                }*/
               ];
             };
       };
