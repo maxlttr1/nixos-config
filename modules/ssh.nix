@@ -7,6 +7,7 @@
     ports = [ 22 ];
     openFirewall = true;
     allowSFTP = true;
+    startWhenNeeded = true;
     settings = {
       PasswordAuthentication = false;
       AllowUsers = [ "${settings.username}" ]; # Allows all users by default. Can be [ "user1" "user2" ]
@@ -15,7 +16,6 @@
       X11Forwarding = false;
       UseDns = true; # Specifies whether sshd should look up the remote host name
       UsePAM = false;
-      startWhenNeeded = true;
     };
   }; 
 
