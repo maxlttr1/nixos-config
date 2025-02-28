@@ -14,7 +14,7 @@
       KbdInteractiveAuthentication = false; #Specifies whether keyboard-interactive authentication is allowed
       X11Forwarding = false;
       UseDns = true; # Specifies whether sshd should look up the remote host name
-      UsePam = false;
+      UsePAM = false;
       startWhenNeeded = true;
     };
   }; 
