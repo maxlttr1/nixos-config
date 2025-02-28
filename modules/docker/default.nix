@@ -3,7 +3,6 @@
    ./docker.nix
    ./jellyfin/jellyfin.nix
    #./nextcloud/nextcloud.nix
-   ./nginx/nginx.nix
    ./pihole/pihole.nix
    ./portainer/portainer.nix
    ./traefik/traefik.nix
