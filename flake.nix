@@ -61,7 +61,7 @@
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users."${settings.username}" = import ./modules/homes/home.nix;
+                  home-manager.users."${settings.username}" = import ./modules/homes/home.nix { inherit settings; };
                   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
                   home-manager.backupFileExtension= "backup";
                 }
