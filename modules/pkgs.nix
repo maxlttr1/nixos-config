@@ -38,6 +38,7 @@ in
       veracrypt
       vscodium
       kdePackages.yakuake
+      yt-dlp
     ])
     ++
     (with pkgs.unstable; [
