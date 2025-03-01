@@ -25,7 +25,7 @@
     cmd = [ "--configFile=/etc/traefik/traefik.yml" ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=ttraefik"
+      "--network-alias=traefik"
       "--network=traefik_proxy"
     ];
   };

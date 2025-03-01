@@ -30,7 +30,6 @@
       ranger
       ripgrep-all
       tldr
-      vim
       wget
       zellij
     ])
