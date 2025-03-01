@@ -25,6 +25,7 @@
       fishPlugins.sponge # Keeps your fish shell history clean from typos
       fishPlugins.z
       fzf
+      google-authenticator
       htop
       powershell
       ranger
