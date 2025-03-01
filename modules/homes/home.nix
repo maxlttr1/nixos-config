@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 let
   wallpaper = ../../wallpaper.jpg;
@@ -7,8 +7,8 @@ in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "maxlttr";
-  home.homeDirectory = "/home/maxlttr";
+  home.username = "${settings.username}";
+  home.homeDirectory = "/home/${settings.username}";
 
   # Packages that should be installed to the user profile.
   home.packages = [
