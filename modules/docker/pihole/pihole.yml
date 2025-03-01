@@ -18,8 +18,8 @@ services:
       # WEBPASSWORD: 'set a secure password here or it will be random'
     # Volumes store your data between container upgrades
     volumes:
-      - '~/Syncthing/docker/.config/pi-hole/etc-pihole:/etc/pihole'
-      - '~/Syncthing/docker/.config/pi-hole//etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '~/docker/pi-hole/etc-pihole:/etc/pihole'
+      - '~/docker/pi-hole//etc-dnsmasq.d:/etc/dnsmasq.d'
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed

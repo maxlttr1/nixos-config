@@ -5,7 +5,7 @@ services:
     image: louislam/uptime-kuma:latest
     container_name: uptime-kuma
     volumes:
-      - ~/Syncthing/docker/.config/uptime-kuma/uptime-kuma:/app/data
+      - ~/docker/uptime-kuma/uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "3001:3001"

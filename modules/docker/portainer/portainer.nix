@@ -18,7 +18,7 @@
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/home/maxlttr/Syncthing/docker/.config/portainer/portainer_data:/data:rw"
+      "/home/maxlttr/docker/portainer/portainer_data:/data:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [

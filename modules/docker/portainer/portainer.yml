@@ -10,7 +10,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/Syncthing/docker/.config/portainer/portainer_data:/data
+      - ~/docker/portainer/portainer_data:/data
     ports:
       - "9443:9443"
     restart: unless-stopped

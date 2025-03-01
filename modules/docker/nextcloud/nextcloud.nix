@@ -18,11 +18,11 @@
       "TZ" = "Europe/Paris";
     };
     volumes = [
-      "/home/maxlttr/Syncthing/docker/.config/nextcloud/config:/config:rw"
-      "/home/maxlttr/Syncthing/nextcloud:/data:rw"
+      "/home/maxlttr/docker/nextcloud:/data:rw"
+      "/home/maxlttr/docker/nextcloud/config:/config:rw"
     ];
     ports = [
-      "127.0.0.1:8888:443/tcp"
+      "8888:443/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

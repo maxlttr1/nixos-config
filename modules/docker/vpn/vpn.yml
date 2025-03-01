@@ -30,8 +30,8 @@ services:
       - PGID=100
       - TZ=Etc/UTC
     volumes:
-      - ~/Syncthing/docker/.config/deluge/config:/config
-      - ~/Syncthing/movies:/downloads
+      - ~/docker/deluge/config:/config
+      - ~/docker/movies:/downloads
 
     network_mode: "service:gluetun"
     restart: unless-stopped

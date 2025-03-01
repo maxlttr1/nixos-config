@@ -14,7 +14,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik-config.yml:/etc/traefik/traefik.yml:ro
-      - ~/Syncthing/docker/.config/traefik/:/var/traefik/certs/:rw
+      - ~/docker/traefik/:/var/traefik/certs/:rw
     restart: unless-stopped
 
 networks:

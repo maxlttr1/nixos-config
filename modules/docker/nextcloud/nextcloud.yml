@@ -11,10 +11,10 @@ services:
       - PGID=100
       - TZ=Europe/Paris
     volumes:
-      - ~/Syncthing/docker/.config/nextcloud/config:/config
-      - ~/Syncthing/nextcloud:/data
+      - ~/docker/nextcloud/config:/config
+      - ~/docker/nextcloud:/data
     ports:
-      - "127.0.0.1:8888:443"
+      - "8888:443"
     restart: unless-stopped
 
 networks:

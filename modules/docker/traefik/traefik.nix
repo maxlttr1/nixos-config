@@ -13,7 +13,7 @@
   virtualisation.oci-containers.containers."traefik" = {
     image = "traefik:latest";
     volumes = [
-      "/home/maxlttr/Syncthing/docker/.config/traefik:/var/traefik/certs:rw"
+      "/home/maxlttr/docker/traefik:/var/traefik/certs:rw"
       "/home/maxlttr/nix-config/modules/docker/traefik/traefik-config.yml:/etc/traefik/traefik.yml:ro"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];

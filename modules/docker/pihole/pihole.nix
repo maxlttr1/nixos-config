@@ -18,8 +18,8 @@
       "TZ" = "Europe/Paris";
     };
     volumes = [
-      "/home/maxlttr/Syncthing/docker/.config/pi-hole/etc-dnsmasq.d:/etc/dnsmasq.d:rw"
-      "/home/maxlttr/Syncthing/docker/.config/pi-hole/etc-pihole:/etc/pihole:rw"
+      "/home/maxlttr/docker/pi-hole/etc-dnsmasq.d:/etc/dnsmasq.d:rw"
+      "/home/maxlttr/docker/pi-hole/etc-pihole:/etc/pihole:rw"
     ];
     ports = [
       "53:53/tcp"

@@ -21,8 +21,8 @@ services:
       - PGID=100
       - TZ=Etc/UTC
     volumes:
-      - ~/Syncthing/docker/.config/jellyfin/library:/config
-      - ~/Syncthing/movies:/data/movies
+      - ~/docker/jellyfin/library:/config
+      - ~/docker/movies:/data/movies
     ports:
       - "8096:8096"
     devices:

@@ -13,7 +13,7 @@
   virtualisation.oci-containers.containers."uptime-kuma" = {
     image = "louislam/uptime-kuma:latest";
     volumes = [
-      "/home/maxlttr/Syncthing/docker/.config/uptime-kuma/uptime-kuma:/app/data:rw"
+      "/home/maxlttr/docker/uptime-kuma/uptime-kuma:/app/data:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
