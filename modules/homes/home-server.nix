@@ -1,14 +1,14 @@
-{ config, pkgs, settings, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "${settings.username}";
+  /*home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
 
   # Packages that should be installed to the user profile.
   home.packages = [
-  ];
+  ];*/
 
   programs.git = {
     enable = true;
