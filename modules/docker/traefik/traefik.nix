@@ -10,11 +10,11 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."traefik" = {
+  virtualisation.oci-containers.containers."traefik-traefik" = {
     image = "traefik:latest";
     volumes = [
       "/home/maxlttr/docker/traefik:/var/traefik/certs:rw"
-      "/home/maxlttr/nix-config/modules/docker/traefik/traefik-config.yml:/etc/traefik/traefik.yml:ro"
+      "/home/maxlttr/nix-config/modules/docker/traefik/traefik-config.yml:/etc/traefik/traefik.yml:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
     ports = [
@@ -22,14 +22,13 @@
       "443:443/tcp"
       "8080:8080/tcp"
     ];
-    cmd = [ "--configFile=/etc/traefik/traefik.yml" ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=traefik"
       "--network=traefik_proxy"
     ];
   };
-  systemd.services."docker-traefik" = {
+  systemd.services."docker-traefik-traefik" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";
