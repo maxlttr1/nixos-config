@@ -34,6 +34,7 @@ in
       jetbrains-mono
       pandoc
       papirus-icon-theme
+      sops
       universal-android-debloater
       veracrypt
       vscodium
