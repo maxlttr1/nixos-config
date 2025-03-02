@@ -6,7 +6,7 @@ services:
     #container_name: traefik
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 6
     #command: --configFile=/etc/traefik/traefik-config.yml
     networks:
       - proxy
