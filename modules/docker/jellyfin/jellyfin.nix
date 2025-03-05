@@ -20,6 +20,7 @@
     volumes = [
       "/home/maxlttr/docker/jellyfin/library:/config:rw"
       "/home/maxlttr/docker/movies:/data/movies:rw"
+      "/home/maxlttr/docker/tvshows:/data/tvshows:rw"
     ];
     ports = [
       "8096:8096/tcp"
