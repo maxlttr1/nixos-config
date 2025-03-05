@@ -23,6 +23,7 @@ services:
     volumes:
       - ~/docker/jellyfin/library:/config
       - ~/docker/movies:/data/movies
+      - ~/docker/tvshows:/data/tvshows
     ports:
       - "8096:8096"
     devices:
