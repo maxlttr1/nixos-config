@@ -14,6 +14,7 @@ in
 {
   # Flatpaks
   services.flatpak.packages = [
+    "io.bassi.Amberol"
     "org.gnome.gitlab.somas.Apostrophe"
     #"co.logonoff.awakeonlan"
     "com.jetbrains.CLion"
@@ -23,10 +24,14 @@ in
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
+    "org.kde.konsole"
+    "io.github.mhogomchungu.media-downloader"
     "garden.jamie.Morphosis"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
+    "com.visualstudio.code"
     "org.videolan.VLC"
+    "org.kde.yakuake"
   ];
 
   environment.defaultPackages = lib.mkForce [];
@@ -39,11 +44,8 @@ in
       pandoc
       papirus-icon-theme
       sops
-      universal-android-debloater
       veracrypt
       vscodium
-      kdePackages.yakuake
-      yt-dlp
     ])
     ++
     (with pkgs.unstable; [
