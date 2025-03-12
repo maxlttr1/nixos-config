@@ -14,12 +14,16 @@ in
 {
   # Flatpaks
   services.flatpak.packages = [
+    "org.gnome.gitlab.somas.Apostrophe"
     #"co.logonoff.awakeonlan"
     "com.jetbrains.CLion"
+    "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
+    "dev.bragefuglseth.Keypunch"
+    "garden.jamie.Morphosis"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
