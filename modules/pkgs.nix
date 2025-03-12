@@ -150,7 +150,7 @@ in
         "StartPage" = "previous-session";
       };
       "HttpsOnlyMode" = "enabled";
-      "ManagedBookmarks" = [
+      /*"ManagedBookmarks" = [
         {
           "name" = "Social";
           "children" = [
@@ -160,7 +160,7 @@ in
             }
           ];
         }
-      ];
+      ];*/
       "NewTabPage" = false;
       "NoDefaultBookmarks" = true;
       "OfferToSaveLoginsDefault" = false;

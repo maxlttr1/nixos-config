@@ -27,11 +27,13 @@
       fzf
       google-authenticator
       htop
+      nushell
       powershell
       ranger
       ripgrep-all
       tldr
       wget
+      xonsh
       zellij
     ])
     ++
