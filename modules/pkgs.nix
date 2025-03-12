@@ -14,8 +14,6 @@ in
 {
   # Flatpaks
   services.flatpak.packages = [
-    "io.bassi.Amberol"
-    "org.gnome.gitlab.somas.Apostrophe"
     #"co.logonoff.awakeonlan"
     "com.jetbrains.CLion"
     "me.iepure.devtoolbox"
@@ -26,8 +24,8 @@ in
     "dev.bragefuglseth.Keypunch"
     "org.kde.konsole"
     "io.github.mhogomchungu.media-downloader"
-    "garden.jamie.Morphosis"
     "com.protonvpn.www"
+    "net.xm1math.Texmaker"
     "org.torproject.torbrowser-launcher"
     "com.visualstudio.code"
     "org.videolan.VLC"
