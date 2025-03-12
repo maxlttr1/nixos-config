@@ -25,9 +25,7 @@ in
     "org.kde.konsole"
     "io.github.mhogomchungu.media-downloader"
     "com.protonvpn.www"
-    "net.xm1math.Texmaker"
     "org.torproject.torbrowser-launcher"
-    "com.visualstudio.code"
     "org.videolan.VLC"
     "org.kde.yakuake"
   ];
@@ -39,7 +37,6 @@ in
       bibata-cursors
       gcc
       jetbrains-mono
-      pandoc
       papirus-icon-theme
       sops
       veracrypt
