@@ -5,7 +5,7 @@
    #./nextcloud/nextcloud.nix
    ./pihole/pihole.nix
    ./portainer/portainer.nix
-   ./traefik/traefik.nix
+   #./traefik/traefik.nix
    ./uptime-kuma/uptime-kuma.nix
    ./vpn/vpn.nix
    ./watchtower/watchtower.nix
