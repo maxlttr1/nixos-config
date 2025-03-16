@@ -28,7 +28,6 @@ in
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
-    "org.virt_manager.virt-manager"
     "org.kde.yakuake"
   ];
 
