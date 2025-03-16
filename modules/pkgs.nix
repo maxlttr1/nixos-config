@@ -24,6 +24,7 @@ in
     "dev.bragefuglseth.Keypunch"
     "org.kde.konsole"
     "io.github.mhogomchungu.media-downloader"
+    "md.obsidian.Obsidian"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
