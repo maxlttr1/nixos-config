@@ -4,6 +4,8 @@ services:
   gluetun:
     container_name: gluetun
     image: qmcgaw/gluetun
+    networks:
+      - traefik_proxy
     cap_add:
       - NET_ADMIN
     devices:
@@ -18,8 +20,19 @@ services:
       - WIREGUARD_PRESHARED_KEY=!!!!!!!!!!!!!!!!!
       - WIREGUARD_ADDRESSES=!!!!!!!!!!!!!!!!!
     ports:
-      - "8112:8112"
-      - "6881:6881"
-      - "6881:6881/udp"
+      - "8112:8112" # Deluge
+      - "6881:6881" # Deluge
+      - "6881:6881/udp" # Deluge
+      - 8080:8080/tcp # SearXNG
+    labels:
+      - traefik.http.routers.search-https.tls=true
+      - traefik.http.routers.search-https.tls.certresolver=myresolver
+      - traefik.http.routers.search-https.entrypoints=websecure
+      - traefik.http.routers.search-https.rule=Host(`search.maxlttr7.duckdns.org`)
+      - traefik.http.services.search-https.loadbalancer.server.port=8080
     restart: unless-stopped
+
+networks:
+  traefik_proxy:
+    external: true
 

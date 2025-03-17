@@ -1,0 +1,26 @@
+name: searxng
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    restart: unless-stopped
+    network_mode: "container:gluetun"
+    environment:
+      - SEARXNG_BASE_URL=https://search.maxlttr7.duckdns.org/
+      #- UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
+      #- UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}        
+    volumes:
+        - ~/docker/searxng/searxng-data:/etc/searxng:rw'
+    # remove for first run then re-enable
+    # cap_drop: 
+    #   - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"        
+

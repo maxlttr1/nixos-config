@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Runtime
@@ -21,13 +21,21 @@
       "8112:8112/tcp"
       "6881:6881/tcp"
       "6881:6881/udp"
+      "8080:8080/tcp"
     ];
+    labels = {
+      "traefik.http.routers.search-https.entrypoints" = "websecure";
+      "traefik.http.routers.search-https.rule" = "Host(`search.maxlttr7.duckdns.org`)";
+      "traefik.http.routers.search-https.tls" = "true";
+      "traefik.http.routers.search-https.tls.certresolver" = "myresolver";
+      "traefik.http.services.search-https.loadbalancer.server.port" = "8080";
+    };
     log-driver = "journald";
     extraOptions = [
       "--cap-add=NET_ADMIN"
       "--device=/dev/net/tun:/dev/net/tun:rwm"
       "--network-alias=gluetun"
-      "--network=gluetun_default"
+      "--network=traefik_proxy"
     ];
   };
   systemd.services."docker-gluetun" = {
@@ -37,33 +45,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-gluetun_default.service"
-    ];
-    requires = [
-      "docker-network-gluetun_default.service"
-    ];
     partOf = [
       "docker-compose-gluetun-root.target"
     ];
     wantedBy = [
       "docker-compose-gluetun-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-gluetun_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f gluetun_default";
-    };
-    script = ''
-      docker network inspect gluetun_default || docker network create gluetun_default
-    '';
-    partOf = [ "docker-compose-gluetun-root.target" ];
-    wantedBy = [ "docker-compose-gluetun-root.target" ];
   };
 
   # Root service
