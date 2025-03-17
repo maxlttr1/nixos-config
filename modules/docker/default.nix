@@ -2,7 +2,6 @@
   imports = [
     ./docker.nix
     ./deluge/deluge.nix
-    ./gluetun/gluetun.nix
     ./jellyfin/jellyfin.nix
     #./nextcloud/nextcloud.nix
     ./pihole/pihole.nix
@@ -15,5 +14,12 @@
   ];
 
   # Run with compose2nix: compose2nix -inputs input.yml -output output.nix -runtime docker
-  # environmentFiles = [ config.sops.secrets."vpn.env".path ];
+
+  /*
+  environment = {
+      "VPN_SERVICE_PROVIDER" = "custom";
+      "VPN_TYPE" = "wireguard";
+  };
+  environmentFiles = [ config.sops.secrets."vpn.env".path ];
+  */
 }

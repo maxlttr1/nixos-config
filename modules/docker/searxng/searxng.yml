@@ -1,10 +1,39 @@
-name: searxng
+name: searxng-stack
 
 services:
+  gluetun-searxng:
+    container_name: gluetun-searxng
+    image: qmcgaw/gluetun
+    networks:
+      - traefik_proxy
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+      - WIREGUARD_ENDPOINT_IP=!!!!!!!!!!!!!!!!!
+      - WIREGUARD_ENDPOINT_PORT=!!!!!!!!!!!!!!!!!
+      - WIREGUARD_PUBLIC_KEY=!!!!!!!!!!!!!!!!!
+      - WIREGUARD_PRIVATE_KEY=!!!!!!!!!!!!!!!!!
+      - WIREGUARD_PRESHARED_KEY=!!!!!!!!!!!!!!!!!
+      - WIREGUARD_ADDRESSES=!!!!!!!!!!!!!!!!!
+    ports:
+      - 8080:8080/tcp # SearXNG
+    labels:
+      - traefik.http.routers.search-https.tls=true
+      - traefik.http.routers.search-https.tls.certresolver=myresolver
+      - traefik.http.routers.search-https.entrypoints=websecure
+      - traefik.http.routers.search-https.rule=Host(`search.maxlttr7.duckdns.org`)
+      - traefik.http.services.search-https.loadbalancer.server.port=8080
+    restart: unless-stopped
   searxng:
     image: searxng/searxng:latest
     restart: unless-stopped
-    network_mode: "container:gluetun"
+    depends_on:
+      - gluetun-searxng
+    network_mode: "service:gluetun-searxng"
     environment:
       - SEARXNG_BASE_URL=https://search.maxlttr7.duckdns.org/
       #- UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
@@ -24,3 +53,6 @@ services:
         max-size: "1m"
         max-file: "1"        
 
+networks:
+  traefik_proxy:
+    external: true
