@@ -21,6 +21,7 @@
       "8080:8080/tcp"
     ];
     labels = {
+      "traefik.enable" = "true";
       "traefik.http.routers.search-https.entrypoints" = "websecure";
       "traefik.http.routers.search-https.rule" = "Host(`search.maxlttr7.duckdns.org`)";
       "traefik.http.routers.search-https.tls" = "true";

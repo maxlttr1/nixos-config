@@ -22,6 +22,7 @@ services:
     ports:
       - 8080:8080/tcp # SearXNG
     labels:
+      - traefik.enable=true
       - traefik.http.routers.search-https.tls=true
       - traefik.http.routers.search-https.tls.certresolver=myresolver
       - traefik.http.routers.search-https.entrypoints=websecure
