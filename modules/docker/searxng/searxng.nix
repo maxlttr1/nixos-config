@@ -15,13 +15,8 @@
     environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-      "WIREGUARD_ADDRESSES" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_ENDPOINT_IP" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_ENDPOINT_PORT" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PRESHARED_KEY" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PRIVATE_KEY" = "!!!!!!!!!!!!!!!!!";
-      "WIREGUARD_PUBLIC_KEY" = "!!!!!!!!!!!!!!!!!";
     };
+    environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
       "8080:8080/tcp"
     ];
