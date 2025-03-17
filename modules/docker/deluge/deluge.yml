@@ -1,0 +1,15 @@
+name: deluge
+
+services:
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=Etc/UTC
+    volumes:
+      - ~/docker/deluge/config:/config
+      - ~/docker/movies:/downloads
+    network_mode: "container:gluetun"
+    restart: unless-stopped
