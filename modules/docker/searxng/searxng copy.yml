@@ -27,7 +27,7 @@ services:
       - traefik.http.routers.search-https.tls.certresolver=myresolver
       - traefik.http.routers.search-https.entrypoints=websecure
       - traefik.http.routers.search-https.rule=Host(`search.maxlttr7.duckdns.org`)
-      - traefik.http.services.search-https.loadbalancer.server.port=8080
+      - traefik.http.services.search-https.loadbalancer.server.port=808
     restart: unless-stopped
   searxng:
     image: searxng/searxng:latest
@@ -36,7 +36,7 @@ services:
       - gluetun-searxng
     network_mode: "service:gluetun-searxng"
     environment:
-      - SEARXNG_BASE_URL=https://search.maxlttr7.duckdns.org/
+      - SEARXNG_BASE_URL=https://search.maxlttr7.duckdns.org
       - UWSGI_WORKERS=8
       - UWSGI_THREADS=8        
     volumes:
