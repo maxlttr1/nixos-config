@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Runtime
@@ -18,7 +18,7 @@
     };
     environmentFiles = [ config.sops.secrets."vpn.env".path ];
     ports = [
-      "8080:8080/tcp"
+      "808:8080/tcp"
     ];
     labels = {
       "traefik.enable" = "true";
@@ -54,6 +54,8 @@
     image = "searxng/searxng:latest";
     environment = {
       "SEARXNG_BASE_URL" = "https://search.maxlttr7.duckdns.org/";
+      "UWSGI_THREADS" = "8";
+      "UWSGI_WORKERS" = "8";
     };
     volumes = [
       "/home/maxlttr/docker/searxng/searxng-data:/etc/searxng:rw"
