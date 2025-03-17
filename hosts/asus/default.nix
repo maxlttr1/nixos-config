@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     #./disko.nix
     ../../modules/apparmor.nix
+    ../../modules/atd.nix
     ../../modules/bluetooth.nix
     ../../modules/clamav.nix
     ../../modules/common
@@ -26,7 +27,7 @@
     ../../modules/syncthing.nix
     #../../modules/tailscale.nix
     ../../modules/touchpad.nix
-    ../../modules/virt-manager.nix
-    #../../modules/virtualbox.nix
+    #../../modules/virt-manager.nix
+    ../../modules/virtualbox.nix
   ];
 }

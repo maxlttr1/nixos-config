@@ -6,6 +6,7 @@
       bat
       black
       compose2nix
+      cron
       curl
       eza
       fastfetch
