@@ -8,6 +8,7 @@
       compose2nix
       cron
       curl
+      dig
       eza
       fastfetch
       fd
@@ -32,6 +33,7 @@
       powershell
       ranger
       ripgrep-all
+      sops
       tldr
       wget
       xonsh

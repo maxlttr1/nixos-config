@@ -39,7 +39,6 @@ in
       gcc
       jetbrains-mono
       papirus-icon-theme
-      sops
       veracrypt
       vscodium
     ])
