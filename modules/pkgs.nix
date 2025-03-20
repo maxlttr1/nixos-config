@@ -1,21 +1,10 @@
 { pkgs, lib, ... }:
 
-let
-    lock-false = {
-      Value = false;
-      Status = "locked";
-    };
-    lock-true = {
-      Value = true;
-      Status = "locked";
-    };
-in
-
 {
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
-    "com.jetbrains.CLion"
+    "dev.qwery.AddWater"
     "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
@@ -23,15 +12,17 @@ in
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
     "org.kde.konsole"
+    "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "md.obsidian.Obsidian"
+    "re.sonny.Playhouse"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
     "org.kde.yakuake"
   ];
 
-  environment.defaultPackages = lib.mkForce [];
+  environment.defaultPackages = lib.mkForce []; # Delete all default phkgs
 
   environment.systemPackages = 
     (with pkgs; [
@@ -54,9 +45,5 @@ in
         onCalendar = "daily";
       };
     };
-  };
-
-  programs.firefox = {
-    enable = true;
   };
 }

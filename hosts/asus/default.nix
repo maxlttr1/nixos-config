@@ -1,7 +1,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    #./disko.nix
     ../../modules/apparmor.nix
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
@@ -10,24 +9,17 @@
     ../../modules/cups.nix
     ../../modules/docker/docker.nix
     ../../modules/fail2ban.nix
-    #../../modules/firejail.nix
     ../../modules/fish.nix
-    #../../modules/gamemode.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
     ../../modules/ld.nix
-    #../../modules/nvidia.nix
-    #../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
     ../../modules/sops.nix
-    #../../modules/ssh.nix
     ../../modules/syncthing.nix
-    #../../modules/tailscale.nix
     ../../modules/touchpad.nix
-    #../../modules/virt-manager.nix
     ../../modules/virtualbox.nix
   ];
 }
