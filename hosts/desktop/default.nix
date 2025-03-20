@@ -1,0 +1,23 @@
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/apparmor.nix
+    ../../modules/atd.nix
+    ../../modules/bluetooth.nix
+    ../../modules/clamav.nix
+    ../../modules/common
+    ../../modules/cups.nix
+    ../../modules/docker/docker.nix
+    ../../modules/fail2ban.nix
+    ../../modules/fish.nix
+    ../../modules/kde-plasma.nix
+    ../../modules/ld.nix
+    ../../modules/nvidia.nix
+    ../../modules/pipewire.nix
+    ../../modules/pkgs.nix
+    ../../modules/sops.nix
+    ../../modules/syncthing.nix
+    ../../modules/touchpad.nix
+    ../../modules/virtualbox.nix
+  ];
+}

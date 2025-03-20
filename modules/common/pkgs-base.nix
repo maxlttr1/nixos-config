@@ -5,7 +5,6 @@
     (with pkgs; [
       bat
       black
-      compose2nix
       cron
       curl
       dig
@@ -32,7 +31,6 @@
       powershell
       ranger
       ripgrep-all
-      sops
       tldr
       wget
       xonsh

@@ -4,7 +4,6 @@
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
-    "dev.qwery.AddWater"
     "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
@@ -27,9 +26,12 @@
   environment.systemPackages = 
     (with pkgs; [
       bibata-cursors
+      compose2nix
       gcc
       jetbrains-mono
+      nodejs
       papirus-icon-theme
+      sops
       veracrypt
       vscodium
     ])

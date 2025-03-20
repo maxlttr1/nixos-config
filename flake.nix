@@ -67,6 +67,41 @@
                 }
               ];
             };
+        desktop-maxlttr = 
+          let
+            settings = {
+              username = "maxlttr";
+              hostname = "desktop-maxlttr";
+              system = "x86_64-linux";
+              kernel = "linuxPackages";
+              disk = "/dev/sda";
+            };
+            overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };
+          in
+            nixpkgs.lib.nixosSystem {
+              system = settings.system;
+              specialArgs = { inherit inputs settings; };
+              modules = [
+                ./hosts/desktop
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                #inputs.disko.nixosModules.disko
+                inputs.nix-flatpak.nixosModules.nix-flatpak
+                inputs.home-manager.nixosModules.home-manager
+                inputs.sops-nix.nixosModules.sops
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users."${settings.username}" = import ./modules/homes/home.nix;
+                  home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                  home-manager.backupFileExtension= "backup";
+                }
+              ];
+            };
         server-maxlttr = 
           let
             settings = {
