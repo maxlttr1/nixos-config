@@ -21,7 +21,7 @@
     "org.kde.yakuake"
   ];
 
-  environment.defaultPackages = lib.mkForce []; # Delete all default phkgs
+  environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
 
   environment.systemPackages = 
     (with pkgs; [
@@ -31,6 +31,7 @@
       jetbrains-mono
       nodejs
       papirus-icon-theme
+      rstudio
       sops
       veracrypt
       vscodium
