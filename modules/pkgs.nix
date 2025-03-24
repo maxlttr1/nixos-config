@@ -4,6 +4,7 @@
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
+    "com.google.Chrome"
     "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
