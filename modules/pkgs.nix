@@ -4,9 +4,9 @@
   # Flatpaks
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
+    "com.google.Chrome"
     "me.iepure.devtoolbox"
     "org.kde.filelight"
-    "org.mozilla.firefox"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
