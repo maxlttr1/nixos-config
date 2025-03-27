@@ -1,4 +1,4 @@
-l{
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/apparmor.nix
