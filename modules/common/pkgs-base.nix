@@ -4,7 +4,6 @@
   environment.systemPackages = 
     (with pkgs; [
       bat
-      black
       cron
       curl
       dig
@@ -27,13 +26,12 @@
       fishPlugins.z
       fzf
       htop
-      nushell
+      neovim
       powershell
       ranger
       ripgrep-all
       tldr
       wget
-      xonsh
       zellij
     ])
     ++
