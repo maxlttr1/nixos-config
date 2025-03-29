@@ -19,6 +19,5 @@
     ../../modules/syncthing.nix
     ../../modules/touchpad.nix
     ../../modules/virtualbox.nix
-    #../../modules/vscodium.nix
   ];
 }

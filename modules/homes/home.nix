@@ -24,13 +24,10 @@ in
       # Nix
       bbenoist.nix
       jnoortheen.nix-ide
-      # R
-      rdebugger.r-debugger
-      reditorsupport.r
       # Language pack
-      #franneck94.vscode-c-cpp-dev-extension-pack # C/C++ pack
-      #gydunhn.javascript-essentials # Javascript pack
-      #edwinkofler.vscode-hyperupcall-pack-java # Java pack
+      franneck94.vscode-c-cpp-dev-extension-pack # C/C++ pack
+      gydunhn.javascript-essentials # Javascript pack
+      edwinkofler.vscode-hyperupcall-pack-java # Java pack
       ecmel.vscode-html-css # HTML CSS
       redhat.ansible
       james-yu.latex-workshop
@@ -42,16 +39,15 @@ in
       redhat.vscode-yaml
       tomoki1207.pdf
       pkief.material-icon-theme
-      #cweijan.vscode-mysql-client2
+      cweijan.vscode-mysql-client2
       formulahendry.code-runner
       ms-vscode.live-server
       usernamehw.errorlens
-      sonarsource.sonarlint-vscode
       oderwat.indent-rainbow
       hediet.vscode-drawio
       naumovs.color-highlight
-      #pomdtr.excalidraw-editor
-      #vivaxy.vscode-conventional-commits
+      pomdtr.excalidraw-editor
+      vivaxy.vscode-conventional-commits
     ];
   };
 
