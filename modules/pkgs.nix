@@ -38,7 +38,7 @@
     ++
     (with pkgs.unstable; [
     ]);
- 
+
   services.flatpak = {
     enable = true;
     update = {
