@@ -34,7 +34,6 @@
       rstudio
       sops
       veracrypt
-      vscodium
     ])
     ++
     (with pkgs.unstable; [
