@@ -1,0 +1,9 @@
+name: suaps
+
+services:
+  app:
+    image: maxlttr697/reserver_creneau_suaps:latest
+    volumes:
+      - ./config.json:/app/config.json
+      - ./.env:/app/.env
+    restart: unless-stopped

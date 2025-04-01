@@ -28,6 +28,7 @@
       bibata-cursors
       compose2nix
       gcc
+      jdk
       jetbrains-mono
       nodejs
       papirus-icon-theme

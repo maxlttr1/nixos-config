@@ -1,0 +1,15 @@
+{
+    "ids_resa" : [
+        "eba1eb76-55b8-4ae4-a067-6182f3e6707b", 
+        "c12b09b0-8660-4b3c-9711-983317af0441" 
+    ],
+    "jours" : {
+        "lundi" : [],
+        "mardi" : ["20:02"],
+        "mercredi" : [],
+        "jeudi" : ["19:32"],
+        "vendredi" : [],
+        "samedi" : [],
+        "dimanche" : []
+    }
+}
