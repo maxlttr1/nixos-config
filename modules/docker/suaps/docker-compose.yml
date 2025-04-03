@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./config/config.json:/app/config/config.json
+      - ./config/.env:/app/config/.env
+    ports:
+      - 5000:5000
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.suaps-https.tls=true
+      - traefik.http.routers.suaps-https.tls.certresolver=myresolver
+      - traefik.http.routers.suaps-https.entrypoints=websecure
+      - traefik.http.routers.suaps-https.rule=Host(`suaps.maxlttr7.duckdns.org`)
+      - traefik.http.services.suaps-https.loadbalancer.server.port=5000
+    restart: unless-stopped
