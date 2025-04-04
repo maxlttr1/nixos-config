@@ -26,8 +26,10 @@
   environment.systemPackages = 
     (with pkgs; [
       bibata-cursors
+      cmake
       compose2nix
       gcc
+      gnumake
       jetbrains-mono
       nodejs
       papirus-icon-theme
