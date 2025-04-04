@@ -30,18 +30,18 @@
       compose2nix
       gcc
       gnumake
+      jdk
       jetbrains-mono
       nodejs
       papirus-icon-theme
       rstudio
       sops
       veracrypt
-      vscodium
     ])
     ++
     (with pkgs.unstable; [
     ]);
- 
+
   services.flatpak = {
     enable = true;
     update = {
