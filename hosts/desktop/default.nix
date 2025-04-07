@@ -1,5 +1,6 @@
 {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
     ../../modules/apparmor.nix
     ../../modules/atd.nix
