@@ -56,7 +56,7 @@
               modules = [
                 ./hosts/asus
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
-                #inputs.disko.nixosModules.disko
+                inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
@@ -91,7 +91,7 @@
               modules = [
                 ./hosts/desktop
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
-                #inputs.disko.nixosModules.disko
+                inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
@@ -126,7 +126,7 @@
               modules = [
                 ./hosts/server
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-                #inputs.disko.nixosModules.disko
+                inputs.disko.nixosModules.disko
                 #inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
