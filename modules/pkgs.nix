@@ -5,6 +5,7 @@
   services.flatpak.packages = [
     #"co.logonoff.awakeonlan"
     "com.google.Chrome"
+    "io.github.lainsce.Colorway"
     "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
@@ -15,6 +16,7 @@
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "md.obsidian.Obsidian"
+    "io.github.nate_xyz.Paleta"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
