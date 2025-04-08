@@ -15,13 +15,13 @@ in
     grub = {
       enable = true;
       theme = xenlism-grub-theme;
-      device = "nodev";
+      #device = "nodev"; # Disko will handle it
       efiSupport = true;
-      #efiInstallAsRemovable = true;
+      efiInstallAsRemovable = true;
       configurationLimit = 15;
-      useOSProber = true;
+      #useOSProber = true;
     };
-    efi.canTouchEfiVariables = true;
+    #efi.canTouchEfiVariables = true;
   };
   #boot.loader.systemd-boot.enable = true;
 }
