@@ -15,7 +15,7 @@ in
     grub = {
       enable = true;
       theme = xenlism-grub-theme;
-      #device = "nodev"; # Disko will handle it
+      device = "nodev"; # Disko will handle it
       efiSupport = true;
       efiInstallAsRemovable = true;
       configurationLimit = 15;
