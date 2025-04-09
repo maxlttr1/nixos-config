@@ -4,6 +4,15 @@
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.autoNumlock = true;
+  services.displayManager.sddm.wayland.enable = false;
+  services.displayManager.defaultSession = "plasmax11";
+
+  /*qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };*/
 
   environment.systemPackages = 
     (with pkgs; [

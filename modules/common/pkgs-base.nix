@@ -26,7 +26,6 @@
       fishPlugins.z
       fzf
       htop
-      neovim
       powershell
       ranger
       ripgrep-all

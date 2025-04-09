@@ -17,8 +17,9 @@
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     ../../modules/sops.nix
+    ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/touchpad.nix
-    ../../modules/virtualbox.nix
+    ../../modules/virt-manager.nix
   ];
 }
