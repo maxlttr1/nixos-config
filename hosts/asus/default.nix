@@ -21,6 +21,6 @@
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/touchpad.nix
-    #../../modules/virt-manager.nix
+    ../../modules/virt-manager.nix
   ];
 }
