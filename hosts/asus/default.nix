@@ -20,6 +20,6 @@
     ../../modules/sops.nix
     ../../modules/syncthing.nix
     ../../modules/touchpad.nix
-    ../../modules/virt-manager.nix
+    #../../modules/virt-manager.nix
   ];
 }
