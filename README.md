@@ -1,12 +1,14 @@
-# NixOS Configuration
+# Deployment
 
-Welcome to my NixOS configuration repository! This repository contains my personal NixOS setup, designed to be highly configurable and adaptable for different hosts. It leverages Nix Flakes, Home Manager, Disko, and various utilities to provide a flexible and powerful environment.
+- **nixos-anywhere:**
+```bash
+nix run github:nix-community/nixos-anywhere -- --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
+```
 
-## Contributing
-
-Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please open an issue or submit a pull request.
-
-## Acknowledgments
-
-- Thanks to the NixOS community for their excellent documentation and support.
-- Inspiration and ideas from various NixOS configuration repositories on GitHub.
+- **disko:**
+```bash
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake github:maxlttr1/nixos-config/hosts/desktop/disko.nix
+```
+```bash
+nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
+```
