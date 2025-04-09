@@ -13,7 +13,9 @@
       AllowUsers = [ "${settings.username}" ]; # Allows all users by default
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
-  }; 
+  };
+
+  programs.ssh.startAgent = true;
 
   #security.pam.services.sshd.googleAuthenticator.enable = true;
 
