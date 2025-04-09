@@ -5,8 +5,8 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.autoNumlock = true;
-  services.displayManager.sddm.wayland.enable = false;
-  services.displayManager.defaultSession = "plasmax11";
+  services.displayManager.sddm.wayland.enable = true; # Launch sddm in Wayland too (try to avoid running an X server)
+  services.displayManager.defaultSession = "plasma"; # plasma or plasmax11
 
   /*qt = {
     enable = true;
