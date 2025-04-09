@@ -1,11 +1,18 @@
 # Deployment
 
-- **nixos-anywhere:**
+## Nixos-anywhere
+- Copy `keys.txt`
 ```bash
-nix run github:nix-community/nixos-anywhere -- --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
+cd /tmp
+root=$(mktemp -d)
+sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
+```
+- To generate `hardware-configuration.nix`
+```bash
+nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix --extra-files $root --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
 ```
 
-- **disko:**
+## Disko:
 ```bash
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake github:maxlttr1/nixos-config/hosts/desktop/disko.nix
 ```
