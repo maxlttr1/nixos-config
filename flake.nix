@@ -42,19 +42,27 @@
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs-stable
+            overlay-stable = final: prev: {
+              stable = import nixpkgs {
                 system = settings.system;
                 config.allowUnfree = true;
               };
             };
+            # Overlay for nixpkgs-unstable
+            /*overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };*/
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/asus
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable inputs.nix-vscode-extensions.overlays.default ]; })
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
@@ -118,19 +126,27 @@
               system = "x86_64-linux";
               kernel = "linuxPackages";
             };
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs-stable
+            overlay-stable = final: prev: {
+              stable = import nixpkgs {
                 system = settings.system;
                 config.allowUnfree = true;
               };
             };
+            # Overlay for nixpkgs-unstable
+            /*overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };*/
           in
             nixpkgs.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/server
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable ]; })
                 inputs.disko.nixosModules.disko
                 #inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
