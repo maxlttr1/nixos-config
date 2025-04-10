@@ -41,7 +41,6 @@
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
-              disk = "/dev/nvme0n1";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
@@ -75,9 +74,16 @@
               username = "maxlttr";
               hostname = "desktop-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
-              disk = "/dev/sda";
+              kernel = "linuxPackages_latest";
             };
+            # Overlay for nixpkgs-stable
+            overlay-stable = final: prev: {
+              stable = import nixpkgs {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };
+            # Overlay for nixpkgs-unstable
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
                 system = settings.system;
@@ -85,7 +91,7 @@
               };
             };
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-unstable.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
@@ -111,7 +117,6 @@
               hostname = "server-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
-              disk = "/dev/sda";
             };
             overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
