@@ -96,7 +96,7 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/desktop
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable inputs.nix-vscode-extensions.overlays.default ]; })
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
