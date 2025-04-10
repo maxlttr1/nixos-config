@@ -19,3 +19,9 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 ```bash
 nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
 ```
+
+# Maintaining
+
+```bash
+nixos-rebuild switch --flake github:maxlttr1/nixos-config --build-host localhost --target-host root@192.168.1.75 --verbose
+```
