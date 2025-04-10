@@ -84,12 +84,12 @@
               };
             };
             # Overlay for nixpkgs-unstable
-            overlay-unstable = final: prev: {
+            /*overlay-unstable = final: prev: {
               unstable = import nixpkgs-unstable {
                 system = settings.system;
                 config.allowUnfree = true;
               };
-            };
+            };*/
           in
             nixpkgs-unstable.lib.nixosSystem {
               system = settings.system;
