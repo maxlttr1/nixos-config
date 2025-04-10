@@ -1,8 +1,8 @@
 {
     services.fail2ban = {
         enable = false;
-        maxretry = 5;
-        bantime = "1h";
+        maxretry = 20;
+        bantime = "10m";
         bantime-increment = {
             enable = true;
             maxtime = "168h"; # Do not ban for more than 1 week
