@@ -9,9 +9,9 @@
     allowSFTP = true;
     startWhenNeeded = true;
     settings = {
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       AllowUsers = [ "${settings.username}" ]; # Allows all users by default
-      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
 
