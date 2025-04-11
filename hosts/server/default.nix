@@ -12,5 +12,6 @@
     ../../modules/sops.nix
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
+    ../../modules/tailscale.nix
   ];
 }
