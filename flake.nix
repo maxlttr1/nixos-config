@@ -124,7 +124,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest_hardened";
+              kernel = "linuxPackages_latest";
             };
             # Overlay for nixpkgs-stable
             overlay-stable = final: prev: {
