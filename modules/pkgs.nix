@@ -19,6 +19,7 @@
     "io.github.nate_xyz.Paleta"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
+    "dev.deedles.Trayscale"
     "org.videolan.VLC"
     "org.kde.yakuake"
   ];
