@@ -12,7 +12,6 @@
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
-    "org.fkoehler.KTailctl"
     "org.kde.konsole"
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
