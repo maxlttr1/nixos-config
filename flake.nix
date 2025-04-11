@@ -40,7 +40,7 @@
               username = "maxlttr";
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
             };
             # Overlay for nixpkgs-stable
             overlay-stable = final: prev: {
@@ -82,7 +82,7 @@
               username = "maxlttr";
               hostname = "desktop-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
             };
             # Overlay for nixpkgs-stable
             overlay-stable = final: prev: {

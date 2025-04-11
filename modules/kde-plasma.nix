@@ -8,12 +8,6 @@
   services.displayManager.sddm.wayland.enable = true; # Launch sddm in Wayland too (try to avoid running an X server)
   services.displayManager.defaultSession = "plasma"; # plasma or plasmax11
 
-  /*qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };*/
-
   environment.systemPackages = 
     (with pkgs; [
       libsForQt5.qt5.qtquickcontrols2
