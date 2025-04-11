@@ -124,7 +124,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest_hardened";
             };
             # Overlay for nixpkgs-stable
             overlay-stable = final: prev: {
@@ -141,7 +141,7 @@
               };
             };*/
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-unstable.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
