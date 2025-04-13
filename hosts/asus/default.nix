@@ -8,8 +8,6 @@
     ../../modules/common
     ../../modules/cups.nix
     ../../modules/docker/docker.nix
-    ../../modules/docker/watchtower/watchtower.nix
-    ../../modules/docker/portainer/portainer.nix
     ../../modules/fail2ban.nix
     ../../modules/fish.nix
     ../../modules/intel.nix
