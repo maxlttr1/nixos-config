@@ -35,6 +35,7 @@
       jdk
       jetbrains-mono
       nodejs
+      python313Full
       papirus-icon-theme
       rstudio
       sops
