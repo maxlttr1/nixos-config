@@ -36,6 +36,7 @@
       jetbrains-mono
       nodejs
       papirus-icon-theme
+      python313Full
       rstudio
       sops
       veracrypt
