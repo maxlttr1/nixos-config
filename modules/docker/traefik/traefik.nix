@@ -25,7 +25,7 @@
     log-driver = "journald";
     extraOptions = [
       "--network-alias=traefik"
-      "--network=traefik_proxy"
+      "--network=proxy"
     ];
   };
   systemd.services."docker-traefik-traefik" = {
@@ -35,33 +35,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-traefik_proxy.service"
-    ];
-    requires = [
-      "docker-network-traefik_proxy.service"
-    ];
     partOf = [
       "docker-compose-traefik-root.target"
     ];
     wantedBy = [
       "docker-compose-traefik-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-traefik_proxy" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f traefik_proxy";
-    };
-    script = ''
-      docker network inspect traefik_proxy || docker network create traefik_proxy --driver=bridge
-    '';
-    partOf = [ "docker-compose-traefik-root.target" ];
-    wantedBy = [ "docker-compose-traefik-root.target" ];
   };
 
   # Root service
