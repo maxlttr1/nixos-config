@@ -1,15 +1,14 @@
 {
   imports = [
     ./docker.nix
-    #./deluge/deluge.nix
-    #./jellyfin/jellyfin.nix
-    #./pihole/pihole.nix
-    #./portainer/portainer.nix
-    #./searxng/searxng.nix
+    ./deluge/deluge.nix
+    ./jellyfin/jellyfin.nix
+    ./pihole/pihole.nix
+    ./portainer/portainer.nix
+    ./searxng/searxng.nix
     ./traefik/traefik.nix
-    #./uptime-kuma/uptime-kuma.nix
-    #./watchtower/watchtower.nix
-    #./wg-easy/wg-easy.nix
+    ./uptime-kuma/uptime-kuma.nix
+    ./watchtower/watchtower.nix
   ];
 
   # Run with compose2nix: compose2nix -inputs input.yml -output output.nix -runtime docker
