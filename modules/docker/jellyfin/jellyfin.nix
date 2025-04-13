@@ -37,7 +37,7 @@
     extraOptions = [
       "--device=/dev/dri:/dev/dri:rwm"
       "--network-alias=jellyfin"
-      "--network=traefik_proxy"
+      "--network=proxy"
     ];
   };
   systemd.services."docker-jellyfin" = {

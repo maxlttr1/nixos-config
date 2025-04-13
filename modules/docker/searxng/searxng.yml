@@ -5,7 +5,7 @@ services:
     container_name: gluetun-searxng
     image: qmcgaw/gluetun
     networks:
-      - traefik_proxy
+      - proxy
     cap_add:
       - NET_ADMIN
     devices:
@@ -55,5 +55,5 @@ services:
         max-file: "1"        
 
 networks:
-  traefik_proxy:
+  proxy:
     external: true

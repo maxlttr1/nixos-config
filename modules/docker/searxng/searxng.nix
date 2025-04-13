@@ -33,7 +33,7 @@
       "--cap-add=NET_ADMIN"
       "--device=/dev/net/tun:/dev/net/tun:rwm"
       "--network-alias=gluetun-searxng"
-      "--network=traefik_proxy"
+      "--network=proxy"
     ];
   };
   systemd.services."docker-gluetun-searxng" = {
