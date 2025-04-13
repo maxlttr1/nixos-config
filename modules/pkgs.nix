@@ -41,7 +41,7 @@
       veracrypt
     ])
     ++
-    (with pkgs.stable; [
+    (with pkgs.unstable; [
     ]);
 
   services.flatpak = {
