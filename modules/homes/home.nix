@@ -102,7 +102,7 @@ in
     };
     krunner.position = "center";
     spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
-    programs.plasma.kwin.virtualDesktops = {
+    kwin.virtualDesktops = {
       names = [
         "1"
         "2"
