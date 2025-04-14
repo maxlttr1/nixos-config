@@ -6,7 +6,6 @@
     #"co.logonoff.awakeonlan"
     "com.google.Chrome"
     "io.github.lainsce.Colorway"
-    "me.iepure.devtoolbox"
     "org.kde.filelight"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
