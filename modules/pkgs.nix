@@ -20,7 +20,6 @@
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
-    "org.wireshark.Wireshark"
     "org.kde.yakuake"
   ];
 
@@ -43,6 +42,7 @@
       rstudio
       sops
       veracrypt
+      wireshark
     ])
     ++
     (with pkgs.unstable; [
