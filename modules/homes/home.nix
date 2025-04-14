@@ -137,7 +137,7 @@ in
           "org.kde.plasma.pager"
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.stickynote"
+          "org.kde.plasma.notes"
           {
             systemTray.items = {
               shown = [
