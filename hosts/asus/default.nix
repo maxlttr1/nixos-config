@@ -17,7 +17,6 @@
     ../../modules/pipewire.nix
     ../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
-    ../../modules/samba.nix
     ../../modules/sops.nix
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
