@@ -102,11 +102,21 @@ in
     };
     krunner.position = "center";
     spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
+    programs.plasma.kwin.virtualDesktops = {
+      names = [
+        "1"
+        "2"
+        "3"
+      ];
+      number = 3;
+    };
     panels = [
       # Windows-like panel at the bottom
       {
         location = "bottom";
         floating = true;
+        opacity = "adaptive";
+        hiding = "none";
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
@@ -117,14 +127,17 @@ in
               };
             };
           }
-          "org.kde.plasma.pager"
           {
             iconTasks = {
               launchers = [
               ];
             };
           }
+          "org.kde.plasma.panelspacer"
+          "org.kde.plasma.pager"
+          "org.kde.plasma.panelspacer"
           "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.stickynote"
           {
             systemTray.items = {
               shown = [
