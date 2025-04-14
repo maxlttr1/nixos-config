@@ -10,6 +10,7 @@
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
+    "com.github.emmanueltouzery.hotwire"
     "dev.bragefuglseth.Keypunch"
     "org.kde.konsole"
     "io.gitlab.librewolf-community"
@@ -19,6 +20,7 @@
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
+    "org.wireshark.Wireshark"
     "org.kde.yakuake"
   ];
 
@@ -27,12 +29,14 @@
   environment.systemPackages = 
     (with pkgs; [
       bibata-cursors
+      burpsuite
       cmake
       compose2nix
       gcc
       gnumake
       jdk
       jetbrains-mono
+      nmap
       nodejs
       python313Full
       papirus-icon-theme
