@@ -9,11 +9,10 @@
     ../../modules/fish.nix
     ../../modules/intel.nix
     ../../modules/ld.nix
+    ../../modules/samba.nix
     ../../modules/sops.nix
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
-
-    ../../modules/samba.nix
   ];
 }

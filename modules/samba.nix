@@ -6,7 +6,7 @@
     openFirewall = true;
     settings = {
       global = {
-        "workgroup" = "WORKGROUP";
+        /*"workgroup" = "WORKGROUP";
         "server string" = "smbnix";
         "netbios name" = "smbnix";
         "security" = "user";
@@ -14,10 +14,10 @@
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         #"map to guest" = "bad user";
-        "invalid users" = [ "root" ]; 
+        "invalid users" = [ "root" ];*/ 
       };
       "share" = {
-        "path" = "~/Syncthing/samba";
+        "path" = "/home/${settings.username}/Syncthing/samba";
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "no";
