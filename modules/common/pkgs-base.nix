@@ -26,9 +26,11 @@
       fishPlugins.z
       fzf
       htop
+      nmap
       powershell
       ranger
       ripgrep-all
+      tcpdump
       tldr
       wget
       zellij

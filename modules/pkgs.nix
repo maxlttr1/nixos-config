@@ -34,13 +34,11 @@
       gnumake
       jdk
       jetbrains-mono
-      nmap
       nodejs
       python313Full
       papirus-icon-theme
       rstudio
       sops
-      tcpdump
       veracrypt
       wireshark
     ])
