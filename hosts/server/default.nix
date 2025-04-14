@@ -13,5 +13,7 @@
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
+
+    ../../modules/samba.nix
   ];
 }
