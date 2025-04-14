@@ -23,7 +23,7 @@
         "guest ok" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = ${settings.username};
+        "force user" = "${settings.username}";
         "force group" = "users";
       };
     };
