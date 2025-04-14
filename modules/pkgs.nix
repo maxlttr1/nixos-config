@@ -10,7 +10,6 @@
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
-    "com.github.emmanueltouzery.hotwire"
     "dev.bragefuglseth.Keypunch"
     "org.kde.konsole"
     "io.gitlab.librewolf-community"
@@ -41,6 +40,7 @@
       papirus-icon-theme
       rstudio
       sops
+      tcpdump
       veracrypt
       wireshark
     ])
