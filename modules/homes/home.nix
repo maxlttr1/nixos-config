@@ -3,7 +3,7 @@
 let
   wallpaper = ../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
-    path = "../../wallpapers/";
+    path = ../../wallpapers/;
     interval = 300;
   };
 in
