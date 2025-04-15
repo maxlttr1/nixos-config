@@ -21,6 +21,6 @@
     ../../modules/ssh.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
-    ../../modules/virt-manager.nix
+    ../../modules/vms.nix
   ];
 }
