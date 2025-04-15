@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  wallpaper = ../../wallpaper.jpg;
+  wallpaper = ../../wallpapers/wallpaper.jpg;
+  wallpaperSlideShow = {
+    path = "../../wallpapers/";
+    interval = 300;
+  };
 in
 
 {
@@ -63,7 +67,12 @@ in
       colorScheme = "BreezeDark";
       lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
-      inherit wallpaper;
+      windowDecorations = {
+        library = "org.kde.kwin.aurorae";
+        theme = "__aurorae__svg__MacSequoia-Dark";
+      };
+      #inherit wallpaper;
+      inherit wallpaperSlideShow;
     };
     immutableByDefault = true;
     fonts = {
@@ -72,6 +81,7 @@ in
         pointSize = 10;
       };
     };
+    input.keyboard.numlockOnStartup = "on";
     /*input.touchpads = [
       {
         enable = true;
@@ -88,10 +98,13 @@ in
         vendorId = "04f3";
       }
     ];*/
-    kscreenlocker.appearance = {
-      inherit wallpaper;
-      showMediaControls = false;
-    };
+    kscreenlocker = {
+      appearance = {
+        #inherit wallpaper;
+        inherit wallpaperSlideShow;
+        showMediaControls = false;
+      };
+    }; 
     kwin.nightLight = {
       enable = true;
       location.latitude = "46.04";
