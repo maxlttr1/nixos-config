@@ -37,6 +37,8 @@
       nodejs
       python313Full
       papirus-icon-theme
+      quickgui
+      quickemu
       rstudio
       sops
       veracrypt
