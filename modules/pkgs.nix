@@ -22,6 +22,8 @@
     "org.kde.yakuake"
   ];
 
+  networking.firewall.allowedTCPPorts = [8010]; # VLC chromecasting
+
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
 
   environment.systemPackages = 
