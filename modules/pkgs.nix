@@ -21,11 +21,12 @@
     "org.videolan.VLC"
     "org.kde.yakuake"
   ];
-  
+
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
 
   environment.systemPackages = 
     (with pkgs; [
+      android-tools
       bibata-cursors
       burpsuite
       cmake
@@ -39,6 +40,7 @@
       papirus-icon-theme
       rstudio
       sops
+      universal-android-debloater
       veracrypt
       wireshark
     ])
