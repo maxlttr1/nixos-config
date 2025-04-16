@@ -35,7 +35,6 @@
       gnumake
       jdk
       jetbrains-mono
-      mkchromecast
       nodejs
       python313Full
       papirus-icon-theme
