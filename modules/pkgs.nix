@@ -35,10 +35,12 @@
       gnumake
       jdk
       jetbrains-mono
+      mkchromecast
       nodejs
       python313Full
       papirus-icon-theme
       rstudio
+      scrcpy
       sops
       universal-android-debloater
       veracrypt
