@@ -192,7 +192,7 @@
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
-                ./hosts/server
+                ./hosts/vm
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
                 inputs.impermanence.nixosModules.impermanence
