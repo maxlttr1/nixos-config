@@ -1,4 +1,4 @@
-# 🐧 My NixOS Config
+#  My NixOS Config
 
 This repo powers all my machines with a single, declarative, reproducible configuration.
 
