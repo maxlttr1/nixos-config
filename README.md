@@ -1,8 +1,6 @@
-# 🐧 maxlttr1's NixOS Config
+# 🐧 My NixOS Config
 
-> 💡 My personal [NixOS](https://nixos.org/) system configuration using **flakes**, **disko**, **nixos-anywhere**, and lots of automation — optimized for **minimal friction**.
-
-This repo powers all my machines (desktop, VMs, containers) with a single, declarative, reproducible configuration.
+This repo powers all my machines with a single, declarative, reproducible configuration.
 
 ---
 
@@ -10,12 +8,12 @@ This repo powers all my machines (desktop, VMs, containers) with a single, decla
 
 - ⚙️ **Nix Flakes**: Fully flake-based configuration.
 - 💾 **Disko**: Declarative disk partitioning and formatting.
-- 🌐 **nixos-anywhere**: Remote deployment made painless.
+- 🌐 **nixos-anywhere**: Easy Remote deployment.
 - 🧠 **Plasma Manager**: Declarative KDE Plasma setup via [dealcartive/plasma-manager](https://github.com/dealcartive/plasma-manager).
 - 🐳 **Docker**: Containers declared and managed through Nix.
 - 💻 **Dev Environment**: Languages, tools, and editor setup.
 - 🔁 **Syncthing**: Seamless file sync between machines.
-- 🔐 **SOPS + Age**: Secrets management with Git-friendly encryption.
+- 🔐 **SOPS**: Secrets management.
 - 🕸️ **Tailscale**: Zero-config VPN and remote access.
 - 🎮 **Gaming Support**: Steam, Proton, and Samba for file sharing.
 - 🔄 **System Auto-Upgrade**: systemd service keeps systems up-to-date.
