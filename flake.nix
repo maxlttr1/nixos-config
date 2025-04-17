@@ -28,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
+    #impermanence.url = "github:nix-community/impermanence";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   }; 
@@ -69,7 +69,7 @@
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
-                inputs.impermanence.nixosModules.impermanence
+                #inputs.impermanence.nixosModules.impermanence
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
@@ -112,7 +112,7 @@
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
                 inputs.sops-nix.nixosModules.sops
-                inputs.impermanence.nixosModules.impermanence
+                #inputs.impermanence.nixosModules.impermanence
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
@@ -153,7 +153,7 @@
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
                 inputs.sops-nix.nixosModules.sops
-                inputs.impermanence.nixosModules.impermanence
+                #inputs.impermanence.nixosModules.impermanence
               ];
             };
         vm-maxlttr = 
@@ -186,7 +186,8 @@
                 ./hosts/vm
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
-                inputs.impermanence.nixosModules.impermanence
+                inputs.sops-nix.nixosModules.sops
+                #inputs.impermanence.nixosModules.impermanence
               ];
             };
       };
