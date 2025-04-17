@@ -110,8 +110,8 @@ in
       location.latitude = "46.04";
       location.longitude = "0.69";
       mode = "location";
-      temperature.day = 5000;
-      temperature.night = 3000;
+      temperature.day = 4500;
+      temperature.night = 2500;
     };
     krunner.position = "center";
     spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
