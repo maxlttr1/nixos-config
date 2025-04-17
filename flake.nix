@@ -63,7 +63,7 @@
               };
             };
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-unstable.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
