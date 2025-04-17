@@ -1,27 +1,79 @@
-# Deployment
+# 🐧 maxlttr1's NixOS Config
 
-## Nixos-anywhere
-- Copy `keys.txt`
+> 💡 My personal [NixOS](https://nixos.org/) system configuration using **flakes**, **disko**, **nixos-anywhere**, and lots of automation — optimized for **minimal friction**.
+
+This repo powers all my machines (desktop, VMs, containers) with a single, declarative, reproducible configuration.
+
+---
+
+## 🚀 Features
+
+- ⚙️ **Nix Flakes**: Fully flake-based configuration.
+- 💾 **Disko**: Declarative disk partitioning and formatting.
+- 🌐 **nixos-anywhere**: Remote deployment made painless.
+- 🧠 **Plasma Manager**: Declarative KDE Plasma setup via [dealcartive/plasma-manager](https://github.com/dealcartive/plasma-manager).
+- 🐳 **Docker**: Containers declared and managed through Nix.
+- 💻 **Dev Environment**: Languages, tools, and editor setup.
+- 🔁 **Syncthing**: Seamless file sync between machines.
+- 🔐 **SOPS + Age**: Secrets management with Git-friendly encryption.
+- 🕸️ **Tailscale**: Zero-config VPN and remote access.
+- 🎮 **Gaming Support**: Steam, Proton, and Samba for file sharing.
+- 🔄 **System Auto-Upgrade**: systemd service keeps systems up-to-date.
+- 🤖 **GitHub Actions**: CI updates flake inputs automatically.
+
+---
+
+## 🛠️ Deployment from host
+
+### 1. Copy Age key for decryption
 ```bash
 cd /tmp
 root=$(mktemp -d)
 sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
 ```
-- To generate `hardware-configuration.nix`
+
+### 2. Generate Hardware Config and deploy
 ```bash
-sudo nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix --extra-files $root --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
+sudo nix run github:nix-community/nixos-anywhere -- \
+  --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix \
+  --extra-files $root \
+  --flake github:maxlttr1/nixos-config#desktop-maxlttr \
+  --target-host nixos@192.168.1.11
 ```
 
-## Disko:
+## 🛠️ Deployment on host
+
+### 1. Partition & Mount Disks (⚠️ Destroys data)
 ```bash
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake github:maxlttr1/nixos-config/hosts/desktop/disko.nix
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
+  --mode destroy,format,mount \
+  --flake github:maxlttr1/nixos-config/hosts/desktop/disko.nix
 ```
+
+### 2. Install Nixos
 ```bash
 nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
 ```
 
-# Maintaining
+## 🔧 Maintaining
+
+### Remote Rebuild via SSH
 
 ```bash
-nixos-rebuild switch --flake github:maxlttr1/nixos-config --build-host localhost --target-host root@192.168.1.75 --verbose
+nixos-rebuild switch \
+  --flake github:maxlttr1/nixos-config \
+  --build-host localhost \
+  --target-host root@192.168.1.75 \
+  --verbose
 ```
+
+## 🤝 Contributing
+
+Contributions are very welcome! If you spot a bug, have an idea, or want to improve something:
+
+- Fork the repo
+- Create a new branch
+- Commit your changes
+- Open a PR
+
+Even small tweaks are appreciated — whether it's improving documentation, adding a new Nix module, or optimizing something. If you're unsure about a change, feel free to open an issue or discussion first!
