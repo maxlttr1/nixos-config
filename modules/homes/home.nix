@@ -21,7 +21,7 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = with pkgs.vscode-marketplace; [
+    profiles.default.extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
       ms-python.black-formatter
