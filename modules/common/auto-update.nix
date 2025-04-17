@@ -8,6 +8,12 @@
   };
 
   systemd.services."nixos-upgrade" = {
+    after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
     script = ''
       set -e
       LOGFILE=/var/log/nixos-upgrade.log
@@ -26,9 +32,5 @@
           -d '{"content": "NixOS upgrade failed on host '"$(hostname)"'. Check the logs for details."}'
       fi
     '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
-    };
   };
 }
