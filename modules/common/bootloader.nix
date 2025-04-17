@@ -18,7 +18,7 @@ in
       device = "nodev"; # Disko will handle it
       efiSupport = true;
       efiInstallAsRemovable = true;
-      configurationLimit = 15;
+      configurationLimit = 30;
       #useOSProber = true;
     };
     #efi.canTouchEfiVariables = true;
