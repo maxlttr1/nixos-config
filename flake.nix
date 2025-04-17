@@ -166,7 +166,7 @@
               hostname = "vm-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
-              swap = 0; # Size in Gigabytes
+              swap = 1; # Size in Gigabytes
             };
             # Overlay for nixpkgs-stable
             /*overlay-stable = final: prev: {
