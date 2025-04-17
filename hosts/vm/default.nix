@@ -5,6 +5,7 @@
     ../../modules/common
     ../../modules/fish.nix
     ../../modules/intel.nix
+    ../../modules/impermanence.nix
     ../../modules/ld.nix
     ../../modules/sops.nix
     ../../modules/ssh.nix
