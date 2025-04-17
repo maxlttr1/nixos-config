@@ -163,7 +163,7 @@
           let
             settings = {
               username = "maxlttr";
-              hostname = "server-maxlttr";
+              hostname = "vm-maxlttr";
               system = "x86_64-linux";
               kernel = "linuxPackages";
               swap = 0; # Size in Gigabytes
