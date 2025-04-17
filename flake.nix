@@ -93,7 +93,7 @@
               };
             };
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-main.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
@@ -130,7 +130,7 @@
               };
             };
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-main.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
@@ -158,7 +158,7 @@
               };
             };
           in
-            nixpkgs.lib.nixosSystem {
+            nixpkgs-main.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
