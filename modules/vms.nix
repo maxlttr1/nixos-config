@@ -19,6 +19,6 @@
       quickemu
     ])
     ++
-    (with pkgs.unstable; [
+    (with pkgs.alternative; [
     ]);
 }

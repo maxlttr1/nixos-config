@@ -14,7 +14,7 @@
       libsForQt5.qt5.qtgraphicaleffects
     ])
     ++
-    (with pkgs.unstable; [
+    (with pkgs.alternative; [
     ]);
 
   programs.kdeconnect.enable = true;

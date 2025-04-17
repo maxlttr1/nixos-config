@@ -37,6 +37,6 @@
       zellij
     ])
     ++
-    (with pkgs.unstable; [
+    (with pkgs.alternative; [
     ]);
 }

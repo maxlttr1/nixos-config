@@ -47,7 +47,7 @@
       wireshark
     ])
     ++
-    (with pkgs.unstable; [
+    (with pkgs.alternative; [
     ]);
 
   services.flatpak = {

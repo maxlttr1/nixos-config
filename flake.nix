@@ -1,42 +1,42 @@
 {
-  description = "Kakoukakou";
+  description = "KakouKakou";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-overlay.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-main.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-main";
     }; 
 
     disko = {
       url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-main";
     };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-main";
       inputs.home-manager.follows = "home-manager";
     };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-main";
     };
 
     #impermanence.url = "github:nix-community/impermanence";
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-main";
     };
   }; 
   
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
+  outputs = inputs@{ self, nixpkgs-main, nixpkgs-overlay, ... }:
     {
       nixosConfigurations = {
         asus-maxlttr = 
@@ -45,30 +45,23 @@
               username = "maxlttr";
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest";
               swap = 8; # Size in Gigabytes
             };
-            # Overlay for nixpkgs-stable
-            /*overlay-stable = final: prev: {
-              stable = import nixpkgs {
-                system = settings.system;
-                config.allowUnfree = true;
-              };
-            };*/
-            # Overlay for nixpkgs-unstable
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs
+            overlay-nixpkgs = final: prev: {
+              alternative = import nixpkgs-overlay {
                 system = settings.system;
                 config.allowUnfree = true;
               };
             };
           in
-            nixpkgs-unstable.lib.nixosSystem {
+            nixpkgs-main.lib.nixosSystem {
               system = settings.system;
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/asus
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default ]; })
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
@@ -92,16 +85,9 @@
               kernel = "linuxPackages";
               swap = 8; # Size in Gigabytes
             };
-            # Overlay for nixpkgs-stable
-            /*overlay-stable = final: prev: {
-              stable = import nixpkgs {
-                system = settings.system;
-                config.allowUnfree = true;
-              };
-            };*/
-            # Overlay for nixpkgs-unstable
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs
+            overlay-nixpkgs = final: prev: {
+              alternative = import nixpkgs-overlay {
                 system = settings.system;
                 config.allowUnfree = true;
               };
@@ -112,7 +98,7 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/desktop
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable inputs.nix-vscode-extensions.overlays.default ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default ]; })
                 inputs.disko.nixosModules.disko
                 inputs.nix-flatpak.nixosModules.nix-flatpak
                 inputs.home-manager.nixosModules.home-manager
@@ -136,16 +122,9 @@
               kernel = "linuxPackages";
               swap = 16; # Size in Gigabytes
             };
-            # Overlay for nixpkgs-stable
-            /*overlay-stable = final: prev: {
-              stable = import nixpkgs {
-                system = settings.system;
-                config.allowUnfree = true;
-              };
-            };*/
-            # Overlay for nixpkgs-unstable
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs
+            overlay-nixpkgs = final: prev: {
+              alternative = import nixpkgs-overlay {
                 system = settings.system;
                 config.allowUnfree = true;
               };
@@ -156,7 +135,7 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/server
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
                 inputs.disko.nixosModules.disko
                 inputs.sops-nix.nixosModules.sops
                 #inputs.impermanence.nixosModules.impermanence
@@ -171,16 +150,9 @@
               kernel = "linuxPackages";
               swap = 1; # Size in Gigabytes
             };
-            # Overlay for nixpkgs-stable
-            /*overlay-stable = final: prev: {
-              stable = import nixpkgs {
-                system = settings.system;
-                config.allowUnfree = true;
-              };
-            };*/
-            # Overlay for nixpkgs-unstable
-            overlay-unstable = final: prev: {
-              unstable = import nixpkgs-unstable {
+            # Overlay for nixpkgs
+            overlay-nixpkgs = final: prev: {
+              alternative = import nixpkgs-overlay {
                 system = settings.system;
                 config.allowUnfree = true;
               };
@@ -191,7 +163,7 @@
               specialArgs = { inherit inputs settings; };
               modules = [
                 ./hosts/vm
-                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
                 inputs.disko.nixosModules.disko
                 inputs.sops-nix.nixosModules.sops
                 #inputs.impermanence.nixosModules.impermanence
