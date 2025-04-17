@@ -29,4 +29,9 @@
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/id_rsa";
     };
+
+    sops.secrets."discord-webhook" = {
+        owner = "${settings.username}"; 
+        path = "/etc/discord-webhook.conf";
+    };
 }
