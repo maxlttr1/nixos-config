@@ -9,7 +9,7 @@ sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
 ```
 - To generate `hardware-configuration.nix`
 ```bash
-nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix --extra-files $root --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
+sudo nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix --extra-files $root --flake github:maxlttr1/nixos-config#desktop-maxlttr --target-host nixos@192.168.1.11
 ```
 
 ## Disko:

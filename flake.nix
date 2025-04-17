@@ -28,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   }; 
@@ -191,7 +191,7 @@
                 ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
                 inputs.disko.nixosModules.disko
                 inputs.sops-nix.nixosModules.sops
-                #inputs.impermanence.nixosModules.impermanence
+                inputs.impermanence.nixosModules.impermanence
               ];
             };
       };
