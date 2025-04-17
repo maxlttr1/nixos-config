@@ -15,6 +15,7 @@
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "md.obsidian.Obsidian"
+    "org.onionshare.OnionShare"
     "io.github.nate_xyz.Paleta"
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"

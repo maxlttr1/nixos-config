@@ -165,6 +165,39 @@
                 inputs.impermanence.nixosModules.impermanence
               ];
             };
+        vm-maxlttr = 
+          let
+            settings = {
+              username = "maxlttr";
+              hostname = "server-maxlttr";
+              system = "x86_64-linux";
+              kernel = "linuxPackages";
+            };
+            # Overlay for nixpkgs-stable
+            /*overlay-stable = final: prev: {
+              stable = import nixpkgs {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };*/
+            # Overlay for nixpkgs-unstable
+            overlay-unstable = final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = settings.system;
+                config.allowUnfree = true;
+              };
+            };
+          in
+            nixpkgs.lib.nixosSystem {
+              system = settings.system;
+              specialArgs = { inherit inputs settings; };
+              modules = [
+                ./hosts/server
+                ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+                inputs.disko.nixosModules.disko
+                inputs.impermanence.nixosModules.impermanence
+              ];
+            };
       };
     };
 }
