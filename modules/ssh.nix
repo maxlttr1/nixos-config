@@ -15,7 +15,13 @@
     };
   };
 
-  programs.ssh.startAgent = true;
+  programs.ssh = {
+    startAgent = true;
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+  };
+
 
   #security.pam.services.sshd.googleAuthenticator.enable = true;
 
