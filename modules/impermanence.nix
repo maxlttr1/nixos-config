@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ settings, lib, ... }:
 
 {
   boot.initrd.postResumeCommands = lib.mkAfter ''
