@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Run every Sunday at midnight (you can adjust the schedule)
   workflow_dispatch:  # Allow manual trigger from GitHub UI
+  push:
 
 jobs:
   update-flake:
@@ -31,4 +32,11 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Bump flake.lock
+
+    - name: Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'Flake Updated !'
 
