@@ -67,11 +67,4 @@ sudo nixos-rebuild switch \
 
 ## 🤝 Contributing
 
-Contributions are very welcome! If you spot a bug, have an idea, or want to improve something:
-
-- Fork the repo
-- Create a new branch
-- Commit your changes
-- Open a PR
-
-Even small tweaks are appreciated — whether it's improving documentation, adding a new Nix module, or optimizing something. If you're unsure about a change, feel free to open an issue or discussion first!
+Contributions are very welcome! If you spot a bug, have an idea, or want to improve something !
