@@ -32,10 +32,12 @@
       burpsuite
       cmake
       compose2nix
+      ffmpeg
       gcc
       gnumake
       jdk
       jetbrains-mono
+      libwebp
       nodejs
       python313Full
       papirus-icon-theme
