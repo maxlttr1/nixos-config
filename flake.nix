@@ -82,7 +82,7 @@
               username = "maxlttr";
               hostname = "desktop-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest";
               swap = 8; # Size in Gigabytes
             };
             # Overlay for nixpkgs
@@ -119,7 +119,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest";
               swap = 16; # Size in Gigabytes
             };
             # Overlay for nixpkgs
@@ -147,7 +147,7 @@
               username = "maxlttr";
               hostname = "vm-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages";
+              kernel = "linuxPackages_latest";
               swap = 1; # Size in Gigabytes
             };
             # Overlay for nixpkgs
