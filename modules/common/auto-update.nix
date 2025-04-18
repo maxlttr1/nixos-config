@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   systemd.timers."nixos-upgrade" = {
     wantedBy = [ "timers.target" ]; # Ensures the timer starts on boot
