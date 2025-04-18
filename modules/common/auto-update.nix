@@ -13,6 +13,9 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
+      serviceConfig = {
+        Environment = "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.stdenv.cc.cc}/bin:${pkgs.stdenv.shell}/bin";
+      };
     };
     script = ''
       set -e
