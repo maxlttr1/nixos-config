@@ -58,7 +58,7 @@ nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
 ### Remote Rebuild via SSH
 
 ```bash
-nixos-rebuild switch \
+sudo nixos-rebuild switch \
   --flake github:maxlttr1/nixos-config \
   --build-host localhost \
   --target-host root@192.168.1.75 \
