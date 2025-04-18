@@ -12,7 +12,10 @@
   systemd.services."nixos-upgrade" = {
     after = [ "network-online.target" ];
     requires = [ "network-online.target" ];
-    environment = "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.stdenv.cc.cc}/bin:${pkgs.stdenv.shell}/bin";
+    path = with pkgs; [
+      nixos-rebuild
+      stdenv
+    ];
     serviceConfig = {
       Type = "oneshot";
       User = "root";
