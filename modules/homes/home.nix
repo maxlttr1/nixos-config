@@ -9,7 +9,7 @@ let
   font = {
     #family = "JetBrains Mono";
     family = "Mononoki Nerd Font Mono";
-    pointSize = 11;
+    pointSize = 10.5;
   };
 in
 
@@ -66,8 +66,9 @@ in
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
-      "git.enableSmartCommit": true,
-      "git.smartCommitChanges": "all"
+      "git.enableSmartCommit" = true;
+      "git.smartCommitChanges" = "all";
+      "window.titleBarStyle" = "native";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
