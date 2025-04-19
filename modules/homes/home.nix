@@ -62,7 +62,7 @@ in
     userSettings = {
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
-      "editor.cursorSmoothCaretAnimation" = "true";
+      "editor.cursorSmoothCaretAnimation" = "on";
       "files.autoSave" = "off";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
