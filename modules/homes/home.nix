@@ -64,6 +64,7 @@ in
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
       "files.autoSave" = "off";
+      "git.autofetch" = "all";
       "git.confirmSync" = false;
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
