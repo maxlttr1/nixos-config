@@ -5,7 +5,6 @@
     enable = true;
     interactiveShellInit = ''
     fish_config theme choose Dracula
-    fish_config prompt choose scales
     '';
   };
   # Launches fish unless the parent process is already fish 

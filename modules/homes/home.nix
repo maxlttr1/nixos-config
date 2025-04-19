@@ -6,6 +6,11 @@ let
     path = ../../wallpapers;
     interval = 300;
   };
+  font = {
+    #family = "JetBrains Mono";
+    family = "Mononoki Nerd Font Mono";
+    pointSize = 10;
+  };
 in
 
 {
@@ -65,7 +70,7 @@ in
       };
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      lookAndFeel = "org.kde.breezedark.desktop";
+      #lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
       windowDecorations = {
         library = "org.kde.kwin.aurorae";
@@ -76,10 +81,15 @@ in
     };
     immutableByDefault = true;
     fonts = {
-      general = {
-        family = "JetBrains Mono";
-        pointSize = 10;
+      fixedWidth = font;
+      general = font;
+      menu = font;
+      small = {
+        family = font.family;
+        pointSize = 8;
       };
+      toolbar = font;
+      windowTitle = font;
     };
     input.keyboard.numlockOnStartup = "on";
     /*input.touchpads = [

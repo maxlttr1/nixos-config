@@ -6,12 +6,10 @@
     #"co.logonoff.awakeonlan"
     "com.google.Chrome"
     "io.github.lainsce.Colorway"
-    "org.kde.filelight"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
-    "org.kde.konsole"
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "md.obsidian.Obsidian"
@@ -20,7 +18,6 @@
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
-    "org.kde.yakuake"
   ];
 
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
@@ -33,10 +30,11 @@
       cmake
       compose2nix
       ffmpeg
+      kdePackages.filelight
       gcc
       gnumake
       jdk
-      jetbrains-mono
+      kdePackages.konsole
       libwebp
       nodejs
       python313Full
@@ -47,10 +45,17 @@
       universal-android-debloater
       veracrypt
       wireshark
+      kdePackages.yakuake
     ])
     ++
     (with pkgs.alternative; [
     ]);
+  
+  fonts.packages = with pkgs; [
+    #nerd-fonts.fantasque-sans-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.mononoki
+  ];
 
   services.flatpak = {
     enable = true;
