@@ -65,7 +65,7 @@ in
       "editor.cursorSmoothCaretAnimation" = "on";
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[python]" = {
-        "editor.defaultFormatter": "ms-python.black-formatter";
+        "editor.defaultFormatter" = "ms-python.black-formatter";
       };
       "files.autoSave" = "off";
       "git.autofetch" = "all";
