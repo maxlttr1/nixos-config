@@ -63,12 +63,17 @@ in
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
+      "editor.defaultFormatter" = "esbenp.prettier-vscode",
+      "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+      }
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.smartCommitChanges" = "all";
-      "window.titleBarStyle" = "native";
+      "redhat.telemetry.enabled" = false;
+      "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
