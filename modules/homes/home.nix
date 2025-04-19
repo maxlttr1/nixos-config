@@ -9,7 +9,7 @@ let
   font = {
     #family = "JetBrains Mono";
     family = "Mononoki Nerd Font Mono";
-    pointSize = 10;
+    pointSize = 11;
   };
 in
 
