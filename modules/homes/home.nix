@@ -26,6 +26,15 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    userSettings = {
+      "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
+      "editor.cursorBlinking" = "phase";
+      "editor.cursorSmoothCaretAnimation" = true;
+      "files.autoSave" = "off";
+      "workbench.colorTheme" = "One Dark Pro Night Flat";
+      "workbench.iconTheme" = "material-icon-theme";
+      "workbench.startupEditor" = "none";
+    };
     profiles.default.extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
@@ -38,7 +47,6 @@ in
       gydunhn.javascript-essentials # Javascript pack
       edwinkofler.vscode-hyperupcall-pack-java # Java pack
       ecmel.vscode-html-css # HTML CSS
-      redhat.ansible
       james-yu.latex-workshop
       yzhang.markdown-all-in-one
       # Utilities
@@ -57,6 +65,8 @@ in
       naumovs.color-highlight
       pomdtr.excalidraw-editor
       vivaxy.vscode-conventional-commits
+      zhuangtongfa.material-theme
+      eamodio.gitlens
     ];
   };
 
