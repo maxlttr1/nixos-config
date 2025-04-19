@@ -10,7 +10,6 @@
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
-    "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "md.obsidian.Obsidian"
     "org.onionshare.OnionShare"

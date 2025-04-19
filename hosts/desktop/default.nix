@@ -13,6 +13,7 @@
     ../../modules/fish.nix
     ../../modules/kde-plasma.nix
     ../../modules/ld.nix
+    ../../modules/librewolf.nix
     ../../modules/nvidia.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
