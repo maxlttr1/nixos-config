@@ -26,15 +26,6 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    userSettings = {
-      "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
-      "editor.cursorBlinking" = "phase";
-      "editor.cursorSmoothCaretAnimation" = true;
-      "files.autoSave" = "off";
-      "workbench.colorTheme" = "One Dark Pro Night Flat";
-      "workbench.iconTheme" = "material-icon-theme";
-      "workbench.startupEditor" = "none";
-    };
     profiles.default.extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
@@ -68,6 +59,15 @@ in
       zhuangtongfa.material-theme
       eamodio.gitlens
     ];
+    userSettings = {
+      "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
+      "editor.cursorBlinking" = "phase";
+      "editor.cursorSmoothCaretAnimation" = true;
+      "files.autoSave" = "off";
+      "workbench.colorTheme" = "One Dark Pro Night Flat";
+      "workbench.iconTheme" = "material-icon-theme";
+      "workbench.startupEditor" = "none";
+    };
   };
 
   programs.plasma = {
