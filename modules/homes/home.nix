@@ -66,6 +66,8 @@ in
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
+      "git.enableSmartCommit": true,
+      "git.smartCommitChanges": "all"
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
