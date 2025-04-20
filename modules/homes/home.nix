@@ -63,10 +63,6 @@ in
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[python]" = {
-        "editor.defaultFormatter" = "ms-python.black-formatter";
-      };
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
