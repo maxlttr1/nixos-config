@@ -60,6 +60,7 @@ in
       eamodio.gitlens
     ];
     userSettings = {
+      "database-client.autoSync" = true;
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
