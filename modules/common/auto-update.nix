@@ -1,5 +1,26 @@
 { pkgs, ... }:
 
+let
+  script = pkgs.writeShellScript "nixos-upgrade" ''
+    #!/bin/bash
+    set -e
+    LOGFILE=/var/log/nixos-upgrade.log
+    DISCORD_WEBHOOK_URL=$(cat /etc/discord-webhook.conf)
+
+    echo "[$(date)] Starting upgrade..." >> $LOGFILE
+
+    if ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake github:maxlttr1/nixos-config#$(hostname) >> $LOGFILE 2>&1; then
+      echo "[$(date)] ✅ Upgrade succeeded." >> $LOGFILE
+    else
+      echo "[$(date)] ❌ Upgrade FAILED!" >> $LOGFILE
+
+      ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
+        -H "Content-Type: application/json" \
+        -d '{"content": "NixOS upgrade failed on host '"$(hostname)"'. Check the logs for details."}'
+    fi
+  '';
+in
+
 {
   systemd.timers."nixos-upgrade" = {
     wantedBy = [ "timers.target" ]; # Ensures the timer starts on boot
@@ -10,33 +31,18 @@
   };
 
   systemd.services."nixos-upgrade" = {
-    after = [ "network-online.target" ];
-    requires = [ "network-online.target" ];
-    path = with pkgs; [
-      nixos-rebuild
-      stdenv
-    ];
+    wantedBy = [ "multi-user.target" ]; # Start this service automatically when the system is ready for users
+    after = [ "network-online.target" "nss-lookup.target" ];
+    requires = [ "network-online.target" "nss-lookup.target" ];
+    /*path = with pkgs; [ 
+      curl 
+      nixos-rebuild 
+      coreutils 
+    ];*/
     serviceConfig = {
       Type = "oneshot";
       User = "root";
+      ExecStart = "${script}";
     };
-    script = ''
-      set -e
-      LOGFILE=/var/log/nixos-upgrade.log
-      DISCORD_WEBHOOK_URL=$(cat /etc/discord-webhook.conf)
-
-      echo "[$(date)] Starting upgrade..." >> $LOGFILE
-
-      if nixos-rebuild switch --flake github:maxlttr1/nixos-config#$(hostname) >> $LOGFILE 2>&1; then
-        echo "[$(date)] ✅ Upgrade succeeded." >> $LOGFILE
-      else
-        echo "[$(date)] ❌ Upgrade FAILED!" >> $LOGFILE
-        
-        # Send failure message to Discord
-        curl -X POST $DISCORD_WEBHOOK_URL \
-          -H "Content-Type: application/json" \
-          -d '{"content": "NixOS upgrade failed on host '"$(hostname)"'. Check the logs for details."}'
-      fi
-    '';
   };
 }
