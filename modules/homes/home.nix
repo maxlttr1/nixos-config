@@ -26,7 +26,8 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    profiles.default.extensions = with pkgs.vscode-marketplace; [
+    profiles.default  = {
+      extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
       ms-python.black-formatter
@@ -58,23 +59,24 @@ in
       vivaxy.vscode-conventional-commits
       zhuangtongfa.material-theme
       eamodio.gitlens
-    ];
-    userSettings = {
-      "database-client.autoSync" = true;
-      "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
-      "editor.cursorBlinking" = "phase";
-      "editor.cursorSmoothCaretAnimation" = "on";
-      "explorer.confirmDelete" = false;
-      "files.autoSave" = "off";
-      "git.autofetch" = "all";
-      "git.confirmSync" = false;
-      "git.enableSmartCommit" = true;
-      "git.smartCommitChanges" = "all";
-      "redhat.telemetry.enabled" = false;
-      "window.titleBarStyle" = "custom";
-      "workbench.colorTheme" = "One Dark Pro Night Flat";
-      "workbench.iconTheme" = "material-icon-theme";
-      "workbench.startupEditor" = "none";
+      ];
+      userSettings = {
+        "database-client.autoSync" = true;
+        "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
+        "editor.cursorBlinking" = "phase";
+        "editor.cursorSmoothCaretAnimation" = "on";
+        "explorer.confirmDelete" = false;
+        "files.autoSave" = "off";
+        "git.autofetch" = "all";
+        "git.confirmSync" = false;
+        "git.enableSmartCommit" = true;
+        "git.smartCommitChanges" = "all";
+        "redhat.telemetry.enabled" = false;
+        "window.titleBarStyle" = "custom";
+        "workbench.colorTheme" = "One Dark Pro Night Flat";
+        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.startupEditor" = "none";
+      };
     };
   };
 
