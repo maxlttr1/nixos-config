@@ -24,6 +24,8 @@ let
           -H "Content-Type: application/json" \
           -d "{\"content\": \"NixOS upgrade failed on $HOSTNAME ❌. Check the logs for details.\"}"
       fi
+    else
+      echo "[$(date)] Skipped: Another upgrade in progress" >> $LOGFILE
     fi
   '';
 in
