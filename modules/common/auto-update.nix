@@ -35,7 +35,7 @@ in
   };
 
   systemd.services."nixos-upgrade" = {
-    wantedBy = [ "multi-user.target" ]; # Start this service automatically when the system is ready for users
+    #wantedBy = [ "multi-user.target" ]; # Start this service automatically when the system is ready for users
     after = [ "network-online.target" "nss-lookup.target" ];
     requires = [ "network-online.target" "nss-lookup.target" ];
     /*path = with pkgs; [ 
