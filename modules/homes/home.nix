@@ -64,6 +64,7 @@ in
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
+      "explorer.confirmDelete" = false;
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
