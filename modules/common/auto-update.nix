@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  script = pkgs.writeShellScript "nixos-upgrade" ''
+  script = ''
     set -e
     LOGFILE=/var/log/nixos-upgrade.log
     HOSTNAME=$(cat /etc/hostname)
@@ -46,7 +46,8 @@ in
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-      ExecStart = "${script}";
+      #ExecStart = "${script}";
     };
+    inherit script;
   };
 }
