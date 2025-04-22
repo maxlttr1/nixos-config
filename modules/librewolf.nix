@@ -22,6 +22,21 @@ in
     policies = {
       "AutofillAddressEnabled" =  false;
       "AutofillCreditCardEnabled" = false;
+      "Cookies" = {
+        "Allow": [
+          "http://github.com"
+          "https://github.com"
+          
+          "http://youtube.com"
+          "http://youtube.com"
+
+          "http://google.com"
+          "https://google.com"
+
+          "http://proton.me"
+          "https://proton.me"
+        ];
+      };
       "DNSOverHTTPS" = {
         "Enabled" =  true;
         "ProviderURL" = "https://dns.quad9.net/dns-query";
