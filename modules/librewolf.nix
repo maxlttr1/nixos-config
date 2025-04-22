@@ -23,7 +23,7 @@ in
       "AutofillAddressEnabled" =  false;
       "AutofillCreditCardEnabled" = false;
       "Cookies" = {
-        "Allow": [
+        "Allow" = [
           "http://github.com"
           "https://github.com"
           
