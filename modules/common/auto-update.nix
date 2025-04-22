@@ -10,7 +10,7 @@ let
 
     echo "[$(date)] Starting upgrade..." >> $LOGFILE
 
-    if ${pkgs.util-linux}/bin/flock -n $LOCKFILE \
+    if ${pkgs.util-linux}/bin/flock -n $LOCKFILE; then
       if ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake github:maxlttr1/nixos-config#$HOSTNAME >> $LOGFILE 2>&1; then
         echo "[$(date)] ✅ Upgrade succeeded." >> $LOGFILE
 
