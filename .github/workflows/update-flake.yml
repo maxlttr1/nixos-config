@@ -2,7 +2,7 @@ name: Update Nix Flake
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Run everyday at midnight
+    - cron: '0 0 * * 6' # Run every Sunday at midnight
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
       contents: write
 
     steps:
-    - name: Checkout repository #  Pulls the repo code into GitHub runner
+    - name: Checkout repository #  Pulls the repo code into GitHub runners
       uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref }}
@@ -27,17 +27,31 @@ jobs:
     - name: Update flake.lock
       run: nix flake update
 
-    - name: Try to build system config
+    - name: Tests before commiting
       id: build
       run: |
         set -e
+        nix flake check
         nix build .#nixosConfigurations."asus-maxlttr".config.system.build.toplevel
 
     - name: Commit flake.lock if build succeeds
       if: success()
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
+        branch: nix-flake-auto-update
+        create_branch: true
         commit_message: "flake: update flake.lock [CI auto-update]"
+    
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        title: "Update flake.lock"
+        body: "This pull request updates the flake.lock file."
+        base: master
+        head: nix-flake-auto-update
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # Optional: Set the PR to be automatically merged after approval
+        # merge-method: squash
 
     - name: Discord success notification
       if: success()
@@ -45,7 +59,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: '✅ Nix flake.lock updated and passed build'
+        args: '🎉 Nix flake.lock updated and passed build. Please test it locally and merge the PR : ```sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update```'
 
     - name: Discord failure notification
       if: failure()
