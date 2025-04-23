@@ -65,6 +65,10 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/file/4422523/sponsorblock-5.11.2.xpi";
           installation_mode = "force_installed";
         };
+        "addon@darkreader.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4439735/darkreader-4.9.103.xpi";
+          "installation_mode" = "force_installed";
+        };
       };
       "Homepage"= {
         "Locked" = false;
