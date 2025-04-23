@@ -23,4 +23,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'GitLeaks scan completed :white_check_mark:'
+          args: ':white_check_mark: GitLeaks scan completed'

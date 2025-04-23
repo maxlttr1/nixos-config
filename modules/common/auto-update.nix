@@ -20,7 +20,7 @@ let
 
       ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
         -H "Content-Type: application/json" \
-        -d "{\"content\": \"NixOS upgrade failed on $HOSTNAME ❌. Check the logs for details.\"}"
+        -d "{\"content\": \"❌ NixOS upgrade failed on $HOSTNAME. Check the logs for details.\"}"
     fi
   '';
 in

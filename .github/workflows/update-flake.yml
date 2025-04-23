@@ -37,5 +37,5 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'Flake Updated :white_check_mark:'
+        args: ':white_check_mark: Flake Updated'
 
