@@ -71,17 +71,28 @@ in
         "StartPage" = "previous-session";
       };
       "HttpsOnlyMode" = "enabled";
-      /*"ManagedBookmarks" = [
+      "ManagedBookmarks" = [
         {
-          "name" = "Social";
-          "children" = [
-            {
-              "url" = "youtube.com";
-              "name" = "Youtube";
-            }
-          ];
+          "name" = "Youtube";
+          "url" = "youtube.com";
         }
-      ];*/
+        {
+          "name" = "Proton";
+          "url" = "account.proton.me/apps";
+        }
+        {
+          "name" = "Madoc";
+          "url" = "madoc.univ-nantes.fr";
+        }
+        {
+          "name" = "Gestnote";
+          "url" = "scolarite.polytech.univ-nantes.fr";
+        }
+        {
+          "name" = "BourseDirect";
+          "url" = "www.boursedirect.fr/fr/login";
+        }
+      ];
       "OfferToSaveLoginsDefault" = false;
       "SearchEngines" = {
         "Default" = "DuckDuckGo";
