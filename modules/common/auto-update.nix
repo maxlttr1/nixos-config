@@ -14,7 +14,7 @@ let
 
       ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
         -H "Content-Type: application/json" \
-        -d "{\"content\": \"NixOS upgrade success on $HOSTNAME ✅\"}"
+        -d "{\"content\": \"✅ NixOS upgrade success on $HOSTNAME\"}"
     else
       echo "[$(date)] ❌ Upgrade FAILED!" >> $LOGFILE
 
