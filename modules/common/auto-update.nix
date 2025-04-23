@@ -9,7 +9,7 @@ let
 
     echo "[$(date)] Starting upgrade..." >> $LOGFILE
 
-    if ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake github:maxlttr1/nixos-config#$HOSTNAME >> $LOGFILE 2>&1; then
+    if ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake github:maxlttr1/nixos-config >> $LOGFILE 2>&1; then
       echo "[$(date)] ✅ Upgrade succeeded." >> $LOGFILE
 
       ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
