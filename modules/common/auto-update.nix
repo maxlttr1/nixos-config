@@ -46,8 +46,8 @@ in
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-      #ExecStart = "${script}";
+      ExecStart = "${script}";
     };
-    inherit script;
+    #inherit script;
   };
 }
