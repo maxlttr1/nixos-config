@@ -5,8 +5,8 @@ let
   {
     owner = "Arkachur";
     repo = "NixOS-grub-theme";
-    rev = "5309fdf51374af71a34a4caf9ee2f290a86c5a61";
-    sha256 = "sha256-LNT1SKxQDvdHzsOCMSA0aTBM5TY3/ReLLVCVS+9hgh8=";
+    rev = "2e927f528ce6ce731f08b70e72968d54bc170509";
+    sha256 = "sha256-SJhSNspKitDGGlvIeTvgvxZkrDZSX5r+Hp6yxLwemDs=";
   };
 in
 

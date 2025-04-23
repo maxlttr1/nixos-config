@@ -35,6 +35,7 @@
       jdk
       kdePackages.konsole
       libwebp
+      nix-prefetch-scripts
       nodejs
       python313Full
       papirus-icon-theme
