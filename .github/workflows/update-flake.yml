@@ -32,7 +32,11 @@ jobs:
       run: |
         set -e
         nix flake check
-        nix build .#nixosConfigurations."asus-maxlttr".config.system.build.toplevel
+        echo("flake check passed...")
+        nix build .#nixosConfigurations.asus-maxlttr.config.system.build.toplevel
+        echo("nix build passed...")
+        nix build .#nixosConfigurations.asus-maxlttr.config.system.build.vm
+        echo("nix build vm passed...")
 
     - name: Commit flake.lock if build succeeds
       if: success()
