@@ -67,7 +67,21 @@ in
         };
         "addon@darkreader.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/file/4439735/darkreader-4.9.103.xpi";
-          "installation_mode" = "force_installed";
+          installation_mode = "force_installed";
+        };
+        # Gestures
+        "{506e023c-7f2b-40a3-8066-bc5deb40aebe}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4330901/gesturefy-3.2.13.xpi";
+          installation_mode = "force_installed";
+        };
+        "addons-search-detection@mozilla.com" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4432391/save_chatgpt_as_pdf-1.25.xpi";
+          installation_mode = "force_installed";
+        };
+        # Image searcher
+        "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4473439/search_by_image-8.2.0.xpi";
+          installation_mode = "force_installed";
         };
       };
       "Homepage"= {
