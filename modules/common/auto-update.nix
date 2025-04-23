@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 let
-  script = ''
+  # Treated as a Nix derivation and that it's re-evaluated when the NixOS configuration is rebuilt
+  script = pkgs.writeShellScript "nixos-upgrade" ''
     set -e
     LOGFILE=/var/log/nixos-upgrade.log
     HOSTNAME=$(cat /etc/hostname)
