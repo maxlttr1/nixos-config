@@ -71,4 +71,4 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: '❌ Nix flake update failed to build!'
+        args: '❌ Nix flake update failed to build (will retry next week)'
