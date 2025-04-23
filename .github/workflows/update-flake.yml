@@ -2,8 +2,8 @@ name: Update Nix Flake
 
 on:
   schedule:
-    - cron: '0 0 * * 6'  # Run every Sunday at midnight
-  workflow_dispatch:  # Allow manual trigger from GitHub UI
+    - cron: '0 0 * * *' # Run everyday at midnight
+  workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
   update-flake:
@@ -25,17 +25,32 @@ jobs:
       uses: cachix/install-nix-action@v31
 
     - name: Update flake.lock
+      run: nix flake update
+
+    - name: Try to build system config
+      id: build
       run: |
-        nix flake update
+        set -e
+        nix build .#nixosConfigurations."asus-maxlttr".config.system.build.toplevel
 
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Commit flake.lock if build succeeds
+      if: success()
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: Bump flake.lock
+        commit_message: "flake: update flake.lock [CI auto-update]"
 
-    - name: Discord notification
+    - name: Discord success notification
+      if: success()
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: ':white_check_mark: Flake Updated'
+        args: '✅ Nix flake.lock updated and passed build'
 
+    - name: Discord failure notification
+      if: failure()
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      uses: Ilshidur/action-discord@master
+      with:
+        args: '❌ Nix flake update failed to build!'
