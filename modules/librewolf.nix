@@ -35,6 +35,9 @@ in
 
           "http://proton.me"
           "https://proton.me"
+
+          "http://univ-nantes.fr"
+          "https://univ-nantes.fr"
         ];
       };
       "DNSOverHTTPS" = {
