@@ -94,7 +94,7 @@ in
       iconTheme = "Papirus-Dark";
       windowDecorations = {
         library = "org.kde.kwin.aurorae";
-        theme = "__aurorae__svg__MacSequoia-Dark";
+        theme = "__aurorae__svg__WhiteSur-dark";
       };
       #inherit wallpaper;
       inherit wallpaperSlideShow;

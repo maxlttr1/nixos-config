@@ -44,6 +44,7 @@
       sops
       universal-android-debloater
       veracrypt
+      whitesur-kde
       wireshark
       kdePackages.yakuake
     ])
