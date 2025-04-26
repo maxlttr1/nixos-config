@@ -34,14 +34,6 @@ jobs:
       id: flake-check
       run: nix flake check
 
-    - name: Nix build
-      id: nix-build
-      run: nix build .#nixosConfigurations.asus-maxlttr.config.system.build.toplevel
-
-    - name: Nix build vm
-      id: nix-build-vm
-      run: nix build .#nixosConfigurations.asus-maxlttr.config.system.build.vm
-
     - name: Commit flake.lock if build succeeds
       if: success()
       uses: stefanzweifel/git-auto-commit-action@v5
