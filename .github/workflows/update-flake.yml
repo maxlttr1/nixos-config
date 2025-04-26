@@ -9,7 +9,6 @@ jobs:
   update-flake:
     runs-on: ubuntu-latest
 
-
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
@@ -31,14 +30,6 @@ jobs:
     - name: Nix flake check
       id: flake-check
       run: nix flake check
-
-    #- name: Commit flake.lock if build succeeds
-    #  if: success()
-    #  uses: stefanzweifel/git-auto-commit-action@v5
-    #  with:
-    #    branch: nix-flake-auto-update
-    #    create_branch: true
-    #    commit_message: "flake: update flake.lock [CI auto-update]"
 
     - name: Create and Commit to a New Branch
       run: |
@@ -71,7 +62,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: "🎉 Please test locally and merge the PR : `sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update`"
+        args: "Nix flake.lock updated and passed build. Please test it locally and merge the PR : \`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update\`"
 
     - name: Discord failure notification
       if: failure()
