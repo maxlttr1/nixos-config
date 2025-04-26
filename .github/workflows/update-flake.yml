@@ -41,14 +41,6 @@ jobs:
     
     - name: Create pull request
       uses: peter-evans/create-pull-request@v7
-      with:
-        title: "Update flake.lock"
-        body: "This pull request updates the flake.lock file."
-        commit-message: "flake: update flake.lock [CI auto-update]"
-        #branch: nix-flake-auto-update
-        token: ${{ secrets.GITHUB_TOKEN }}
-        # Optional: Set the PR to be automatically merged after approval
-        # merge-method: squash
 
     - name: Discord success notification
       if: success()
