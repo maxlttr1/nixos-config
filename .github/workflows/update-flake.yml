@@ -27,6 +27,9 @@ jobs:
     - name: Update flake.lock
       run: nix flake update
 
+    - name: Git add
+      run: git add .
+
     - name: Nix flake check
       id: flake-check
       run: nix flake check
