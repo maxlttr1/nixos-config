@@ -27,16 +27,17 @@ jobs:
     - name: Update flake.lock
       run: nix flake update
 
-    - name: Tests before commiting
-      id: build
-      run: |
-        set -e
-        nix flake check
-        echo("flake check passed...")
-        nix build .#nixosConfigurations.asus-maxlttr.config.system.build.toplevel
-        echo("nix build passed...")
-        nix build .#nixosConfigurations.asus-maxlttr.config.system.build.vm
-        echo("nix build vm passed...")
+    - name: Nix flake check
+      id: flake-check
+      run: nix flake check
+
+    - name: Nix build
+      id: nix-build
+      run: nix build .#nixosConfigurations.asus-maxlttr.config.system.build.toplevel
+
+    - name: Nix build vm
+      id: nix-build-vm
+      run: nix build .#nixosConfigurations.asus-maxlttr.config.system.build.vm
 
     - name: Commit flake.lock if build succeeds
       if: success()
