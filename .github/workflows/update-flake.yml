@@ -58,11 +58,10 @@ jobs:
 
     - name: Discord success notification
       if: success()
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@master
+      uses: tsickert/discord-webhook@v7.0.0
       with:
-        args: "Nix flake.lock updated and passed build. Please test it locally and merge the PR : sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update"
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+        content: "🎉 Nix flake.lock updated and passed build. Please test it locally and merge the PR : sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update"
 
     - name: Discord failure notification
       if: failure()
