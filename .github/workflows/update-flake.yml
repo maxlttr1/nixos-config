@@ -58,14 +58,14 @@ jobs:
 
     - name: Discord success notification
       if: success()
-      uses: tsickert/discord-webhook@v7.0.0
-      with:
-        webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-        content: "🎉 Nix flake.lock updated and passed build. Please test it locally and merge the PR : ```sudo nixos-rebuild switch --flake github:maxlttr1/nixos-config?ref=flake-auto-update```"
+      run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"🎉 Nix flake.lock updated and passed build. Please test it locally and merge the PR : \`\`\`sudo nixos-rebuild switch --flake github:maxlttr1/nixos-config?ref=flake-auto-update\`\`\`\"}"
 
     - name: Discord failure notification
       if: failure()
-      uses: tsickert/discord-webhook@v7.0.0
-      with:
-        webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-        content: "❌ Nix flake update failed to build (will retry next week)"
+      run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"❌ Nix flake update failed to build (will retry next week)\"}"
