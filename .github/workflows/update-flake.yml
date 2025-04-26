@@ -16,13 +16,7 @@ jobs:
       pull-requests: write
 
     steps:
-    - name: Git clone and checkout
-      run: |
-        set -e
-        git clone https://github.com/maxlttr1/nixos-config.git
-        cd nixos-config/
-        git checkout master
-        git pull origin master
+    - uses: actions/checkout@v4
 
     - name: Set up Nix # Installs Nix on the GitHub runner
       uses: cachix/install-nix-action@v31

@@ -10,13 +10,7 @@ jobs:
     name: gitleaks
     runs-on: ubuntu-latest
     steps:
-      - name: Git clone and checkout
-        run: |
-          set -e
-          git clone https://github.com/maxlttr1/nixos-config.git
-          cd nixos-config/
-          git checkout master
-          git pull origin master
+      - uses: actions/checkout@v4
 
       - uses: gitleaks/gitleaks-action@v2
         env:
