@@ -13,7 +13,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+      - name: Git clone and checkout
+        run: |
+          set -e
+          git clone https://github.com/maxlttr1/nixos-config.git
+          cd nixos-config/
+          git checkout master
+          git pull origin master
+
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
