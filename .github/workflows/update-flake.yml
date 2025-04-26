@@ -62,7 +62,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: "Nix flake.lock updated and passed build. Please test it locally and merge the PR : \`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update\`"
+        args: "Nix flake.lock updated and passed build. Please test it locally and merge the PR : sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=nix-flake-auto-update"
 
     - name: Discord failure notification
       if: failure()
