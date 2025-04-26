@@ -19,8 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
+        uses: tsickert/discord-webhook@v7.0.0
         with:
-          args: ':white_check_mark: GitLeaks scan completed'
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: ':white_check_mark: GitLeaks scan completed'
