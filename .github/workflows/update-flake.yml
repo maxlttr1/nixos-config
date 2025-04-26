@@ -41,6 +41,7 @@ jobs:
     #    commit_message: "flake: update flake.lock [CI auto-update]"
     
     - name: Create pull request
+      if: success()
       run: |
         curl -L \
           -X POST \
@@ -51,7 +52,7 @@ jobs:
           -d '{
             "title": "Update to flake.lock",
             "body": "Please test it locally and merge the PR",
-            "head": "flake-auto-update",  # maxlttr1:flake-auto-update
+            "head": "flake-auto-update",
             "base": "master"
           }'
 
