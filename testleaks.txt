@@ -1,4 +1,0 @@
-echo "API_KEY=1234567890abcdefg" > sensitive_file.txt
-echo "SECRET_KEY=ThisIsASecret123" >> sensitive_file.txt
-git add sensitive_file.txt
-git commit -m "Added a file with secrets"
