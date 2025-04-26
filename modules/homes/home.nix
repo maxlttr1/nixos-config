@@ -150,8 +150,9 @@ in
         "1"
         "2"
         "3"
+        "4"
       ];
-      number = 3;
+      number = 4;
     };
     panels = [
       # Windows-like panel at the bottom
