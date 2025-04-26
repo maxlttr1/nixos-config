@@ -39,6 +39,13 @@ jobs:
     #    branch: nix-flake-auto-update
     #    create_branch: true
     #    commit_message: "flake: update flake.lock [CI auto-update]"
+
+    - name: Create and Commit to a New Branch
+      run: |
+        git checkout -b flake-auto-update
+        git add flake.lock
+        git commit -m "Update flake.lock"
+        git push origin flake-auto-update
     
     - name: Create pull request
       if: success()
