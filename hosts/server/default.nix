@@ -12,6 +12,7 @@
     ../../modules/samba.nix
     ../../modules/sops.nix
     ../../modules/ssh.nix
+    ../../modules/swap.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
   ];

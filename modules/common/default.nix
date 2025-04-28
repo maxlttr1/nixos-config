@@ -11,7 +11,6 @@
     ./optimise.nix
     ./pkgs-base.nix
     ./state-version.nix
-    ./swap.nix
     ./timezone-locales.nix  
     ./users.nix
   ];
