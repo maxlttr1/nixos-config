@@ -1,5 +1,6 @@
 {
   system.autoUpgrade = {
+    # Check for generations: sudo nix-env -p /nix/var/nix/profiles/system --list-generations
     enable = true;
     flake = "github:maxlttr1/nixos-config";
     flags = [
