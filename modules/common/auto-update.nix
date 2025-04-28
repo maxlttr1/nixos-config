@@ -1,57 +1,20 @@
-{ pkgs, ... }:
-
-let
-  # Treated as a Nix derivation and that it's re-evaluated when the NixOS configuration is rebuilt
-  script = pkgs.writeShellScript "nixos-upgrade" ''
-    set -e
-    LOGFILE=/var/log/nixos-upgrade.log
-    HOSTNAME=$(cat /etc/hostname)
-    DISCORD_WEBHOOK_URL=$(cat /etc/discord-webhook.conf)
-
-    echo "[$(date)] Starting upgrade..." >> $LOGFILE
-
-    if ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake github:maxlttr1/nixos-config >> $LOGFILE 2>&1; then
-      echo "[$(date)] ✅ Upgrade succeeded." >> $LOGFILE
-
-      ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
-        -H "Content-Type: application/json" \
-        -d "{\"content\": \"✅ NixOS upgrade success on $HOSTNAME\"}"
-    else
-      echo "[$(date)] ❌ Upgrade FAILED!" >> $LOGFILE
-
-      ${pkgs.curl}/bin/curl -X POST $DISCORD_WEBHOOK_URL \
-        -H "Content-Type: application/json" \
-        -d "{\"content\": \"❌ NixOS upgrade failed on $HOSTNAME. Check the logs for details.\"}"
-    fi
-  '';
-in
-
 {
-  systemd.timers."nixos-upgrade" = {
-    wantedBy = [ "timers.target" ]; # Ensures the timer starts on boot
-    timerConfig = {
-      OnCalendar = "*:0/5";
-      Persistent = true; # If the system was off during the scheduled time, run it as soon as possible after boot
-      #AccuracySec = "5min";
-      #RandomizedDelaySec = "5min"; # Add a delay after boot
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs-main"
+      "-L" # Show logs
+    ];
+    dates = "Sun 02:00";  # Every Monday at 2 AM
+    randomizedDelaySec = "30min";
+    persistent = true;
+    operation = "switch"; # Or "boot"
+    allowReboot = true;
+    rebootWindow = {
+      lower = "01:00";
+      upper = "05:00";
     };
-  };
-
-  systemd.services."nixos-upgrade" = {
-    #wantedBy = [ "multi-user.target" ]; # Start this service automatically when the system is ready for users
-    after = [ "network-online.target" "nss-lookup.target" ];
-    requires = [ "network-online.target" "nss-lookup.target" ];
-    conflicts = [ "nixos-upgrade.service" ]; # Prevent overlap
-    /*path = with pkgs; [ 
-      curl 
-      nixos-rebuild 
-      coreutils 
-    ];*/
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
-      ExecStart = "${script}";
-    };
-    #inherit script;
   };
 }
