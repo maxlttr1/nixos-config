@@ -1,10 +1,10 @@
 {
   system.autoUpgrade = {
     enable = true;
-    flake = inputs.self.outPath;
+    flake = "github:maxlttr1/nixos-config";
     flags = [
-      "--update-input"
-      "nixpkgs-main"
+      #"--update-input"
+      #"nixpkgs-main"
       "-L" # Show logs
     ];
     dates = "Sun 02:00";  # Every Monday at 2 AM
