@@ -1,7 +1,7 @@
 {
   imports = [
     ./allow-unfree.nix
-    #./auto-update.nix
+    ./auto-update.nix
     ./bootloader.nix
     ./experimental-features.nix
     ./firewall.nix

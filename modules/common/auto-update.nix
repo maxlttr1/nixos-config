@@ -30,10 +30,10 @@ in
   systemd.timers."nixos-upgrade" = {
     wantedBy = [ "timers.target" ]; # Ensures the timer starts on boot
     timerConfig = {
-      OnCalendar = "weekly";
+      OnCalendar = "*:0/5";
       Persistent = true; # If the system was off during the scheduled time, run it as soon as possible after boot
-      AccuracySec = "5min";
-      RandomizedDelaySec = "5min"; # Add a delay after boot
+      #AccuracySec = "5min";
+      #RandomizedDelaySec = "5min"; # Add a delay after boot
     };
   };
 
