@@ -16,8 +16,8 @@ This repo powers all my machines with a single, declarative, reproducible config
 - 🔐 **SOPS**: Secrets management.
 - 🕸️ **Tailscale**: Zero-config VPN and remote access.
 - 🎮 **Gaming Support**: Steam, Proton, and Samba for file sharing.
-- 🔄 **System Auto-Upgrade**: systemd service keeps systems up-to-date.
-- 🤖 **GitHub Actions**: CI updates flake inputs automatically.
+- 🔄 **System Auto-Upgrade**: Keeps systems up-to-date.
+- 🤖 **GitHub Actions**: CI updates flake inputs automatically and makes a PR (to test the changes before merging).
 
 ---
 
