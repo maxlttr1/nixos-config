@@ -1,6 +1,6 @@
 {
     services.fail2ban = {
-        enable = false;
+        enable = true;
         maxretry = 20;
         bantime = "10m";
         bantime-increment = {

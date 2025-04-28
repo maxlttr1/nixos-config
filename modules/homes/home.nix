@@ -94,7 +94,7 @@ in
       iconTheme = "Papirus-Dark";
       windowDecorations = {
         library = "org.kde.kwin.aurorae";
-        theme = "__aurorae__svg__MacSequoia-Dark";
+        theme = "__aurorae__svg__WhiteSur-dark";
       };
       #inherit wallpaper;
       inherit wallpaperSlideShow;
@@ -150,8 +150,9 @@ in
         "1"
         "2"
         "3"
+        "4"
       ];
-      number = 3;
+      number = 4;
     };
     panels = [
       # Windows-like panel at the bottom

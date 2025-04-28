@@ -3,7 +3,8 @@
 {
   # Flatpaks
   services.flatpak.packages = [
-    #"co.logonoff.awakeonlan"
+    "io.bassi.Amberol"
+    "co.logonoff.awakeonlan"
     "com.google.Chrome"
     "io.github.lainsce.Colorway"
     "com.github.tchx84.Flatseal"
@@ -44,6 +45,7 @@
       sops
       universal-android-debloater
       veracrypt
+      whitesur-kde
       wireshark
       kdePackages.yakuake
     ])
