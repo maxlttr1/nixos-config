@@ -32,6 +32,8 @@ in
     timerConfig = {
       OnCalendar = "weekly";
       Persistent = true; # If the system was off during the scheduled time, run it as soon as possible after boot
+      AccuracySec = "5min";
+      RandomizedDelaySec = "5min"; # Add a delay after boot
     };
   };
 
@@ -39,6 +41,7 @@ in
     #wantedBy = [ "multi-user.target" ]; # Start this service automatically when the system is ready for users
     after = [ "network-online.target" "nss-lookup.target" ];
     requires = [ "network-online.target" "nss-lookup.target" ];
+    conflicts = [ "nixos-upgrade.service" ]; # Prevent overlap
     /*path = with pkgs; [ 
       curl 
       nixos-rebuild 
