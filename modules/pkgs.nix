@@ -3,7 +3,6 @@
 {
   # Flatpaks
   services.flatpak.packages = [
-    "io.bassi.Amberol"
     "co.logonoff.awakeonlan"
     "com.google.Chrome"
     "io.github.lainsce.Colorway"
