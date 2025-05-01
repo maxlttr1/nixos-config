@@ -2,13 +2,13 @@
   description = "KakouKakou";
 
   inputs = {
-    nixpkgs-overlay.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-main.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-main.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-overlay.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-main";
     }; 
 
@@ -45,7 +45,7 @@
               username = "maxlttr";
               hostname = "asus-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
               swap = 8; # Size in Gigabytes
             };
             # Overlay for nixpkgs
@@ -82,7 +82,7 @@
               username = "maxlttr";
               hostname = "desktop-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
               swap = 8; # Size in Gigabytes
             };
             # Overlay for nixpkgs
@@ -119,7 +119,7 @@
               username = "maxlttr";
               hostname = "server-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
               swap = 16; # Size in Gigabytes
             };
             # Overlay for nixpkgs
@@ -147,7 +147,7 @@
               username = "maxlttr";
               hostname = "vm-maxlttr";
               system = "x86_64-linux";
-              kernel = "linuxPackages_latest";
+              kernel = "linuxPackages";
               swap = 0; # Size in Gigabytes
             };
             # Overlay for nixpkgs
