@@ -4,7 +4,7 @@ let
   wallpaper = ../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
     path = ../../wallpapers;
-    interval = 300;
+    interval = 3600;
   };
   font = {
     #family = "JetBrains Mono";
@@ -159,6 +159,7 @@ in
         floating = true;
         opacity = "adaptive";
         hiding = "none";
+        height = 42;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
