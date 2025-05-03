@@ -58,11 +58,11 @@ jobs:
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"🎉 Nix flake.lock updated and passed build. Please test it locally and merge the PR : \`\`\`sudo nixos-rebuild switch --flake github:maxlttr1/nixos-config?ref=flake-auto-update\`\`\`\"}"
+          -d "{\"content\": \"🎉 Nix flake.lock updated and passed check\"}"
 
     - name: Discord failure notification
       if: failure()
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"❌ Nix flake update failed to build (will retry next week)\"}"
+          -d "{\"content\": \"❌ Nix flake update failed (will retry next week)\"}"
