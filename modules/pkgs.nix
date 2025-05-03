@@ -6,6 +6,7 @@
     "co.logonoff.awakeonlan"
     "com.usebottles.bottles"
     "com.google.Chrome"
+    "com.gitlab.davem.ClamTk"
     "io.github.lainsce.Colorway"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
