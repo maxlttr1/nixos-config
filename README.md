@@ -9,7 +9,7 @@ This repo powers all my machines with a single, declarative, reproducible config
 - ⚙️ **Nix Flakes**: Fully flake-based configuration.
 - 💾 **Disko**: Declarative disk partitioning and formatting.
 - 🌐 **nixos-anywhere**: Easy Remote deployment.
-- 🧠 **Plasma Manager**: Declarative KDE Plasma setup via [dealcartive/plasma-manager](https://github.com/dealcartive/plasma-manager).
+- 🧠 **Plasma Manager**: Declarative KDE Plasma setup via plasma-manager
 - 🐳 **Docker**: Containers declared and managed through Nix.
 - 💻 **Dev Environment**: Languages, tools, and editor setup.
 - 🔁 **Syncthing**: Seamless file sync between machines.
