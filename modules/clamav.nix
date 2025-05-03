@@ -1,9 +1,9 @@
 {
   services.clamav.daemon = {
     enable = true;
-    settings = {
+    settings = [
       "MaxThreads 2"
-    };
+    ];
   };
   services.clamav.updater.enable = true;
   services.clamav.scanner = {
