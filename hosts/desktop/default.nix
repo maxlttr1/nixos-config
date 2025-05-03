@@ -17,7 +17,6 @@
     ../../modules/nvidia.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
-    ../../modules/samba.nix
     ../../modules/sops.nix
     ../../modules/ssh.nix
     ../../modules/swap.nix
