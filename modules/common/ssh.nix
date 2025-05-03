@@ -22,7 +22,6 @@
     '';
   };
 
-
   #security.pam.services.sshd.googleAuthenticator.enable = true;
 
   users.users = {

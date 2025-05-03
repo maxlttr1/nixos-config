@@ -3,7 +3,7 @@
 {   
     # See /run/secrets for the decrypted files
 
-    sops.defaultSopsFile = ../secrets/secrets.yaml;
+    sops.defaultSopsFile = ../../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
     sops.age.keyFile = "/etc/sops/age/keys.txt";
 

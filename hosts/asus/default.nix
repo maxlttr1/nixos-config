@@ -1,15 +1,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/apparmor.nix
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
-    ../../modules/clamav.nix
     ../../modules/common
     ../../modules/cups.nix
-    ../../modules/docker/docker.nix
-    ../../modules/fail2ban.nix
-    ../../modules/fish.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
@@ -17,11 +12,7 @@
     ../../modules/librewolf.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
-    ../../modules/sops.nix
-    ../../modules/ssh.nix
     ../../modules/swap.nix
-    ../../modules/syncthing.nix
-    ../../modules/tailscale.nix
     ../../modules/touchpad.nix
     ../../modules/vms.nix
   ];

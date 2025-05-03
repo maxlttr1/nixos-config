@@ -1,6 +1,5 @@
 {
   imports = [
-    ./docker.nix
     ./deluge/deluge.nix
     ./it-tools/it-tools.nix
     ./jellyfin/jellyfin.nix

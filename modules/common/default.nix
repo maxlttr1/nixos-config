@@ -1,16 +1,25 @@
 {
   imports = [
     ./allow-unfree.nix
+    ./apparmor.nix
     ./auto-upgrade.nix
     ./bootloader.nix
+    ./clamav.nix
+    ../docker/docker.nix
     ./experimental-features.nix
+    ./fail2ban.nix
     ./firewall.nix
-    ./hostname.nix  
-    ./kernel.nix  
-    ./network-manager.nix 
+    ./fish.nix
+    ./hostname.nix
+    ./kernel.nix
+    ./network-manager.nix
     ./optimise.nix
     ./pkgs-base.nix
+    ./sops.nix
+    ./ssh.nix
     ./state-version.nix
+    ./syncthing.nix
+    ./tailscale.nix
     ./timezone-locales.nix  
     ./users.nix
   ];
