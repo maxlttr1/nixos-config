@@ -12,7 +12,7 @@
   };
   services.clamav.scanner = {
     enable = true;
-    interval = "Sun *-*-* 18:00:00"; # every Sunday at 18:00
+    interval = "Sun *-*-* 14:00:00"; # every Sunday at 18:00
     scanDirectories = [
       "/home"
       "/tmp"
