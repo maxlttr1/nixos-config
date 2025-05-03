@@ -4,7 +4,7 @@ let
   wallpaper = ../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
     path = ../../wallpapers;
-    interval = 3600;
+    interval = 86400;
   };
   font = {
     #family = "JetBrains Mono";
