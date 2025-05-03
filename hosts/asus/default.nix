@@ -16,7 +16,6 @@
     ../../modules/ld.nix
     ../../modules/librewolf.nix
     ../../modules/pipewire.nix
-    ../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
     ../../modules/samba.nix
     ../../modules/sops.nix
