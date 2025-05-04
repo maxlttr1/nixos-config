@@ -25,7 +25,7 @@ in
 
   programs.vscode = {
     enable = true;
-    #package = pkgs.vscodium;
+    package = pkgs.vscodium;
     extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
@@ -34,9 +34,6 @@ in
       bbenoist.nix
       jnoortheen.nix-ide
       # C/C++
-      ms-vscode.cpptools
-      franneck94.vscode-c-cpp-config
-      franneck94.c-cpp-runner
       llvm-vs-code-extensions.vscode-clangd
       # Javascript
       christian-kohler.npm-intellisense
@@ -64,6 +61,7 @@ in
       vivaxy.vscode-conventional-commits
       eamodio.gitlens
       # Utilities
+      ms-vsliveshare.vsliveshare
       pflannery.vscode-versionlens # Show latest versions
       formulahendry.auto-rename-tag
       tomoki1207.pdf
