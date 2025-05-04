@@ -25,16 +25,18 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    #package = pkgs.vscodium;
     extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
-      ms-python.black-formatter
       # Nix
       bbenoist.nix
       jnoortheen.nix-ide
       # C/C++
-      llvm-vs-code-extensions.vscode-clangd
+      ms-vscode.cpptools
+      franneck94.c-cpp-runner
+      franneck94.vscode-c-cpp-config
+      vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
       # Javascript
       christian-kohler.npm-intellisense
       robole.javascript-snippets
@@ -75,6 +77,7 @@ in
     ];
     userSettings = {
       "database-client.autoSync" = true;
+      "dtatabase-client.telemetry.usesOnlineServices" = false;
       "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
@@ -87,6 +90,7 @@ in
       "gitlens.telemetry.enabled" = false;
       "redhat.telemetry.enabled" = false;
       "telemetry.enableTelemetry" = false;
+      "telemetry.telemetryLevel" = "off";
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
