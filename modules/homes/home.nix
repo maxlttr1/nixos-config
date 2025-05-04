@@ -25,7 +25,7 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    #package = pkgs.vscodium;
     extensions = with pkgs.vscode-marketplace; [
       # Python
       ms-python.python
@@ -34,7 +34,8 @@ in
       bbenoist.nix
       jnoortheen.nix-ide
       # C/C++
-      #franneck94.vscode-c-cpp-config
+      ms-vscode.cpptools
+      franneck94.vscode-c-cpp-config
       franneck94.c-cpp-runner
       llvm-vs-code-extensions.vscode-clangd
       # Javascript
@@ -85,7 +86,9 @@ in
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.smartCommitChanges" = "all";
+      "gitlens.telemetry.enabled" = false;
       "redhat.telemetry.enabled" = false;
+      "telemetry.enableTelemetry" = false;
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
