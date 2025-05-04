@@ -33,31 +33,45 @@ in
       # Nix
       bbenoist.nix
       jnoortheen.nix-ide
+      # C/C++
+      franneck94.vscode-c-cpp-config
+      franneck94.c-cpp-runner
+      llvm-vs-code-extensions.vscode-clangd
+      # Javascript
+      christian-kohler.npm-intellisense
+      # Java
+      vscjava.vscode-java-debug
+      vscjava.vscode-java-dependency
+      redhat.java
+      vscjava.vscode-java-test
+      # HTML/CSS and Web
+      ecmel.vscode-html-css
+      ms-vscode.live-server
+      naumovs.color-highlight # Preview colors
       # Language pack
-      franneck94.vscode-c-cpp-dev-extension-pack # C/C++ pack
-      gydunhn.javascript-essentials # Javascript pack
-      edwinkofler.vscode-hyperupcall-pack-java # Java pack
-      ecmel.vscode-html-css # HTML CSS
       james-yu.latex-workshop
       yzhang.markdown-all-in-one
-      # Utilities
-      formulahendry.auto-rename-tag
-      esbenp.prettier-vscode
+      # Docker
       ms-azuretools.vscode-docker
+      # Yaml
       redhat.vscode-yaml
+      # SQL
+      cweijan.vscode-mysql-client2
+      # Git
+      vivaxy.vscode-conventional-commits
+      eamodio.gitlens
+      # Utilities
+      christian-kohler.path-intellisense # autocompletes filenames 
+      pflannery.vscode-versionlens # Show latest versions
+      formulahendry.auto-rename-tag
       tomoki1207.pdf
       pkief.material-icon-theme
-      cweijan.vscode-mysql-client2
       formulahendry.code-runner
-      ms-vscode.live-server
       usernamehw.errorlens
       oderwat.indent-rainbow
       hediet.vscode-drawio
-      naumovs.color-highlight
       pomdtr.excalidraw-editor
-      vivaxy.vscode-conventional-commits
       zhuangtongfa.material-theme
-      eamodio.gitlens
     ];
     userSettings = {
       "database-client.autoSync" = true;
