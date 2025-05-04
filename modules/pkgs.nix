@@ -36,6 +36,7 @@
       gnumake
       jdk
       kdePackages.konsole
+      libclang
       libwebp
       nixpkgs-fmt
       nix-prefetch-scripts
