@@ -66,7 +66,7 @@
     update = {
       auto = {
         enable = true;
-        onCalendar = "daily";
+        onCalendar = "weekly";
       };
     };
   };
