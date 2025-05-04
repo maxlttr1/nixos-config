@@ -40,6 +40,7 @@ in
       # Javascript
       christian-kohler.npm-intellisense
       robole.javascript-snippets
+      christian-kohler.path-intellisense # autocompletes filenames 
       # Java
       vscjava.vscode-java-debug
       vscjava.vscode-java-dependency
@@ -62,7 +63,6 @@ in
       vivaxy.vscode-conventional-commits
       eamodio.gitlens
       # Utilities
-      christian-kohler.path-intellisense # autocompletes filenames 
       pflannery.vscode-versionlens # Show latest versions
       formulahendry.auto-rename-tag
       tomoki1207.pdf
@@ -90,6 +90,8 @@ in
       "workbench.colorTheme" = "One Dark Pro Night Flat";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
+      "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+      "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
     };
   };
 
