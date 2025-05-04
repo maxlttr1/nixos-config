@@ -39,6 +39,7 @@ in
       llvm-vs-code-extensions.vscode-clangd
       # Javascript
       christian-kohler.npm-intellisense
+      robole.javascript-snippets
       # Java
       vscjava.vscode-java-debug
       vscjava.vscode-java-dependency
