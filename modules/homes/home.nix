@@ -34,7 +34,7 @@ in
       bbenoist.nix
       jnoortheen.nix-ide
       # C/C++
-      franneck94.vscode-c-cpp-config
+      #franneck94.vscode-c-cpp-config
       franneck94.c-cpp-runner
       llvm-vs-code-extensions.vscode-clangd
       # Javascript
