@@ -37,7 +37,7 @@
       jdk
       kdePackages.konsole
       libwebp
-      nixpkgs-fmt
+      nixfmt-classic
       nix-prefetch-scripts
       nodejs
       python313Full
