@@ -21,3 +21,5 @@ jobs:
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
           -d "{\"content\": \":white_check_mark: GitLeaks scan completed\"}"
+
+          curl -d ":white_check_mark: GitLeaks scan completed" ntfy.sh/${{ secrets.NTFY_URL }}
