@@ -62,6 +62,7 @@ in
       # Git
       vivaxy.vscode-conventional-commits
       eamodio.gitlens
+      github.vscode-github-actions
       # Utilities
       ms-vsliveshare.vsliveshare
       pflannery.vscode-versionlens # Show latest versions
