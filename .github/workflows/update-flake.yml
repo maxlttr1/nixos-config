@@ -53,7 +53,7 @@ jobs:
     #        "base": "master"
     #      }'
 
-    - name: Discord success notification
+    - name: Success notifications
       if: success()
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
@@ -62,7 +62,7 @@ jobs:
 
           curl -d "🎉 Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
 
-    - name: Discord failure notification
+    - name: Failure notifications
       if: failure()
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
