@@ -64,6 +64,7 @@ in
       eamodio.gitlens
       github.vscode-github-actions
       # Utilities
+      kisstkondoros.vscode-gutter-preview # Image preview
       ms-vsliveshare.vsliveshare
       pflannery.vscode-versionlens # Show latest versions
       formulahendry.auto-rename-tag
@@ -83,6 +84,7 @@ in
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
       "explorer.confirmDelete" = false;
+      "extensions.ignoreRecommendations" = true;
       "files.autoSave" = "off";
       "git.autofetch" = "all";
       "git.confirmSync" = false;
