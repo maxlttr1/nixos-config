@@ -85,7 +85,8 @@ in
       "editor.cursorSmoothCaretAnimation" = "on";
       "explorer.confirmDelete" = false;
       "extensions.ignoreRecommendations" = true;
-      "files.autoSave" = "off";
+      "files.autoSave" = "afterDelay";
+      "files.autoSaveDelay" = 1000;
       "git.autofetch" = "all";
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
@@ -93,6 +94,7 @@ in
       "gitlens.telemetry.enabled" = false;
       "redhat.telemetry.enabled" = false;
       "telemetry.enableTelemetry" = false;
+      "telemetry.feedback.enabled" = false;
       "telemetry.telemetryLevel" = "off";
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "One Dark Pro Night Flat";
