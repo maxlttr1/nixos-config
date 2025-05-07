@@ -13,6 +13,7 @@
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
     "io.github.mhogomchungu.media-downloader"
+    "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "org.onionshare.OnionShare"
     "io.github.nate_xyz.Paleta"
