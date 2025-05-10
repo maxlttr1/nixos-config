@@ -38,6 +38,9 @@ in
 
           "http://univ-nantes.fr"
           "https://univ-nantes.fr"
+
+          "http://www.boursedirect.fr"
+          "https://www.boursedirect.fr"
         ];
       };
       "DNSOverHTTPS" = {
@@ -109,6 +112,10 @@ in
         {
           "name" = "BourseDirect";
           "url" = "www.boursedirect.fr/fr/login";
+        }
+        {
+          "name" = "Suaps";
+          "url" = "u-sport.univ-nantes.fr/accueil"
         }
       ];
       "OfferToSaveLoginsDefault" = false;
