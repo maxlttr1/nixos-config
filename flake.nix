@@ -54,6 +54,23 @@
           config.allowUnfree = true;
         };
       };
+      home-manager-config = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users."${settings-default.username}" = import ./modules/homes/home.nix;
+        home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+        home-manager.backupFileExtension= "backup";
+      };
+      commonModules = [
+        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default inputs.fancontrol-gui.overlays.default ]; })
+        inputs.disko.nixosModules.disko
+        inputs.sops-nix.nixosModules.sops
+      ];
+      desktopModules = [
+        home-manager-config
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.home-manager.nixosModules.home-manager
+      ] ++ commonModules;
     in
       {
         nixosConfigurations = {
@@ -66,22 +83,7 @@
               nixpkgs-main.lib.nixosSystem {
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
-                modules = [
-                  ./hosts/asus
-                  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default ]; })
-                  inputs.disko.nixosModules.disko
-                  inputs.nix-flatpak.nixosModules.nix-flatpak
-                  inputs.home-manager.nixosModules.home-manager
-                  inputs.sops-nix.nixosModules.sops
-                  #inputs.impermanence.nixosModules.impermanence
-                  {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users."${settings.username}" = import ./modules/homes/home.nix;
-                    home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-                    home-manager.backupFileExtension= "backup";
-                  }
-                ];
+                modules = [./hosts/asus] ++ desktopModules;
               };
           desktop-maxlttr = 
             let
@@ -92,22 +94,7 @@
               nixpkgs-main.lib.nixosSystem {
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
-                modules = [
-                  ./hosts/desktop
-                  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default inputs.fancontrol-gui.overlays.default ]; })
-                  inputs.disko.nixosModules.disko
-                  inputs.nix-flatpak.nixosModules.nix-flatpak
-                  inputs.home-manager.nixosModules.home-manager
-                  inputs.sops-nix.nixosModules.sops
-                  #inputs.impermanence.nixosModules.impermanence
-                  {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users."${settings.username}" = import ./modules/homes/home.nix;
-                    home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-                    home-manager.backupFileExtension= "backup";
-                  }
-                ];
+                modules = [./hosts/desktop] ++ desktopModules;
               };
           server-maxlttr = 
             let
@@ -119,13 +106,7 @@
               nixpkgs-main.lib.nixosSystem {
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
-                modules = [
-                  ./hosts/server
-                  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
-                  inputs.disko.nixosModules.disko
-                  inputs.sops-nix.nixosModules.sops
-                  #inputs.impermanence.nixosModules.impermanence
-                ];
+                modules = [./hosts/server] ++ commonModules;
               };
           vm-maxlttr = 
             let
@@ -137,13 +118,7 @@
               nixpkgs-main.lib.nixosSystem {
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
-                modules = [
-                  ./hosts/vm
-                  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
-                  inputs.disko.nixosModules.disko
-                  inputs.sops-nix.nixosModules.sops
-                  #inputs.impermanence.nixosModules.impermanence
-                ];
+                modules = [./hosts/vm] ++ commonModules;
               };
         };
       };
