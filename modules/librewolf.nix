@@ -115,7 +115,7 @@ in
         }
         {
           "name" = "Suaps";
-          "url" = "u-sport.univ-nantes.fr/accueil"
+          "url" = "u-sport.univ-nantes.fr/accueil";
         }
       ];
       "OfferToSaveLoginsDefault" = false;
