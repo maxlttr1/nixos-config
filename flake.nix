@@ -1,43 +1,33 @@
 {
   description = "KakouKakou";
-
   inputs = {
     nixpkgs-main.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-overlay.url = "github:nixos/nixpkgs/nixos-unstable";
-
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-main";
     }; 
-
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs-main";
     };
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs-main";
       inputs.home-manager.follows = "home-manager";
     };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-main";
     };
-
     #impermanence.url = "github:nix-community/impermanence";
-
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs-main";
     };
-
     fancontrol-gui.url = "github:JaysFreaky/fancontrol-gui";
   }; 
-  
   outputs = inputs@{ self, nixpkgs-main, nixpkgs-overlay, ... }:
     let
       settings-default = {
