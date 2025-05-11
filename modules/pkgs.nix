@@ -21,7 +21,9 @@
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
   ];
+
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
+
   environment.systemPackages = 
     (with pkgs; [
       android-tools
@@ -53,12 +55,14 @@
     ++
     (with pkgs.alternative; [
     ]);
+  
   fonts.packages = with pkgs; [
     #nerd-fonts.fantasque-sans-mono
     #nerd-fonts.jetbrains-mono
     #nerd-fonts.mononoki
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
+
   services.flatpak = {
     enable = true;
     update = {
