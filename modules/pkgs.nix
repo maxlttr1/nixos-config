@@ -31,6 +31,7 @@
       burpsuite
       cmake
       compose2nix
+      fancontrol_gui
       ffmpeg
       kdePackages.filelight
       gcc
