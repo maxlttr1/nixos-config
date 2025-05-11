@@ -41,7 +41,8 @@
       nixfmt-classic
       nix-prefetch-scripts
       nodejs
-      python313Full
+      python312Full
+      python312Packages.pip
       papirus-icon-theme
       rstudio
       scrcpy
