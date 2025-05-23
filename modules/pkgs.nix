@@ -47,6 +47,7 @@
       rstudio
       scrcpy
       sops
+      sqlite
       universal-android-debloater
       veracrypt
       whitesur-kde

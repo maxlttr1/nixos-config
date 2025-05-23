@@ -4,12 +4,12 @@
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
     ../../modules/common
+    ../../modules/firefox.nix
     ../../modules/cups.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
     ../../modules/ld.nix
-    ../../modules/librewolf.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
     ../../modules/swap.nix
