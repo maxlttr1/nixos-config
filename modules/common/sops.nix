@@ -30,6 +30,16 @@
         path = "/home/${settings.username}/.ssh/id_rsa";
     };
 
+    sops.secrets."racknerd_ssh_public" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/racknerd_ssh.pub";
+    };
+
+    sops.secrets."racknerd_ssh_private" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/racknerd_ssh";
+    };
+
     sops.secrets."discord-webhook" = {
         owner = "${settings.username}"; 
         path = "/etc/discord-webhook.conf";
