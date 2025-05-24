@@ -7,9 +7,9 @@
     ../../modules/common
     ../../modules/cups.nix
     ../../modules/fanctl.nix
+    ../../modules/firefox.nix
     ../../modules/kde-plasma.nix
     ../../modules/ld.nix
-    ../../modules/librewolf.nix
     ../../modules/nvidia.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix

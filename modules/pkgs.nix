@@ -42,11 +42,13 @@
       nixfmt-classic
       nix-prefetch-scripts
       nodejs
-      python313Full
       papirus-icon-theme
+      powertop
+      python313Full
       rstudio
       scrcpy
       sops
+      sqlite
       universal-android-debloater
       veracrypt
       whitesur-kde
