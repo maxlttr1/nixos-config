@@ -72,7 +72,7 @@ in
           installation_mode = "force_installed";
         };
         "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4423344/proton_pass-1.28.0.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4491195/proton_pass-1.31.2.xpi";
           installation_mode = "force_installed";
         };
         "sponsorBlocker@ajay.app" = {
