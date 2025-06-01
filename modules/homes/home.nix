@@ -18,6 +18,7 @@ in
   # paths it should manage.
   /*home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
+  
 
   # Packages that should be installed to the user profile.
   home.packages = [
@@ -26,82 +27,84 @@ in
   programs.vscode = {
     enable = true;
     #package = pkgs.vscodium;
-    extensions = with pkgs.vscode-marketplace; [
-      # Python
-      ms-python.python
-      # Nix
-      bbenoist.nix
-      jnoortheen.nix-ide
-      # C/C++
-      ms-vscode.cpptools
-      franneck94.c-cpp-runner
-      franneck94.vscode-c-cpp-config
-      vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
-      # Javascript
-      christian-kohler.npm-intellisense
-      robole.javascript-snippets
-      christian-kohler.path-intellisense # autocompletes filenames 
-      # Java
-      vscjava.vscode-java-debug
-      vscjava.vscode-java-dependency
-      redhat.java
-      vscjava.vscode-java-test
-      # HTML/CSS and Web
-      ecmel.vscode-html-css
-      ms-vscode.live-server
-      naumovs.color-highlight # Preview colors
-      # Language pack
-      james-yu.latex-workshop
-      yzhang.markdown-all-in-one
-      # Docker
-      ms-azuretools.vscode-docker
-      # Yaml
-      redhat.vscode-yaml
-      # SQL
-      cweijan.vscode-mysql-client2
-      # Git
-      vivaxy.vscode-conventional-commits
-      eamodio.gitlens
-      github.vscode-github-actions
-      # Utilities
-      kisstkondoros.vscode-gutter-preview # Image preview
-      ms-vsliveshare.vsliveshare
-      pflannery.vscode-versionlens # Show latest versions
-      formulahendry.auto-rename-tag
-      tomoki1207.pdf
-      pkief.material-icon-theme
-      formulahendry.code-runner
-      usernamehw.errorlens
-      oderwat.indent-rainbow
-      hediet.vscode-drawio
-      pomdtr.excalidraw-editor
-      zhuangtongfa.material-theme
-    ];
-    userSettings = {
-      "database-client.autoSync" = true;
-      "dtatabase-client.telemetry.usesOnlineServices" = false;
-      "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
-      "editor.cursorBlinking" = "phase";
-      "editor.cursorSmoothCaretAnimation" = "on";
-      "explorer.confirmDelete" = false;
-      "extensions.ignoreRecommendations" = true;
-      "files.autoSave" = "afterDelay";
-      "files.autoSaveDelay" = 1000;
-      "git.autofetch" = "all";
-      "git.confirmSync" = false;
-      "git.enableSmartCommit" = true;
-      "git.smartCommitChanges" = "all";
-      "gitlens.telemetry.enabled" = false;
-      "redhat.telemetry.enabled" = false;
-      "telemetry.enableTelemetry" = false;
-      "telemetry.feedback.enabled" = false;
-      "telemetry.telemetryLevel" = "off";
-      "window.titleBarStyle" = "custom";
-      "workbench.colorTheme" = "One Dark Pro Night Flat";
-      "workbench.iconTheme" = "material-icon-theme";
-      "workbench.startupEditor" = "none";
-      "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
-      "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+    profiles.default = {
+      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
+        # Python
+        ms-python.python
+        # Nix
+        bbenoist.nix
+        jnoortheen.nix-ide
+        # C/C++
+        ms-vscode.cpptools
+        franneck94.c-cpp-runner
+        franneck94.vscode-c-cpp-config
+        vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
+        # Javascript
+        christian-kohler.npm-intellisense
+        robole.javascript-snippets
+        christian-kohler.path-intellisense # autocompletes filenames 
+        # Java
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-dependency
+        redhat.java
+        vscjava.vscode-java-test
+        # HTML/CSS and Web
+        ecmel.vscode-html-css
+        ms-vscode.live-server
+        naumovs.color-highlight # Preview colors
+        # Language pack
+        james-yu.latex-workshop
+        yzhang.markdown-all-in-one
+        # Docker
+        ms-azuretools.vscode-docker
+        # Yaml
+        redhat.vscode-yaml
+        # SQL
+        cweijan.vscode-mysql-client2
+        # Git
+        vivaxy.vscode-conventional-commits
+        eamodio.gitlens
+        github.vscode-github-actions
+        # Utilities
+        kisstkondoros.vscode-gutter-preview # Image preview
+        ms-vsliveshare.vsliveshare
+        pflannery.vscode-versionlens # Show latest versions
+        formulahendry.auto-rename-tag
+        tomoki1207.pdf
+        pkief.material-icon-theme
+        formulahendry.code-runner
+        usernamehw.errorlens
+        oderwat.indent-rainbow
+        hediet.vscode-drawio
+        pomdtr.excalidraw-editor
+        zhuangtongfa.material-theme
+      ];
+      userSettings = {
+        "database-client.autoSync" = true;
+        "dtatabase-client.telemetry.usesOnlineServices" = false;
+        "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
+        "editor.cursorBlinking" = "phase";
+        "editor.cursorSmoothCaretAnimation" = "on";
+        "explorer.confirmDelete" = false;
+        "extensions.ignoreRecommendations" = true;
+        "files.autoSave" = "afterDelay";
+        "files.autoSaveDelay" = 1000;
+        "git.autofetch" = "all";
+        "git.confirmSync" = false;
+        "git.enableSmartCommit" = true;
+        "git.smartCommitChanges" = "all";
+        "gitlens.telemetry.enabled" = false;
+        "redhat.telemetry.enabled" = false;
+        "telemetry.enableTelemetry" = false;
+        "telemetry.feedback.enabled" = false;
+        "telemetry.telemetryLevel" = "off";
+        "window.titleBarStyle" = "custom";
+        "workbench.colorTheme" = "One Dark Pro Night Flat";
+        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.startupEditor" = "none";
+        "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+        "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+      };
     };
   };
 

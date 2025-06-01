@@ -62,8 +62,7 @@
   fonts.packages = with pkgs; [
     #nerd-fonts.fantasque-sans-mono
     #nerd-fonts.jetbrains-mono
-    #nerd-fonts.mononoki
-    (nerdfonts.override { fonts = [ "Mononoki" ]; })
+    nerd-fonts.mononoki
   ];
 
   services.flatpak = {
