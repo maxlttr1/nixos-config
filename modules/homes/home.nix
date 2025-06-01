@@ -38,7 +38,7 @@ in
         ms-vscode.cpptools
         franneck94.c-cpp-runner
         franneck94.vscode-c-cpp-config
-        vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
+        #vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
         # Javascript
         christian-kohler.npm-intellisense
         robole.javascript-snippets
