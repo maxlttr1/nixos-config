@@ -9,6 +9,7 @@
     "com.gitlab.davem.ClamTk"
     "io.github.lainsce.Colorway"
     "com.github.tchx84.Flatseal"
+    "io.freetubeapp.FreeTube"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "dev.bragefuglseth.Keypunch"
