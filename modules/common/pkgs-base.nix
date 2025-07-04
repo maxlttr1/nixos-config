@@ -28,12 +28,19 @@
       fzf
       git
       htop
+      lazydocker
+      magic-wormhole
+      mask
+      moreutils # for vipe
       nmap
       powershell
+      powertop
       ranger
       ripgrep-all
       tcpdump
       tldr
+      unp
+      unrar
       wget
       zellij
     ])

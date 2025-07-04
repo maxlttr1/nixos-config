@@ -43,7 +43,6 @@
       nix-prefetch-scripts
       nodejs
       papirus-icon-theme
-      powertop
       python313Full
       rstudio
       scrcpy
