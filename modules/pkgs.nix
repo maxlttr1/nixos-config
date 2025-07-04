@@ -20,6 +20,7 @@
     "com.protonvpn.www"
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
+    "com.github.xournalpp.xournalpp"
   ];
 
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
