@@ -13,6 +13,16 @@
       AllowUsers = [ "${settings.username}" "root" ]; # Allows all users by default
       PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
+    listenAddresses = [
+      {
+        addr = "${settings.local_ip}";
+        port = 22;
+      }
+      {
+        addr = "${settings.tailscale_ip}";
+        port = 22;
+      }
+    ];
   };
 
   programs.ssh = {

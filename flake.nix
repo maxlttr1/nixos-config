@@ -46,6 +46,8 @@
         system = "x86_64-linux";
         kernel = "linuxPackages";
         swap = 8; # Size in Gigabytes
+        local_ip = "192.168.1.1";
+        tailscale_ip = "100.0.0.0";
       };
 
       # Overlay for nixpkgs
@@ -82,6 +84,8 @@
             let
               settings = settings-default // {
                 hostname = "asus-maxlttr";
+                local_ip = "192.168.1.57";
+                tailscale_ip = "100.115.37.127";
               };
             in
               nixpkgs-main.lib.nixosSystem {
@@ -94,6 +98,8 @@
             let
               settings = settings-default // {
                 hostname = "desktop-maxlttr";
+                local_ip = "192.168.1.24";
+                tailscale_ip = "192.168.1.24";
               };
             in
               nixpkgs-main.lib.nixosSystem {
@@ -107,6 +113,8 @@
               settings = settings-default // {
                 hostname = "server-maxlttr";
                 swap = 16;
+                local_ip = "192.168.1.24";
+                tailscale_ip = "100.68.245.10";
               };
             in
               nixpkgs-main.lib.nixosSystem {
