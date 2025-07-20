@@ -60,7 +60,7 @@ jobs:
           -H "Content-Type: application/json" \
           -d "{\"content\": \"🎉 Nix flake.lock updated and passed check\"}"
 
-          curl -d "🎉 Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
+      #   curl -d "🎉 Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
 
     - name: Failure notifications
       if: failure()
@@ -69,4 +69,4 @@ jobs:
           -H "Content-Type: application/json" \
           -d "{\"content\": \"❌ Nix flake update failed (will retry next week)\"}"
 
-          curl -d "❌ Nix flake update failed (will retry next week)" ntfy.sh/${{ secrets.NTFY_URL }}
+      #    curl -d "❌ Nix flake update failed (will retry next week)" ntfy.sh/${{ secrets.NTFY_URL }}
