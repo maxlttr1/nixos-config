@@ -34,7 +34,6 @@
       burpsuite
       cmake
       compose2nix
-      conda
       ffmpeg
       kdePackages.filelight
       gcc
