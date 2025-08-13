@@ -41,6 +41,7 @@
       jdk
       kdePackages.konsole
       libwebp
+      md2pdf
       nixfmt-classic
       nix-prefetch-scripts
       nodejs
