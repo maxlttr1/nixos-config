@@ -58,9 +58,9 @@ jobs:
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"🎉 Nix flake.lock updated and passed check\"}"
+          -d "{\"content\": \"✅ Nix flake.lock updated and passed check\"}"
 
-      #   curl -d "🎉 Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
+      #   curl -d "✅ Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
 
     - name: Failure notifications
       if: failure()
