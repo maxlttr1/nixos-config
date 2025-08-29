@@ -27,6 +27,7 @@
       fishPlugins.z
       fzf
       git
+      gnupg
       htop
       lazydocker
       magic-wormhole
