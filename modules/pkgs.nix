@@ -12,6 +12,7 @@
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
+    "org.kde.kdenlive"
     "dev.bragefuglseth.Keypunch"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
