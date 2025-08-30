@@ -10,6 +10,7 @@
     ./fail2ban.nix
     ./firewall.nix
     ./fish.nix
+    ./gnupg.nix
     ./hostname.nix
     ./kernel.nix
     ./network-manager.nix
