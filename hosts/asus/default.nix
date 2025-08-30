@@ -12,6 +12,7 @@
     ../../modules/ld.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
+    ../../modules/samba.nix
     ../../modules/swap.nix
     ../../modules/touchpad.nix
     ../../modules/vms.nix

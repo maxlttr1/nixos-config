@@ -17,7 +17,7 @@
         "invalid users" = [ "root" ];*/ 
       };
       "share" = {
-        "path" = "/home/${settings.username}/Syncthing/samba";
+        "path" = "/home/${settings.username}/Samba";
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "no";
