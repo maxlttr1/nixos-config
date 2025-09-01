@@ -1,11 +1,8 @@
 {
   imports = [
     ./deluge/deluge.nix
-    ./it-tools/it-tools.nix
     ./jellyfin/jellyfin.nix
-    ./pihole/pihole.nix
     ./portainer/portainer.nix
-    ./searxng/searxng.nix
     ./traefik/traefik.nix
     ./uptime-kuma/uptime-kuma.nix
     ./watchtower/watchtower.nix
