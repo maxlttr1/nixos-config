@@ -9,6 +9,7 @@
     "com.gitlab.davem.ClamTk"
     "de.leopoldluley.Clapgrep"
     "io.github.lainsce.Colorway"
+    "org.gnome.DejaDup"
     "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
