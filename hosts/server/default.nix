@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/borgbackup.nix
     ../../modules/common
     ../../modules/docker/docker-containers.nix
     ../../modules/intel.nix
