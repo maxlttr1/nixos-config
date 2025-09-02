@@ -2,6 +2,7 @@
   imports = [
     ./deluge/deluge.nix
     ./jellyfin/jellyfin.nix
+    ./n8n/n8n.nix
     ./portainer/portainer.nix
     ./traefik/traefik.nix
     ./uptime-kuma/uptime-kuma.nix

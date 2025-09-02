@@ -1,0 +1,15 @@
+name: n8n
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    environment:
+      - GENERIC_TIMEZONE="Europe/Paris"
+      - TZ="Europe/Paris"
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNERS_ENABLED=true
+    volumes:
+      - ~/Syncthing/docker/n8n:/home/node/.n8n
+    ports:
+      - 5678:5678
