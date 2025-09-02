@@ -3,7 +3,6 @@
     ./hardware-configuration.nix
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
-    ../../modules/borgbackup.nix
     ../../modules/common
     ../../modules/firefox.nix
     ../../modules/cups.nix
