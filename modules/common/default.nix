@@ -9,6 +9,7 @@
     ./experimental-features.nix
     ./fail2ban.nix
     ./firewall.nix
+    ./firmware.nix
     ./fish.nix
     ./gnupg.nix
     ./hostname.nix
