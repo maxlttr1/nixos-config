@@ -16,6 +16,7 @@
       "GENERIC_TIMEZONE" = "\"Europe/Paris\"";
       "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS" = "true";
       "N8N_RUNNERS_ENABLED" = "true";
+      "N8N_SECURE_COOKIE" = "false";
       "TZ" = "\"Europe/Paris\"";
     };
     volumes = [
