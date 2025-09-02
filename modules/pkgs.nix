@@ -37,7 +37,6 @@
       cmake
       compose2nix
       ffmpeg
-      kdePackages.filelight
       gcc
       gnumake
       jdk

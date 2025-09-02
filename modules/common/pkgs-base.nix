@@ -34,6 +34,7 @@
       magic-wormhole
       mask
       moreutils # for vipe
+      ncdu
       nmap
       powershell
       powertop
