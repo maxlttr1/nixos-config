@@ -1,8 +1,11 @@
+{ pkgs, ... }:
+
 {
   hardware.enableAllFirmware = true;
 
   services.fwupd.enable = true; # fwupd is a simple daemon allowing you to update some devices' firmware, including UEFI for several machines
-
+  
+  /*
   systemd.services.fwupd-update = {
   description = "Run fwupd refresh and update";
   after = [ "network.target" ];
@@ -11,9 +14,9 @@
   serviceConfig = {
     Type = "oneshot";
     ExecStart = ''
-      fwupdmgr refresh
-      fwupdmgr get-updates
-      fwupdmgr update
+      ${pkgs.fwupd}/bin/fwupdmgr refresh
+      ${pkgs.fwupd}/bin/fwupdmgr get-updates
+      ${pkgs.fwupd}/bin/fwupdmgr update
     '';
     };
   };
@@ -26,8 +29,6 @@
       OnCalendar = "weekly";
       Persistent = true;
     };
-
-    # Trigger the service
-    unit = "fwupd-update.service";
   };
+  */
 }
