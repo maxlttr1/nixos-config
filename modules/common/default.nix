@@ -2,6 +2,7 @@
   imports = [
     ./allow-unfree.nix
     ./apparmor.nix
+    ./auto-cpufreq.nix
     ./auto-upgrade.nix
     ./bootloader.nix
     ./clamav.nix
