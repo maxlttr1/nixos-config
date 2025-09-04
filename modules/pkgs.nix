@@ -38,6 +38,7 @@
       compose2nix
       ffmpeg
       gcc
+      gparted
       gnumake
       jdk
       kdePackages.konsole
