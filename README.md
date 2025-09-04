@@ -95,7 +95,10 @@ MINSTART=hwmon0/pwm2=150
 MINSTOP=hwmon0/pwm2=0
 ```
 Now add it to you `modules/fancontrol` for the correct device.
-### 
+### Copy the *nix-sops* keys to the default location (to be able to edit `secret/secrets.yaml`)
+```bash
+sudo cp /etc/sops/age/keys.txt ~/.config/sops/age/keys.txt && sudo chwon maxlttr:users ~/.config/sops/age/keys.txt
+```  
 
 ## 🔧 Maintaining
 

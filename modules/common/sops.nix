@@ -20,22 +20,22 @@
         owner = "${settings.username}"; 
     };
 
-    sops.secrets."ssh_public" = {
+    sops.secrets."nixos_ssh_setup.public" = {
         owner = "${settings.username}"; 
-        path = "/home/${settings.username}/.ssh/id_rsa.pub";
+        path = "/home/${settings.username}/.ssh/nixos_ssh_setup.pub";
     };
 
-    sops.secrets."ssh_private" = {
+    sops.secrets."nixos_ssh_setup.private" = {
         owner = "${settings.username}"; 
-        path = "/home/${settings.username}/.ssh/id_rsa";
+        path = "/home/${settings.username}/.ssh/nixos_ssh_setup";
     };
 
-    sops.secrets."racknerd_ssh_public" = {
+    sops.secrets."racknerd_ssh.public" = {
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/racknerd_ssh.pub";
     };
 
-    sops.secrets."racknerd_ssh_private" = {
+    sops.secrets."racknerd_ssh.private" = {
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/racknerd_ssh";
     };
