@@ -6,7 +6,6 @@
     ../../modules/bluetooth.nix
     ../../modules/common
     ../../modules/cups.nix
-    ../../modules/fanctl.nix
     ../../modules/firefox.nix
     ../../modules/kde-plasma.nix
     ../../modules/ld.nix
