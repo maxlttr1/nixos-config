@@ -58,6 +58,7 @@
       whitesur-kde
       wireshark
       kdePackages.yakuake
+      yt-dlp
     ])
     ++
     (with pkgs.alternative; [
