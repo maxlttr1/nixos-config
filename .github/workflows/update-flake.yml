@@ -27,8 +27,8 @@ jobs:
     - name: Nix flake check
       id: flake-check
       run: nix flake check
-
     - name: Create and Commit to a New Branch
+      if: success()
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
