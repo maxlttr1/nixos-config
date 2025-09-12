@@ -23,7 +23,6 @@
     "com.protonvpn.www"
     "org.signal.Signal"
     "org.torproject.torbrowser-launcher"
-    "org.videolan.VLC"
     "com.github.xournalpp.xournalpp"
   ];
 
@@ -55,6 +54,7 @@
       sqlite
       universal-android-debloater
       veracrypt
+      vlc
       whitesur-kde
       wireshark
       kdePackages.yakuake
