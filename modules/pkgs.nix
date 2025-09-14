@@ -37,6 +37,7 @@
       compose2nix
       ffmpeg
       gcc
+      gdb
       gparted
       gnumake
       jdk
