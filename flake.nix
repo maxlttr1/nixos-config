@@ -44,7 +44,7 @@
         username = "maxlttr";
         hostname = "default-maxlttr";
         system = "x86_64-linux";
-        kernel = "linuxPackages_latest";
+        kernel = "linuxPackages";
         swap = 8; # Size in Gigabytes
       };
 

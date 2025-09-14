@@ -36,9 +36,7 @@ in
         jnoortheen.nix-ide
         # C/C++
         ms-vscode.cpptools
-        franneck94.c-cpp-runner
-        franneck94.vscode-c-cpp-config
-        #vadimcn.vscode-lldb # Dependency for franneck94.vscode-c-cpp-config
+        ms-vscode.cmake-tools  
         # Javascript
         christian-kohler.npm-intellisense
         robole.javascript-snippets
@@ -74,7 +72,6 @@ in
         pkief.material-icon-theme
         formulahendry.code-runner
         usernamehw.errorlens
-        oderwat.indent-rainbow
         hediet.vscode-drawio
         pomdtr.excalidraw-editor
         zhuangtongfa.material-theme
@@ -104,6 +101,7 @@ in
         "workbench.startupEditor" = "none";
         "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
         "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+        "cmake.options.statusBarVisibility" =  "visible";
       };
     };
   };
