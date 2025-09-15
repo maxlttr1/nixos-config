@@ -30,34 +30,31 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      android-tools
       bibata-cursors
-      burpsuite
       cmake
       compose2nix
+      dig
       ffmpeg
       gcc
       gdb
-      gparted
       gnumake
+      gnupg
       jdk
       kdePackages.konsole
-      libwebp
+      mask #A CLI task runner defined by a simple markdown file
       md2pdf
-      nixfmt-classic
-      nix-prefetch-scripts
+      moreutils # to get vipe
+      nmap
       nodejs
       papirus-icon-theme
+      powershell
       python313Full
       rstudio
-      scrcpy
       sops
-      sqlite
-      universal-android-debloater
+      tcpdump
       veracrypt
       vlc
       whitesur-kde
-      wireshark
       kdePackages.yakuake
       yt-dlp
     ])

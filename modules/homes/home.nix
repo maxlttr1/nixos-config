@@ -125,7 +125,7 @@ in
       #inherit wallpaper;
       inherit wallpaperSlideShow;
     };
-    immutableByDefault = true;
+    #immutableByDefault = true;
     fonts = {
       fixedWidth = font;
       general = font;
