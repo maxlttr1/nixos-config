@@ -4,16 +4,15 @@
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
     ../../modules/common
+    ../../modules/cups.nix
     ../../modules/firefox.nix
     ../../modules/gnupg.nix
-    ../../modules/cups.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
     ../../modules/ld.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs.nix
-    ../../modules/samba.nix
     ../../modules/swap.nix
     ../../modules/touchpad.nix
     ../../modules/vms.nix
