@@ -3,27 +3,21 @@
 {
   # Flatpaks
   services.flatpak.packages = [
-    "co.logonoff.awakeonlan"
     "com.usebottles.bottles"
     "com.google.Chrome"
-    "com.gitlab.davem.ClamTk"
     "de.leopoldluley.Clapgrep"
-    "io.github.lainsce.Colorway"
     "org.gnome.DejaDup"
-    "com.github.tchx84.Flatseal"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "org.kde.kdenlive"
-    "dev.bragefuglseth.Keypunch"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "org.onionshare.OnionShare"
-    "io.github.nate_xyz.Paleta"
     "com.protonvpn.www"
     "org.signal.Signal"
     "org.torproject.torbrowser-launcher"
-    "com.github.xournalpp.xournalpp"
+    "com.github.jeromerobert.pdfarranger"
   ];
 
   environment.defaultPackages = lib.mkForce []; # Delete all default pkgs
