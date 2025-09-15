@@ -29,7 +29,6 @@
     ++
     (with pkgs.alternative; [
     ]);
-  }
 
   # Launches fish unless the parent process is already fish 
 

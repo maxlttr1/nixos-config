@@ -12,7 +12,6 @@
     ./firewall.nix
     ./firmware.nix
     ./fish.nix
-    ./gnupg.nix
     ./hostname.nix
     ./kernel.nix
     ./network-manager.nix
