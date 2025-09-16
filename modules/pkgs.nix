@@ -53,8 +53,6 @@
     ]);
   
   fonts.packages = with pkgs; [
-    #nerd-fonts.fantasque-sans-mono
-    #nerd-fonts.jetbrains-mono
     nerd-fonts.mononoki
   ];
 
