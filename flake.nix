@@ -34,8 +34,6 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs-main";
     };
-    
-    fancontrol-gui.url = "github:JaysFreaky/fancontrol-gui";
   }; 
 
   outputs = inputs@{ self, nixpkgs-main, nixpkgs-overlay, ... }:
@@ -65,7 +63,7 @@
       };
       
       commonModules = [
-        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default inputs.fancontrol-gui.overlays.default ]; })
+        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs inputs.nix-vscode-extensions.overlays.default ]; })
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
       ];
