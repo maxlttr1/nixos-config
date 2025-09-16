@@ -71,7 +71,6 @@ in
         tomoki1207.pdf
         pkief.material-icon-theme
         formulahendry.code-runner
-        usernamehw.errorlens
         hediet.vscode-drawio
         pomdtr.excalidraw-editor
         zhuangtongfa.material-theme
