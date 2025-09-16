@@ -74,6 +74,7 @@ in
         hediet.vscode-drawio
         pomdtr.excalidraw-editor
         zhuangtongfa.material-theme
+        sonarsource.sonarlint-vscode # Linter
       ];
       userSettings = {
         "database-client.autoSync" = true;
