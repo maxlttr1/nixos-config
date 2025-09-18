@@ -5,7 +5,6 @@
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
     ../../modules/common
-    ../../modules/fancontrol/desktop-maxlttr.nix
     ../../modules/cups.nix
     ../../modules/gnupg.nix
     ../../modules/kde-plasma.nix
