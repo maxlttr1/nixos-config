@@ -44,7 +44,7 @@ in
   };
 
   systemd.services."nixos-upgrade-notification" = {
-    description = "Send a notifications when the nixos-upgrade ends";
+    description = "Send a notification nixos-upgrade.service ends";
     serviceConfig = {
       ExecStart = "${notifyScript}";
     };
