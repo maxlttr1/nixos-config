@@ -38,10 +38,13 @@ in
     };
   };
 
+  systemd.services."nixos-upgrade" = {
+    onSuccess = ["nixos-upgrade-notification"];
+    onFailure = ["nixos-upgrade-notification"];
+  };
+
   systemd.services."nixos-upgrade-notification" = {
-    description = "Service to send a notificarions when the nixos-upgrade ends";
-    wantedBy = ["nixos-upgrade.service"];
-    #after = ["nixos-upgrade.service"];
+    description = "Send a notifications when the nixos-upgrade ends";
     serviceConfig = {
       ExecStart = "${notifyScript}";
     };
