@@ -1,5 +1,22 @@
 { pkgs, ... }:
+let
+  notifyScript = pkgs.writeShellScript "notify-discord" ''
+    
+    url=$(cat /etc/discord-webhook.conf)
+    hostname=$(${pkgs.nettools}/bin/hostname)
+    status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
+    if [ $status -eq 0 ]; then
+      ${pkgs.curl}/bin/curl -X POST "$url" \
+        -H "Content-Type: application/json" \
+        -d "{\"content\": \"✅ NixOS upgrade successful on **$hostname**\"}"
+    else
+      ${pkgs.curl}/bin/curl -X POST "$url" \
+        -H "Content-Type: application/json" \
+        -d "{\"content\": \"❌ NixOS upgrade failed on **$hostname**\"}"
+    fi
+  ''; 
+in
 {
   system.autoUpgrade = {
     # Check for generations: sudo nix-env -p /nix/var/nix/profiles/system --list-generations
@@ -26,13 +43,7 @@
     wantedBy = ["nixos-upgrade.service"];
     #after = ["nixos-upgrade.service"];
     serviceConfig = {
-      ExecStart = ''
-        url="$(${pkgs.coreutils}/bin/cat /etc/discord-webhook.conf)"
-
-        ${pkgs.curl}/bin/curl -X POST "https://discord.com/api/" \
-          -H "Content-Type: application/json" \
-          -d "{\"content\": \" $url: 📣\"}"
-      '';
+      ExecStart = "${notifyScript}";
     };
   };
 }
