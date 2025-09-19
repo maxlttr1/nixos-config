@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   system.autoUpgrade = {
     # Check for generations: sudo nix-env -p /nix/var/nix/profiles/system --list-generations
@@ -16,6 +18,21 @@
     rebootWindow = {
       lower = "01:00";
       upper = "05:00";
+    };
+  };
+
+  systemd.services."nixos-upgrade-notification" = {
+    description = "Service to send a notificarions when the nixos-upgrade ends";
+    wantedBy = ["nixos-upgrade.service"];
+    #after = ["nixos-upgrade.service"];
+    serviceConfig = {
+      ExecStart = ''
+        url="$(${pkgs.coreutils}/bin/cat /etc/discord-webhook.conf)"
+
+        ${pkgs.curl}/bin/curl -X POST "https://discord.com/api/" \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \" $url: 📣\"}"
+      '';
     };
   };
 }
