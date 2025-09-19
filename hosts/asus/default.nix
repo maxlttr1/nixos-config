@@ -5,7 +5,6 @@
     ../../modules/bluetooth.nix
     ../../modules/common
     ../../modules/cups.nix
-    ../../modules/firefox.nix
     ../../modules/gnupg.nix
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix

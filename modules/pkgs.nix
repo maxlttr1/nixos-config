@@ -9,13 +9,11 @@
     "org.gnome.DejaDup"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
-    "org.kde.kdenlive"
+    "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
     "md.obsidian.Obsidian"
-    "org.onionshare.OnionShare"
     "com.protonvpn.www"
-    "org.signal.Signal"
     "org.torproject.torbrowser-launcher"
     "com.github.jeromerobert.pdfarranger"
   ];
@@ -24,7 +22,7 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      bibata-cursors
+      #bibata-cursors
       cmake
       compose2nix
       dig
@@ -34,7 +32,6 @@
       gnumake
       gnupg
       jdk
-      kdePackages.konsole
       mask #A CLI task runner defined by a simple markdown file
       md2pdf
       moreutils # to get vipe
@@ -49,7 +46,6 @@
       tcpdump
       veracrypt
       vlc
-      whitesur-kde
       kdePackages.yakuake
       yt-dlp
     ])
@@ -58,8 +54,6 @@
     ]);
   
   fonts.packages = with pkgs; [
-    #nerd-fonts.fantasque-sans-mono
-    #nerd-fonts.jetbrains-mono
     nerd-fonts.mononoki
   ];
 

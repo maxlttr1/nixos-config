@@ -9,7 +9,7 @@ let
   font = {
     #family = "JetBrains Mono";
     family = "Mononoki Nerd Font Mono";
-    pointSize = 10.5;
+    pointSize = 10;
   };
 in
 
@@ -71,10 +71,10 @@ in
         tomoki1207.pdf
         pkief.material-icon-theme
         formulahendry.code-runner
-        usernamehw.errorlens
         hediet.vscode-drawio
         pomdtr.excalidraw-editor
         zhuangtongfa.material-theme
+        sonarsource.sonarlint-vscode # Linter
       ];
       userSettings = {
         "database-client.autoSync" = true;
@@ -111,21 +111,21 @@ in
     workspace = {
       #clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       cursor = {
-        theme = "Bibata-Modern-Ice";
-        size = 32;
+        theme = "Breeze_Light";
+        #size = 32;
       };
-      theme = "breeze-dark";
+      theme = "breeze";
       colorScheme = "BreezeDark";
       #lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "Papirus-Dark";
       windowDecorations = {
-        library = "org.kde.kwin.aurorae";
-        theme = "__aurorae__svg__WhiteSur-dark";
+        library = "org.kde.kwin.default";
+        theme = "Breeze";
       };
       #inherit wallpaper;
       inherit wallpaperSlideShow;
     };
-    #immutableByDefault = true;
+    immutableByDefault = false;
     fonts = {
       fixedWidth = font;
       general = font;
@@ -187,7 +187,7 @@ in
         floating = true;
         opacity = "adaptive";
         hiding = "none";
-        height = 42;
+        #height = 42;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
