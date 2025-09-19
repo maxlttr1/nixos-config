@@ -39,8 +39,8 @@ in
   };
 
   systemd.services."nixos-upgrade" = {
-    onSuccess = ["nixos-upgrade-notification"];
-    onFailure = ["nixos-upgrade-notification"];
+    onSuccess = ["nixos-upgrade-notification.service"];
+    onFailure = ["nixos-upgrade-notification.service"];
   };
 
   systemd.services."nixos-upgrade-notification" = {
