@@ -80,7 +80,6 @@
             let
               settings = settings-default // {
                 hostname = "asus-maxlttr";
-                kernel = "linuxPackages_latest";
               };
             in
               nixpkgs-main.lib.nixosSystem {
