@@ -59,7 +59,7 @@ jobs:
           -d "{
             \"title\": \"Update to flake.lock on $DATE\",
             \"body\": \"Please test it locally and merge the PR\",
-            \"head\": \"maxlttr1:$BRANCH}\",
+            \"head\": \"maxlttr1:$BRANCH\",
             \"base\": \"master\"
           }"
     - name: Success notifications
