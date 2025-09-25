@@ -11,3 +11,4 @@ services:
       - WATCHTOWER_CLEANUP=true"
       - WATCHTOWER_NO_RESTART=true
       - WATCHTOWER_REMOVE_VOLUMES=true
+    restart: unless-stopped
