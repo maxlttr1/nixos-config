@@ -71,8 +71,8 @@ in
     description = "Manage Docker containers";
 
     wantedBy = [ "multi-user.target" ];
-    After = [ "docker.service" ];
-    Requires = [ "docker.service" ];
+    after = [ "docker.service" ];
+    requires = [ "docker.service" ];
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
