@@ -78,7 +78,7 @@ in
       WorkingDirectory = "/tmp/";
       Environment = "HOME=/root";
       ExecStart = "${starting_script}";
-      ExecStop = "${stoping_script}";
+      ExecStop = "${stopping_script}";
     };
   };
 }
