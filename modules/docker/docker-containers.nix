@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, settings, ... }:
 
 let
   starting_script = pkgs.writeShellScript "starting_script" ''
@@ -76,7 +76,7 @@ in
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
-      Environment = "HOME=/root";
+      Environment = "HOME=/home/${settings.username}";
       ExecStart = "${starting_script}";
       ExecStop = "${stopping_script}";
     };
