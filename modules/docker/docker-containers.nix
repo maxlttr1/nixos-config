@@ -7,15 +7,17 @@ let
     fi
     cd nixos-config/
     ${pkgs.git}/bin/git checkout docker_rebase
+    ${pkgs.git}/bin/git pull origin docker_rebase
 
     files=$(ls ./modules/docker/ymls)
     echo "Files in current directory: $files"
 
-    for entry in $(ls ./modules/docker/ymls/); do
-      ${pkgs.docker}/bin/docker compose -p $entry -f ./modules/docker/ymls/$entry.yml up -d
+    for file in ./modules/docker/ymls/*.yml; do
+      name=$(basename "$file" .yml)
+      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
     done
 
-    cd..
+    cd ..
     rm -r nixos-config/
   ''; 
 in
@@ -48,7 +50,7 @@ in
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
-
+      Environment = "HOME=/root";
       ExecStart = "${starting_script}";
       #ExecStop = "${stoping_script}";
       #ExecReload = "${reloading_script}";
