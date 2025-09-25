@@ -9,13 +9,37 @@ let
     ${pkgs.git}/bin/git checkout docker_rebase
     ${pkgs.git}/bin/git pull origin docker_rebase
 
-    files=$(ls ./modules/docker/ymls)
-    echo "Files in current directory: $files"
-
+    # Start all the containers
     for file in ./modules/docker/ymls/*.yml; do
       name=$(basename "$file" .yml)
       ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
     done
+
+    cd ..
+    rm -r nixos-config/
+  '';
+
+  stopping_script = pkgs.writeShellScript "stopping_script" ''
+    if [ ! -d "nixos-config" ]; then
+      ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
+    fi
+    cd nixos-config/
+    ${pkgs.git}/bin/git checkout docker_rebase
+    ${pkgs.git}/bin/git pull origin docker_rebase
+
+    # Stop all containers started by docker compose
+    for file in ./modules/docker/ymls/*.yml; do
+      name=$(basename "$file" .yml)
+      ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+    done
+
+    # Remove all images not used by any container.
+    ${pkgs.docker}/bin/docker image prune -a -f
+    # Remove all unused volumes
+    ${pkgs.docker}/bin/docker volume prune -f
+    # Remove all unused networks
+    ${pkgs.docker}/bin/docker network prune -f
+
 
     cd ..
     rm -r nixos-config/
@@ -47,13 +71,14 @@ in
     description = "Manage Docker containers";
 
     wantedBy = [ "multi-user.target" ];
+    After = [ "docker.service" ];
+    Requires = [ "docker.service" ];
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
       Environment = "HOME=/root";
       ExecStart = "${starting_script}";
-      #ExecStop = "${stoping_script}";
-      #ExecReload = "${reloading_script}";
+      ExecStop = "${stoping_script}";
     };
   };
 }
