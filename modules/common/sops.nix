@@ -17,10 +17,6 @@
         path = "/home/${settings.username}/docker/vpn.env";
     };
 
-    sops.secrets."wg-easy.env" = {
-        owner = "${settings.username}"; 
-    };
-
     sops.secrets."nixos_ssh_setup.public" = {
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/nixos_ssh_setup.pub";
