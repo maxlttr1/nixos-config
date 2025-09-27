@@ -9,6 +9,11 @@ let
     ${pkgs.git}/bin/git checkout docker_rebase
     ${pkgs.git}/bin/git pull origin docker_rebase
 
+    # Create proxy network if not present for traefik
+    if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
+      ${pkgs.docker}/bin/docker network create proxy
+    fi
+
     # Start all the containers
     for file in ./modules/docker/ymls/*.yml; do
       name=$(basename "$file" .yml)
@@ -33,13 +38,8 @@ let
       ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
     done
 
-    # Remove all images not used by any container.
-    ${pkgs.docker}/bin/docker image prune -a -f
-    # Remove all unused volumes
-    ${pkgs.docker}/bin/docker volume prune -f
-    # Remove all unused networks
-    ${pkgs.docker}/bin/docker network prune -f
-
+    # Remove unused data (append `--volumes` to remove unused volumes as well)
+    ${pkgs.docker}/bin/docker system prune -a --volumes -f
 
     cd ..
     rm -r nixos-config/
@@ -67,18 +67,27 @@ in
   environmentFiles = [ config.sops.secrets."vpn.env".path ];
   */
 
-  systemd.services."docker-containers-management" = {
-    description = "Manage Docker containers";
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "docker.service" ];
-    requires = [ "docker.service" ];
+  systemd.services."docker-containers-start" = {
+    description = "Start Docker containers";
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
       Environment = "HOME=/home/${settings.username}";
+      User = settings.username;
+      Type = "oneshot";
       ExecStart = "${starting_script}";
-      ExecStop = "${stopping_script}";
+    };
+  };
+
+  systemd.services."docker-containers-stop" = {
+    description = "Stop Docker containers";
+
+    serviceConfig = {
+      WorkingDirectory = "/tmp/";
+      Environment = "HOME=/home/${settings.username}";
+      User = settings.username;
+      Type = "oneshot";
+      ExecStart = "${stopping_script}";
     };
   };
 }
