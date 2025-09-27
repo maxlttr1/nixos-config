@@ -5,6 +5,8 @@ services:
     image: docker.n8n.io/n8nio/n8n
     container_name: n8n
     environment:
+      - PUID=1001
+      - PGID=100
       - GENERIC_TIMEZONE="Europe/Paris"
       - TZ="Europe/Paris"
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
