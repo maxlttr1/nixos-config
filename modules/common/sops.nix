@@ -14,6 +14,7 @@
 
     sops.secrets."vpn.env" = {
         owner = "${settings.username}"; 
+        path = "/home/${settings.username}/docker/vpn.env";
     };
 
     sops.secrets."wg-easy.env" = {
