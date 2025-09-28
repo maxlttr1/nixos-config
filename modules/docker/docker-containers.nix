@@ -14,6 +14,9 @@ let
       ${pkgs.docker}/bin/docker network create proxy
     fi
 
+    # Set up config.json for suaps bot
+    echo "{ \"ids_resa\" : [] }" > ~/docker/suaps/config.json
+
     # Start all the containers
     for file in ./modules/docker/ymls/*.yml; do
       name=$(basename "$file" .yml)

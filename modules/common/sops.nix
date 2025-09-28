@@ -19,7 +19,7 @@
 
     sops.secrets."suaps.env" = {
         owner = "${settings.username}"; 
-        path = "/home/${settings.username}/docker/suaps.env";
+        path = "/home/${settings.username}/docker/suaps/suaps.env";
     };
 
     sops.secrets."nixos_ssh_setup.public" = {

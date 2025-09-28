@@ -1,12 +1,12 @@
 services:
   suaps:
-    image: ghcr.io/flash2974/reservercreneausuaps-app:latest
+    image: maxlttr697/reserver_creneau_suaps:latest
     networks:
       - proxy
     volumes:
-      - ./config/config.json:/app/config/config.json
+      - ~/docker/suaps/config.json:/app/config/config.json
     env_file:
-      - ~/docker/suaps.env
+      - ~/docker/suaps/suaps.env
     ports:
       - 5000:5000
     labels:
