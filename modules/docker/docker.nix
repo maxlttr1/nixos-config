@@ -7,6 +7,10 @@
       enable = true;
       setSocketVariable = true;
     };*/
+    daemon.settings.live-restore = false;
+    /*live-restore allows Docker to keep containers running 
+    even if the Docker daemon restarts. This feature is not compatible
+    with Docker Swarm, which requires full control over container lifecycle.*/
   };
   #users.extraGroups.docker.members = ["${settings.username}"];
   users.users.${settings.username}.extraGroups = [ "docker" ];
