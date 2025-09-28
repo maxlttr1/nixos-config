@@ -16,8 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Notifications
-        run: |
-          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
-          -H "Content-Type: application/json" \
-          -d "{\"content\": \"✅ GitLeaks scan completed\"}"
+      #- name: Notifications
+      #  run: |
+      #    curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+      #    -H "Content-Type: application/json" \
+      #    -d "{\"content\": \"✅ GitLeaks scan completed\"}"
