@@ -6,7 +6,7 @@ services:
     volumes:
       - ~/docker/suaps/config.json:/app/config/config.json
     env_file:
-      - ~/docker/suaps.env
+      - ~/docker/suaps/suaps.env
     ports:
       - 5000:5000
     labels:
