@@ -7,7 +7,7 @@
       enable = true;
       setSocketVariable = true;
     };*/
-    daemon.settings.live-restore = false; # Allow dockerd to be restarted without affecting running container. This option is incompatible with docker swarm.
+    #daemon.settings.live-restore = false; # Allow dockerd to be restarted without affecting running container. This option is incompatible with docker swarm.
   };
   #users.extraGroups.docker.members = ["${settings.username}"];
   users.users.${settings.username}.extraGroups = [ "docker" ];
