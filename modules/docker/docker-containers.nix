@@ -15,14 +15,17 @@ let
     fi
 
     # Set up config.json for suaps bot
-    echo "{ \"ids_resa\" : [] }" > ~/docker/suaps/config.json
+    if [ ! -f ~/docker/suaps/config.json ]; then
+      echo '{ "ids_resa": [] }' > ~/docker/suaps/config.json
+    fi
 
     # Start all the containers
     for file in ./modules/docker/ymls/*.yml; do
       name=$(basename "$file" .yml)
-      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
+      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
     done
-
+    wait
+    
     cd ..
     rm -r nixos-config/
   '';
