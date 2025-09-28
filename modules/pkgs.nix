@@ -23,6 +23,7 @@
   environment.systemPackages = 
     (with pkgs; [
       #bibata-cursors
+      bleachbit
       cmake
       compose2nix
       dig
