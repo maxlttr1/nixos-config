@@ -1,9 +1,6 @@
-name: uptime-kuma
-
 services:
   portainer:
     image: louislam/uptime-kuma:latest
-    container_name: uptime-kuma
     volumes:
       - ~/docker/uptime-kuma/uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock

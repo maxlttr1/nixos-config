@@ -1,8 +1,5 @@
-name: deluge-stack
-
 services:
   gluetun-deluge:
-    container_name: gluetun-deluge
     image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN
@@ -26,7 +23,6 @@ services:
     restart: unless-stopped
   deluge:
     image: lscr.io/linuxserver/deluge:latest
-    container_name: deluge
     depends_on:
       - gluetun-deluge
     network_mode: "service:gluetun-deluge"

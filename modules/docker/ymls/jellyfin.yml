@@ -1,9 +1,6 @@
-name: jellyfin
-
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
-    container_name: jellyfin
     networks:
       - proxy
     labels:
