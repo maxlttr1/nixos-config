@@ -1,13 +1,12 @@
 services:
-  app:
-    build:
-      context: .
+  suaps:
+    image: ghcr.io/flash2974/reservercreneausuaps-app:latest
     networks:
       - proxy
     volumes:
       - ./config/config.json:/app/config/config.json
     env_file:
-      - ./config/.env
+      - ~/docker/suaps.env
     ports:
       - 5000:5000
     labels:

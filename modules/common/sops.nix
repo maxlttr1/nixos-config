@@ -17,6 +17,11 @@
         path = "/home/${settings.username}/docker/vpn.env";
     };
 
+    sops.secrets."suaps.env" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/docker/suaps.env";
+    };
+
     sops.secrets."nixos_ssh_setup.public" = {
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/nixos_ssh_setup.pub";
