@@ -48,6 +48,7 @@
       })
       sops
       tcpdump
+      texliveSmall
       veracrypt
       vlc
       kdePackages.yakuake
