@@ -33,6 +33,7 @@
       gdb
       gnumake
       gnupg
+      inkscape # Vector graphics editor
       jdk
       mask #A CLI task runner defined by a simple markdown file
       md2pdf
@@ -48,7 +49,7 @@
       })
       sops
       tcpdump
-      texliveSmall
+      texliveFull
       veracrypt
       vlc
       kdePackages.yakuake
