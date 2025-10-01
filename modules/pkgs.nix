@@ -43,7 +43,9 @@
       papirus-icon-theme
       powershell
       python313Full
-      rstudio
+      (rstudioWrapper.override {
+        packages = with rPackages; [ FactoMineR ];
+      })
       sops
       tcpdump
       veracrypt
