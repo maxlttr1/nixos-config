@@ -9,11 +9,13 @@
     "org.gnome.DejaDup"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
+    "org.inkscape.Inkscape"
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "com.protonvpn.www"
+    "org.mozilla.Thunderbird"
     "org.torproject.torbrowser-launcher"
     "com.github.jeromerobert.pdfarranger"
   ];
@@ -23,6 +25,7 @@
   environment.systemPackages = 
     (with pkgs; [
       #bibata-cursors
+      bleachbit
       cmake
       compose2nix
       dig
@@ -41,9 +44,12 @@
       papirus-icon-theme
       powershell
       python313Full
-      rstudio
+      (rstudioWrapper.override {
+        packages = with rPackages; [ FactoMineR ];
+      })
       sops
       tcpdump
+      texliveFull
       veracrypt
       vlc
       kdePackages.yakuake

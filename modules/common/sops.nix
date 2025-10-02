@@ -14,10 +14,17 @@
 
     sops.secrets."vpn.env" = {
         owner = "${settings.username}"; 
+        path = "/home/${settings.username}/docker/vpn.env";
     };
 
-    sops.secrets."wg-easy.env" = {
+    sops.secrets."suaps.env" = {
         owner = "${settings.username}"; 
+        path = "/home/${settings.username}/docker/suaps/suaps.env";
+    };
+
+    sops.secrets."suaps.config" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/docker/suaps/config.json";
     };
 
     sops.secrets."nixos_ssh_setup.public" = {

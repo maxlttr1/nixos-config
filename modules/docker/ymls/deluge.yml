@@ -1,0 +1,36 @@
+services:
+  gluetun-deluge:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+    #  - WIREGUARD_ENDPOINT_IP=!!!!!!!!!!!!!!!!!
+    #  - WIREGUARD_ENDPOINT_PORT=!!!!!!!!!!!!!!!!!
+    #  - WIREGUARD_PUBLIC_KEY=!!!!!!!!!!!!!!!!!
+    #  - WIREGUARD_PRIVATE_KEY=!!!!!!!!!!!!!!!!!
+    #  - WIREGUARD_PRESHARED_KEY=!!!!!!!!!!!!!!!!!
+    #  - WIREGUARD_ADDRESSES=!!!!!!!!!!!!!!!!!
+    env_file:
+      - ~/docker/vpn.env
+    ports:
+      - 8112:8112 # Deluge
+      - 6881:6881 # Deluge
+      - 6881:6881/udp # Deluge
+    restart: unless-stopped
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    depends_on:
+      - gluetun-deluge
+    network_mode: "service:gluetun-deluge"
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=Etc/UTC
+    volumes:
+      - ~/docker/deluge/config:/config
+      - ~/docker/movies:/downloads
+    restart: unless-stopped

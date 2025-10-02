@@ -1,0 +1,9 @@
+services:
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Europe/Paris
+      - WATCHTOWER_CLEANUP=true # Remove old images after update
+    restart: unless-stopped
