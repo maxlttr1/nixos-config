@@ -9,6 +9,7 @@
     "org.gnome.DejaDup"
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
+    "org.inkscape.Inkscape"
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
@@ -33,7 +34,6 @@
       gdb
       gnumake
       gnupg
-      inkscape # Vector graphics editor
       jdk
       mask #A CLI task runner defined by a simple markdown file
       md2pdf
