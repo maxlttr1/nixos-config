@@ -1,6 +1,6 @@
 services:
   suaps:
-    image: maxlttr697/reserver_creneau_suaps:latest
+    image: maxlttr697/reserver_creneau_suaps:stable
     networks:
       - proxy
     volumes:
