@@ -3,6 +3,7 @@
 {
   # Flatpaks
   services.flatpak.packages = [
+    "org.bleachbit.BleachBit"
     "com.usebottles.bottles"
     "com.google.Chrome"
     "de.leopoldluley.Clapgrep"
@@ -24,8 +25,6 @@
 
   environment.systemPackages = 
     (with pkgs; [
-      #bibata-cursors
-      bleachbit
       cmake
       compose2nix
       dig
