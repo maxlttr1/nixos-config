@@ -11,6 +11,7 @@
     "io.github.milkshiift.GoofCord"
     "io.github.finefindus.Hieroglyphic"
     "org.inkscape.Inkscape"
+    "org.libreoffice.LibreOffice"
     "io.gitlab.librewolf-community"
     "io.github.mhogomchungu.media-downloader"
     "com.obsproject.Studio"
