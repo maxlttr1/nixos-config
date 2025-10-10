@@ -52,10 +52,10 @@
       veracrypt
       vlc
       kdePackages.yakuake
-      yt-dlp
     ])
     ++
     (with pkgs.alternative; [
+      yt-dlp
     ]);
   
   fonts.packages = with pkgs; [

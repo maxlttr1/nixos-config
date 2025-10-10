@@ -7,10 +7,11 @@
     encryption.mode = "none";
     repo = "/home/${settings.username}/Syncthing-backup";
     compression = "auto,zstd";
-    startAt = "weekly";
+    startAt = "daily";
     prune.keep = {
+      weekly = 1;
       monthly = 1;
+      yearly = 1;
     };
-    # One backup each week but only the newest is kept each month. This way you got 1 backup each month.
   };
 }
