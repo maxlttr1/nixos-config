@@ -6,8 +6,8 @@ let
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
     fi
     cd nixos-config/
-    ${pkgs.git}/bin/git checkout docker_rebase
-    ${pkgs.git}/bin/git pull origin docker_rebase
+    ${pkgs.git}/bin/git checkout master
+    ${pkgs.git}/bin/git pull origin master
 
     # Create proxy network if not present for traefik
     if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
@@ -30,8 +30,8 @@ let
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
     fi
     cd nixos-config/
-    ${pkgs.git}/bin/git checkout docker_rebase
-    ${pkgs.git}/bin/git pull origin docker_rebase
+    ${pkgs.git}/bin/git checkout master
+    ${pkgs.git}/bin/git pull origin master
 
     # Stop all containers started by docker compose
     for file in ./modules/docker/ymls/*.yml; do
