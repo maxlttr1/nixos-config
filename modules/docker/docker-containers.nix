@@ -9,6 +9,11 @@ let
     ${pkgs.git}/bin/git checkout master
     ${pkgs.git}/bin/git pull origin master
 
+    if [ ! -f "file.txt" ]; then
+      mkdir -p ~/docker/suaps
+      echo '{ "ids_resa": [] }' > ~/docker/suaps/config.json
+    fi
+
     # Create proxy network if not present for traefik
     if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
       ${pkgs.docker}/bin/docker network create proxy
