@@ -22,11 +22,6 @@
         path = "/home/${settings.username}/docker/suaps/suaps.env";
     };
 
-    /*sops.secrets."suaps.config" = {
-        owner = "${settings.username}"; 
-        path = "/home/${settings.username}/docker/suaps/config.json";
-    };*/
-
     sops.secrets."nixos_ssh_setup.public" = {
         owner = "${settings.username}"; 
         path = "/home/${settings.username}/.ssh/nixos_ssh_setup.pub";
