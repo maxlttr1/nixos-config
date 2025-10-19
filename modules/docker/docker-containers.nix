@@ -79,7 +79,7 @@ in
     serviceConfig = {
       WorkingDirectory = "/tmp/";
       Environment = "HOME=/home/${settings.username}";
-      User = settings.username;
+      User = "root";
       Type = "oneshot";
       ExecStart = "${starting_script}";
     };
