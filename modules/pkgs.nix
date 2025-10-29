@@ -67,7 +67,7 @@
     enable = true;
     update = {
       auto = {
-        enable = true;
+        enable = false;
         onCalendar = "weekly";
       };
     };
