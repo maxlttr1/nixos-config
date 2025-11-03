@@ -19,7 +19,7 @@
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     #discover
     elisa
-    kate
+    #kate
     khelpcenter
     #konsole
   ];
