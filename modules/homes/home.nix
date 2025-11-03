@@ -234,33 +234,6 @@ in
         ];
       }
     ];
-    powerdevil = {
-      AC = {
-        powerButtonAction = "sleep";
-        whenLaptopLidClosed = "sleep";
-        autoSuspend = {
-          action = "sleep";
-          idleTimeout = 900;
-        };
-      };
-      battery = {
-        powerButtonAction = "sleep";
-        whenSleepingEnter = "standbyThenHibernate";
-        whenLaptopLidClosed = "sleep";
-        autoSuspend = {
-          action = "sleep";
-          idleTimeout = 300;
-        };
-      };
-      lowBattery = {
-        powerButtonAction = "sleep";
-        whenLaptopLidClosed = "sleep";
-        autoSuspend = {
-          action = "sleep";
-          idleTimeout = 120;
-        };
-      };
-    };
   };
 
   programs.git = {
