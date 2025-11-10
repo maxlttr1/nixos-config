@@ -44,6 +44,7 @@
       papirus-icon-theme
       powershell
       python313Full
+      python313Packages.opencv4 # To use cv2 in Python
       (rstudioWrapper.override {
         packages = with rPackages; [ FactoMineR ];
       })
