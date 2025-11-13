@@ -43,8 +43,7 @@
       nodejs
       papirus-icon-theme
       powershell
-      python313Full
-      python313Packages.opencv4 # To use cv2 in Python
+      python312Full
       (rstudioWrapper.override {
         packages = with rPackages; [ FactoMineR ];
       })
