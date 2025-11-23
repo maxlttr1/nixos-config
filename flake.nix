@@ -80,6 +80,7 @@
             let
               settings = settings-default // {
                 hostname = "asus-maxlttr";
+                swap = 0;
               };
             in
               nixpkgs-main.lib.nixosSystem {
