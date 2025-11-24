@@ -9,7 +9,7 @@ let
     ${pkgs.git}/bin/git checkout master
     ${pkgs.git}/bin/git pull origin master
 
-    if [ ! -f "~/docker/suaps/config.json" ]; then
+    if [ ! -f ~/docker/suaps/config.json ]; then
       mkdir -p ~/docker/suaps
       echo '{ "ids_resa": [] }' > ~/docker/suaps/config.json
     fi
