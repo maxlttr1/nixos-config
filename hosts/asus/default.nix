@@ -11,7 +11,7 @@
     ../../modules/laptop.nix
     ../../modules/ld.nix
     ../../modules/pipewire.nix
-    #../../modules/pkgs-gaming.nix
+    ../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
     ../../modules/swap.nix
     ../../modules/touchpad.nix

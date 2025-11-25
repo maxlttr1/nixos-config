@@ -8,8 +8,10 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-main";
+      #url = "github:nix-community/home-manager/release-25.05";
+      #inputs.nixpkgs.follows = "nixpkgs-main";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-overlay";
     }; 
     
     disko = {
@@ -80,10 +82,11 @@
             let
               settings = settings-default // {
                 hostname = "asus-maxlttr";
-                swap = 0;
+                kernel = "linuxPackages_latest";
+                swap = 16;
               };
             in
-              nixpkgs-main.lib.nixosSystem {
+              nixpkgs-overlay.lib.nixosSystem {
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
                 modules = [./hosts/asus] ++ desktopModules;

@@ -50,3 +50,45 @@ in
     };
   };
 }
+
+/*
+{ config, pkgs, lib, ... }:
+let
+  hostname = config.nixpkgs.hostPlatform;
+  # Or, if you want to check the actual hostname:
+  actualHostname = config.networking.hostName;
+in
+{
+  system.autoUpgrade = lib.mkIf (actualHostname == "server-maxlttr") {
+    enable = true;
+    flake = "github:maxlttr1/nixos-config";
+    flags = [ "-L" ];
+    dates = "1 02:00";  # Monthly (1st of the month at 2 AM)
+    randomizedDelaySec = "30min";
+    persistent = true;
+    operation = "switch";
+    allowReboot = true;
+    rebootWindow = {
+      lower = "01:00";
+      upper = "05:00";
+    };
+  }
+  else lib.mkIf (actualHostname == "asus-maxlttr") {
+    enable = true;
+    flake = "github:maxlttr1/nixos-config";
+    flags = [ "-L" ];
+    dates = "Sun 02:00";  # Weekly (every Sunday at 2 AM)
+    randomizedDelaySec = "30min";
+    persistent = true;
+    operation = "switch";
+    allowReboot = true;
+    rebootWindow = {
+      lower = "01:00";
+      upper = "05:00";
+    };
+  }
+  else {
+    enable = false;  # Disable for all other hosts
+  };
+}
+*/

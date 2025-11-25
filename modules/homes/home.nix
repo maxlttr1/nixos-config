@@ -238,8 +238,10 @@ in
 
   programs.git = {
     enable = true;
-    userEmail = "maxime.lettier@protonmail.com";
-    userName = "Maxime";
+    settings = {
+      userEmail = "maxime.lettier@protonmail.com";
+      userName = "Maxime";
+    };
   };
 
   # This value determines the Home Manager release that your

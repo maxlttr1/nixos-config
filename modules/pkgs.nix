@@ -43,7 +43,7 @@
       nodejs
       papirus-icon-theme
       powershell
-      python312Full
+      python312
       (rstudioWrapper.override {
         packages = with rPackages; [ FactoMineR ];
       })
@@ -53,10 +53,10 @@
       veracrypt
       vlc
       kdePackages.yakuake
+      yt-dlp
     ])
     ++
     (with pkgs.alternative; [
-      yt-dlp
     ]);
   
   fonts.packages = with pkgs; [
