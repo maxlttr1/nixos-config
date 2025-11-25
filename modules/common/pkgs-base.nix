@@ -13,7 +13,6 @@
       fzf
       git
       htop
-      lazydocker
       magic-wormhole
       ncdu
       powertop

@@ -42,6 +42,16 @@
         path = "/home/${settings.username}/.ssh/racknerd_ssh";
     };
 
+    sops.secrets."gitlab-univ-nantes.public" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/gitlab-univ-nantes.pub";
+    };
+    
+    sops.secrets."gitlab-univ-nantes.private" = {
+        owner = "${settings.username}"; 
+        path = "/home/${settings.username}/.ssh/gitlab-univ-nantes";
+    };
+
     sops.secrets."discord-webhook" = {
         owner = "${settings.username}"; 
         path = "/etc/discord-webhook.conf";
