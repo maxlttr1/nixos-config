@@ -22,6 +22,7 @@
       unp
       unrar
       wget
+      xorg.xauth
       zellij
     ])
     ++
