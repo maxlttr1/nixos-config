@@ -21,7 +21,6 @@
       tldr
       unp
       unrar
-      waypipe
       wget
       zellij
     ])
