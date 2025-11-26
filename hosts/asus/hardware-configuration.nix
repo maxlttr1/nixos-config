@@ -25,22 +25,12 @@
     };
 
   fileSystems."/home/maxlttr/mountedDisk" =
-    { device = "/dev/disk/by-uuid/3b9effda-4a2d-4f57-8369-fabf1fe93b8d";
+    { device = "/dev/disk/by-uuid/d8d4d44d-0461-46ff-a3df-2141b02aefec";
       fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
