@@ -22,9 +22,10 @@
 
   environment.systemPackages = 
     (with pkgs; [
+      steam-devices-udev-rules
+
     ])
     ++
     (with pkgs.alternative; [
-      steam-devices-udev-rules
     ]);
 }
