@@ -21,8 +21,8 @@
       tldr
       unp
       unrar
+      waypipe
       wget
-      xorg.xauth
       zellij
     ])
     ++

@@ -11,8 +11,8 @@
     settings = {
       PasswordAuthentication = false;
       AllowUsers = [ "${settings.username}" "root" ]; # Allows all users by default
-      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
-      X11Forwarding = true;
+      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      # X11Forwarding = true;
     };
   };
 
