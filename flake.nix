@@ -83,7 +83,6 @@
               settings = settings-default // {
                 hostname = "asus-maxlttr";
                 kernel = "linuxPackages_latest";
-                swap = 16;
               };
             in
               nixpkgs-overlay.lib.nixosSystem {
@@ -108,7 +107,6 @@
             let
               settings = settings-default // {
                 hostname = "server-maxlttr";
-                swap = 16;
               };
             in
               nixpkgs-main.lib.nixosSystem {
