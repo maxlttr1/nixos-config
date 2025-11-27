@@ -50,7 +50,7 @@
       sops
       tcpdump
       texliveFull
-      veracrypt
+      #veracrypt
       vlc
       kdePackages.yakuake
       yt-dlp
