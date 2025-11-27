@@ -77,7 +77,7 @@ jobs:
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"✅ Nix flake.lock updated and passed check !\"}"
+          -d "{\"content\": \"✅ Nix flake.lock updated and passed check.\"}"
 
       #   curl -d "✅ Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
 
@@ -86,7 +86,7 @@ jobs:
       run: |
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
-          -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow)\"}"
+          -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
 
       #    curl -d "❌ Nix flake update failed (will retry next week)" ntfy.sh/${{ secrets.NTFY_URL }}
 
