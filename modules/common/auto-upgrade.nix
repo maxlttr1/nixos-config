@@ -41,7 +41,7 @@ in
 {
   system.autoUpgrade = baseConfig // {
     dates = if actualHostname == "asus-maxlttr"
-            then "daily at 02:00"
+            then "daily"
             else "Sat 02:00";
   };
 
