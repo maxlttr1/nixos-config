@@ -28,7 +28,6 @@ let
       #"nixpkgs-main"
       "-L" # Show logs
     ];
-    randomizedDelaySec = "30min";
     persistent = true;
     operation = "switch"; # Or "boot"
     allowReboot = true;
