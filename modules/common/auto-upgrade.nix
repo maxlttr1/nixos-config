@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
 let
   notifyScript = pkgs.writeShellScript "notify-discord" ''
     
@@ -15,11 +16,11 @@ let
         -H "Content-Type: application/json" \
         -d "{\"content\": \"❌ NixOS upgrade failed on **$hostname**\"}"
     fi
-  ''; 
-in
-{
-  system.autoUpgrade = {
-    # Check for generations: sudo nix-env -p /nix/var/nix/profiles/system --list-generations
+  '';
+
+  actualHostname = config.networking.hostName;
+
+  baseConfig = {
     enable = true;
     flake = "github:maxlttr1/nixos-config";
     flags = [
@@ -27,7 +28,6 @@ in
       #"nixpkgs-main"
       "-L" # Show logs
     ];
-    dates = "Sun 02:00";  # Every Sunday at 2 AM
     randomizedDelaySec = "30min";
     persistent = true;
     operation = "switch"; # Or "boot"
@@ -36,6 +36,14 @@ in
       lower = "01:00";
       upper = "05:00";
     };
+  };
+in
+
+{
+  system.autoUpgrade = baseConfig // {
+    dates = if actualHostname == "asus-maxlttr"
+            then "daily at 02:00"
+            else "Sat 02:00";
   };
 
   systemd.services."nixos-upgrade" = {
@@ -50,45 +58,3 @@ in
     };
   };
 }
-
-/*
-{ config, pkgs, lib, ... }:
-let
-  hostname = config.nixpkgs.hostPlatform;
-  # Or, if you want to check the actual hostname:
-  actualHostname = config.networking.hostName;
-in
-{
-  system.autoUpgrade = lib.mkIf (actualHostname == "server-maxlttr") {
-    enable = true;
-    flake = "github:maxlttr1/nixos-config";
-    flags = [ "-L" ];
-    dates = "1 02:00";  # Monthly (1st of the month at 2 AM)
-    randomizedDelaySec = "30min";
-    persistent = true;
-    operation = "switch";
-    allowReboot = true;
-    rebootWindow = {
-      lower = "01:00";
-      upper = "05:00";
-    };
-  }
-  else lib.mkIf (actualHostname == "asus-maxlttr") {
-    enable = true;
-    flake = "github:maxlttr1/nixos-config";
-    flags = [ "-L" ];
-    dates = "Sun 02:00";  # Weekly (every Sunday at 2 AM)
-    randomizedDelaySec = "30min";
-    persistent = true;
-    operation = "switch";
-    allowReboot = true;
-    rebootWindow = {
-      lower = "01:00";
-      upper = "05:00";
-    };
-  }
-  else {
-    enable = false;  # Disable for all other hosts
-  };
-}
-*/
