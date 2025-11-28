@@ -18,6 +18,7 @@ services:
       - ~/docker/jellyfin/library:/config
       - ~/docker/movies:/data/movies
       - ~/docker/tvshows:/data/tvshows
+      - ~/Syncthing/music:/data/music
     ports:
       - 8096:8096
     devices:
