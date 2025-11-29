@@ -16,9 +16,9 @@
     "io.github.mhogomchungu.media-downloader"
     #"com.obsproject.Studio"
     #"md.obsidian.Obsidian"
-    #"com.protonvpn.www"
+    "com.protonvpn.www"
     "org.mozilla.Thunderbird"
-    #"org.torproject.torbrowser-launcher"
+    "org.torproject.torbrowser-launcher"
     "com.github.jeromerobert.pdfarranger"
   ];
 
