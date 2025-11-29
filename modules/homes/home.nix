@@ -32,13 +32,12 @@ in
         # Python
         ms-python.python
         # Nix
-        bbenoist.nix
         jnoortheen.nix-ide
         # C/C++
-        ms-vscode.cpptools
-        ms-vscode.cmake-tools  
+          # ms-vscode.cpptools
+        ms-vscode.cmake-tools
+        llvm-vs-code-extensions.vscode-clangd
         # Javascript
-        christian-kohler.npm-intellisense
         robole.javascript-snippets
         christian-kohler.path-intellisense # autocompletes filenames 
         # Java
@@ -48,33 +47,19 @@ in
         vscjava.vscode-java-test
         # HTML/CSS and Web
         ecmel.vscode-html-css
-        ms-vscode.live-server
-        naumovs.color-highlight # Preview colors
         # Language pack
         james-yu.latex-workshop
         yzhang.markdown-all-in-one
-        # Docker
-        ms-azuretools.vscode-docker
         # Yaml
         redhat.vscode-yaml
-        # SQL
-        cweijan.vscode-mysql-client2
-        # Git
-        vivaxy.vscode-conventional-commits
-        eamodio.gitlens
-        github.vscode-github-actions
         # Utilities
-        kisstkondoros.vscode-gutter-preview # Image preview
         ms-vsliveshare.vsliveshare
-        pflannery.vscode-versionlens # Show latest versions
         formulahendry.auto-rename-tag
         tomoki1207.pdf
         pkief.material-icon-theme
-        formulahendry.code-runner
-        hediet.vscode-drawio
-        pomdtr.excalidraw-editor
         zhuangtongfa.material-theme
         sonarsource.sonarlint-vscode # Linter
+        mkhl.direnv
       ];
       userSettings = {
         "database-client.autoSync" = true;

@@ -75,6 +75,8 @@
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.home-manager.nixosModules.home-manager
       ] ++ commonModules;
+
+      shells = import ./shells.nix { inherit (import nixpkgs-overlay { system = "x86_64-linux"; }) pkgs; };
     in
       {
         nixosConfigurations = {
@@ -90,19 +92,7 @@
                 specialArgs = { inherit inputs settings; };
                 modules = [./hosts/asus] ++ desktopModules;
               };
-          
-          desktop-maxlttr = 
-            let
-              settings = settings-default // {
-                hostname = "desktop-maxlttr";
-              };
-            in
-              nixpkgs-main.lib.nixosSystem {
-                system = settings.system;
-                specialArgs = { inherit inputs settings; };
-                modules = [./hosts/desktop] ++ desktopModules;
-              };
-          
+        
           server-maxlttr = 
             let
               settings = settings-default // {
@@ -113,20 +103,9 @@
                 system = settings.system;
                 specialArgs = { inherit inputs settings; };
                 modules = [./hosts/server] ++ commonModules;
-              };
-          
-          vm-maxlttr = 
-            let
-              settings = settings-default // {
-                hostname = "vm-maxlttr";
-                swap = 0;
-              };
-            in
-              nixpkgs-main.lib.nixosSystem {
-                system = settings.system;
-                specialArgs = { inherit inputs settings; };
-                modules = [./hosts/vm] ++ commonModules;
-              };
+              };          
         };
+
+        devShells.x86_64-linux = shells;
       };
 }

@@ -29,21 +29,15 @@
       cmake
       compose2nix
       dig
+      direnv
       ffmpeg
-      gcc
-      gdb
-      gnumake
-      gnupg
-      jdk
+      # gnupg
       mask #A CLI task runner defined by a simple markdown file
       md2pdf
       moreutils # to get vipe
-      ninja
       nmap
-      nodejs
       papirus-icon-theme
       powershell
-      python312
       (rstudioWrapper.override {
         packages = with rPackages; [ FactoMineR ];
       })
