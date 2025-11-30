@@ -32,10 +32,10 @@ in
           video = 0;
           thresholds = {
             "0"   = "night";
-            "30"  = "dim";
-            "100" = "normal";
-            "180" = "bright";
-            "255" = "outdoors";
+            "20"  = "dim";
+            "50"  = "normal";
+            "80"  = "bright";
+            "100" = "outdoors";
           };
         };
       };
