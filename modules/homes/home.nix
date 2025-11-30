@@ -24,6 +24,33 @@ in
   home.packages = [
   ];*/
 
+  services.wluma = {
+    enable = true;
+    settings =  {
+      als = {
+        webcam = {
+          video = 0;
+          thresholds = {
+            "0"   = "night";
+            "30"  = "dim";
+            "100" = "normal";
+            "180" = "bright";
+            "255" = "outdoors";
+          };
+        };
+      };
+      output = {
+        backlight = [
+          {
+            name = "eDP-1";
+            path = "/sys/class/backlight/intel_backlight/";
+            capturer = "none";
+          }
+        ];
+      };
+    };
+  };
+  
   programs.vscode = {
     enable = true;
     #package = pkgs.vscodium;
