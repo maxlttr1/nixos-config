@@ -20,7 +20,7 @@ let
     fi
 
     # Start all the containers
-    for file in ./modules/docker/ymls/*.yml; do
+    for file in ./modules/docker/active/*.yml; do
       name=$(basename "$file" .yml)
       ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
     done
@@ -39,7 +39,7 @@ let
     ${pkgs.git}/bin/git pull origin master
 
     # Stop all containers started by docker compose
-    for file in ./modules/docker/ymls/*.yml; do
+    for file in ./modules/docker/active/*.yml; do
       name=$(basename "$file" .yml)
       ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
     done
