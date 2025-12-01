@@ -33,9 +33,9 @@
   cpp = pkgs.mkShell {
     packages = with pkgs; [
       gcc
-      clang
+      #clang
       
-      clang-tools # clang-tidy, clang-format
+      #clang-tools # clang-tidy, clang-format
       cppcheck
 
       automake
@@ -43,13 +43,16 @@
       gnumake
       ninja 
 
-      lldb
-      # gdb
+      # lldb
+       gdb
       # gdbgui
+      
+      mpi
+      mpich
     ];
 
-    CC = "${pkgs.clang}/bin/clang";
-    CXX = "${pkgs.clang}/bin/clang++";
+    #CC = "${pkgs.clang}/bin/clang";
+    #CXX = "${pkgs.clang}/bin/clang++";
     CFLAGS = "-Wall -Wextra -Werror";
     CXXFLAGS = "-Wall -Wextra -Werror";
 
