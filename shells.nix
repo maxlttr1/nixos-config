@@ -44,15 +44,12 @@
       ninja 
 
       # lldb
-       gdb
-      # gdbgui
-      
-      mpi
-      mpich
+      gdb
+      gdbgui
     ];
 
-    #CC = "${pkgs.clang}/bin/clang";
-    #CXX = "${pkgs.clang}/bin/clang++";
+    CC = "${pkgs.gcc}/bin/gcc";
+    CXX = "${pkgs.gcc}/bin/g++";
     CFLAGS = "-Wall -Wextra -Werror";
     CXXFLAGS = "-Wall -Wextra -Werror";
 
