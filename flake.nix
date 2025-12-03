@@ -2,17 +2,17 @@
   description = "KakouKakou";
 
   inputs = {
-    nixpkgs-main.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-main.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-overlay.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     
     home-manager = {
-      #url = "github:nix-community/home-manager/release-25.05";
+      #url = "github:nix-community/home-manager/release-25.11";
       #inputs.nixpkgs.follows = "nixpkgs-main";
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-overlay";
-    }; 
+    };
     
     disko = {
       url = "github:nix-community/disko/latest";
