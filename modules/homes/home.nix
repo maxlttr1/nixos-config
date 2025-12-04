@@ -62,9 +62,9 @@ in
         # Nix
         jnoortheen.nix-ide
         # C/C++
-          # ms-vscode.cpptools
+        ms-vscode.cpptools
         ms-vscode.cmake-tools
-        llvm-vs-code-extensions.vscode-clangd
+        # llvm-vs-code-extensions.vscode-clangd
         # Javascript
         robole.javascript-snippets
         christian-kohler.path-intellisense # autocompletes filenames 
@@ -86,7 +86,7 @@ in
         tomoki1207.pdf
         pkief.material-icon-theme
         zhuangtongfa.material-theme
-        sonarsource.sonarlint-vscode # Linter
+        # sonarsource.sonarlint-vscode # Linter
         mkhl.direnv
       ];
       userSettings = {
