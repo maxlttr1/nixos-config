@@ -32,7 +32,8 @@
       direnv
       ffmpeg
       # gnupg
-      mask #A CLI task runner defined by a simple markdown file
+      grex # Command-line tool for generating regular expressions from user-provided test cases
+      mask # A CLI task runner defined by a simple markdown file
       md2pdf
       moreutils # to get vipe
       nmap
