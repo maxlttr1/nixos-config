@@ -1,0 +1,12 @@
+services:
+  freshrss:
+    image: freshrss/freshrss
+    ports:
+      - 8787:80
+    volumes:
+      - ~/docker/freshrss/data:/var/www/FreshRSS/data  # Persist user data
+      - ~/docker/freshrss/extensions:/var/www/FreshRSS/extensions  # Persist extensions
+    environment:
+      - TZ=Europe/Paris
+      - CRON_MIN=15     # Update feeds every 15 minutes
+    restart: unless-stopped
