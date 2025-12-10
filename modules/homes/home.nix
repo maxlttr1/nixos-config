@@ -24,7 +24,7 @@ in
   home.packages = [
   ];*/
 
-  services.wluma = {
+  /*services.wluma = {
     enable = true;
     settings =  {
       als = {
@@ -50,7 +50,7 @@ in
         ];
       };
     };
-  };
+  };*/
   
   programs.vscode = {
     enable = true;
