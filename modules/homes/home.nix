@@ -253,6 +253,14 @@ in
     enable = true;
     userEmail = "maxime.lettier@protonmail.com";
     userName = "Maxime";
+    includes = [
+      {
+        condition = "gitdir:~/dicewars/";
+        contents = {
+          user.email = "maxime.lettier@etu.univ-nantes.fr";
+        };
+      }
+    ];
   };
 
   # This value determines the Home Manager release that your

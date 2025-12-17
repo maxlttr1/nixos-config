@@ -49,6 +49,13 @@
       vlc
       kdePackages.yakuake
       yt-dlp
+
+
+      ninja
+      gcc
+      cmake 
+      gnumake
+      gdb
     ])
     ++
     (with pkgs.alternative; [

@@ -9,7 +9,7 @@
     ../../modules/intel.nix
     ../../modules/kde-plasma.nix
     ../../modules/laptop.nix
-    # ../../modules/ld.nix
+    ../../modules/ld.nix
     ../../modules/pipewire.nix
     ../../modules/pkgs-gaming.nix
     ../../modules/pkgs.nix
