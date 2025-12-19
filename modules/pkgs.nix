@@ -30,6 +30,7 @@
       compose2nix
       dig
       direnv
+      eduvpn-client
       ffmpeg
       # gnupg
       grex # Command-line tool for generating regular expressions from user-provided test cases
