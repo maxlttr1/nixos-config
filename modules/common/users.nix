@@ -7,7 +7,6 @@
       createHome = true;
       extraGroups = ["wheel"];
       initialHashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
-      #hashedPasswordFile = config.sops.secrets.passwd.path;
       packages = with pkgs; [];
     };
   };

@@ -1,9 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, settings, ... }:
 
 let
   notifyScript = pkgs.writeShellScript "notify-discord" ''
     
-    url=$(cat /etc/discord-webhook.conf)
+    url=$(cat /home/${settings.username}/.config/sops-nix/secrets/discord-webhook)
     hostname=$(${pkgs.nettools}/bin/hostname)
     status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 

@@ -15,7 +15,7 @@ services:
     #  - WIREGUARD_PRESHARED_KEY=!!!!!!!!!!!!!!!!!
     #  - WIREGUARD_ADDRESSES=!!!!!!!!!!!!!!!!!
     env_file:
-      - ~/docker/vpn.env
+      - ~/.config/sops-nix/secrets/vpn.env
     ports:
       - 8112:8112 # Deluge
       - 6881:6881 # Deluge

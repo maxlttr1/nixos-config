@@ -48,10 +48,10 @@
       gdbgui
     ];
 
-    CC = "${pkgs.gcc}/bin/gcc";
+    /*CC = "${pkgs.gcc}/bin/gcc";
     CXX = "${pkgs.gcc}/bin/g++";
     CFLAGS = "-Wall -Wextra -Werror";
-    CXXFLAGS = "-Wall -Wextra -Werror";
+    CXXFLAGS = "-Wall -Wextra -Werror";*/
 
     shellHook = ''
       echo -e "\e[45m C++ dev shell activated \e[0m"
@@ -69,12 +69,39 @@
 
   nix = pkgs.mkShell {
     packages = with pkgs; [
+      compose2nix
       nix
       nixpkgs-fmt
+      sops
     ];
 
     shellHook = ''
       echo -e "\e[45m Nix dev shell activated \e[0m"
     '';
   };
+
+  network = pkgs.mkShell {
+    packages = with pkgs; [
+      # DNS
+      dig
+
+      # Scanning
+      nmap
+
+      # Traffic
+      tcpdump
+      wireshark
+
+      # HTTP & Debugging
+      curl
+      httpie
+      openssl
+      wget
+    ];
+
+    shellHook = ''
+      echo -e "\e[45m Network dev shell activated \e[0m"
+    '';
+  };
+
 }
