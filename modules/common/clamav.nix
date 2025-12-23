@@ -15,10 +15,11 @@
     interval = "weekly"; 
     scanDirectories = [
       "/home"
+      "/root"
+      "/opt"
       "/tmp"
       "/etc"
-      "/var/lib"
-      "/var/tmp"
+      "/var"
       "/usr"
       "/nix"
     ];
