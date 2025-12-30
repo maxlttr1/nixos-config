@@ -6,7 +6,6 @@
     ./modules/fonts.nix
     ./modules/librewolf.nix
     ./modules/pkgs.nix
-    ./modules/pkgs-gaming.nix
     ./modules/plasma-manager.nix
     ./modules/vscode.nix
     # ./modules/homes/wluma.nix
