@@ -28,7 +28,7 @@
 
   fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persistent/system" = {
-    enable = true;  # NB: Defaults to true, not needed
+    enable = true; # NB: Defaults to true, not needed
     hideMounts = true;
     directories = [
       "/var/log"

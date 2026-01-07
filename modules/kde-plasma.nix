@@ -12,10 +12,10 @@
 
   # Open ports in the firewall for kde connect
   networking.firewall = rec {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
-  
+
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     #discover
     elisa

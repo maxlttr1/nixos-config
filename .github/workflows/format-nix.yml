@@ -1,0 +1,61 @@
+name: Format Nix Code
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  format-nix:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Nix # Installs Nix on the GitHub runner
+      uses: cachix/install-nix-action@v31
+
+    - name: Install nixpkgs-fmt
+      run: |
+        nix-env -iA nixpkgs.nixpkgs-fmt
+    
+    - name: Format Nix files
+      run: |
+        nix shell nixpkgs#nixpkgs-fmt -c sh -c '
+          find . -name "*.nix" -type f -print0 \
+            | xargs -0 nixpkgs-fmt
+        '
+  
+    - name: Commit to the master branch
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git fetch origin
+        git checkout master
+        git pull origin master
+        git add .
+        git commit -m "Format *.nix" || true
+        git push origin master
+
+    - name: Success notifications
+      if: success()
+      run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"✅ Formatting succeeded.\"}"
+
+    - name: Failure notifications
+      if: failure()
+      run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": \"❌ Formatting failed.\"}"
+
+
+    

@@ -1,4 +1,4 @@
-{ settings, pkgs, ...}:
+{ settings, pkgs, ... }:
 
 {
   programs.librewolf = {

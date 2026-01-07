@@ -1,1 +1,1 @@
-{boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];}
+{ boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ]; }

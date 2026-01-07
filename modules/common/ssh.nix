@@ -10,7 +10,7 @@
     startWhenNeeded = true;
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = ["${settings.username}"]; # Allows all users by default
+      AllowUsers = [ "${settings.username}" ]; # Allows all users by default
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       # X11Forwarding = true;
     };

@@ -19,7 +19,7 @@
     ./state-version.nix
     ./syncthing.nix
     ./tailscale.nix
-    ./timezone-locales.nix  
+    ./timezone-locales.nix
     ./users.nix
   ];
 }

@@ -49,7 +49,7 @@ let
 
     cd ..
     rm -r nixos-config/
-  ''; 
+  '';
 in
 
 {
@@ -81,11 +81,11 @@ in
   # Run with compose2nix: compose2nix -inputs input.yml -output output.nix -runtime docker
 
   /*
-  environment = {
+    environment = {
       "VPN_SERVICE_PROVIDER" = "custom";
       "VPN_TYPE" = "wireguard";
-  };
-  environmentFiles = [ config.sops.secrets."vpn.env".path ];
+    };
+    environmentFiles = [ config.sops.secrets."vpn.env".path ];
   */
 
   systemd.services."docker-containers-start" = {

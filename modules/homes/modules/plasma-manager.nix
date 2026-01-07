@@ -66,7 +66,7 @@ in
         inherit wallpaperSlideShow;
         showMediaControls = false;
       };
-    }; 
+    };
     kwin.nightLight = {
       enable = true;
       location.latitude = "46.04";
@@ -135,7 +135,7 @@ in
               calendar.firstDayOfWeek = "monday";
               time.format = "24h";
             };
-          }   
+          }
         ];
       }
     ];

@@ -1,16 +1,16 @@
 {
   services.wluma = {
     enable = true;
-    settings =  {
+    settings = {
       als = {
         webcam = {
           video = 0;
           # Run RUST_LOG=trace wluma / RUST_LOG=debug wluma
           thresholds = {
-            "0"   = "night";
-            "20"  = "dim";
-            "50"  = "normal";
-            "80"  = "bright";
+            "0" = "night";
+            "20" = "dim";
+            "50" = "normal";
+            "80" = "bright";
             "100" = "outdoors";
           };
         };

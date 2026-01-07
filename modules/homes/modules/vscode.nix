@@ -64,7 +64,7 @@
         "workbench.startupEditor" = "none";
         "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
         "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
-        "cmake.options.statusBarVisibility" =  "visible";
+        "cmake.options.statusBarVisibility" = "visible";
         "explorer.confirmDragAndDrop" = false;
         "editor.insertSpaces" = false;
         "editor.tabSize" = 4;

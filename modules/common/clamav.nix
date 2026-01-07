@@ -12,7 +12,7 @@
   };
   services.clamav.scanner = {
     enable = true;
-    interval = "weekly"; 
+    interval = "weekly";
     scanDirectories = [
       "/home"
       "/root"

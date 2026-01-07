@@ -3,7 +3,7 @@
 {
   default = pkgs.mkShell {
     packages = [
-  
+
     ];
     shellHook = ''
       echo -e "\e[45m Default dev shell activated \e[0m"
@@ -34,14 +34,14 @@
     packages = with pkgs; [
       gcc
       #clang
-      
+
       #clang-tools # clang-tidy, clang-format
       cppcheck
 
       automake
       cmake
       gnumake
-      ninja 
+      ninja
 
       # lldb
       gdb
@@ -49,8 +49,8 @@
     ];
 
     /*CC = "${pkgs.gcc}/bin/gcc";
-    CXX = "${pkgs.gcc}/bin/g++";
-    CFLAGS = "-Wall -Wextra -Werror";
+      CXX = "${pkgs.gcc}/bin/g++";
+      CFLAGS = "-Wall -Wextra -Werror";
     CXXFLAGS = "-Wall -Wextra -Werror";*/
 
     shellHook = ''

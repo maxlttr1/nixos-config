@@ -30,7 +30,7 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-	
+
     nix-firefox-addons = {
       url = "github:osipog/nix-firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -108,7 +108,8 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.disko.nixosModules.disko
               (
-                { config, pkgs, ... }: { nixpkgs.overlays = [
+                { config, pkgs, ... }: {
+                  nixpkgs.overlays = [
                     overlay-nixpkgs
                     inputs.nix-vscode-extensions.overlays.default
                     inputs.nix-firefox-addons.overlays.default
@@ -132,7 +133,7 @@
               home-manager-config-server
               inputs.home-manager.nixosModules.home-manager
               inputs.disko.nixosModules.disko
-			  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
+              ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
             ];
           };
       };
@@ -154,10 +155,11 @@
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             (
-              { config, pkgs, ... }: { nixpkgs.overlays = [ 
-                inputs.nix-vscode-extensions.overlays.default
-                inputs.nix-firefox-addons.overlays.default
-              ];
+              { config, pkgs, ... }: {
+                nixpkgs.overlays = [
+                  inputs.nix-vscode-extensions.overlays.default
+                  inputs.nix-firefox-addons.overlays.default
+                ];
               }
             )
           ];

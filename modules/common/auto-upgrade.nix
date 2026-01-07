@@ -40,14 +40,15 @@ in
 
 {
   system.autoUpgrade = baseConfig // {
-    dates = if actualHostname == "asus-maxlttr"
-            then "daily"
-            else "Sat 02:00";
+    dates =
+      if actualHostname == "asus-maxlttr"
+      then "daily"
+      else "Sat 02:00";
   };
 
   systemd.services."nixos-upgrade" = {
-    onSuccess = ["nixos-upgrade-notification.service"];
-    onFailure = ["nixos-upgrade-notification.service"];
+    onSuccess = [ "nixos-upgrade-notification.service" ];
+    onFailure = [ "nixos-upgrade-notification.service" ];
   };
 
   systemd.services."nixos-upgrade-notification" = {
