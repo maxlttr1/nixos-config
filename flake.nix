@@ -102,6 +102,10 @@
           inputs.sops-nix-stable.homeManagerModules.sops
           inputs.nvf-stable.homeManagerModules.default
         ];
+		home-manager.extraSpecialArgs = {
+          settings = settings-default;
+          inherit inputs;
+        };
       };
 
       shells = import ./shells.nix {
