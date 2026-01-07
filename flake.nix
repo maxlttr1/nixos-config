@@ -167,7 +167,7 @@
           };
 
           modules = [
-            ./modules/homes/home.nix
+            ./modules/homes/laptop.nix
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix-unstable.homeManagerModules.sops
             inputs.nvf-unstable.homeManagerModules.default
