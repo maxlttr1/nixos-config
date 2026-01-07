@@ -6,11 +6,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     home-manager-unstable = {
-      #url = "github:nix-community/home-manager/release-25.11";
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
@@ -96,13 +95,16 @@
         };
       };
 
-      home-manager-config-server = home-manager-config // {
+      home-manager-config-server = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
         home-manager.users."${settings-default.username}" = import ./modules/homes/server.nix;
         home-manager.sharedModules = [
           inputs.sops-nix-stable.homeManagerModules.sops
           inputs.nvf-stable.homeManagerModules.default
         ];
-		home-manager.extraSpecialArgs = {
+        home-manager.backupFileExtension = "backup";
+        home-manager.extraSpecialArgs = {
           settings = settings-default;
           inherit inputs;
         };
@@ -154,12 +156,13 @@
               home-manager-config-server
               inputs.home-manager-stable.nixosModules.home-manager
               inputs.disko-stable.nixosModules.disko
+			  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
             ];
           };
       };
 
       homeConfigurations = {
-        laptop = inputs.home-manager.lib.homeManagerConfiguration {
+        laptop = inputs.home-manager-unstable.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-unstable {
             system = settings-default.system;
             config.allowUnfree = true;
@@ -177,9 +180,9 @@
             inputs.nvf-unstable.homeManagerModules.default
             (
               { config, pkgs, ... }: { nixpkgs.overlays = [ 
-					        inputs.nix-vscode-extensions.overlays.default
-                  inputs.nix-firefox-addons.overlays.default
-                ];
+                inputs.nix-vscode-extensions.overlays.default
+                inputs.nix-firefox-addons.overlays.default
+              ];
               }
             )
           ];
