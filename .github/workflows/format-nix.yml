@@ -23,7 +23,7 @@ jobs:
 
     - name: Install nixpkgs-fmt
       run: |
-        nix-env -iA nixpkgs.nixpkgs-fmt
+        nix shell nixpkgs#nixpkgs-fmt
     
     - name: Format Nix files
       run: |
