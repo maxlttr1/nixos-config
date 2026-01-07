@@ -1,5 +1,5 @@
 {
-  boot.loader = {
+  /*boot.loader = {
     grub = {
       enable = true;
       device = "nodev"; # Disko will handle it
@@ -8,7 +8,10 @@
       configurationLimit = 30;
       #useOSProber = true;
     };
-    #efi.canTouchEfiVariables = true;
+  };*/
+  
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
   };
-  #boot.loader.systemd-boot.enable = true;
 }

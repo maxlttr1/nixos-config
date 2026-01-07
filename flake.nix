@@ -5,56 +5,35 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager-stable = {
+    home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
 
-    disko-stable = {
+    disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    disko-unstable = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.home-manager.follows = "home-manager-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.home-manager.follows = "home-manager";
     };
 
-    sops-nix-stable = {
+    sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    sops-nix-unstable = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 	
     nix-firefox-addons = {
       url = "github:osipog/nix-firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    nvf-stable = {
-      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    nvf-unstable = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -85,8 +64,7 @@
         home-manager.users."${settings-default.username}" = import ./modules/homes/laptop.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
-          inputs.sops-nix-unstable.homeManagerModules.sops
-          inputs.nvf-unstable.homeManagerModules.default
+          inputs.sops-nix.homeManagerModules.sops
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
@@ -100,8 +78,7 @@
         home-manager.useUserPackages = true;
         home-manager.users."${settings-default.username}" = import ./modules/homes/server.nix;
         home-manager.sharedModules = [
-          inputs.sops-nix-stable.homeManagerModules.sops
-          inputs.nvf-stable.homeManagerModules.default
+          inputs.sops-nix.homeManagerModules.sops
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
@@ -111,7 +88,7 @@
       };
 
       shells = import ./shells.nix {
-        inherit (import nixpkgs-unstable { system = "x86_64-linux"; }) pkgs;
+        inherit (import nixpkgs-stable { system = "x86_64-linux"; }) pkgs;
       };
     in
     {
@@ -120,17 +97,16 @@
           let
             settings = settings-default // {
               hostname = "asus-maxlttr";
-              kernel = "linuxPackages_latest";
             };
           in
-          nixpkgs-unstable.lib.nixosSystem {
+          nixpkgs-stable.lib.nixosSystem {
             system = settings.system;
             specialArgs = { inherit inputs settings; };
             modules = [
               ./hosts/asus
               home-manager-config
-              inputs.home-manager-unstable.nixosModules.home-manager
-              inputs.disko-unstable.nixosModules.disko
+              inputs.home-manager.nixosModules.home-manager
+              inputs.disko.nixosModules.disko
               (
                 { config, pkgs, ... }: { nixpkgs.overlays = [
                     overlay-nixpkgs
@@ -154,8 +130,8 @@
             modules = [
               ./hosts/server
               home-manager-config-server
-              inputs.home-manager-stable.nixosModules.home-manager
-              inputs.disko-stable.nixosModules.disko
+              inputs.home-manager.nixosModules.home-manager
+              inputs.disko.nixosModules.disko
 			  ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
             ];
           };
@@ -163,7 +139,7 @@
 
       homeConfigurations = {
         laptop = inputs.home-manager-unstable.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs-unstable {
+          pkgs = import nixpkgs-stable {
             system = settings-default.system;
             config.allowUnfree = true;
           };
@@ -176,8 +152,7 @@
           modules = [
             ./modules/homes/laptop.nix
             inputs.plasma-manager.homeModules.plasma-manager
-            inputs.sops-nix-unstable.homeManagerModules.sops
-            inputs.nvf-unstable.homeManagerModules.default
+            inputs.sops-nix.homeManagerModules.sops
             (
               { config, pkgs, ... }: { nixpkgs.overlays = [ 
                 inputs.nix-vscode-extensions.overlays.default
