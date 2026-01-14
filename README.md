@@ -38,24 +38,25 @@ sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
 ### 3. Generate Hardware Config and deploy
 ```bash
 sudo nix run github:nix-community/nixos-anywhere -- \
-  --generate-hardware-config nixos-generate-config ./hosts/desktop/hardware-configuration.nix \
+  --generate-hardware-config nixos-generate-config ./hosts/asus/hardware-configuration.nix \
   --extra-files $root \
-  --flake github:maxlttr1/nixos-config#desktop-maxlttr \
-  --target-host nixos@192.168.1.11
+  --flake github:maxlttr1/nixos-config#asus-maxlttr \
+  --target-host nixos@192.168.1.22
 ```
 
 ## 🛠️ Local deployment
 
 ### 1. Partition & Mount Disks (⚠️ Destroys data)
 ```bash
+curl -O https://raw.githubusercontent.com/maxlttr1/nixos-config/refs/heads/master/hosts/asus/disko.nix
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
-  github:maxlttr1/nixos-config/hosts/desktop/disko.nix
+  ./disko.nix
 ```
 
-### 2. Install Nixos
+### 2. Install Nixos (ensure having the correct hardware-configuration)
 ```bash
-sudo nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
+sudo nixos-install --flake github:maxlttr1/nixos-config#asus-maxlttr
 ```
 
 ### 3. Import your ssh keys in order for nix-sops to work
@@ -95,6 +96,7 @@ MINSTART=hwmon0/pwm2=150
 MINSTOP=hwmon0/pwm2=0
 ```
 Now add it to you `modules/fancontrol` for the correct device.
+
 ### Copy the *nix-sops* keys to the default location (to be able to edit `secret/secrets.yaml`)
 ```bash
 sudo cp /etc/sops/age/keys.txt ~/.config/sops/age/keys.txt && sudo chwon maxlttr:users ~/.config/sops/age/keys.txt
