@@ -6,10 +6,13 @@
     # bottles
     # deja-dup
     direnv
+    (discord.override {
+      withVencord = true;
+    })
     eduvpn-client
     ffmpeg
     # gnupg
-    goofcord
+    # goofcord
     grex # Command-line tool for generating regular expressions from user-provided test cases
     hieroglyphic
     libreoffice

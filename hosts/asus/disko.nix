@@ -7,11 +7,6 @@
         content = {
           type = "gpt";
           partitions = {
-            MBR = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-              priority = 1; # Needs to be first partition
-            };
             ESP = {
               size = "512M";
               type = "EF00";
@@ -22,12 +17,26 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            root = {
+            /*root = {
               size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
+              };
+            };*/
+            root = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "crypted";
+                settings.allowDiscards = true;
+                # passwordFile = "/tmp/secret.key";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
+                };
               };
             };
           };
