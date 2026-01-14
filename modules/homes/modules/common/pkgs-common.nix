@@ -20,6 +20,7 @@
     tldr
     unp
     unrar
+    vim
     wget
     zellij
   ];
