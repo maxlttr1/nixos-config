@@ -50,12 +50,12 @@ sudo nix run github:nix-community/nixos-anywhere -- \
 ```bash
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
-  --flake github:maxlttr1/nixos-config/hosts/desktop/disko.nix
+  github:maxlttr1/nixos-config/hosts/desktop/disko.nix
 ```
 
 ### 2. Install Nixos
 ```bash
-nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
+sudo nixos-install --flake github:maxlttr1/nixos-config#desktop-maxlttr
 ```
 
 ### 3. Import your ssh keys in order for nix-sops to work
