@@ -15,5 +15,8 @@
     ../../modules/swap.nix
     ../../modules/touchpad.nix
     ../../modules/vms.nix
+
+
+    ../../modules/eduvpn.nix
   ];
 }

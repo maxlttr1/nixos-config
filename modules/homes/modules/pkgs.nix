@@ -9,7 +9,7 @@
     (discord.override {
       withVencord = true;
     })
-    eduvpn-client
+    # eduvpn-client
     ffmpeg
     # gnupg
     # goofcord
