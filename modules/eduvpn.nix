@@ -11,9 +11,9 @@
   networking.networkmanager.plugins = with pkgs; [
     networkmanager-openvpn
   ];
-  
+
   services.resolved = {
     enable = true;
-    fallbackDns = [ "9.9.9.9"];
+    fallbackDns = [ "9.9.9.9" ];
   };
 }
