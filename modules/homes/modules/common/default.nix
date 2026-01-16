@@ -7,5 +7,6 @@
     ./sops.nix
     ./ssh.nix
     # ./syncthing.nix
+    ./tmux.nix
   ];
 }
