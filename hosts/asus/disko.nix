@@ -17,14 +17,6 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            /*root = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };*/
             root = {
               size = "100%";
               content = {

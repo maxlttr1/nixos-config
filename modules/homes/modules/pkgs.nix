@@ -9,10 +9,8 @@
     (discord.override {
       withVencord = true;
     })
-    # eduvpn-client
     ffmpeg
     # gnupg
-    # goofcord
     grex # Command-line tool for generating regular expressions from user-provided test cases
     hieroglyphic
     libreoffice
@@ -31,6 +29,7 @@
       packages = with rPackages; [ FactoMineR ];
     })*/
 
+    signal-desktop
     # texliveFull
     thunderbird
     tor-browser
