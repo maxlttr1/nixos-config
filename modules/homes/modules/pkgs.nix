@@ -33,6 +33,8 @@
     # texliveFull
     thunderbird
     tor-browser
+    typst
+    typst-live
     # veracrypt
     vlc
     kdePackages.yakuake
