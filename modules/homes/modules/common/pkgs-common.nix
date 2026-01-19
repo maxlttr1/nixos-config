@@ -22,6 +22,5 @@
     unrar
     vim
     wget
-    zellij
   ];
 }
