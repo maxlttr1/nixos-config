@@ -28,6 +28,7 @@ let
       #"nixpkgs-main"
       "-L" # Show logs
     ];
+    dates = "daily";
     persistent = true;
     operation = "switch"; # Or "boot"
     allowReboot = true;
@@ -39,12 +40,7 @@ let
 in
 
 {
-  system.autoUpgrade = baseConfig // {
-    dates =
-      if actualHostname == "asus-maxlttr"
-      then "daily"
-      else "Sat 02:00";
-  };
+  system.autoUpgrade = baseConfig; 
 
   systemd.services."nixos-upgrade" = {
     onSuccess = [ "nixos-upgrade-notification.service" ];

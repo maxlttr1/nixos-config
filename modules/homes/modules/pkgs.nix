@@ -14,7 +14,6 @@
     grex # Command-line tool for generating regular expressions from user-provided test cases
     hieroglyphic
     libreoffice
-    librewolf
     mask # A CLI task runner defined by a simple markdown file
     media-downloader
     moreutils # to get vipe
