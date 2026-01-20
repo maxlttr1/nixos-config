@@ -40,7 +40,7 @@ let
 in
 
 {
-  system.autoUpgrade = baseConfig; 
+  system.autoUpgrade = baseConfig;
 
   systemd.services."nixos-upgrade" = {
     onSuccess = [ "nixos-upgrade-notification.service" ];
