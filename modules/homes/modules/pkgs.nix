@@ -27,7 +27,7 @@
   ];
 
   services.flatpak = {
-    update = {
+    update.auto = {
       enable = true;
       onCalendar = "daily";
     };
