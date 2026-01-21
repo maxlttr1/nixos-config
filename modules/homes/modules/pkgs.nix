@@ -10,7 +10,7 @@
     })
     ffmpeg
     # gnupg
-    grex # Command-line tool for generating regular expressions from user-provided test cases
+    # grex # Command-line tool for generating regular expressions from user-provided test cases
     # mask # A CLI task runner defined by a simple markdown file
     # moreutils # to get vipe
     papirus-icon-theme
@@ -27,7 +27,10 @@
   ];
 
   services.flatpak = {
-    update.onActivation = true;
+    update = {
+      enable = true;
+      onCalendar = "daily";
+    };
     packages = [
       "org.bleachbit.BleachBit"
       "com.google.Chrome"
