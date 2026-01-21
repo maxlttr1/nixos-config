@@ -31,9 +31,13 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     nix-firefox-addons = {
       url = "github:osipog/nix-firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 
@@ -65,6 +69,7 @@
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
+          inputs.nix-flatpak.homeManagerModules.nix-flatpak
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
@@ -154,6 +159,7 @@
             ./modules/homes/laptop.nix
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
             (
               { config, pkgs, ... }: {
                 nixpkgs.overlays = [

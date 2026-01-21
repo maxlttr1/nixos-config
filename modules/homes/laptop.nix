@@ -4,11 +4,9 @@
   imports = [
     ./modules/common
     ./modules/fonts.nix
-    ./modules/librewolf.nix
     ./modules/pkgs.nix
     ./modules/plasma-manager.nix
     ./modules/vscode.nix
-    # ./modules/homes/wluma.nix
   ];
 
   home.username = settings.username;
