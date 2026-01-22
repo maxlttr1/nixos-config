@@ -23,6 +23,7 @@
     typst
     typst-live
     # veracrypt
+	vlc
     kdePackages.yakuake
   ];
 
@@ -45,7 +46,6 @@
       "com.valvesoftware.Steam"
       "org.mozilla.Thunderbird"
       "org.torproject.torbrowser-launcher"
-      "org.videolan.VLC"
     ];
   };
 }
