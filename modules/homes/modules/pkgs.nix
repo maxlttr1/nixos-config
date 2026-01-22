@@ -23,7 +23,7 @@
     typst
     typst-live
     # veracrypt
-	vlc
+    vlc
     kdePackages.yakuake
   ];
 
