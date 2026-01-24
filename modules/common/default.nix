@@ -2,6 +2,7 @@
   imports = [
     ./allow-unfree.nix
     ./apparmor.nix
+    ./audit.nix
     ./auto-cpufreq.nix
     ./auto-upgrade.nix
     ./bootloader.nix
@@ -14,6 +15,7 @@
     ./hostname.nix
     ./kernel.nix
     ./network-manager.nix
+    ./noexec.nix
     ./optimise.nix
     ./ssh.nix
     ./state-version.nix
