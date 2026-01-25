@@ -4,6 +4,6 @@
   # Since we only have / and /boot, just mark those as noexec
 
   fileSystems."/" = {
-    # options = [ "noexec" "nosuid" "nodev" ];
+    options = [ "nosuid" "nodev" ];
   };
 }

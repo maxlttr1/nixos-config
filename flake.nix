@@ -28,7 +28,6 @@
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-flatpak = {
@@ -47,7 +46,7 @@
         username = "maxlttr";
         hostname = "default-maxlttr";
         system = "x86_64-linux";
-        kernel = "linuxPackages_hardened";
+        kernel = "linuxPackages";
         swap = 8; # Size in Gigabytes
       };
 
@@ -148,6 +147,11 @@
           pkgs = import nixpkgs-stable {
             system = settings-default.system;
             config.allowUnfree = true;
+            nixpkgs.overlays = [
+              overlay-nixpkgs
+              inputs.nix-vscode-extensions.overlays.default
+              inputs.nix-firefox-addons.overlays.default
+            ];
           };
 
           extraSpecialArgs = {
@@ -160,14 +164,6 @@
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
-            (
-              { config, pkgs, ... }: {
-                nixpkgs.overlays = [
-                  inputs.nix-vscode-extensions.overlays.default
-                  inputs.nix-firefox-addons.overlays.default
-                ];
-              }
-            )
           ];
         };
       };

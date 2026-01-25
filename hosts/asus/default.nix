@@ -4,7 +4,6 @@
     ../../modules/atd.nix
     ../../modules/bluetooth.nix
     ../../modules/common
-    ../../modules/cups.nix
     ../../modules/flatpak.nix
     # ../../modules/gnupg.nix
     ../../modules/intel.nix

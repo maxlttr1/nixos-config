@@ -1,7 +1,7 @@
 { pkgs, settings, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs.stable; [
     # bottles
     # deja-dup
     direnv
