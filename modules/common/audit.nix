@@ -20,9 +20,9 @@
 
   security.auditd.settings = {
     log_file = "/var/log/audit/audit.log";
-    max_log_file = 512;  # Max 512 MB per file
-    max_log_file_action = "rotate";  # Rotate when full
-    num_logs = 1;  # Keep 1 file (512 MB total)
-    space_left_action = "ignore";  # Don't alert, just delete
+    max_log_file = 512; # Max 512 MB per file
+    max_log_file_action = "rotate"; # Rotate when full
+    num_logs = 1; # Keep 1 file (512 MB total)
+    space_left_action = "ignore"; # Don't alert, just delete
   };
 }

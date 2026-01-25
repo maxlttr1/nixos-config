@@ -17,7 +17,7 @@
     "kernel.panic_on_oops" = 1;
     # Restrict performance event monitoring to root only (prevents side-channel attacks)
     "kernel.perf_event_paranoid" = 3;
-	  # SysRq exposes a lot of potentially dangerous debugging functionality to unprivileged users
+    # SysRq exposes a lot of potentially dangerous debugging functionality to unprivileged users
     # 4 makes it so a user can only use the secure attention key. A value of 0 would disable completely
     "kernel.sysrq" = 0;
     # Disable ptrace access - prevents process tracing (blocks debugging/process inspection)
@@ -26,8 +26,8 @@
     "kernel.ctrl-alt-del" = 0;
     # Enable BPF JIT hardening - mitigates JIT spraying attacks on eBPF code
     "net.core.bpf_jit_harden" = 2;
-	  # Toggles whether or not unprivileged processes can create user namespaces	
-	  "kernel.unprivileged_userns_clone" = 1;
+    # Toggles whether or not unprivileged processes can create user namespaces	
+    "kernel.unprivileged_userns_clone" = 1;
     # Only permit symlinks to be followed when outside of a world-writable sticky directory
     "fs.protected_symlinks" = 1;
     # Blocks hardlinking files you don’t own
@@ -53,5 +53,5 @@
     # Forbids setting "user.max_user_namespaces" = 0 in sysctl
     allowUserNamespaces = true;
   };
- 
+
 }

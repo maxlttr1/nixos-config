@@ -8,9 +8,9 @@
       extraGroups = [ "wheel" ];
       hashedPassword = "$y$j9T$3K3QPsozzjlkc32uJ8mVz1$X4caTQbNlRdtlGkZwS.2KJi972RmTuMEK155tEuZfVA";
     };
-	"root" = {
-	  hashedPassword = null; # Disable root login using a password 
-	};
+    "root" = {
+      hashedPassword = null; # Disable root login using a password 
+    };
   };
 
   users.mutableUsers = false;
