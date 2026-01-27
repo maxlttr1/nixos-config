@@ -1,11 +1,12 @@
+{ settings, ... }:
+
 let
   # wallpaper = ../../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
-    path = ../../../wallpapers;
+    path = "/home/${settings.username}/nixos-config/wallpapers";
     interval = 86400;
   };
   font = {
-    #family = "JetBrains Mono";
     family = "Mononoki Nerd Font Mono";
     pointSize = 10;
   };
@@ -15,7 +16,6 @@ in
   programs.plasma = {
     enable = true;
     workspace = {
-      #clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       cursor = {
         theme = "Breeze_Light";
         #size = 32;
@@ -44,25 +44,8 @@ in
       windowTitle = font;
     };
     input.keyboard.numlockOnStartup = "on";
-    /*input.touchpads = [
-      {
-        enable = true;
-        disableWhileTyping = true;
-        leftHanded = false;
-        middleMouseEmulation = false;
-        naturalScroll = true;
-        pointerSpeed = 0;
-        tapToClick = true;
-        tapAndDrag = true;
-        scrollSpeed = 5;
-        name = "Elan Microelectronics Corp. ELAN:ARM-M4";
-        productId = "0c6c";
-        vendorId = "04f3";
-      }
-    ];*/
     kscreenlocker = {
       appearance = {
-        #inherit wallpaper;
         inherit wallpaperSlideShow;
         showMediaControls = false;
       };
@@ -76,7 +59,15 @@ in
       temperature.night = 2500;
     };
     krunner.position = "center";
-    spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
+	shortcuts = {
+		kwin = {
+			"Switch to Desktop 1" = "Meta+&";
+			"Switch to Desktop 2" = "Meta+É";
+			"Switch to Desktop 3" = "Meta+\"";
+			"Switch to Desktop 4" = "Meta+\'";
+		};
+	};
+
     kwin.virtualDesktops = {
       names = [
         "1"
@@ -87,7 +78,6 @@ in
       number = 4;
     };
     panels = [
-      # Windows-like panel at the bottom
       {
         location = "bottom";
         floating = true;
@@ -106,8 +96,7 @@ in
           }
           {
             iconTasks = {
-              launchers = [
-              ];
+              launchers = [];
             };
           }
           "org.kde.plasma.panelspacer"
@@ -126,8 +115,7 @@ in
                 "org.kde.plasma.networkmanagement"
                 "org.kde.plasma.kdeconnect"
               ];
-              hidden = [
-              ];
+              hidden = [];
             };
           }
           {

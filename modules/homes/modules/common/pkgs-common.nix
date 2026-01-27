@@ -12,10 +12,10 @@
     fd
     fzf
     htop
+    lf
     magic-wormhole
     ncdu
     powertop
-    ranger
     ripgrep-all
     tldr
     unp
