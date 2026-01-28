@@ -7,6 +7,7 @@
     ./modules/pkgs.nix
     ./modules/plasma-manager.nix
     ./modules/vscode.nix
+    ./modules/xdg.nix
   ];
 
   home.username = settings.username;

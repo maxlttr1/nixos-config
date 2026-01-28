@@ -33,10 +33,6 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
-
-    nix-firefox-addons = {
-      url = "github:osipog/nix-firefox-addons";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
@@ -115,7 +111,6 @@
                   nixpkgs.overlays = [
                     overlay-nixpkgs
                     inputs.nix-vscode-extensions.overlays.default
-                    inputs.nix-firefox-addons.overlays.default
                   ];
                 }
               )

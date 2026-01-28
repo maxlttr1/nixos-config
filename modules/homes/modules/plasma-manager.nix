@@ -59,14 +59,14 @@ in
       temperature.night = 2500;
     };
     krunner.position = "center";
-	shortcuts = {
-		kwin = {
-			"Switch to Desktop 1" = "Meta+&";
-			"Switch to Desktop 2" = "Meta+É";
-			"Switch to Desktop 3" = "Meta+\"";
-			"Switch to Desktop 4" = "Meta+\'";
-		};
-	};
+    shortcuts = {
+      kwin = {
+        "Switch to Desktop 1" = "Meta+&";
+        "Switch to Desktop 2" = "Meta+É";
+        "Switch to Desktop 3" = "Meta+\"";
+        "Switch to Desktop 4" = "Meta+\'";
+      };
+    };
 
     kwin.virtualDesktops = {
       names = [
@@ -96,7 +96,7 @@ in
           }
           {
             iconTasks = {
-              launchers = [];
+              launchers = [ ];
             };
           }
           "org.kde.plasma.panelspacer"
@@ -115,7 +115,7 @@ in
                 "org.kde.plasma.networkmanagement"
                 "org.kde.plasma.kdeconnect"
               ];
-              hidden = [];
+              hidden = [ ];
             };
           }
           {

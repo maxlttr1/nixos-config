@@ -6,11 +6,11 @@
     package = pkgs.tuigreet;
     settings = {
       default_session = {
-		command = ''
-			"${pkgs.tuigreet}/bin/tuigreet" \
-			--time --remember --remember-session --sessions \
-			"${pkgs.hyprland}/share/waylanddev-sessions"
-		'';
+    		command = ''
+     			"${pkgs.tuigreet}/bin/tuigreet" \
+     			--time --remember --remember-session --sessions \
+     			"${pkgs.hyprland}/share/waylanddev-sessions"
+    		'';
       };
     };
   };*/
@@ -36,5 +36,5 @@
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
-  };  
+  };
 }

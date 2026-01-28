@@ -73,7 +73,6 @@
       nix
       nixpkgs-fmt
       sops
-      lynis
     ];
 
     shellHook = ''
