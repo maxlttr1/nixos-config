@@ -18,7 +18,7 @@ in
     enable = true;
     font = {
       name = font;
-      package = pkgs.nerd-fonts.mononoki;
+      package = pkgs.stable.nerd-fonts.mononoki;
       size = 10;
     };
     colorScheme = "dark";

@@ -3,7 +3,7 @@
 {
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.fish}/bin/fish";
+    shell = "${pkgs.stable.fish}/bin/fish";
     mouse = true;
   };
 }

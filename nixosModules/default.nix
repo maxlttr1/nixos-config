@@ -7,6 +7,7 @@
     ./borgbackup.nix
     ./cups.nix
     ./eduvpn.nix
+    ./fan.nix
     ./flatpak.nix
     ./gnupg.nix
     ./hyprland.nix

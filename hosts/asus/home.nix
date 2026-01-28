@@ -2,11 +2,15 @@
 
 {
   imports = [
-    ./modules/common
-    ./modules/fonts.nix
+    ../../modules/homes/modules/common
+    ../../modules/homes/modules/fonts.nix
+    ../../modules/homes/modules/pkgs.nix
+    ../../modules/homes/modules/plasma-manager.nix
+    ../../modules/homes/modules/vscode.nix
+    ../../modules/homes/modules/xdg.nix
   ];
 
-  home.username = settings.username;
+  home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
 
   # This value determines the Home Manager release that your

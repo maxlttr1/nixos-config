@@ -18,13 +18,9 @@
     services.spice-vdagentd.enable = true; # enable copy and paste between host and guest
 
     # Quickemu
-    environment.systemPackages =
-      (with pkgs; [
-        quickgui
-        quickemu
-      ])
-      ++
-      (with pkgs.alternative; [
-      ]);
+    environment.systemPackages = with pkgs.stable; [
+      quickgui
+      quickemu
+    ];
   };
 }

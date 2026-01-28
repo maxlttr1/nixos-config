@@ -6,13 +6,13 @@
   };
 
   config = lib.mkIf config.eduvpn.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs.stable; [
       eduvpn-client
     ];
 
     networking.wireguard.enable = true;
 
-    networking.networkmanager.plugins = with pkgs; [
+    networking.networkmanager.plugins = with pkgs.stable; [
       networkmanager-openvpn
     ];
   };

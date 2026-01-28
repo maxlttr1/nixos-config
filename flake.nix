@@ -56,7 +56,7 @@
       home-manager-config = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./modules/homes/laptop.nix;
+        home-manager.users."${settings.username}" = import ./hosts/asus/home.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
@@ -72,7 +72,7 @@
       home-manager-config-server = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./modules/homes/server.nix;
+        home-manager.users."${settings.username}" = import ./hosts/server/home.nix;
         home-manager.sharedModules = [
           inputs.sops-nix.homeManagerModules.sops
         ];

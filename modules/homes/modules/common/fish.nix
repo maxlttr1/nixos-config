@@ -8,7 +8,7 @@
     '';
   };
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs.stable; [
     fishPlugins.autopair # Auto-complete matching pairs in the Fish command line
     fishPlugins.bang-bang # !! replaced by last command
     fishPlugins.bass # Fish function making it easy to use utilities written for Bash in Fish shell
