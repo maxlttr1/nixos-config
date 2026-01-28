@@ -84,7 +84,7 @@
       };
 
       shells = import ./shells.nix {
-        inherit (import nixpkgs-stable { system = "x86_64-linux"; }) pkgs;
+        inherit (import nixpkgs-stable { system = "${settings.system}"; }) pkgs;
       };
     in
     {
@@ -139,7 +139,7 @@
           };
 
           modules = [
-            ./modules/homes/laptop.nix
+            ./hosts/asus/home.nix
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
@@ -147,6 +147,6 @@
         };
       };
 
-      devShells.x86_64-linux = shells;
+      devShells."${settings.system}" = shells;
     };
 }
