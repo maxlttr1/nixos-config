@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, settings, ... }:
 
 {
   options = {
@@ -24,6 +24,6 @@
       fallbackDns = [ "9.9.9.9" "1.1.1.1" "8.8.8.8" ];
     };
 
-    users.users."${config.users.mainUsername}".extraGroups = [ "networkmanager" ];
+    users.users."${settings.username}".extraGroups = [ "networkmanager" ];
   };
 }

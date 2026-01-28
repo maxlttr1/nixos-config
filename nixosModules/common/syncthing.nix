@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, settings, ... }:
 
 {
   options = {
@@ -11,15 +11,15 @@
       openDefaultPorts = true; # TCP/UDP 22000 for transfers and UDP 21027 for discovery.
       overrideDevices = true; # overrides any devices added or deleted through the WebUI
       overrideFolders = true; # overrides any folders added or deleted through the WebUI
-      user = "${config.users.mainUsername}";
+      user = "${settings.username}";
       group = "syncthing";
-      dataDir = "/home/${config.users.mainUsername}/.syncthing"; # Custom data directory for Syncthing
-      configDir = "/home/${config.users.mainUsername}/.config/syncthing"; # Custom config directory
+      dataDir = "/home/${settings.username}/.syncthing"; # Custom data directory for Syncthing
+      configDir = "/home/${settings.username}/.config/syncthing"; # Custom config directory
       guiAddress = "0.0.0.0:8384";
     };
 
     networking.firewall.allowedTCPPorts = [ 8384 ];
 
-    users.users."${config.users.mainUsername}".extraGroups = [ "syncthing" ];
+    users.users."${settings.username}".extraGroups = [ "syncthing" ];
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 {
   imports = [
@@ -10,8 +10,8 @@
     ./modules/xdg.nix
   ];
 
-  home.username = "${config.users.mainUsername}";
-  home.homeDirectory = "/home/${config.users.mainUsername}";
+  home.username = "${settings.username}";
+  home.homeDirectory = "/home/${settings.username}";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

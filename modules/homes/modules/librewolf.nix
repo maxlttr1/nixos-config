@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, settings, ... }:
 
 {
   programs.librewolf = {
     enable = true;
     profiles = {
-      "${config.users.mainUsername}" = {
+      ${settings.username} = {
         extensions.packages = with pkgs.firefoxAddons; [
           ublock-origin
           sponsorblock

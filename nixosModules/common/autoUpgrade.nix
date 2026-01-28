@@ -1,9 +1,9 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, settings, ... }:
 
 let
   notifyScript = pkgs.writeShellScript "notify-discord" ''
     
-    url=$(cat /home/${config.users.mainUsername}/.config/sops-nix/secrets/discord-webhook)
+    url=$(cat /home/${settings.username}/.config/sops-nix/secrets/discord-webhook)
     hostname=$(${pkgs.nettools}/bin/hostname)
     status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
@@ -17,7 +17,7 @@ let
         -d "{\"content\": \"❌ NixOS upgrade failed on **$hostname**\"}"
     fi
   '';
-  
+
   baseConfig = {
     enable = true;
     flake = "github:maxlttr1/nixos-config";

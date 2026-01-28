@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, settings, ... }:
 
 let
   font = "Mononoki Nerd Font Mono";
@@ -313,10 +313,10 @@ in
     enable = true;
     settings = {
       preload = [
-        "/home/${config.users.mainUsername}/nixos-config/wallpapers/wallhaven-e8717l.jpg"
+        "/home/${settings.username}/nixos-config/wallpapers/wallhaven-e8717l.jpg"
       ];
       wallpaper = [
-        "eDP-1,/home/${config.users.mainUsername}/nixos-config/wallpapers/wallhaven-e8717l.jpg"
+        "eDP-1,/home/${settings.username}/nixos-config/wallpapers/wallhaven-e8717l.jpg"
       ];
     };
   };

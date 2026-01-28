@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, settings, pkgs, ... }:
 
 {
   options = {
@@ -11,8 +11,8 @@
     virtualisation.libvirtd.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
 
-    users.groups.libvirtd.members = [ "${config.users.mainUsername}" ];
-    users.users."${config.users.mainUsername}".extraGroups = [ "libvirtd" ];
+    users.groups.libvirtd.members = [ "${settings.username}" ];
+    users.users.${settings.username}.extraGroups = [ "libvirtd" ];
 
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true; # enable copy and paste between host and guest

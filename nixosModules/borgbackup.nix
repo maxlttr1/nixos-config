@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, settings, ... }:
 
 {
   options = {
@@ -7,10 +7,10 @@
 
   config = lib.mkIf config.borgbackup.enable {
     services.borgbackup.jobs.home-danbst = {
-      user = "${config.users.mainUsername}";
-      paths = "/home/${config.users.mainUsername}/Syncthing";
+      user = "${settings.username}";
+      paths = "/home/${settings.username}/Syncthing";
       encryption.mode = "none";
-      repo = "/home/${config.users.mainUsername}/Syncthing-backup";
+      repo = "/home/${settings.username}/Syncthing-backup";
       compression = "auto,zstd";
       startAt = "daily";
       prune.keep = {

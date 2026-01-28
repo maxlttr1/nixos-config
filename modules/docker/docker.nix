@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, settings, ... }:
 
 let
   starting_script = pkgs.writeShellScript "starting_script" ''
@@ -61,8 +61,8 @@ in
     };*/
     #daemon.settings.live-restore = false; # Allow dockerd to be restarted without affecting running container. This option is incompatible with docker swarm.
   };
-  #users.extraGroups.docker.members = ["${config.users.mainUsername}"];
-  users.users."${config.users.mainUsername}".extraGroups = [ "docker" ];
+  #users.extraGroups.docker.members = ["${settings.username}"];
+  users.users.${settings.username}.extraGroups = [ "docker" ];
 
 
   #Docker can now be rootlessly enabled with: systemctl --user enable --now docker
@@ -93,7 +93,7 @@ in
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
-      Environment = "HOME=/home/${config.users.mainUsername}";
+      Environment = "HOME=/home/${settings.username}";
       User = "root";
       Type = "oneshot";
       ExecStart = "${starting_script}";
@@ -105,7 +105,7 @@ in
 
     serviceConfig = {
       WorkingDirectory = "/tmp/";
-      Environment = "HOME=/home/${config.users.mainUsername}";
+      Environment = "HOME=/home/${settings.username}";
       User = "root";
       Type = "oneshot";
       ExecStart = "${stopping_script}";

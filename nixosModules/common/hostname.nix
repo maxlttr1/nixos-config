@@ -1,12 +1,12 @@
-{ lib, config, ... }:
+{ lib, config, settings, ... }:
 
 {
   options = {
     hostname = lib.mkOption {
       description = "Choose hostname configuration";
-      default = "default-${config.users.mainUsername}";
+      default = "default-${settings.username}";
       type = lib.types.str;
-    };
+    }
   };
 
   config = {

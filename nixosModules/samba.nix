@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, settings, ... }:
 
 {
   options = {
@@ -22,13 +22,13 @@
           "invalid users" = [ "root" ];*/
         };
         "share" = {
-          "path" = "/home/${config.users.mainUsername}/Samba";
+          "path" = "/home/${settings.username}/Samba";
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          "force user" = "${config.users.mainUsername}";
+          "force user" = "${settings.username}";
           "force group" = "users";
         };
       };
