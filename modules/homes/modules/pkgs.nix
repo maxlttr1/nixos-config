@@ -1,4 +1,4 @@
-{ pkgs, settings, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs.stable; [

@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }:
+{ config, pkgs, ... }:
 
 {
   # See /run/secrets for the decrypted files

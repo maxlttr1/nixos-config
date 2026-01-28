@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ config, ... }:
 
 {
   services.ssh-agent = {

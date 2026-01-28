@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   starting_script = pkgs.writeShellScript "starting_script" ''

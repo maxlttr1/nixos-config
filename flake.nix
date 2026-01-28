@@ -37,18 +37,18 @@
 
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
     let
-      settings-default = {
+      settings = {
         username = "maxlttr";
         system = "x86_64-linux";
       };
 
       overlay-nixpkgs = final: prev: {
         stable = import nixpkgs-stable {
-          system = settings-default.system;
+          system = settings.system;
           config.allowUnfree = true;
         };
         unstable = import nixpkgs-unstable {
-          system = settings-default.system;
+          system = settings.system;
           config.allowUnfree = true;
         };
       };
@@ -56,7 +56,7 @@
       home-manager-config = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings-default.username}" = import ./modules/homes/laptop.nix;
+        home-manager.users."${settings.username}" = import ./modules/homes/laptop.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
@@ -64,7 +64,7 @@
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
-          settings = settings-default;
+          settings = settings;
           inherit inputs;
         };
       };
@@ -72,13 +72,13 @@
       home-manager-config-server = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings-default.username}" = import ./modules/homes/server.nix;
+        home-manager.users."${settings.username}" = import ./modules/homes/server.nix;
         home-manager.sharedModules = [
           inputs.sops-nix.homeManagerModules.sops
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
-          settings = settings-default;
+          settings = settings;
           inherit inputs;
         };
       };
@@ -89,54 +89,42 @@
     in
     {
       nixosConfigurations = {
-        asus-maxlttr =
-          let
-            settings = settings-default // {
-              hostname = "asus-maxlttr";
-            };
-          in
-          nixpkgs-stable.lib.nixosSystem {
-            system = settings.system;
-            specialArgs = { inherit inputs settings; };
-            modules = [
-              ./hosts/asus
-              home-manager-config
-              inputs.home-manager.nixosModules.home-manager
-              inputs.disko.nixosModules.disko
-              (
-                { config, pkgs, ... }: {
-                  nixpkgs.overlays = [
-                    overlay-nixpkgs
-                    inputs.nix-vscode-extensions.overlays.default
-                  ];
-                }
-              )
-            ];
-          };
+        asus-maxlttr = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/asus
+            home-manager-config
+            inputs.home-manager.nixosModules.home-manager
+            inputs.disko.nixosModules.disko
+            (
+              { config, pkgs, ... }: {
+                nixpkgs.overlays = [
+                  overlay-nixpkgs
+                  inputs.nix-vscode-extensions.overlays.default
+                ];
+              }
+            )
+          ];
+        };
 
-        server-maxlttr =
-          let
-            settings = settings-default // {
-              hostname = "server-maxlttr";
-            };
-          in
-          nixpkgs-stable.lib.nixosSystem {
-            system = settings.system;
-            specialArgs = { inherit inputs settings; };
-            modules = [
-              ./hosts/server
-              home-manager-config-server
-              inputs.home-manager.nixosModules.home-manager
-              inputs.disko.nixosModules.disko
-              ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
-            ];
-          };
+        server-maxlttr = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/server
+            home-manager-config-server
+            inputs.home-manager.nixosModules.home-manager
+            inputs.disko.nixosModules.disko
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
+          ];
+        };
       };
 
       homeConfigurations = {
         laptop = inputs.home-manager-unstable.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-stable {
-            system = settings-default.system;
+            system = settings.system;
             config.allowUnfree = true;
             nixpkgs.overlays = [
               overlay-nixpkgs
@@ -147,7 +135,7 @@
 
           extraSpecialArgs = {
             inherit inputs;
-            settings = settings-default;
+            settings = settings;
           };
 
           modules = [

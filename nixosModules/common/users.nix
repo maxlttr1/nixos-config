@@ -3,16 +3,11 @@
 {
   options = {
     users.enable = lib.mkEnableOption "Enable user and privilege configuration";
-    users.mainUsername = lib.mkOption {
-      description = "Create a user with this username";
-      default = "maxlttr";
-      type = lib.types.str;
-    };
   };
 
   config = lib.mkIf config.users.enable {
     users.users = {
-      "${config.users.mainUsername}" = {
+      "${settings.username}" = {
         isNormalUser = true;
         createHome = true;
         extraGroups = [ "wheel" ];

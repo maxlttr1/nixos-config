@@ -1,3 +1,5 @@
+{ config, ... }:
+
 let
   # wallpaper = ../../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
