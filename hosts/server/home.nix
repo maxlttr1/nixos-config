@@ -2,9 +2,10 @@
 
 {
   imports = [
-    ../../modules/homes/modules/common
-    ../../modules/homes/modules/fonts.nix
+    ../../homeManagerModules
   ];
+
+  fonts.enable = true;
 
   home.username = settings.username;
   home.homeDirectory = "/home/${settings.username}";

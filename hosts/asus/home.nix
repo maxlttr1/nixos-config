@@ -2,13 +2,14 @@
 
 {
   imports = [
-    ../../modules/homes/modules/common
-    ../../modules/homes/modules/fonts.nix
-    ../../modules/homes/modules/pkgs.nix
-    ../../modules/homes/modules/plasma-manager.nix
-    ../../modules/homes/modules/vscode.nix
-    ../../modules/homes/modules/xdg.nix
+    ../../homeManagerModules
   ];
+
+  fonts.enable = true;
+  pkgs.enable = true;
+  plasmaManager.enable = true;
+  vscode.enable = true;
+  xdgCustom.enable = true;
 
   home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
