@@ -1,6 +1,6 @@
 {
   hostname = "asus-maxlttr";
-  
+
   atd.enable = true;
   bluetooth.enable = true;
   eduvpn.enable = true;

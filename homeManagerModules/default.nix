@@ -1,7 +1,7 @@
 {
   imports = [
     ./common
-    
+
     ./fonts.nix
     ./hyprland.nix
     ./librewolf.nix

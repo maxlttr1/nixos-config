@@ -9,7 +9,7 @@
       description = "Swap file size in GiB";
     };
   };
-  
+
   config = lib.mkIf config.swapFile.enable {
     swapDevices = [{
       device = "/var/lib/swapfile";

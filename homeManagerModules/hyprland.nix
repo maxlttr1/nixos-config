@@ -212,38 +212,38 @@ in
       };
 
       style = ''
-            * {
-              font-family: ${font};
-              font-size: 12px;
-              font-weight: bold;
-              color: #ffffff;
-            }
+        * {
+          font-family: ${font};
+          font-size: 12px;
+          font-weight: bold;
+          color: #ffffff;
+        }
 
-            .modules-left {
-              background-color: #000000;
-              padding: 0 15px;      
-              border-radius: 15px;
-              margin: 5px;
-            }
+        .modules-left {
+          background-color: #000000;
+          padding: 0 15px;      
+          border-radius: 15px;
+          margin: 5px;
+        }
 
-            .modules-center {
-              background-color: #000000;
-              padding: 0 15px;
-              margin: 5px;
-              border-radius: 15px;
-            }
+        .modules-center {
+          background-color: #000000;
+          padding: 0 15px;
+          margin: 5px;
+          border-radius: 15px;
+        }
 
-            .modules-right {
-              background-color: #000000;
-              padding: 0 15px;      
-              margin: 5px;
-              border-radius: 15px;
-            }
+        .modules-right {
+          background-color: #000000;
+          padding: 0 15px;      
+          margin: 5px;
+          border-radius: 15px;
+        }
 
-            window#waybar {
-              background-color: rgba(255, 255, 255, 0.0);
-            }
-          '';
+        window#waybar {
+          background-color: rgba(255, 255, 255, 0.0);
+        }
+      '';
     };
 
     programs.hyprlock = {
