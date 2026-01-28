@@ -39,10 +39,7 @@
     let
       settings-default = {
         username = "maxlttr";
-        hostname = "default-maxlttr";
         system = "x86_64-linux";
-        kernel = "linuxPackages";
-        swap = 8; # Size in Gigabytes
       };
 
       overlay-nixpkgs = final: prev: {

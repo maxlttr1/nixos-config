@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, settings, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   # See /run/secrets for the decrypted files
@@ -7,7 +7,7 @@
   sops = {
     defaultSopsFile = ../../../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/home/${settings.username}/.config/sops/age/keys.txt";
+    age.keyFile = "/home/${config.users.mainUsername}/.config/sops/age/keys.txt";
 
     secrets = {
       "vpn.env" = { };

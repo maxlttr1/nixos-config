@@ -1,9 +1,7 @@
-{ settings, ... }:
-
 let
   # wallpaper = ../../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
-    path = "/home/${settings.username}/nixos-config/wallpapers";
+    path = "/home/"${config.users.mainUsername}"/nixos-config/wallpapers";
     interval = 86400;
   };
   font = {

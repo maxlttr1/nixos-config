@@ -7,18 +7,18 @@
     enableBashIntegration = true;
   };
 
-  home.file."/home/${settings.username}/.ssh/config".text = ''
+  home.file."/home/${config.users.mainUsername}/.ssh/config".text = ''
     Host asus-maxlttr
         HostName asus-maxlttr
         User maxlttr
-        IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
+        IdentityFile /home/${config.users.mainUsername}/.config/sops-nix/secrets/nixos_ssh_setup.private
     Host server-maxlttr
         HostName server-maxlttr
         User maxlttr
-        IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
+        IdentityFile /home/${config.users.mainUsername}/.config/sops-nix/secrets/nixos_ssh_setup.private
     Host fly2clean
         HostName videocompress.polytech.univ-nantes.prive
         User ptrans_fly2clean_2025
-        IdentityFile /home/${settings.username}/.ssh/fly2clean
+        IdentityFile /home/${config.users.mainUsername}/.ssh/fly2clean
   '';
 }
