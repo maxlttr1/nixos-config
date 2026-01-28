@@ -5,9 +5,6 @@
     # bottles
     # deja-dup
     direnv
-    (discord.override {
-      withOpenASAR = true;
-    })
     ffmpeg
     # gnupg
     # grex # Command-line tool for generating regular expressions from user-provided test cases
@@ -46,6 +43,7 @@
       "com.valvesoftware.Steam"
       "org.mozilla.Thunderbird"
       "org.torproject.torbrowser-launcher"
+      "dev.vencord.Vesktop"
     ];
   };
 }

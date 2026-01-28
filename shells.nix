@@ -13,6 +13,9 @@
   python = pkgs.mkShell {
     packages = with pkgs; [
       python312
+	  python312Packages.jupyterlab
+      python312Packages.numpy
+      python312Packages.matplotlib
       python312Packages.flake8
       python312Packages.black
     ];
