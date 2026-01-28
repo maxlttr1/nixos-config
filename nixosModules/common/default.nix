@@ -1,5 +1,6 @@
 {
   imports = [
+    ./docker/docker.nix
     ./allowUnfree.nix
     ./apparmor.nix
     ./audit.nix
@@ -31,6 +32,7 @@
   autoUpgrade.enable = true;
   bootloader.enable = true;
   clamav.enable = true;
+  docker.enable = true;
   experimentalFeatures.enable = true;
   fail2ban.enable = true;
   firewall.enable = true;

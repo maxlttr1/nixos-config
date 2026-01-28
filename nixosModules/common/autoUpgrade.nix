@@ -17,33 +17,36 @@ let
         -d "{\"content\": \"❌ NixOS upgrade failed on **$hostname**\"}"
     fi
   '';
-
-  baseConfig = {
-    enable = true;
-    flake = "github:maxlttr1/nixos-config";
-    flags = [
-      #"--update-input"
-      #"nixpkgs-main"
-      "-L" # Show logs
-    ];
-    dates = "daily";
-    persistent = true;
-    operation = "switch"; # Or "boot"
-    allowReboot = true;
-    rebootWindow = {
-      lower = "01:00";
-      upper = "05:00";
-    };
-  };
 in
 
 {
   options = {
     autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
+    autoUpgrade.frequency = lib.mkOption {
+      description = "AutoUpgrade frequency";
+      default = "daily";
+      type = lib.types.enum [ "daily" "weekly" "monthly" "yearly" ];
+    };
   };
 
   config = lib.mkIf config.autoUpgrade.enable {
-    system.autoUpgrade = baseConfig;
+    system.autoUpgrade = {
+      enable = true;
+      flake = "github:maxlttr1/nixos-config";
+      flags = [
+        #"--update-input"
+        #"nixpkgs-main"
+        "-L" # Show logs
+      ];
+      dates = config.autoUpgrade.frequency;
+      persistent = true;
+      operation = "switch"; # Or "boot"
+      allowReboot = true;
+      rebootWindow = {
+        lower = "01:00";
+        upper = "05:00";
+      };
+    };
 
     systemd.services."nixos-upgrade" = {
       onSuccess = [ "nixos-upgrade-notification.service" ];

@@ -6,7 +6,7 @@
       description = "Choose hostname configuration";
       default = "default-${settings.username}";
       type = lib.types.str;
-    }
+    };
   };
 
   config = {
