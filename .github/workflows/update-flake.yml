@@ -2,8 +2,7 @@ name: Update Nix Flake
 
 on:
   schedule:
-    #- cron: '0 0 * * 1' # Run every Monday at 00:00
-    - cron: '0 0 * * *' # Run everyday at 00:00
+    - cron: '0 0 * * 6' # Run every Saturday at 00:00
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
@@ -72,6 +71,7 @@ jobs:
     #        \"head\": \"maxlttr1:$BRANCH\",
     #        \"base\": \"master\"
     #      }"
+    
     - name: Success notifications
       if: success()
       run: |
