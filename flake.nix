@@ -137,7 +137,14 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
             inputs.impermanence.nixosModules.impermanence
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
+            (
+              { config, pkgs, ... }: {
+                nixpkgs.overlays = [
+                  overlay-nixpkgs
+                  inputs.nix-vscode-extensions.overlays.default
+                ];
+              }
+            )
           ];
         };
       };
