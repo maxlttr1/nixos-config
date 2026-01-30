@@ -133,7 +133,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/test
-            home-manager-config-server
+            home-manager-config
             inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
             inputs.impermanence.nixosModules.impermanence
