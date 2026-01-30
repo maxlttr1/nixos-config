@@ -132,7 +132,7 @@
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
-            ./hosts/vm
+            ./hosts/test
             home-manager-config-server
             inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
