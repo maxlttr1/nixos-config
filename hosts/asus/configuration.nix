@@ -1,3 +1,5 @@
+{ settings, ... }:
+
 {
   hostname = "asus-maxlttr";
 
@@ -15,13 +17,23 @@
   touchpad.enable = true;
   vms.enable = true;
 
-  fileSystems."/home/maxlttr/mountedDisk" ={
+  fileSystems."/home/${settings.username}/mountedDisk" = {
     device = "/dev/disk/by-uuid/d8d4d44d-0461-46ff-a3df-2141b02aefec";
     fsType = "ext4";
     options = [
       "nofail"
 	  "nosuid"
 	  "nodev"
+	  "noexec"
+	  "noatime"
+    ];
+  };
+
+  fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours" = {
+	device = "/home/${settings.username}/mountedDisk/syncthing/cours";
+    options = [
+      "bind"
+	  "exec"
     ];
   };
 }
