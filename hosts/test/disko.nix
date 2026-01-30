@@ -22,7 +22,7 @@
               label = "root";
               content = {
                 type = "btrfs";
-                extraargs = ["-f"]; # force creation
+                extraArgs = ["-f"]; # force creation
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
