@@ -6,8 +6,12 @@
   ];
 
   fonts.enable = true;
+  pkgs.enable = true;
+  plasmaManager.enable = true;
+  vscode.enable = true;
+  xdgCustom.enable = true;
 
-  home.username = settings.username;
+  home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
 
   # This value determines the Home Manager release that your

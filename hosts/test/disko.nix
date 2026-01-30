@@ -3,14 +3,14 @@
     disk = {
       nvme0n1 = {
         type = "disk";
-        device = "/dev/vda";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              label = "ESP";
-              size = "512M";
-              type = "EF00";
+            esp = {
+              label = "esp";
+              size = "512m";
+              type = "ef00";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -22,19 +22,19 @@
               label = "root";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"]; # Force creation
+                extraargs = ["-f"]; # force creation
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                    mountoptions = ["subvol=root" "compress=zstd" "noatime"];
                   };
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                    mountoptions = ["subvol=nix" "compress=zstd" "noatime"];
                   };
                   "/persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
+                    mountoptions = ["subvol=persist" "compress=zstd" "noatime"];
                   };
                 };
               };

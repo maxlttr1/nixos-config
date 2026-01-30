@@ -1,3 +1,0 @@
-{
-  hostname = "vm-maxlttr";
-}
