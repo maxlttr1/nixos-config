@@ -10,12 +10,15 @@
             ESP = {
               label = "ESP";
               size = "512M";
-              type = "ef00";
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [
+                  "umask=0077"
+                  "dmask=0077"
+                ];
               };
             };
             root = {

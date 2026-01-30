@@ -128,7 +128,7 @@
           ];
         };
 
-        vm-maxlttr = nixpkgs-stable.lib.nixosSystem {
+        test-maxlttr = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
