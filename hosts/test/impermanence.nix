@@ -48,8 +48,8 @@
         "Pictures"
         "Documents"
         "Videos"
-        { directory = ".ssh" }
-        { directory = ".var/app/" } # Flatpak app data
+        ".ssh"
+        ".var/app/" # Flatpak app data
         ".local/share/direnv" # Direnv states
       ];
       files = [
