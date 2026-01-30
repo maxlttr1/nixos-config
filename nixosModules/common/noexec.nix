@@ -1,7 +1,7 @@
 { lib, config, settings, ... }:
 
 {
-  options = {
+  /*options = {
     noexec.enable = lib.mkEnableOption "Enable noexec mount options for security";
   };
 
@@ -64,5 +64,5 @@
 		];
 	  };
 	})
-  ];  
+  ];*/
 }
