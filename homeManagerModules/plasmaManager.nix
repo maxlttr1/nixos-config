@@ -3,7 +3,7 @@
 let
   # wallpaper = ../../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
-    path = "/home/${settings.username}/nixos-config/wallpapers";
+    path = "/home/${settings.username}/Documents/nixos-config/wallpapers";
     interval = 86400;
   };
   font = {
@@ -11,6 +11,14 @@ let
     pointSize = 10;
   };
 in
+
+/*
+~/.config/plasmarc - Plasma shell configuration
+~/.config/kglobalshortcutsrc - Keyboard shortcuts
+~/.config/kdeglobals - Global KDE settings
+~/.local/share/applications/ - Custom app shortcuts
+~/.local/share/kxmlgui5/ - UI configurations
+*/
 
 {
   options.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";

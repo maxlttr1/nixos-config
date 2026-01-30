@@ -26,6 +26,14 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs = {
+        nixpkgs.follows = "";
+        home-manager.follows = "";
+      };
+    };
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };
@@ -116,6 +124,19 @@
             home-manager-config-server
             inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
+          ];
+        };
+
+        vm-maxlttr = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/vm
+            home-manager-config-server
+            inputs.home-manager.nixosModules.home-manager
+            inputs.disko.nixosModules.disko
+            inputs.impermanence.nixosModules.impermanence
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
           ];
         };

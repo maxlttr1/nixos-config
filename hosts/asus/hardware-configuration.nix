@@ -27,13 +27,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/home/maxlttr/mountedDisk" =
-    {
-      device = "/dev/disk/by-uuid/d8d4d44d-0461-46ff-a3df-2141b02aefec";
-      fsType = "ext4";
-      options = [ "nofail" ];
-    };
-
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
