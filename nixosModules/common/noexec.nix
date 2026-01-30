@@ -1,11 +1,11 @@
 { lib, config, settings, ... }:
 
 {
-  /*options = {
+  options = {
     noexec.enable = lib.mkEnableOption "Enable noexec mount options for security";
   };
 
-  config.fileSystems = lib.mkMerge [
+  /*config.fileSystems = lib.mkMerge [
 	(lib.mkIf config.noexec.enable {
 		"/".options = lib.mkAfter [ 
 			"nosuid"
