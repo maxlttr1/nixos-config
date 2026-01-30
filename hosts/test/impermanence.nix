@@ -33,7 +33,7 @@
     hideMounts = false;
     directories = [
       "/var/log" # System logs
-      /var/lib/bluetooth # Bluetooth pairings
+      "/var/lib/bluetooth" # Bluetooth pairings
       "/var/lib/nixos" # Nixos state
       "/var/lib/NetworkManager" # Network device state - remembers connection
       "/var/lib/systemd/coredump" # Crash dumps
