@@ -38,6 +38,7 @@
       "/var/lib/NetworkManager" # Network device state - remembers connection
       "/var/lib/systemd/coredump" # Crash dumps
       "/etc/NetworkManager/system-connections"  # WiFi/network profiles - remember networks
+      "/var/lib/flatpak/" # Flatpak system-wide runtimes data (runtimes, applications and configuration)
     ];
     files = [
       "/etc/machine-id"
@@ -49,11 +50,14 @@
         "Documents"
         "Videos"
         ".ssh"
-        ".var/app/" # Flatpak app data
         ".local/share/direnv" # Direnv states
+        ".var/app/" # Flatpak per-user, app-specific config, caches, and data
+        ".local/share/flatpak" # Flatpak per-user data (runtimes, applications and configuration)
+        "/home/maxlttr/.local/share/kwalletd/" # KWallet data
       ];
       files = [
         ".config/sops/age/keys.txt"
+        ".config/yakuakerc" # Yakuake config
       ];
     };
   };
