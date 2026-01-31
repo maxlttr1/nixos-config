@@ -53,16 +53,16 @@
         ".var/app/" # Flatpak per-user, app-specific config, caches, and data
         ".local/share/flatpak" # Flatpak per-user data (runtimes, applications and configuration)
         ".local/share/kwalletd/" # KWallet data
-		".local/share/fish" # fish shell data
-		".config/fish" # fish shell config
-		".config/syncthing" # Syncthing config (settings, keys)
-		".config/Code" # VSCode
+        ".local/share/fish" # fish shell data
+        ".config/fish" # fish shell config
+        ".config/syncthing" # Syncthing config (settings, keys)
+        ".config/Code" # VSCode
       ];
       files = [
         ".config/sops/age/keys.txt"
         ".config/yakuakerc" # Yakuake config
-		".local/share/z/data" # zoxide data file
-		".config/mimeapps.list" # Default applications
+        ".local/share/z/data" # zoxide data file
+        ".config/mimeapps.list" # Default applications
       ];
     };
   };
