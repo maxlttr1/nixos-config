@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ lib, settings, ... }:
 
 {
   # Automatically remove roots that are older than 30 days
