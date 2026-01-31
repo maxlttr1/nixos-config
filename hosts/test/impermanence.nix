@@ -2,9 +2,9 @@
 
 {
   # Automatically remove roots that are older than 30 days
-  /*boot.initrd.postResumeCommands = lib.mkAfter ''
+  boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
-    mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp # CONFIRM THIS IS CORRECT FROM findmnt
+    mount /dev/sda2 /btrfs_tmp # CONFIRM THIS IS CORRECT FROM findmnt
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
@@ -25,7 +25,7 @@
 
     btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
-  '';*/
+  '';
 
   fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persist" = {
