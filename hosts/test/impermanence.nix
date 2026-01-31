@@ -29,8 +29,7 @@
 
   fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persist" = {
-    # hideMounts = true;
-    hideMounts = false;
+    hideMounts = true;
     directories = [
       "/var/log" # System logs
       "/var/lib/bluetooth" # Bluetooth pairings
@@ -53,7 +52,7 @@
         ".local/share/direnv" # Direnv states
         ".var/app/" # Flatpak per-user, app-specific config, caches, and data
         ".local/share/flatpak" # Flatpak per-user data (runtimes, applications and configuration)
-        "/home/maxlttr/.local/share/kwalletd/" # KWallet data
+        ".local/share/kwalletd/" # KWallet data
       ];
       files = [
         ".config/sops/age/keys.txt"
