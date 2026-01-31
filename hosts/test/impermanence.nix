@@ -62,6 +62,7 @@
         ".config/sops/age/keys.txt"
         ".config/yakuakerc" # Yakuake config
 		".local/share/z/data" # zoxide data file
+		".config/mimeapps.list" # Default applications
       ];
     };
   };
