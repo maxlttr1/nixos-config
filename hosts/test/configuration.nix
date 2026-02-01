@@ -13,4 +13,5 @@
   kdePlasma.enable = true;
   ld.enable = true;
   pipewire.enable = true;
+  swap.zramSwap.enable = true;
 }

@@ -11,8 +11,9 @@
   kdePlasma.enable = true;
   ld.enable = true;
   pipewire.enable = true;
-  swapFile.enable = true;
-  swapFile.sizeGiB = 18;
+  swap.swapFile.enable = true;
+  swap.swapFile.sizeGiB = 18;
+  swap.zramSwap.enable = true;
   tlp.enable = true;
   touchpad.enable = true;
   vms.enable = true;

@@ -4,6 +4,7 @@
   borgbackup.enable = true;
   intel.enable = true;
   powertopAutotune.enable = true;
-  swapFile.enable = true;
-  swapFile.sizeGiB = 8;
+  swap.swapFile.enable = true;
+  swap.swapFile.sizeGiB = 8;
+  swap.zramSwap.enable = true;
 }

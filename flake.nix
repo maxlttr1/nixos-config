@@ -80,6 +80,7 @@
       modulesList = [
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
+        inputs.impermanence.nixosModules.impermanence
         (
           { config, pkgs, ... }: {
             nixpkgs.overlays = [
@@ -124,7 +125,6 @@
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
               home-manager.users."${settings.username}" = import ./hosts/test/home.nix;
             })
-            inputs.impermanence.nixosModules.impermanence
           ] ++ modulesList;
         };
       };
