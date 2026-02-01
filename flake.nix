@@ -121,7 +121,9 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/test
-            homeManagerConfig
+            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
+              home-manager.users."${settings.username}" = import ./hosts/test/home.nix;
+            })
             inputs.impermanence.nixosModules.impermanence
           ] ++ modulesList;
         };

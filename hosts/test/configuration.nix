@@ -3,6 +3,8 @@
 {
   hostname = "test-maxlttr";
 
+  impermanence.enable = true;
+  impermanence.diskDevice = "/dev/sda2";
   atd.enable = true;
   bluetooth.enable = true;
   flatpak.enable = true;

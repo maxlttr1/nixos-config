@@ -65,6 +65,10 @@
           "Videos"
           ".ssh"
           ".local/share/direnv" # Direnv states
+          ".local/share/fish" # fish shell data
+          ".config/fish" # fish shell config
+          ".config/Code" # VSCode
+          ".vscode" # VSCode
         ]
         ++ lib.optionals config.kdePlasma.enable [
           ".local/share/kwalletd" # KWallet data
@@ -73,22 +77,11 @@
           ".var/app/" # Flatpak per-user, app-specific config, caches, and data
           ".local/share/flatpak" # Flatpak per-user data (runtimes, applications and configuration)
         ]
-        ++ lib.optionals config.fish.enable [
-          ".local/share/fish" # fish shell data
-          ".config/fish" # fish shell config
-        ]
         ++ lib.optionals config.syncthing.enable [
           ".config/syncthing" # Syncthing config (settings, keys)
-        ]
-        ++ lib.mkIf config.vscode.enable [
-          ".config/Code" # VSCode
-          ".vscode" # VSCode
         ];
-        files = [ ]
-          ++ lib.optionals config.sops.enable [
+        files = [
           ".config/sops/age/keys.txt"
-        ]
-          ++ lib.optionals config.fish.enable [
           ".local/share/z/data" # zoxide data file
         ];
       };
