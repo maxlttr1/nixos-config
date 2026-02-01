@@ -10,7 +10,7 @@
       enableBashIntegration = true;
     };
 
-    home.file."/home/${settings.username}/.ssh/config".text = ''
+    home.file.".ssh/config".text = ''
       Host asus-maxlttr
           HostName asus-maxlttr
           User maxlttr

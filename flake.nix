@@ -61,7 +61,7 @@
         };
       };
 
-      home-manager-config = {
+      homeManagerConfig = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users."${settings.username}" = import ./hosts/asus/home.nix;
@@ -77,19 +77,18 @@
         };
       };
 
-      home-manager-config-server = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./hosts/server/home.nix;
-        home-manager.sharedModules = [
-          inputs.sops-nix.homeManagerModules.sops
-        ];
-        home-manager.backupFileExtension = "backup";
-        home-manager.extraSpecialArgs = {
-          settings = settings;
-          inherit inputs;
-        };
-      };
+      modulesList = [
+        inputs.home-manager.nixosModules.home-manager
+        inputs.disko.nixosModules.disko
+        (
+          { config, pkgs, ... }: {
+            nixpkgs.overlays = [
+              overlay-nixpkgs
+              inputs.nix-vscode-extensions.overlays.default
+            ];
+          }
+        )
+      ];
 
       shells = import ./shells.nix {
         inherit (import nixpkgs-stable { system = "${settings.system}"; }) pkgs;
@@ -102,18 +101,8 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/asus
-            home-manager-config
-            inputs.home-manager.nixosModules.home-manager
-            inputs.disko.nixosModules.disko
-            (
-              { config, pkgs, ... }: {
-                nixpkgs.overlays = [
-                  overlay-nixpkgs
-                  inputs.nix-vscode-extensions.overlays.default
-                ];
-              }
-            )
-          ];
+            homeManagerConfig
+          ] ++ modulesList;
         };
 
         server-maxlttr = nixpkgs-stable.lib.nixosSystem {
@@ -121,11 +110,10 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/server
-            home-manager-config-server
-            inputs.home-manager.nixosModules.home-manager
-            inputs.disko.nixosModules.disko
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs ]; })
-          ];
+            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
+              home-manager.users."${settings.username}" = import ./hosts/server/home.nix;
+            })
+          ] ++ modulesList;
         };
 
         test-maxlttr = nixpkgs-stable.lib.nixosSystem {
@@ -133,19 +121,9 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/test
-            home-manager-config
-            inputs.home-manager.nixosModules.home-manager
-            inputs.disko.nixosModules.disko
+            homeManagerConfig
             inputs.impermanence.nixosModules.impermanence
-            (
-              { config, pkgs, ... }: {
-                nixpkgs.overlays = [
-                  overlay-nixpkgs
-                  inputs.nix-vscode-extensions.overlays.default
-                ];
-              }
-            )
-          ];
+          ] ++ modulesList;
         };
       };
 
