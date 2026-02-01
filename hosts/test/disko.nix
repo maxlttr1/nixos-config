@@ -26,19 +26,19 @@
               label = "root";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"]; # force creation
+                extraArgs = [ "-f" ]; # force creation
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                    mountOptions = [ "subvol=root" "compress=zstd" "noatime" ];
                   };
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                    mountOptions = [ "subvol=nix" "compress=zstd" "noatime" ];
                   };
                   "/persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
+                    mountOptions = [ "subvol=persist" "compress=zstd" "noatime" ];
                   };
                 };
               };

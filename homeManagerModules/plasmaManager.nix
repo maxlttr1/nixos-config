@@ -12,13 +12,13 @@ let
   };
 in
 
-/*
-~/.config/plasmarc - Plasma shell configuration
-~/.config/kglobalshortcutsrc - Keyboard shortcuts
-~/.config/kdeglobals - Global KDE settings
-~/.local/share/applications/ - Custom app shortcuts
-~/.local/share/kxmlgui5/ - UI configurations
-*/
+  /*
+    ~/.config/plasmarc - Plasma shell configuration
+    ~/.config/kglobalshortcutsrc - Keyboard shortcuts
+    ~/.config/kdeglobals - Global KDE settings
+    ~/.local/share/applications/ - Custom app shortcuts
+    ~/.local/share/kxmlgui5/ - UI configurations
+  */
 
 {
   options.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
@@ -95,7 +95,7 @@ in
       krunner.position = "center";
       shortcuts = {
         kwin = {
-		  "Window Maximize" = "Meta+F";
+          "Window Maximize" = "Meta+F";
           "Switch to Desktop 1" = "Meta+&";
           "Switch to Desktop 2" = "Meàta+É";
           "Switch to Desktop 3" = "Meta+\"";

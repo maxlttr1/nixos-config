@@ -21,10 +21,6 @@ jobs:
     - name: Set up Nix # Installs Nix on the GitHub runner
       uses: cachix/install-nix-action@v31
 
-    - name: Install nixpkgs-fmt
-      run: |
-        nix shell nixpkgs#nixpkgs-fmt
-    
     - name: Format Nix files
       run: |
         nix shell nixpkgs#nixpkgs-fmt -c sh -c '
