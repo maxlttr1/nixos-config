@@ -97,7 +97,7 @@ in
         kwin = {
           "Window Maximize" = "Meta+F";
           "Switch to Desktop 1" = "Meta+&";
-          "Switch to Desktop 2" = "Meàta+É";
+          "Switch to Desktop 2" = "Meta+É";
           "Switch to Desktop 3" = "Meta+\"";
           "Switch to Desktop 4" = "Meta+\'";
         };
