@@ -56,6 +56,7 @@
       ];
       files = [
         "/etc/machine-id"
+        "/var/lib/swapfile"
       ];
       users."${settings.username}" = lib.mkIf config.users.enable {
         directories = [
