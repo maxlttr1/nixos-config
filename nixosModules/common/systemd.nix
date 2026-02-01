@@ -10,8 +10,8 @@
       SystemMaxFileSize=1G
     '';
 
-	systemd.coredump.extraConfig = ''
-	  MaxUse=500M
-	'';
+    systemd.coredump.extraConfig = ''
+      	  MaxUse=500M
+      	'';
   };
 }
