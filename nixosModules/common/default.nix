@@ -3,7 +3,7 @@
     ./docker/docker.nix
     ./allowUnfree.nix
     ./apparmor.nix
-    ./audit.nix
+    ./auditd.nix
     ./autoCpufreq.nix
     ./autoUpgrade.nix
     ./bootloader.nix
@@ -20,6 +20,7 @@
     ./ssh.nix
     ./stateVersion.nix
     ./syncthing.nix
+    ./systemd.nix
     ./tailscale.nix
     ./timezoneLocales.nix
     ./users.nix
@@ -27,7 +28,7 @@
 
   allowUnfree.enable = true;
   apparmor.enable = true;
-  audit.enable = true;
+  auditd.enable = true;
   autoCpufreq.enable = true;
   autoUpgrade.enable = true;
   bootloader.enable = true;
@@ -42,6 +43,7 @@
   optimise.enable = true;
   ssh.enable = true;
   syncthing.enable = true;
+  systemd.enable = true;
   tailscale.enable = true;
   timezoneLocales.enable = true;
   users.enable = true;

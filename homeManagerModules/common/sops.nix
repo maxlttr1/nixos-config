@@ -4,8 +4,7 @@
   options.sops.enable = lib.mkEnableOption "sops-nix secrets management";
 
   config = lib.mkIf config.sops.enable {
-    # See /run/secrets for the decrypted files
-    # And ~/.config/sops-nix/secrets/
+    # See ~/.config/sops-nix/secrets/ for the decrypted files
 
     sops = {
       defaultSopsFile = ../../secrets/secrets.yaml;

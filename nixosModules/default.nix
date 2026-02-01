@@ -11,6 +11,7 @@
     ./flatpak.nix
     ./gnupg.nix
     ./hyprland.nix
+    ./impermanence.nix
     ./intel.nix
     ./kdePlasma.nix
     ./ld.nix
@@ -18,7 +19,7 @@
     ./pipewire.nix
     ./powertopAutotune.nix
     ./samba.nix
-    ./swapFile.nix
+    ./swap.nix
     ./tlp.nix
     ./touchpad.nix
     ./virtualbox.nix

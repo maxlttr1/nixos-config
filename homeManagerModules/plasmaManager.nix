@@ -3,7 +3,7 @@
 let
   # wallpaper = ../../../wallpapers/wallpaper.jpg;
   wallpaperSlideShow = {
-    path = "/home/${settings.username}/nixos-config/wallpapers";
+    path = "/home/${settings.username}/Documents/nixos-config/wallpapers";
     interval = 86400;
   };
   font = {
@@ -12,10 +12,43 @@ let
   };
 in
 
+  /*
+    ~/.config/plasmarc - Plasma shell configuration
+    ~/.config/kglobalshortcutsrc - Keyboard shortcuts
+    ~/.config/kdeglobals - Global KDE settings
+    ~/.local/share/applications/ - Custom app shortcuts
+    ~/.local/share/kxmlgui5/ - UI configurations
+  */
+
 {
   options.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
 
+
   config = lib.mkIf config.plasmaManager.enable {
+    home.file.".config/mimeapps.list".text = ''
+      [Added Associations]
+      application/json=org.kde.kwrite.desktop;
+      application/pdf=io.gitlab.librewolf-community.desktop;
+      application/x-docbook+xml=org.kde.kwrite.desktop;
+      application/x-yaml=org.kde.kwrite.desktop;
+      text/markdown=org.kde.kwrite.desktop;
+      text/plain=org.kde.kwrite.desktop;
+      text/x-cmake=org.kde.kwrite.desktop;
+      x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
+      x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
+
+      [Default Applications]
+      application/json=org.kde.kwrite.desktop;
+      application/pdf=io.gitlab.librewolf-community.desktop;
+      application/x-docbook+xml=org.kde.kwrite.desktop;
+      application/x-yaml=org.kde.kwrite.desktop;
+      text/markdown=org.kde.kwrite.desktop;
+      text/plain=org.kde.kwrite.desktop;
+      text/x-cmake=org.kde.kwrite.desktop;
+      x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
+      x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
+    '';
+
     programs.plasma = {
       enable = true;
       workspace = {
@@ -25,13 +58,11 @@ in
         };
         theme = "breeze";
         colorScheme = "BreezeDark";
-        #lookAndFeel = "org.kde.breezedark.desktop";
         iconTheme = "Papirus-Dark";
         windowDecorations = {
           library = "org.kde.kwin.default";
           theme = "Breeze";
         };
-        #inherit wallpaper;
         inherit wallpaperSlideShow;
       };
       immutableByDefault = false;
@@ -64,6 +95,7 @@ in
       krunner.position = "center";
       shortcuts = {
         kwin = {
+          "Window Maximize" = "Meta+F";
           "Switch to Desktop 1" = "Meta+&";
           "Switch to Desktop 2" = "Meta+É";
           "Switch to Desktop 3" = "Meta+\"";

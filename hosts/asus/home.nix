@@ -10,6 +10,7 @@
   plasmaManager.enable = true;
   vscode.enable = true;
   xdgCustom.enable = true;
+  yakuake.enable = true;
 
   home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
