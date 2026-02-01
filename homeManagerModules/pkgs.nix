@@ -24,7 +24,6 @@
       typst-live
       # veracrypt
       vlc
-      kdePackages.yakuake
     ];
 
     services.flatpak = {

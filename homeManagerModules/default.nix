@@ -10,5 +10,6 @@
     ./vscode.nix
     ./wluma.nix
     ./xdg.nix
+    ./yakuake.nix
   ];
 }
