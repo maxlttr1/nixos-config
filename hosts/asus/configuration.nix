@@ -25,16 +25,7 @@
       "nofail"
       "nosuid"
       "nodev"
-      "noexec"
       "noatime"
-    ];
-  };
-
-  fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours" = {
-    device = "/home/${settings.username}/mountedDisk/syncthing/cours";
-    options = [
-      "bind"
-      "exec"
     ];
   };
 }
