@@ -4,8 +4,8 @@
   options = {
     impermanence.enable = lib.mkEnableOption "Enable impermanence features";
     impermanence.retentionDays = lib.mkOption {
-      type = lib.types.ints.unsigned;
-      default = 30;
+      type = lib.types.str;
+      default = "30";
       description = "Number of days to retain old roots.";
     };
     impermanence.diskDevice = lib.mkOption {
