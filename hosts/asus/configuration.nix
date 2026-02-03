@@ -26,6 +26,14 @@
       "nosuid"
       "nodev"
       "noatime"
+      "noexec"
+    ];
+  };
+  fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours/polytech" = {
+    device = "/home/${settings.username}/mountedDisk/syncthing/cours/polytech";
+    options = [
+	  "bind"
+      "exec"
     ];
   };
 }

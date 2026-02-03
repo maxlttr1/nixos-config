@@ -5,64 +5,39 @@
     noexec.enable = lib.mkEnableOption "Enable noexec mount options for security";
   };
 
-  /*config.fileSystems = lib.mkMerge [
-    (lib.mkIf config.noexec.enable {
-      "/".options = lib.mkAfter [ 
-        "nosuid"
-        "nodev"
-        "noatime" 
+  config.fileSystems = lib.mkIf config.noexec.enable {
+    "/".options = lib.mkIf (!config.impermanence.enable) [ 
+      "nosuid"
+      "nodev"
+      "noatime" 
+    ]; 
+    "/tmp" = {
+      device = "/tmp";
+      options = [
+        "bind"
+        "noexec"
       ];
-      "/etc" = {
-        device = "/etc";
-        options = lib.mkAfter [
-          "bind"
-          "noexec"
-        ];
-      };
-      "/tmp" = {
-        device = "/tmp";
-        options = [
-          "bind"
-          "noexec"
-        ];
-      };
-      "/run/media" = {
-        device = "/run/media";
-        options = lib.mkAfter [
-          "bind"
-          "noexec"
-        ];
-      };
-      "/mnt" = {
-        device = "/mnt";
-        options = lib.mkAfter [
-          "bind"
-          "noexec"
-        ];
-      };
-      "/nix/store" = {
-        device = "/mnt";
-        options = lib.mkAfter [
-          "bind"
-          "noatime"
-        ];
-      };
-    })
-    (lib.mkIf config.users.enable {
-      "/home/${settings.username}/Public" = {
-        device = "/home/${settings.username}/Public";
-        options = lib.mkAfter [
-          "bind" 
-          "noexec" 
-        ];
-      };
-      "/home/${settings.username}/Downloads" = {
-        device = "/home/${settings.username}/Downloads";
-        options = lib.mkAfter [
-          "bind" 
-          "noexec"
-        ];
-      };
-    })
-  ];*/
+    };
+    "/run/media" = {
+      device = "/run/media";
+      options = lib.mkAfter [
+        "bind"
+        "noexec"
+      ];
+    };
+    "/home/${settings.username}/Public" = lib.mkIf config.users.enable {
+      device = "/home/${settings.username}/Public";
+      options = lib.mkAfter [
+        "bind" 
+        "noexec" 
+      ];
+    };
+    "/home/${settings.username}/Downloads" = lib.mkIf config.users.enable {
+      device = "/home/${settings.username}/Downloads";
+      options = lib.mkAfter [
+        "bind" 
+        "noexec"
+      ];
+    };
+  };
 }
