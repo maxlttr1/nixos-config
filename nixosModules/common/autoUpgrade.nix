@@ -25,7 +25,7 @@ in
     autoUpgrade.frequency = lib.mkOption {
       description = "AutoUpgrade frequency";
       default = "04:00";
-      type = lib.types.enum [ "04:00", "daily" "weekly" "monthly" "yearly" ];
+      type = lib.types.enum [ "04:00" "daily" "weekly" "monthly" "yearly" ];
     };
   };
 
