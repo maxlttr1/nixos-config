@@ -6,11 +6,11 @@
   };
 
   config.fileSystems = lib.mkIf config.noexec.enable {
-    "/".options = lib.mkIf (!config.impermanence.enable) [ 
+    "/".options = lib.mkIf (!config.impermanence.enable) [
       "nosuid"
       "nodev"
-      "noatime" 
-    ]; 
+      "noatime"
+    ];
     "/tmp" = {
       device = "/tmp";
       options = [
@@ -28,14 +28,14 @@
     "/home/${settings.username}/Public" = lib.mkIf config.users.enable {
       device = "/home/${settings.username}/Public";
       options = lib.mkAfter [
-        "bind" 
-        "noexec" 
+        "bind"
+        "noexec"
       ];
     };
     "/home/${settings.username}/Downloads" = lib.mkIf config.users.enable {
       device = "/home/${settings.username}/Downloads";
       options = lib.mkAfter [
-        "bind" 
+        "bind"
         "noexec"
       ];
     };
