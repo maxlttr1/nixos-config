@@ -24,8 +24,8 @@ in
     autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
     autoUpgrade.frequency = lib.mkOption {
       description = "AutoUpgrade frequency";
-      default = "daily";
-      type = lib.types.enum [ "daily" "weekly" "monthly" "yearly" ];
+      default = "04:00";
+      type = lib.types.enum [ "04:00", "daily" "weekly" "monthly" "yearly" ];
     };
   };
 
