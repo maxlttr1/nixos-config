@@ -19,7 +19,7 @@
   vms.enable = true;
 
   fileSystems."/home/${settings.username}/mountedDisk" = {
-    device = "/dev/disk/by-uuid/d8d4d44d-0461-46ff-a3df-2141b02aefec";
+    device = "/dev/mapper/crypted";
     fsType = "ext4";
     options = [
       "nofail"
@@ -32,8 +32,11 @@
   fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours/polytech" = {
     device = "/home/${settings.username}/mountedDisk/syncthing/cours/polytech";
     options = [
+	  "nofail"
       "bind"
       "exec"
     ];
   };
+
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/c3e6f523-f97e-4166-8208-06eefd778df2";
 }
