@@ -32,19 +32,19 @@
         onCalendar = "daily";
       };
       packages = [
-        "org.bleachbit.BleachBit"
+        # "org.bleachbit.BleachBit"
         "com.google.Chrome"
         "io.github.finefindus.Hieroglyphic"
         "org.libreoffice.LibreOffice"
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
         # "md.obsidian.Obsidian"
-        "com.obsproject.Studio"
+        # "com.obsproject.Studio"
         "com.github.jeromerobert.pdfarranger"
         "org.signal.Signal"
         "com.valvesoftware.Steam"
         "org.mozilla.Thunderbird"
-        "org.torproject.torbrowser-launcher"
+        # "org.torproject.torbrowser-launcher"
         "dev.vencord.Vesktop"
       ];
     };
