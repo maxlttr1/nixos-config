@@ -9,6 +9,7 @@
     ./plasmaManager.nix
     ./vscode.nix
     ./wluma.nix
+    ./xdg-i2p.nix
     ./xdg.nix
     ./yakuake.nix
   ];

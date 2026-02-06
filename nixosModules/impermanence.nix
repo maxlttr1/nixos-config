@@ -53,6 +53,9 @@
         "/var/lib/systemd/coredump" # Crash dumps
         "/etc/NetworkManager/system-connections" # WiFi/network profiles - remember networks
         # "/var/lib/flatpak/" # Flatpak system-wide runtimes data (runtimes, applications and configuration)
+      ]
+      ++ lib.optionals config.i2p.enable [
+        "/var/lib/i2pd"
       ];
       files = [
         "/etc/machine-id"

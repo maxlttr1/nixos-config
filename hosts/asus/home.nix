@@ -9,6 +9,7 @@
   pkgs.enable = true;
   plasmaManager.enable = true;
   vscode.enable = true;
+  xdg-i2p.enable = true;
   xdgCustom.enable = true;
   yakuake.enable = true;
 
