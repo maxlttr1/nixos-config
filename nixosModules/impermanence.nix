@@ -71,6 +71,7 @@
           ".local/share/direnv" # Direnv states
           ".local/share/fish" # fish shell data
           ".config/fish" # fish shell config
+          ".local/share/z" # zoxide 
           ".config/Code" # VSCode
           ".vscode" # VSCode
         ]
@@ -86,7 +87,6 @@
         ];
         files = [
           ".config/sops/age/keys.txt"
-          ".local/share/z/data" # zoxide data file
         ];
       };
     };
