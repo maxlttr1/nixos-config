@@ -15,7 +15,7 @@ services:
     #  - WIREGUARD_PRESHARED_KEY=!!!!!!!!!!!!!!!!!
     #  - WIREGUARD_ADDRESSES=!!!!!!!!!!!!!!!!!
     env_file:
-      - ~/.config/sops-nix/secrets/vpn.env
+      - ${HOME}/.config/sops-nix/secrets/vpn.env
     ports:
       - 8112:8112 # Deluge
       - 6881:6881 # Deluge
@@ -31,6 +31,6 @@ services:
       - PGID=100
       - TZ=Etc/UTC
     volumes:
-      - ~/docker/deluge/config:/config
-      - ~/docker/movies:/downloads
+      - ${HOME}/docker/deluge/config:/config
+      - ${HOME}/docker/movies:/downloads
     restart: unless-stopped

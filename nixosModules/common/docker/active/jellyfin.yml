@@ -15,10 +15,10 @@ services:
       - PGID=100
       - TZ=Etc/UTC
     volumes:
-      - ~/docker/jellyfin/library:/config
-      - ~/docker/movies:/data/movies
-      - ~/docker/tvshows:/data/tvshows
-      - ~/Syncthing/music:/data/music:ro
+      - ${HOME}/docker/jellyfin/library:/config
+      - ${HOME}/docker/movies:/data/movies
+      - ${HOME}/docker/tvshows:/data/tvshows
+      - ${HOME}/Syncthing/music:/data/music:ro
     ports:
       - 8096:8096
     devices:
