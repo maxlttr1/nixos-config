@@ -5,6 +5,7 @@
 
   config = lib.mkIf config.pkgs.enable {
     home.packages = with pkgs.stable; [
+      bleachbit
       # bottles
       # deja-dup
       direnv
@@ -32,7 +33,6 @@
         onCalendar = "daily";
       };
       packages = [
-        # "org.bleachbit.BleachBit"
         "com.google.Chrome"
         "io.github.finefindus.Hieroglyphic"
         "org.libreoffice.LibreOffice"
