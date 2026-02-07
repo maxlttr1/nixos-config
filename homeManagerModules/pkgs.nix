@@ -44,7 +44,7 @@
         "org.signal.Signal"
         "com.valvesoftware.Steam"
         "org.mozilla.Thunderbird"
-        # "org.torproject.torbrowser-launcher"
+        "org.torproject.torbrowser-launcher"
         "dev.vencord.Vesktop"
       ];
     };
