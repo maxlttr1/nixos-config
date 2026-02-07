@@ -60,37 +60,8 @@ in
   config = lib.mkIf config.docker.enable {
     virtualisation.docker = {
       enable = true;
-      /*rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };*/
-      #daemon.settings.live-restore = false; # Allow dockerd to be restarted without affecting running container. This option is incompatible with docker swarm.
     };
     users.users.${settings.username}.extraGroups = [ "docker" ];
-
-
-    #Docker can now be rootlessly enabled with: systemctl --user enable --now docker
-    # Check status: systemctl --user status docker
-
-    /*imports = [
-      ./deluge/deluge.nix
-      ./jellyfin/jellyfin.nix
-      ./n8n/n8n.nix
-      ./portainer/portainer.nix
-      ./traefik/traefik.nix
-      ./uptime-kuma/uptime-kuma.nix
-      ./watchtower/watchtower.nix
-    ];*/
-
-    # Run with compose2nix: compose2nix -inputs input.yml -output output.nix -runtime docker
-
-    /*
-      environment = {
-        "VPN_SERVICE_PROVIDER" = "custom";
-        "VPN_TYPE" = "wireguard";
-      };
-      environmentFiles = [ config.sops.secrets."vpn.env".path ];
-    */
 
     systemd.services."docker-containers-start" = {
       description = "Start Docker containers";

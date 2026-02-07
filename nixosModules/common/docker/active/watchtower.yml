@@ -6,4 +6,5 @@ services:
     environment:
       - TZ=Europe/Paris
       - WATCHTOWER_CLEANUP=true # Remove old images after update
+      - WATCHTOWER_REMOVE_VOLUMES=true # Remove all anonymous volumes from the container before restarting with a new image
     restart: unless-stopped
