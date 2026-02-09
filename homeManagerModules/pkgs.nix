@@ -6,23 +6,10 @@
   config = lib.mkIf config.pkgs.enable {
     home.packages = with pkgs.stable; [
       bleachbit
-      # bottles
-      # deja-dup
       direnv
-      # gnupg
-      # grex # Command-line tool for generating regular expressions from user-provided test cases
-      # mask # A CLI task runner defined by a simple markdown file
-      # moreutils # to get vipe
       papirus-icon-theme
-      # protonvpn-gui
-      /*(rstudioWrapper.override {
-        packages = with rPackages; [ FactoMineR ];
-      })*/
-
-      # texliveFull
       typst
       typst-live
-      # veracrypt
       vlc
     ];
 
@@ -37,8 +24,6 @@
         "org.libreoffice.LibreOffice"
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
-        # "md.obsidian.Obsidian"
-        # "com.obsproject.Studio"
         "com.github.jeromerobert.pdfarranger"
         "org.signal.Signal"
         "com.valvesoftware.Steam"
