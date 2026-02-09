@@ -8,10 +8,10 @@
   config = lib.mkIf config.networkManager.enable {
     networking.networkmanager = {
       enable = true;
-      #ethernet.macAddress = "random"; #  Generate a randomized value upon each connect
+      ethernet.macAddress = "random";
       dns = "systemd-resolved";
       wifi = {
-        macAddress = "stable-ssid"; # Generate a stable MAC addressed based on Wi-Fi network
+        macAddress = "random";
         backend = "wpa_supplicant"; # Default
       };
       logLevel = "DEBUG";
