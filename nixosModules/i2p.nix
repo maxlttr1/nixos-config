@@ -39,12 +39,12 @@
           image = "geti2p/i2p:latest";
           autoStart = true;
           ports = [
-            "127.0.0.1:7657:7657"  # Router console
-            "127.0.0.1:4444:4444"  # HTTP proxy
-            "127.0.0.1:4447:4447"  # SOCKS proxy
-            "0.0.0.0:6668:6668"    # IRC proxy
-            "54323:12345"          # I2NP Protocol
-            "54323:12345/udp"      # I2NP Protocol
+            "127.0.0.1:7657:7657" # Router console
+            "127.0.0.1:4444:4444" # HTTP proxy
+            "127.0.0.1:4447:4447" # SOCKS proxy
+            "0.0.0.0:6668:6668" # IRC proxy
+            "54323:12345" # I2NP Protocol
+            "54323:12345/udp" # I2NP Protocol
           ];
           volumes = [
             "/home/${settings.username}/docker/i2p/i2phome:/i2p/.i2p"
