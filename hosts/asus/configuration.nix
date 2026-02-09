@@ -7,7 +7,6 @@
   bluetooth.enable = true;
   eduvpn.enable = true;
   flatpak.enable = true;
-  i2p.enable = true;
   intel.enable = true;
   kdePlasma.enable = true;
   ld.enable = true;
