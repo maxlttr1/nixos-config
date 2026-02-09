@@ -43,7 +43,7 @@
           zhuangtongfa.material-theme
           # sonarsource.sonarlint-vscode # Linter
           mkhl.direnv
-          vscodevim.vim
+          # vscodevim.vim
         ];
         userSettings = {
           "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
