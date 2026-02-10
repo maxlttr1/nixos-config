@@ -11,13 +11,13 @@
     };
 
     home.file.".ssh/config".text = ''
-      Host asus-maxlttr
-          HostName asus-maxlttr
-          User maxlttr
+      Host terra
+          HostName terra
+          User ${settings.username}
           IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
-      Host server-maxlttr
-          HostName server-maxlttr
-          User maxlttr
+      Host nexus
+          HostName nexus
+          User ${settings.username}
           IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
       Host fly2clean
           HostName videocompress.polytech.univ-nantes.prive

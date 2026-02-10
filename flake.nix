@@ -64,7 +64,7 @@
       homeManagerConfig = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./hosts/asus/home.nix;
+        home-manager.users."${settings.username}" = import ./hosts/terra/home.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
@@ -97,27 +97,27 @@
     in
     {
       nixosConfigurations = {
-        asus-maxlttr = nixpkgs-stable.lib.nixosSystem {
+        terra = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
-            ./hosts/asus
+            ./hosts/terra
             homeManagerConfig
           ] ++ modulesList;
         };
 
-        server-maxlttr = nixpkgs-stable.lib.nixosSystem {
+        nexus = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
-            ./hosts/server
+            ./hosts/nexus
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/server/home.nix;
+              home-manager.users."${settings.username}" = import ./hosts/nexus/home.nix;
             })
           ] ++ modulesList;
         };
 
-        test-maxlttr = nixpkgs-stable.lib.nixosSystem {
+        test = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
@@ -147,7 +147,7 @@
           };
 
           modules = [
-            ./hosts/asus/home.nix
+            ./hosts/terra/home.nix
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             inputs.nix-flatpak.homeManagerModules.nix-flatpak

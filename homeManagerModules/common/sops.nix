@@ -12,7 +12,6 @@
       age.keyFile = "/home/${settings.username}/.config/sops/age/keys.txt";
 
       secrets = {
-        "passwd" = { };
         "vpn.env" = { };
         "suaps.env" = { mode = "0600"; };
         "nixos_ssh_setup.public" = { mode = "0640"; };

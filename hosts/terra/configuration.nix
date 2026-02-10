@@ -1,7 +1,7 @@
 { settings, ... }:
 
 {
-  hostname = "asus-maxlttr";
+  hostname = "terra";
 
   atd.enable = true;
   bluetooth.enable = true;
