@@ -1,7 +1,7 @@
 { settings, ... }:
 
 {
-  hostname = "terra";
+  hostname = "terra-terra";
 
   atd.enable = true;
   bluetooth.enable = true;

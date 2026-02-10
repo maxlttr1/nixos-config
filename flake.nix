@@ -64,7 +64,7 @@
       homeManagerConfig = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./hosts/terra/home.nix;
+        home-manager.users."${settings.username}" = import ./hosts/terra-terra/home.nix;
         home-manager.sharedModules = [
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
@@ -97,7 +97,7 @@
     in
     {
       nixosConfigurations = {
-        terra = nixpkgs-stable.lib.nixosSystem {
+        terra-terra = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
