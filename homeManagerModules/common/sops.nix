@@ -14,6 +14,8 @@
       secrets = {
         "vpn.env" = { };
         "suaps.env" = { mode = "0600"; };
+        "nixos_ssh_setup_old.public" = { mode = "0640"; };
+        "nixos_ssh_setup_old.private" = { mode = "0600"; };
         "nixos_ssh_setup.public" = { mode = "0640"; };
         "nixos_ssh_setup.private" = { mode = "0600"; };
         "racknerd_ssh.public" = { mode = "0640"; };
