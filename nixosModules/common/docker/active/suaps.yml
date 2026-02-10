@@ -1,6 +1,5 @@
 services:
   suaps:
-    # image: maxlttr697/reserver_creneau_suaps:stable
     image: ghcr.io/flash2974/reservercreneausuaps-app:latest
     volumes:
       - ${HOME}/docker/suaps/config.json:/app/config/config.json

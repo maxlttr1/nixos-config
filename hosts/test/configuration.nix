@@ -1,7 +1,7 @@
 { settings, ... }:
 
 {
-  hostname = "test-maxlttr";
+  hostname = "test";
 
   impermanence.enable = true;
   impermanence.retentionDays = "0";

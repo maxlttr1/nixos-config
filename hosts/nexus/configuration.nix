@@ -1,5 +1,5 @@
 {
-  hostname = "server-maxlttr";
+  hostname = "nexus";
 
   borgbackup.enable = true;
   intel.enable = true;
