@@ -1,5 +1,5 @@
 {
-  hostname = "nexus";
+  hostname = "nexus-nexus";
 
   borgbackup.enable = true;
   intel.enable = true;

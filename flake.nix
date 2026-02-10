@@ -106,13 +106,13 @@
           ] ++ modulesList;
         };
 
-        nexus = nixpkgs-stable.lib.nixosSystem {
+        nexus-nexus = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/nexus
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/nexus/home.nix;
+              home-manager.users."${settings.username}" = import ./hosts/nexus-nexus/home.nix;
             })
           ] ++ modulesList;
         };
