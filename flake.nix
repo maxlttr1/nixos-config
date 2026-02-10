@@ -101,7 +101,7 @@
           system = settings.system;
           specialArgs = { inherit inputs settings; };
           modules = [
-            ./hosts/terra
+            ./hosts/terra-terra
             homeManagerConfig
           ] ++ modulesList;
         };
