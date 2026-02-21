@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 {
-  options.gc.enable = lib.mkEnableOption "automatic nix garbage collection";
+  options.custom.gc.enable = lib.mkEnableOption "automatic nix garbage collection";
 
-  config = lib.mkIf config.gc.enable {
+  config = lib.mkIf config.custom.gc.enable {
     nix.gc = {
       automatic = true;
       dates = "weekly";

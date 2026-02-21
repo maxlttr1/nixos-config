@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.vscode.enable = lib.mkEnableOption "VS Code editor";
+  options.custom.vscode.enable = lib.mkEnableOption "VS Code editor";
 
-  config = lib.mkIf config.vscode.enable {
+  config = lib.mkIf config.custom.vscode.enable {
     programs.vscode = {
       enable = true;
       #package = pkgs.vscodium;

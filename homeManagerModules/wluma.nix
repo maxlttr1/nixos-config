@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 {
-  options.wluma.enable = lib.mkEnableOption "wluma brightness manager";
+  options.custom.wluma.enable = lib.mkEnableOption "wluma brightness manager";
 
-  config = lib.mkIf config.wluma.enable {
+  config = lib.mkIf config.custom.wluma.enable {
     services.wluma = {
       enable = true;
       settings = {

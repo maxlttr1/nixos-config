@@ -2,7 +2,7 @@
 
 {
   options = {
-    kernel = lib.mkOption {
+    custom.kernel = lib.mkOption {
       description = "Enable kernel hardening and configuration";
       default = "linuxPackages";
       type = lib.types.enum [ "linuxPackages" "linuxPackages_latest" "linuxPackages_hardened" ];
@@ -10,7 +10,7 @@
   };
 
   config = {
-    boot.kernelPackages = pkgs."${config.kernel}";
+    boot.kernelPackages = pkgs."${config.custom.kernel}";
 
     # Kernel sysctl settings (runtime parameters - can be changed without reboot)
     boot.kernel.sysctl = {

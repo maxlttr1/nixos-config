@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 {
-  options.shellAliases.enable = lib.mkEnableOption "shell aliases";
+  options.custom.shellAliases.enable = lib.mkEnableOption "shell aliases";
 
-  config = lib.mkIf config.shellAliases.enable {
+  config = lib.mkIf config.custom.shellAliases.enable {
     home.shellAliases = {
       ll = "eza -l";
       la = "eza -la";

@@ -21,15 +21,15 @@ in
 
 {
   options = {
-    autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
-    autoUpgrade.frequency = lib.mkOption {
+    custom.autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
+    custom.autoUpgrade.frequency = lib.mkOption {
       description = "AutoUpgrade frequency";
       default = "02:00";
       type = lib.types.enum [ "02:00" "daily" "weekly" "monthly" "yearly" ];
     };
   };
 
-  config = lib.mkIf config.autoUpgrade.enable {
+  config = lib.mkIf config.custom.autoUpgrade.enable {
     system.autoUpgrade = {
       enable = true;
       flake = "github:maxlttr1/nixos-config";
@@ -39,7 +39,7 @@ in
         "-L" # Show logs
         "--refresh" # Force fresh fetch from GitHub
       ];
-      dates = config.autoUpgrade.frequency;
+      dates = config.custom.autoUpgrade.frequency;
       persistent = true;
       operation = "switch"; # Or "boot"
       allowReboot = true;

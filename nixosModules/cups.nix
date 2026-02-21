@@ -2,10 +2,10 @@
 
 {
   options = {
-    cups.enable = lib.mkEnableOption "Enable CUPS printing and Avahi discovery";
+    custom.cups.enable = lib.mkEnableOption "Enable CUPS printing and Avahi discovery";
   };
 
-  config = lib.mkIf config.cups.enable {
+  config = lib.mkIf config.custom.cups.enable {
     # Enable CUPS to print documents.
     services = {
       printing.enable = true;

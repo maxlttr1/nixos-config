@@ -23,28 +23,30 @@
     ./systemd.nix
     ./tailscale.nix
     ./timezoneLocales.nix
+    ./usbguard.nix
     ./users.nix
   ];
 
-  allowUnfree.enable = true;
-  apparmor.enable = true;
-  auditd.enable = true;
-  autoCpufreq.enable = true;
-  autoUpgrade.enable = true;
-  bootloader.enable = true;
-  clamav.enable = true;
-  docker.enable = true;
-  experimentalFeatures.enable = true;
-  fail2ban.enable = true;
-  firewall.enable = true;
-  firmware.enable = true;
-  networkManager.enable = true;
-  noexec.enable = true;
-  optimise.enable = true;
-  ssh.enable = true;
-  syncthing.enable = true;
-  systemd.enable = true;
-  tailscale.enable = true;
-  timezoneLocales.enable = true;
-  users.enable = true;
+  custom.allowUnfree.enable = true;
+  custom.apparmor.enable = true;
+  custom.auditd.enable = true;
+  custom.autoCpufreq.enable = true;
+  custom.autoUpgrade.enable = true;
+  custom.bootloader.enable = true;
+  custom.clamav.enable = true;
+  custom.docker.enable = true;
+  custom.experimentalFeatures.enable = true;
+  custom.fail2ban.enable = true;
+  custom.firewall.enable = true;
+  custom.firmware.enable = true;
+  custom.networkManager.enable = true;
+  custom.noexec.enable = true;
+  custom.optimise.enable = true;
+  custom.ssh.enable = true;
+  custom.syncthing.enable = true;
+  custom.systemd.enable = true;
+  custom.tailscale.enable = true;
+  custom.timezoneLocales.enable = true;
+  custom.usbguard.enable = true;
+  custom.users.enable = true;
 }

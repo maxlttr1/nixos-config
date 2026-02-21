@@ -2,10 +2,10 @@
 
 {
   options = {
-    touchpad.enable = lib.mkEnableOption "Enable touchpad support";
+    custom.touchpad.enable = lib.mkEnableOption "Enable touchpad support";
   };
 
-  config = lib.mkIf config.touchpad.enable {
+  config = lib.mkIf config.custom.touchpad.enable {
     boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
   };
 }

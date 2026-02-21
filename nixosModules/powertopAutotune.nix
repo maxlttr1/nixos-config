@@ -2,10 +2,10 @@
 
 {
   options = {
-    powertopAutotune.enable = lib.mkEnableOption "Enable Powertop Autotune";
+    custom.powertopAutotune.enable = lib.mkEnableOption "Enable Powertop Autotune";
   };
 
-  config = lib.mkIf config.powertopAutotune.enable {
+  config = lib.mkIf config.custom.powertopAutotune.enable {
     powerManagement.powertop.enable = true;
   };
 }

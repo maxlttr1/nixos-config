@@ -1,9 +1,9 @@
 { config, lib, settings, ... }:
 
 {
-  options.sops.enable = lib.mkEnableOption "sops-nix secrets management";
+  options.custom.sops.enable = lib.mkEnableOption "sops-nix secrets management";
 
-  config = lib.mkIf config.sops.enable {
+  config = lib.mkIf config.custom.sops.enable {
     # See ~/.config/sops-nix/secrets/ for the decrypted files
 
     sops = {

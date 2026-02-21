@@ -1,9 +1,9 @@
 { config, lib, pkgs, settings, ... }:
 
 {
-  options.xdgCustom.enable = lib.mkEnableOption "XDG base directory configuration";
+  options.custom.xdgCustom.enable = lib.mkEnableOption "XDG base directory configuration";
 
-  config = lib.mkIf config.xdgCustom.enable {
+  config = lib.mkIf config.custom.xdgCustom.enable {
     xdg.autostart = {
       enable = true;
       entries = [

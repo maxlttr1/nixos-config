@@ -2,10 +2,10 @@
 
 {
   options = {
-    timezoneLocales.enable = lib.mkEnableOption "Enable timezone and locale configuration";
+    custom.timezoneLocales.enable = lib.mkEnableOption "Enable timezone and locale configuration";
   };
 
-  config = lib.mkIf config.timezoneLocales.enable {
+  config = lib.mkIf config.custom.timezoneLocales.enable {
     # Set your time zone.
     time.timeZone = "Europe/Paris";
 

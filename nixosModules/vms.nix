@@ -2,10 +2,10 @@
 
 {
   options = {
-    vms.enable = lib.mkEnableOption "Enable virtual machine support";
+    custom.vms.enable = lib.mkEnableOption "Enable virtual machine support";
   };
 
-  config = lib.mkIf config.vms.enable {
+  config = lib.mkIf config.custom.vms.enable {
     # Virt-manager
     programs.virt-manager.enable = true;
     virtualisation.libvirtd.enable = true;

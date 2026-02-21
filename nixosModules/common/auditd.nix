@@ -2,10 +2,10 @@
 
 {
   options = {
-    auditd.enable = lib.mkEnableOption "Enable security audit daemon";
+    custom.auditd.enable = lib.mkEnableOption "Enable security audit daemon";
   };
 
-  config = lib.mkIf config.auditd.enable {
+  config = lib.mkIf config.custom.auditd.enable {
     security.auditd.enable = true;
     security.audit.enable = true;
 

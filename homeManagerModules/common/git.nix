@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 {
-  options.git.enable = lib.mkEnableOption "git configuration";
+  options.custom.git.enable = lib.mkEnableOption "git configuration";
 
-  config = lib.mkIf config.git.enable {
+  config = lib.mkIf config.custom.git.enable {
     programs.git = {
       enable = true;
       settings = {

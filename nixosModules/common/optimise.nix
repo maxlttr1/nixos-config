@@ -2,10 +2,10 @@
 
 {
   options = {
-    optimise.enable = lib.mkEnableOption "Enable Nix store optimization and garbage collection";
+    custom.optimise.enable = lib.mkEnableOption "Enable Nix store optimization and garbage collection";
   };
 
-  config = lib.mkIf config.optimise.enable {
+  config = lib.mkIf config.custom.optimise.enable {
     nix.optimise.automatic = true; #periodic optimisation of the nix store
     nix.settings.auto-optimise-store = true; #the store can be optimised during every build. This may slow down builds
 

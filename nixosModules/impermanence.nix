@@ -2,24 +2,24 @@
 
 {
   options = {
-    impermanence.enable = lib.mkEnableOption "Enable impermanence features";
-    impermanence.retentionDays = lib.mkOption {
+    custom.impermanence.enable = lib.mkEnableOption "Enable impermanence features";
+    custom.impermanence.retentionDays = lib.mkOption {
       type = lib.types.str;
       default = "30";
       description = "Number of days to retain old roots.";
     };
-    impermanence.diskDevice = lib.mkOption {
+    custom.impermanence.diskDevice = lib.mkOption {
       type = lib.types.str;
       description = "The disk device where the Btrfs subvolumes are located. Confirm this is correct from 'findmnt'.";
       example = "/dev/sda2";
     };
   };
 
-  config = lib.mkIf config.impermanence.enable {
+  config = lib.mkIf config.custom.impermanence.enable {
     # Automatically remove roots that are older than 30 days
     boot.initrd.postResumeCommands = lib.mkAfter ''
       			mkdir /btrfs_tmp
-      			mount ${config.impermanence.diskDevice} /btrfs_tmp
+      			mount ${config.custom.impermanence.diskDevice} /btrfs_tmp
       			if [[ -e /btrfs_tmp/root ]]; then
       					mkdir -p /btrfs_tmp/old_roots
       					timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
@@ -34,7 +34,7 @@
       					btrfs subvolume delete "$1"
       			}
 
-      			for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${config.impermanence.retentionDays}); do
+      			for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${config.custom.impermanence.retentionDays}); do
       					delete_subvolume_recursively "$i"
       			done
 
@@ -54,14 +54,14 @@
         "/etc/NetworkManager/system-connections" # WiFi/network profiles - remember networks
         # "/var/lib/flatpak/" # Flatpak system-wide runtimes data (runtimes, applications and configuration)
       ]
-      ++ lib.optionals config.i2p.enable [
+      ++ lib.optionals config.custom.i2p.enable [
         "/var/lib/i2pd"
       ];
       files = [
         "/etc/machine-id"
         "/var/lib/swapfile"
       ];
-      users."${settings.username}" = lib.mkIf config.users.enable {
+      users."${settings.username}" = lib.mkIf config.custom.users.enable {
         directories = [
           "Downloads"
           "Pictures"
@@ -75,14 +75,14 @@
           ".config/Code" # VSCode
           ".vscode" # VSCode
         ]
-        ++ lib.optionals config.kdePlasma.enable [
+        ++ lib.optionals config.custom.kdePlasma.enable [
           ".local/share/kwalletd" # KWallet data
         ]
-        ++ lib.optionals config.flatpak.enable [
+        ++ lib.optionals config.custom.flatpak.enable [
           ".var/app/" # Flatpak per-user, app-specific config, caches, and data
           ".local/share/flatpak" # Flatpak per-user data (runtimes, applications and configuration)
         ]
-        ++ lib.optionals config.syncthing.enable [
+        ++ lib.optionals config.custom.syncthing.enable [
           ".config/syncthing" # Syncthing config (settings, keys)
         ];
         files = [

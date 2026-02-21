@@ -21,10 +21,10 @@ in
   */
 
 {
-  options.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
+  options.custom.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
 
 
-  config = lib.mkIf config.plasmaManager.enable {
+  config = lib.mkIf config.custom.plasmaManager.enable {
     home.file.".config/mimeapps.list".text = ''
       [Added Associations]
       application/json=org.kde.kwrite.desktop;

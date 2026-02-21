@@ -2,11 +2,11 @@
 
 {
   options = {
-    noexec.enable = lib.mkEnableOption "Enable noexec mount options for security";
+    custom.noexec.enable = lib.mkEnableOption "Enable noexec mount options for security";
   };
 
-  config.fileSystems = lib.mkIf config.noexec.enable {
-    "/".options = lib.mkIf (!config.impermanence.enable) [
+  config.fileSystems = lib.mkIf config.custom.noexec.enable {
+    "/".options = lib.mkIf (!config.custom.impermanence.enable) [
       "nosuid"
       "nodev"
       "noatime"
@@ -25,14 +25,14 @@
         "noexec"
       ];
     };
-    "/home/${settings.username}/Public" = lib.mkIf config.users.enable {
+    "/home/${settings.username}/Public" = lib.mkIf config.custom.users.enable {
       device = "/home/${settings.username}/Public";
       options = lib.mkAfter [
         "bind"
         "noexec"
       ];
     };
-    "/home/${settings.username}/Downloads" = lib.mkIf config.users.enable {
+    "/home/${settings.username}/Downloads" = lib.mkIf config.custom.users.enable {
       device = "/home/${settings.username}/Downloads";
       options = lib.mkAfter [
         "bind"

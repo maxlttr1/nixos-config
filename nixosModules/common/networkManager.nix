@@ -2,10 +2,10 @@
 
 {
   options = {
-    networkManager.enable = lib.mkEnableOption "Enable NetworkManager";
+    custom.networkManager.enable = lib.mkEnableOption "Enable NetworkManager";
   };
 
-  config = lib.mkIf config.networkManager.enable {
+  config = lib.mkIf config.custom.networkManager.enable {
     networking.networkmanager = {
       enable = true;
       ethernet.macAddress = "random";

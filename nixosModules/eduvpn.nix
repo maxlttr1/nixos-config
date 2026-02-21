@@ -2,10 +2,10 @@
 
 {
   options = {
-    eduvpn.enable = lib.mkEnableOption "Enable EduVPN client";
+    custom.eduvpn.enable = lib.mkEnableOption "Enable EduVPN client";
   };
 
-  config = lib.mkIf config.eduvpn.enable {
+  config = lib.mkIf config.custom.eduvpn.enable {
     environment.systemPackages = with pkgs.stable; [
       eduvpn-client
     ];

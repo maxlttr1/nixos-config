@@ -5,9 +5,9 @@ let
 in
 
 {
-  options.hyprland.enable = lib.mkEnableOption "Hyprland wayland compositor";
+  options.custom.hyprland.enable = lib.mkEnableOption "Hyprland wayland compositor";
 
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.custom.hyprland.enable {
     home.packages = with pkgs.stable; [
       xfce.thunar
       # lf

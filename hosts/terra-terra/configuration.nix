@@ -1,22 +1,22 @@
 { settings, ... }:
 
 {
-  hostname = "terra-terra";
+  custom.hostname = "terra-terra";
 
-  atd.enable = true;
-  bluetooth.enable = true;
-  eduvpn.enable = true;
-  flatpak.enable = true;
-  intel.enable = true;
-  kdePlasma.enable = true;
-  ld.enable = true;
-  pipewire.enable = true;
-  swap.swapFile.enable = true;
-  swap.swapFile.sizeGiB = 18;
-  swap.zramSwap.enable = true;
-  tlp.enable = true;
-  touchpad.enable = true;
-  vms.enable = true;
+  custom.atd.enable = true;
+  custom.bluetooth.enable = true;
+  custom.eduvpn.enable = true;
+  custom.flatpak.enable = true;
+  custom.intel.enable = true;
+  custom.kdePlasma.enable = true;
+  custom.ld.enable = true;
+  custom.pipewire.enable = true;
+  custom.swap.swapFile.enable = true;
+  custom.swap.swapFile.sizeGiB = 18;
+  custom.swap.zramSwap.enable = true;
+  custom.tlp.enable = true;
+  custom.touchpad.enable = true;
+  custom.vms.enable = true;
 
   fileSystems."/home/${settings.username}/mountedDisk" = {
     device = "/dev/mapper/crypted";

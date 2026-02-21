@@ -2,10 +2,10 @@
 
 {
   options = {
-    i2p.enable = lib.mkEnableOption "Enable I2P router";
+    custom.i2p.enable = lib.mkEnableOption "Enable I2P router";
   };
 
-  config = lib.mkIf config.i2p.enable {
+  config = lib.mkIf config.custom.i2p.enable {
     /*containers."i2pd-container" = {
       autoStart = true;
       bindMounts."/var/lib/i2pd" = {

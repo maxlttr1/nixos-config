@@ -1,9 +1,9 @@
 { config, lib, settings, ... }:
 
 {
-  options.ssh.enable = lib.mkEnableOption "SSH agent and configuration";
+  options.custom.ssh.enable = lib.mkEnableOption "SSH agent and configuration";
 
-  config = lib.mkIf config.ssh.enable {
+  config = lib.mkIf config.custom.ssh.enable {
     services.ssh-agent = {
       enable = true;
       enableFishIntegration = true;

@@ -2,10 +2,10 @@
 
 {
   options = {
-    borgbackup.enable = lib.mkEnableOption "Enable Borg backup job";
+    custom.borgbackup.enable = lib.mkEnableOption "Enable Borg backup job";
   };
 
-  config = lib.mkIf config.borgbackup.enable {
+  config = lib.mkIf config.custom.borgbackup.enable {
     services.borgbackup.jobs.home-danbst = {
       user = "${settings.username}";
       paths = "/home/${settings.username}/Syncthing";

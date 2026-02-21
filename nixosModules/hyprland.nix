@@ -2,10 +2,10 @@
 
 {
   options = {
-    hyprland.enable = lib.mkEnableOption "Enable Hyprland window manager";
+    custom.hyprland.enable = lib.mkEnableOption "Enable Hyprland window manager";
   };
 
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.custom.hyprland.enable {
     /*services.greetd = {
       enable = true;
       package = pkgs.tuigreet;

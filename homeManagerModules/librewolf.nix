@@ -1,9 +1,9 @@
 { config, lib, pkgs, settings, ... }:
 
 {
-  options.librewolf.enable = lib.mkEnableOption "librewolf browser";
+  options.custom.librewolf.enable = lib.mkEnableOption "librewolf browser";
 
-  config = lib.mkIf config.librewolf.enable {
+  config = lib.mkIf config.custom.librewolf.enable {
     programs.librewolf = {
       enable = true;
       profiles = {

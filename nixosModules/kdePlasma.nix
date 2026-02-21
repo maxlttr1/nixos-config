@@ -2,10 +2,10 @@
 
 {
   options = {
-    kdePlasma.enable = lib.mkEnableOption "Enable KDE Plasma desktop";
+    custom.kdePlasma.enable = lib.mkEnableOption "Enable KDE Plasma desktop";
   };
 
-  config = lib.mkIf config.kdePlasma.enable {
+  config = lib.mkIf config.custom.kdePlasma.enable {
     services.desktopManager.plasma6.enable = true;
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.autoNumlock = true;

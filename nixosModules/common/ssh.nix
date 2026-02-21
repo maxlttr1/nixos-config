@@ -2,10 +2,10 @@
 
 {
   options = {
-    ssh.enable = lib.mkEnableOption "Enable OpenSSH server";
+    custom.ssh.enable = lib.mkEnableOption "Enable OpenSSH server";
   };
 
-  config = lib.mkIf config.ssh.enable {
+  config = lib.mkIf config.custom.ssh.enable {
     # Enable the OpenSSH daemon.
     services.openssh = {
       enable = true;

@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.fonts.enable = lib.mkEnableOption "fonts configuration";
+  options.custom.fonts.enable = lib.mkEnableOption "fonts configuration";
 
-  config = lib.mkIf config.fonts.enable {
+  config = lib.mkIf config.custom.fonts.enable {
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs.stable; [

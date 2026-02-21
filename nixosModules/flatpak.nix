@@ -2,10 +2,10 @@
 
 {
   options = {
-    flatpak.enable = lib.mkEnableOption "Enable Flatpak";
+    custom.flatpak.enable = lib.mkEnableOption "Enable Flatpak";
   };
 
-  config = lib.mkIf config.flatpak.enable {
+  config = lib.mkIf config.custom.flatpak.enable {
     services.flatpak.enable = true;
   };
 }

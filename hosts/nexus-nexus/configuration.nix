@@ -1,10 +1,10 @@
 {
-  hostname = "nexus-nexus";
+  custom.hostname = "nexus-nexus";
 
-  borgbackup.enable = true;
-  intel.enable = true;
-  powertopAutotune.enable = true;
-  swap.swapFile.enable = true;
-  swap.swapFile.sizeGiB = 8;
-  swap.zramSwap.enable = true;
+  custom.borgbackup.enable = true;
+  custom.intel.enable = true;
+  custom.powertopAutotune.enable = true;
+  custom.swap.swapFile.enable = true;
+  custom.swap.swapFile.sizeGiB = 8;
+  custom.swap.zramSwap.enable = true;
 }

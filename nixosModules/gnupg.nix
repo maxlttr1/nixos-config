@@ -2,10 +2,10 @@
 
 {
   options = {
-    gnupg.enable = lib.mkEnableOption "Enable GnuPG agent";
+    custom.gnupg.enable = lib.mkEnableOption "Enable GnuPG agent";
   };
 
-  config = lib.mkIf config.gnupg.enable {
+  config = lib.mkIf config.custom.gnupg.enable {
     programs.gnupg.agent = {
       enable = true;
     };

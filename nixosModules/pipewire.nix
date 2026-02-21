@@ -2,10 +2,10 @@
 
 {
   options = {
-    pipewire.enable = lib.mkEnableOption "Enable PipeWire audio";
+    custom.pipewire.enable = lib.mkEnableOption "Enable PipeWire audio";
   };
 
-  config = lib.mkIf config.pipewire.enable {
+  config = lib.mkIf config.custom.pipewire.enable {
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;

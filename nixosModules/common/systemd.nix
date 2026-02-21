@@ -2,10 +2,10 @@
 
 {
   options = {
-    systemd.enable = lib.mkEnableOption "Enable systemd config";
+    custom.systemd.enable = lib.mkEnableOption "Enable systemd config";
   };
 
-  config = lib.mkIf config.systemd.enable {
+  config = lib.mkIf config.custom.systemd.enable {
     services.journald.extraConfig = ''
       SystemMaxFileSize=500M
       SystemMaxFiles=5

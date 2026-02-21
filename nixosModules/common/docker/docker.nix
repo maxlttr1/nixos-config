@@ -54,10 +54,10 @@ in
 
 {
   options = {
-    docker.enable = lib.mkEnableOption "Enable automatic Docker container management";
+    custom.docker.enable = lib.mkEnableOption "Enable automatic Docker container management";
   };
 
-  config = lib.mkIf config.docker.enable {
+  config = lib.mkIf config.custom.docker.enable {
     virtualisation.docker = {
       enable = true;
     };

@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.pkgs.enable = lib.mkEnableOption "additional packages";
+  options.custom.pkgs.enable = lib.mkEnableOption "additional packages";
 
-  config = lib.mkIf config.pkgs.enable {
+  config = lib.mkIf config.custom.pkgs.enable {
     home.packages = with pkgs.stable; [
       bleachbit
       direnv

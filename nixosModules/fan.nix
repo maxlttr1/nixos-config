@@ -2,10 +2,10 @@
 
 {
   options = {
-    fan.enable = lib.mkEnableOption "Enbale fans control";
+    custom.fan.enable = lib.mkEnableOption "Enbale fans control";
   };
 
-  config = lib.mkIf config.fan.enable {
+  config = lib.mkIf config.custom.fan.enable {
     boot.kernelModules = [ "nct6775" ];
 
     hardware.fancontrol = {

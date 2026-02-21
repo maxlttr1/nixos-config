@@ -2,10 +2,10 @@
 
 {
   options = {
-    firewall.enable = lib.mkEnableOption "Enable firewall";
+    custom.firewall.enable = lib.mkEnableOption "Enable firewall";
   };
 
-  config = lib.mkIf config.firewall.enable {
+  config = lib.mkIf config.custom.firewall.enable {
     # Open ports in the firewall.
     networking.firewall = rec {
       enable = true;

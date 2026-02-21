@@ -2,10 +2,10 @@
 
 {
   options = {
-    tlp.enable = lib.mkEnableOption "Enable TLP";
+    custom.tlp.enable = lib.mkEnableOption "Enable TLP";
   };
 
-  config = lib.mkIf config.tlp.enable {
+  config = lib.mkIf config.custom.tlp.enable {
     services.power-profiles-daemon.enable = false;
 
     services.tlp = {

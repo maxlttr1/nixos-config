@@ -2,10 +2,10 @@
 
 {
   options = {
-    syncthing.enable = lib.mkEnableOption "Enable Syncthing file synchronization";
+    custom.syncthing.enable = lib.mkEnableOption "Enable Syncthing file synchronization";
   };
 
-  config = lib.mkIf config.syncthing.enable {
+  config = lib.mkIf config.custom.syncthing.enable {
     services.syncthing = {
       enable = true;
       openDefaultPorts = true; # TCP/UDP 22000 for transfers and UDP 21027 for discovery.

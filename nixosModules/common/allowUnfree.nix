@@ -2,10 +2,10 @@
 
 {
   options = {
-    allowUnfree.enable = lib.mkEnableOption "Allow unfree packages";
+    custom.allowUnfree.enable = lib.mkEnableOption "Allow unfree packages";
   };
 
-  config = lib.mkIf config.allowUnfree.enable {
+  config = lib.mkIf config.custom.allowUnfree.enable {
     nixpkgs.config.allowUnfree = true;
   };
 }

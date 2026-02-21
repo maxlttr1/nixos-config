@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.commonPkgs.enable = lib.mkEnableOption "common packages";
+  options.custom.commonPkgs.enable = lib.mkEnableOption "common packages";
 
-  config = lib.mkIf config.commonPkgs.enable {
+  config = lib.mkIf config.custom.commonPkgs.enable {
     home.packages = with pkgs.stable; [
       age
       # at

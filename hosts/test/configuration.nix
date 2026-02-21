@@ -1,17 +1,17 @@
 { settings, ... }:
 
 {
-  hostname = "test";
+  custom.hostname = "test";
 
-  impermanence.enable = true;
-  impermanence.retentionDays = "0";
-  impermanence.diskDevice = "/dev/sda2";
-  atd.enable = true;
-  bluetooth.enable = true;
-  flatpak.enable = true;
-  nvidia.enable = true;
-  kdePlasma.enable = true;
-  ld.enable = true;
-  pipewire.enable = true;
-  swap.zramSwap.enable = true;
+  custom.impermanence.enable = true;
+  custom.impermanence.retentionDays = "0";
+  custom.impermanence.diskDevice = "/dev/sda2";
+  custom.atd.enable = true;
+  custom.bluetooth.enable = true;
+  custom.flatpak.enable = true;
+  custom.nvidia.enable = true;
+  custom.kdePlasma.enable = true;
+  custom.ld.enable = true;
+  custom.pipewire.enable = true;
+  custom.swap.zramSwap.enable = true;
 }

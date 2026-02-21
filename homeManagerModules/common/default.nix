@@ -10,12 +10,12 @@
     ./tmux.nix
   ];
 
-  commonPkgs.enable = true;
-  fish.enable = true;
-  gc.enable = true;
-  git.enable = true;
-  shellAliases.enable = true;
-  sops.enable = true;
-  ssh.enable = true;
-  tmux.enable = true;
+  custom.commonPkgs.enable = true;
+  custom.fish.enable = true;
+  custom.gc.enable = true;
+  custom.git.enable = true;
+  custom.shellAliases.enable = true;
+  custom.sops.enable = true;
+  custom.ssh.enable = true;
+  custom.tmux.enable = true;
 }

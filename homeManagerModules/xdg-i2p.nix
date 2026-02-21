@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.xdg-i2p.enable = lib.mkEnableOption "Enable i2p browser desktop entry and profile";
+  options.custom.xdg-i2p.enable = lib.mkEnableOption "Enable i2p browser desktop entry and profile";
 
-  config = lib.mkIf config.xdg-i2p.enable {
+  config = lib.mkIf config.custom.xdg-i2p.enable {
     xdg.desktopEntries = {
       i2p-browser = {
         name = "i2p Browser";

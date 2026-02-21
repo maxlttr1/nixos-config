@@ -2,10 +2,10 @@
 
 {
   options = {
-    intel.enable = lib.mkEnableOption "Enable Intel CPU/GPU support";
+    custom.intel.enable = lib.mkEnableOption "Enable Intel CPU/GPU support";
   };
 
-  config = lib.mkIf config.intel.enable {
+  config = lib.mkIf config.custom.intel.enable {
     # Enable opengl
     hardware.graphics.enable = true;
 

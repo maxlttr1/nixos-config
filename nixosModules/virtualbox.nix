@@ -2,10 +2,10 @@
 
 {
   options = {
-    virtualbox.enable = lib.mkEnableOption "Enable VirtualBox";
+    custom.virtualbox.enable = lib.mkEnableOption "Enable VirtualBox";
   };
 
-  config = lib.mkIf config.virtualbox.enable {
+  config = lib.mkIf config.custom.virtualbox.enable {
     virtualisation.virtualbox.host.enable = true;
     users.extraGroups.vboxusers.members = [ "${settings.username}" ];
   };

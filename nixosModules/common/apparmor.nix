@@ -2,10 +2,10 @@
 
 {
   options = {
-    apparmor.enable = lib.mkEnableOption "Enable AppArmor security module";
+    custom.apparmor.enable = lib.mkEnableOption "Enable AppArmor security module";
   };
 
-  config = lib.mkIf config.apparmor.enable {
+  config = lib.mkIf config.custom.apparmor.enable {
     security.apparmor.enable = true;
   };
 }

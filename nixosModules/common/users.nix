@@ -2,10 +2,10 @@
 
 {
   options = {
-    users.enable = lib.mkEnableOption "Enable user and privilege configuration";
+    custom.users.enable = lib.mkEnableOption "Enable user and privilege configuration";
   };
 
-  config = lib.mkIf config.users.enable {
+  config = lib.mkIf config.custom.users.enable {
     users.users = {
       "${settings.username}" = {
         isNormalUser = true;
@@ -13,7 +13,7 @@
         extraGroups = [ "wheel" ];
         hashedPassword = "$y$j9T$cVaStq4nQnBE2Iz3wrZIM1$UdvZmv2wmvy93xnNl4h403DI30v8G8satfg4r0.vN9.";
       };
-      "k7x9mq2v8nf4pj5w" = {
+      "maxlttr" = {
         isNormalUser = true;
         createHome = true;
         extraGroups = [ "wheel" ];

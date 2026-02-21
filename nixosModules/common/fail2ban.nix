@@ -2,10 +2,10 @@
 
 {
   options = {
-    fail2ban.enable = lib.mkEnableOption "Enable fail2ban intrusion prevention";
+    custom.fail2ban.enable = lib.mkEnableOption "Enable fail2ban intrusion prevention";
   };
 
-  config = lib.mkIf config.fail2ban.enable {
+  config = lib.mkIf config.custom.fail2ban.enable {
     services.fail2ban = {
       enable = true;
       maxretry = 20;

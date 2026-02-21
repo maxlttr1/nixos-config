@@ -2,10 +2,10 @@
 
 {
   options = {
-    clamav.enable = lib.mkEnableOption "Enable ClamAV antivirus daemon";
+    custom.clamav.enable = lib.mkEnableOption "Enable ClamAV antivirus daemon";
   };
 
-  config = lib.mkIf config.clamav.enable {
+  config = lib.mkIf config.custom.clamav.enable {
     services.clamav.daemon = {
       enable = true;
       settings = {

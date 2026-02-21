@@ -5,7 +5,7 @@
     ../../homeManagerModules
   ];
 
-  fonts.enable = true;
+  custom.fonts.enable = true;
 
   home.username = settings.username;
   home.homeDirectory = "/home/${settings.username}";

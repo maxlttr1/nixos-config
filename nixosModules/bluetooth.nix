@@ -2,10 +2,10 @@
 
 {
   options = {
-    bluetooth.enable = lib.mkEnableOption "Enable system Bluetooth";
+    custom.bluetooth.enable = lib.mkEnableOption "Enable system Bluetooth";
   };
 
-  config = lib.mkIf config.bluetooth.enable {
+  config = lib.mkIf config.custom.bluetooth.enable {
     hardware.bluetooth.enable = true;
   };
 }
