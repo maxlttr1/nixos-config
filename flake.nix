@@ -51,7 +51,7 @@
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
     let
       settings = {
-        username = "maxlttr";
+        username = "GabwfBjEgF";
         system = "x86_64-linux";
       };
 
