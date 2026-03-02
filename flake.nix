@@ -41,6 +41,11 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
@@ -81,6 +86,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
+        inputs.lanzaboote.nixosModules.lanzaboote
         (
           { config, pkgs, ... }: {
             nixpkgs.overlays = [

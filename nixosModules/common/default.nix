@@ -6,7 +6,7 @@
     ./auditd.nix
     ./autoCpufreq.nix
     ./autoUpgrade.nix
-    ./bootloader.nix
+    ./boot.nix
     ./clamav.nix
     ./experimentalFeatures.nix
     ./fail2ban.nix
@@ -32,7 +32,7 @@
   custom.auditd.enable = true;
   custom.autoCpufreq.enable = true;
   custom.autoUpgrade.enable = true;
-  custom.bootloader.enable = true;
+  custom.boot.enable = true;
   custom.clamav.enable = true;
   custom.docker.enable = true;
   custom.experimentalFeatures.enable = true;
