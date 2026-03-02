@@ -2,7 +2,7 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     environment:
-      - PUID=1001
+      - PUID=1000
       - PGID=100
       - TZ=Etc/UTC
     volumes:

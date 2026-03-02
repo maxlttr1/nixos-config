@@ -2,7 +2,7 @@ services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
     environment:
-      - PUID=1001
+      - PUID=1000
       - PGID=100
       - GENERIC_TIMEZONE="Europe/Paris"
       - TZ="Europe/Paris"
