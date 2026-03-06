@@ -7,17 +7,17 @@
 
   config = lib.mkIf config.custom.boot.enable {
     /*
-    boot.loader.systemd-boot = {
+      boot.loader.systemd-boot = {
       enable = true;
       configurationLimit = 10;
-    };
-    boot.loader.grub.enable = false;
+      };
+      boot.loader.grub.enable = false;
     */
 
     /*
-    environment.systemPackages = with pkgs.stable; [
+      environment.systemPackages = with pkgs.stable; [
       sbctl
-    ];
+      ];
     */
 
     boot.loader.systemd-boot.enable = lib.mkForce false;
