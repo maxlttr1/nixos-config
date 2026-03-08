@@ -9,7 +9,7 @@
     sops = {
       defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
-      age.keyFile = "/home/${settings.username}/.config/sops/age/keys.txt";
+      age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
         "vpn.env" = { };
