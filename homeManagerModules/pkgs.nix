@@ -7,7 +7,6 @@
     home.packages = with pkgs.stable; [
       bleachbit
       direnv
-      papirus-icon-theme
       typst
       typst-live
       vlc

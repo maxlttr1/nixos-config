@@ -6,9 +6,9 @@
   config = lib.mkIf config.custom.fish.enable {
     programs.fish = {
       enable = true;
-      interactiveShellInit = ''
+      /*interactiveShellInit = ''
         fish_config theme choose Dracula
-      '';
+      '';*/
     };
 
     home.packages = with pkgs.stable; [
