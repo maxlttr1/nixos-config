@@ -16,8 +16,7 @@
   };
 
   config = lib.mkIf config.custom.impermanence.enable {
-    # Automatically remove roots that are older than 30 days
-    boot.initrd.postResumeCommands = lib.mkAfter ''
+    /*boot.initrd.postResumeCommands = lib.mkAfter ''
       			mkdir /btrfs_tmp
       			mount ${config.custom.impermanence.diskDevice} /btrfs_tmp
       			if [[ -e /btrfs_tmp/root ]]; then
@@ -40,7 +39,21 @@
 
       			btrfs subvolume create /btrfs_tmp/root
       			umount /btrfs_tmp
-      		'';
+      		'';*/
+
+    boot.initrd.postDeviceCommands = lib.mkAfter ''
+      mkdir -p /mnt
+      mount -t btrfs /dev/mapper/crypted /mnt
+
+      # Recursively delete all nested subvolumes inside /mnt/root
+      btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read subvolume; do
+        btrfs subvolume delete "/mnt/$subvolume"
+      done
+
+      btrfs subvolume delete /mnt/root
+      btrfs subvolume snapshot /mnt/root-blank /mnt/root
+      umount /mnt
+    '';
 
     fileSystems."/persist".neededForBoot = true;
     environment.persistence."/persist" = {
