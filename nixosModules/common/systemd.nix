@@ -8,7 +8,9 @@
   config = lib.mkIf config.custom.systemd.enable {
     services.journald.extraConfig = ''
       SystemMaxFileSize=500M
-      SystemMaxFiles=5
+      SystemMaxFiles=10
+      MaxRetentionSec=7day
+      Audit=no
     '';
 
     systemd.coredump.extraConfig = ''
