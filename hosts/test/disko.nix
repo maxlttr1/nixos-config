@@ -9,7 +9,7 @@
           partitions = {
             ESP = {
               label = "ESP";
-              size = "512M";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -25,39 +25,43 @@
               size = "100%";
               label = "root";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; # force creation
-                subvolumes = {
-                  "/root" = {
-                    mountpoint = "/";
-                    mountOptions = [
-                      "subvol=root"
-                      "compress=zstd"
-                      "noatime"
-                      "nosuid"
-                      "nodev"
-                    ];
-                  };
-                  "/nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = [
-                      "subvol=nix"
-                      "compress=zstd"
-                      "noatime"
-                    ];
-                  };
-                  "/persist" = {
-                    mountpoint = "/persist";
-                    mountOptions = [
-                      "subvol=persist"
-                      "compress=zstd"
-                      "noatime"
-                      "nosuid"
-                      "nodev"
-                    ];
+                type = "luks";
+                name = "crypted";
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ]; # force creation
+                  subvolumes = {
+                    "/root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "subvol=root"
+                        "compress=zstd"
+                        "noatime"
+                        "nosuid"
+                        "nodev"
+                      ];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "subvol=nix"
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/persist" = {
+                      mountpoint = "/persist";
+                      mountOptions = [
+                        "subvol=persist"
+                        "compress=zstd"
+                        "noatime"
+                        "nosuid"
+                        "nodev"
+                      ];
+                    };
                   };
                 };
-              };
+              };                
             };
           };
         };
