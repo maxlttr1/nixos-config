@@ -39,6 +39,7 @@ sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
 ```bash
 sudo nix run github:nix-community/nixos-anywhere -- \
   --generate-hardware-config nixos-generate-config ./hosts/terra-terra/hardware-configuration.nix \
+  --disk-encryption-keys /tmp/disk-encryption.key <(pass DISK-ENCRYPTION-PASSWD) \
   --extra-files $root \
   --flake github:maxlttr1/nixos-config#terra-terra \
   --target-host nixos@192.168.1.22

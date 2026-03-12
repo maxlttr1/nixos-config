@@ -27,6 +27,7 @@
               content = {
                 type = "luks";
                 name = "crypted";
+                passwordFile = "/tmp/disk-encryption.key";
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ]; # force creation
