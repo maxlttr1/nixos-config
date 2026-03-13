@@ -9,9 +9,9 @@ let
     ${pkgs.git}/bin/git checkout master
     ${pkgs.git}/bin/git pull origin master
 
-    if [ ! -f ~/docker/suaps/config.json ]; then
-      mkdir -p ~/docker/suaps
-      echo '{ "ids_resa": [] }' > ~/docker/suaps/config.json
+    if [ ! -f /home/${setttings.username}/docker/suaps/config.json ]; then
+      mkdir -p /home/${setttings.username}/docker/suaps
+      echo '{ "ids_resa": [] }' > /home/${setttings.username}/docker/suaps/config.json
     fi
 
     # Create proxy network if not present for traefik
@@ -68,7 +68,6 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        Environment = "HOME=/home/${settings.username}";
         User = "root";
         Type = "oneshot";
         ExecStart = "${starting_script}";
@@ -80,7 +79,6 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        Environment = "HOME=/home/${settings.username}";
         User = "root";
         Type = "oneshot";
         ExecStart = "${stopping_script}";
