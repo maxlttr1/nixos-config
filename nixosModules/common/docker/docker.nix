@@ -68,8 +68,7 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        Environment = "HOME=/home/${settings.username}";
-        User = "root";
+        User = "${settings.username}";
         Type = "oneshot";
         ExecStart = "${starting_script}";
       };
@@ -80,8 +79,7 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        Environment = "HOME=/home/${settings.username}";
-        User = "root";
+        User = "${settings.username}";
         Type = "oneshot";
         ExecStart = "${stopping_script}";
       };
