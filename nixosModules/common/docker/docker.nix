@@ -9,9 +9,9 @@ let
     ${pkgs.git}/bin/git checkout master
     ${pkgs.git}/bin/git pull origin master
 
-    if [ ! -f /home/${setttings.username}/docker/suaps/config.json ]; then
-      mkdir -p /home/${setttings.username}/docker/suaps
-      echo '{ "ids_resa": [] }' > /home/${setttings.username}/docker/suaps/config.json
+    if [ ! -f /home/${settings.username}/docker/suaps/config.json ]; then
+      mkdir -p /home/${settings.username}/docker/suaps
+      echo '{ "ids_resa": [] }' > /home/${settings.username}/docker/suaps/config.json
     fi
 
     # Create proxy network if not present for traefik
