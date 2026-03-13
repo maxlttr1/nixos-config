@@ -49,6 +49,7 @@ sudo nix run github:nix-community/nixos-anywhere -- \
 
 ### 1. Partition & Mount Disks (⚠️ Destroys data)
 ```bash
+echo "DISK-ENCRYPTION-PASSWD" > /tmp/disk-encryption.key
 curl -O https://raw.githubusercontent.com/maxlttr1/nixos-config/refs/heads/master/hosts/terra-terra/disko.nix
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
@@ -60,4 +61,7 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 ```bash
 sudo nixos-install --flake github:maxlttr1/nixos-config#terra-terra
 ```
+
+
+RUN THE BTRFS SNAPSHOT
 
