@@ -9,7 +9,6 @@
     users.users = {
       "${settings.username}" = {
         isNormalUser = true;
-        createHome = true;
         extraGroups = [ "wheel" ];
         hashedPassword = "$y$j9T$cVaStq4nQnBE2Iz3wrZIM1$UdvZmv2wmvy93xnNl4h403DI30v8G8satfg4r0.vN9.";
         uid = 1000;

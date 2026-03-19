@@ -72,7 +72,7 @@ List the contents:
 ```bash
 ls /mnt
 # you should see something like
-root   home  nix  persist  log  lib  ...
+root  nix  persist  ...
 ```
 Now we can take a snapshot of the root subvolume:
 ```bash
