@@ -47,10 +47,10 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nix-index-database = {
+    /*nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    };*/
   };
 
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
@@ -79,8 +79,8 @@
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
           inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          inputs.nix-index-database.homeModules.default
-          { programs.nix-index-database.comma.enable = true; }
+          /*inputs.nix-index-database.homeModules.default
+          { programs.nix-index-database.comma.enable = true; }*/
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
