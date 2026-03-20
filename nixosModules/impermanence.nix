@@ -72,6 +72,7 @@
       ];
       files = [
         "/etc/machine-id"
+        "/etc/sops/age/keys.txt"
         "/var/lib/swapfile"
       ];
       users."${settings.username}" = lib.mkIf config.custom.users.enable {
@@ -97,9 +98,6 @@
         ]
         ++ lib.optionals config.custom.syncthing.enable [
           ".config/syncthing" # Syncthing config (settings, keys)
-        ];
-        files = [
-          ".config/sops/age/keys.txt"
         ];
       };
     };
