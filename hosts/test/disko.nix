@@ -45,36 +45,37 @@
                     "/root-blank" = {
                       mountOptions = [
                         "subvol=root-blank"
-                        "nodatacow" 
-                        "noatime"];
-                        "nosuid"
-                        "nodev"
-                    };
-                    "/nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [
-                        "subvol=nix"
-                        "compress=zstd"
+                        "nodatacow"
                         "noatime"
                       ];
-                    };
-                    "/persist" = {
-                      mountpoint = "/persist";
-                      mountOptions = [
-                        "subvol=persist"
-                        "compress=zstd"
-                        "noatime"
-                        "nosuid"
+                      "nosuid"
                         "nodev"
-                      ];
+                        };
+                        "/nix" = {
+                        mountpoint = "/nix";
+                        mountOptions = [
+                          "subvol=nix"
+                          "compress=zstd"
+                          "noatime"
+                        ];
+                      };
+                      "/persist" = {
+                        mountpoint = "/persist";
+                        mountOptions = [
+                          "subvol=persist"
+                          "compress=zstd"
+                          "noatime"
+                          "nosuid"
+                          "nodev"
+                        ];
+                      };
                     };
                   };
                 };
-              };                
+              };
             };
           };
         };
       };
     };
-  };
-}
+  }

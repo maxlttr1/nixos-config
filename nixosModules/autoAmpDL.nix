@@ -59,9 +59,9 @@ in
         };
       };
     };
-    
+
     timers."auto-amp-dl" = {
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
       timerConfig = {
         OnCalendar = "${config.custom.autoAmpDL.frequency}";
         Unit = "auto-amp-dl";

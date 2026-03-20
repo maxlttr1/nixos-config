@@ -59,7 +59,7 @@ in
 
   config = lib.mkIf config.custom.docker.enable {
     users = {
-      groups.docker-service = {};
+      groups.docker-service = { };
       users = {
         docker-service = {
           group = "docker-service";
@@ -84,7 +84,7 @@ in
         Group = "docker-service";
         Type = "oneshot";
         ExecStart = "${starting_script}";
-        
+
         ProtectSystem = "strict";
         ProtectHome = true;
         NoNewPriviliges = true;

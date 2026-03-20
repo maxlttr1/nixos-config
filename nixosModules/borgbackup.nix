@@ -20,7 +20,7 @@
       };
       postHook = ''
         ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup"
-      ''; 
+      '';
     };
   };
 }
