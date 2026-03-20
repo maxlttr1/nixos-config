@@ -18,6 +18,9 @@
         monthly = 1;
         yearly = 1;
       };
+      postHook = ''
+        ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup"
+      ''; 
     };
   };
 }
