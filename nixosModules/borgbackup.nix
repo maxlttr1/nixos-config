@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.custom.borgbackup.enable {
-    services.borgbackup.jobs.home-danbst = {
+    services.borgbackup.jobs."borgbackup-job" = {
       user = "${settings.username}";
       paths = "/home/${settings.username}/Syncthing";
       encryption.mode = "none";
