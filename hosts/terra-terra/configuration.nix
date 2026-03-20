@@ -4,6 +4,12 @@
   custom.hostname = "terra-terra";
 
   custom.atd.enable = true;
+  /*custom.autoAmpDL.enable = true;
+  custom.autoAmpDL.targetDir = "/home/${settings.username}/mountedDisk/syncthing/music/AutoAmpDL/";
+  custom.autoAmpDL.workingDir = "/home/${settings.username}/Documents/";
+  custom.autoAmpDL.cookieFile = "/home/${settings.username}/mountedDisk/syncthing/music/cookies.firefox-private.txt";
+  custom.autoAmpDL.downloadArchiveFile = "/home/${settings.username}/mountedDisk/syncthing/music/ids.txt";
+  */
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;

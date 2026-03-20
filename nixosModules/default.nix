@@ -3,6 +3,7 @@
     ./common
 
     ./atd.nix
+    # ./autoAmpDL.nix
     ./bluetooth.nix
     ./borgbackup.nix
     ./cups.nix
@@ -20,6 +21,7 @@
     ./pipewire.nix
     ./powertopAutotune.nix
     ./samba.nix
+    ./ssh.nix
     ./swap.nix
     ./tlp.nix
     ./touchpad.nix

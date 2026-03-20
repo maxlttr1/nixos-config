@@ -58,9 +58,21 @@ in
   };
 
   config = lib.mkIf config.custom.docker.enable {
+    users = {
+      groups.docker-service = {};
+      users = {
+        docker-service = {
+          group = "docker-service";
+          extraGroups = [ "docker" ];
+          isSystemUser = true;
+        };
+      };
+    };
+
     virtualisation.docker = {
       enable = true;
     };
+
     users.users.${settings.username}.extraGroups = [ "docker" ];
 
     systemd.services."docker-containers-start" = {
@@ -68,9 +80,18 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        User = "${settings.username}";
+        User = "docker-service";
+        Group = "docker-service";
         Type = "oneshot";
         ExecStart = "${starting_script}";
+        
+        ProtectSystem = "strict";
+        ProtectHome = true;
+        NoNewPriviliges = true;
+        ReadWritePaths = "/tmp/";
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
       };
     };
 
@@ -82,6 +103,14 @@ in
         User = "${settings.username}";
         Type = "oneshot";
         ExecStart = "${stopping_script}";
+
+        ProtectSystem = "strict";
+        ProtectHome = true;
+        NoNewPriviliges = true;
+        ReadWritePaths = "/tmp/";
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
       };
     };
   };

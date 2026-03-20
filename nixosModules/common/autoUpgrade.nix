@@ -4,17 +4,16 @@ let
   notifyScript = pkgs.writeShellScript "notify-discord" ''
     
     url=$(cat /home/${settings.username}/.config/sops-nix/secrets/discord-webhook)
-    hostname=$(${pkgs.nettools}/bin/hostname)
     status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
     if [ $status -eq 0 ]; then
       ${pkgs.curl}/bin/curl -X POST "$url" \
         -H "Content-Type: application/json" \
-        -d "{\"content\": \"✅ NixOS upgrade successful on **$hostname**\"}"
+        -d "{\"content\": \"✅ NixOS upgrade successful on **${config.networking.hostName}**\"}"
     else
       ${pkgs.curl}/bin/curl -X POST "$url" \
         -H "Content-Type: application/json" \
-        -d "{\"content\": \"❌ NixOS upgrade failed on **$hostname**\"}"
+        -d "{\"content\": \"❌ NixOS upgrade failed on **$${config.networking.hostName}**\"}"
     fi
   '';
 in
@@ -41,7 +40,7 @@ in
       ];
       dates = config.custom.autoUpgrade.frequency;
       persistent = true;
-      operation = "switch"; # Or "boot"
+      operation = "switch";
       allowReboot = true;
       rebootWindow = {
         lower = "01:00";
@@ -57,7 +56,8 @@ in
     systemd.services."nixos-upgrade-notification" = {
       description = "Send a notification nixos-upgrade.service ends";
       serviceConfig = {
-        ExecStart = "${notifyScript}";
+        # ExecStart = "${notifyScript}";
+        ExecStartPost = "${notifyScript}";
       };
     };
   };

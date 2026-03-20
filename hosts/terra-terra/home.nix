@@ -5,7 +5,6 @@
     ../../homeManagerModules
   ];
 
-  custom.fonts.enable = true;
   custom.pkgs.enable = true;
   custom.plasmaManager.enable = true;
   custom.vscode.enable = true;

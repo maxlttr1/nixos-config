@@ -1,4 +1,4 @@
-{ lib, config, settings, ... }:
+{ lib, config, pkgs, settings, ... }:
 
 {
   options = {
@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.custom.borgbackup.enable {
-    services.borgbackup.jobs.home-danbst = {
+    services.borgbackup.jobs."borgbackup-job" = {
       user = "${settings.username}";
       paths = "/home/${settings.username}/Syncthing";
       encryption.mode = "none";
@@ -18,6 +18,9 @@
         monthly = 1;
         yearly = 1;
       };
+      postHook = ''
+        ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup"
+      ''; 
     };
   };
 }

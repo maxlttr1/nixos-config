@@ -12,14 +12,6 @@ let
   };
 in
 
-  /*
-    ~/.config/plasmarc - Plasma shell configuration
-    ~/.config/kglobalshortcutsrc - Keyboard shortcuts
-    ~/.config/kdeglobals - Global KDE settings
-    ~/.local/share/applications/ - Custom app shortcuts
-    ~/.local/share/kxmlgui5/ - UI configurations
-  */
-
 {
   options.custom.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
 
@@ -58,7 +50,7 @@ in
         };
         theme = "breeze";
         colorScheme = "BreezeDark";
-        iconTheme = "Papirus-Dark";
+        # iconTheme = "Papirus-Dark";
         windowDecorations = {
           library = "org.kde.kwin.default";
           theme = "Breeze";
@@ -66,7 +58,7 @@ in
         inherit wallpaperSlideShow;
       };
       immutableByDefault = false;
-      fonts = {
+      /*fonts = {
         fixedWidth = font;
         general = font;
         menu = font;
@@ -76,7 +68,7 @@ in
         };
         toolbar = font;
         windowTitle = font;
-      };
+      };*/
       input.keyboard.numlockOnStartup = "on";
       kscreenlocker = {
         appearance = {
@@ -124,7 +116,7 @@ in
               name = "org.kde.plasma.kickoff";
               config = {
                 General = {
-                  icon = "nix-snowflake-white";
+                  icon = "plasma-symbolic";
                   alphaSort = true;
                 };
               };

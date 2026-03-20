@@ -46,7 +46,7 @@
           # vscodevim.vim
         ];
         userSettings = {
-          "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
+          # "editor.fontFamily" = "'Mononoki Nerd Font Mono'";
           "editor.cursorBlinking" = "phase";
           "editor.cursorSmoothCaretAnimation" = "on";
           "explorer.confirmDelete" = false;
