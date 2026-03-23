@@ -2,13 +2,20 @@
 
 let
   script = pkgs.writeShellScript "script" ''
+    whoami
+    ls -l "/home/GabwfBjEgF/mountedDisk/syncthing/music/cookies.firefox-private.txt"
+    cat "/home/GabwfBjEgF/mountedDisk/syncthing/music/cookies.firefox-private.txt" | head -n 5
+    
     if [ ! -d "AutoAmpDL" ]; then
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/AutoAmpDL.git
     fi
     cd AutoAmpDL/
+    git pull origin main
 
-    nix develop .
-    python src/main.py --url ${config.custom.autoAmpDL.url} --download-archive ${config.custom.autoAmpDL.downloadArchiveFile} --cookies ${config.custom.autoAmpDL.cookieFile} ${config.custom.autoAmpDL.targetDir}
+    python src/main.py --url "${config.custom.autoAmpDL.url}" \
+      --download-archive "${config.custom.autoAmpDL.downloadArchiveFile}" \
+      --cookies "${config.custom.autoAmpDL.cookieFile}" \
+      "${config.custom.autoAmpDL.targetDir}"
   '';
 in
 
@@ -49,21 +56,27 @@ in
 
   config = lib.mkIf config.custom.autoAmpDL.enable {
     systemd.services."auto-amp-dl" = {
-      description = "Start AutAmpDL script on a schedule";
-      timerConfig = {
-        serviceConfig = {
-          WorkingDirectory = "${config.custom.autoAmpDL.workingDir}";
-          User = "${settings.username}";
-          Type = "oneshot";
-          ExecStart = "${script}";
-        };
+      serviceConfig = {
+        WorkingDirectory = "${config.custom.autoAmpDL.workingDir}";
+        User = "${settings.username}";
+        Type = "oneshot";
+        ExecStart = "${script}";
       };
+      path = with pkgs; [
+        (python312.withPackages (ps: with ps; [
+          rich
+        ]))
+        ffmpeg
+        yt-dlp
+        git
+      ];      
     };
 
-    timers."auto-amp-dl" = {
+    systemd.timers."auto-amp-dl" = {
       wantedBy = [ "multi-user.target" ];
       timerConfig = {
         OnCalendar = "${config.custom.autoAmpDL.frequency}";
+        Persistent = true;
         Unit = "auto-amp-dl";
       };
     };

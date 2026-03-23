@@ -4,12 +4,6 @@
   custom.hostname = "terra-terra";
 
   custom.atd.enable = true;
-  /*custom.autoAmpDL.enable = true;
-    custom.autoAmpDL.targetDir = "/home/${settings.username}/mountedDisk/syncthing/music/AutoAmpDL/";
-    custom.autoAmpDL.workingDir = "/home/${settings.username}/Documents/";
-    custom.autoAmpDL.cookieFile = "/home/${settings.username}/mountedDisk/syncthing/music/cookies.firefox-private.txt";
-    custom.autoAmpDL.downloadArchiveFile = "/home/${settings.username}/mountedDisk/syncthing/music/ids.txt";
-  */
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;
@@ -17,9 +11,13 @@
   custom.kdePlasma.enable = true;
   custom.ld.enable = true;
   custom.pipewire.enable = true;
-  custom.swap.swapFile.enable = true;
-  custom.swap.swapFile.sizeGiB = 18;
-  custom.swap.zramSwap.enable = true;
+  custom.swap = {
+    swapFile = {
+      enable = true;
+      sizeGiB = 18;
+    };
+    zramSwap.enable = true;
+  };
   custom.tlp.enable = true;
   custom.touchpad.enable = true;
   custom.vms.enable = true;

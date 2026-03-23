@@ -3,7 +3,7 @@
     ./common
 
     ./atd.nix
-    # ./autoAmpDL.nix
+    ./autoAmpDL.nix
     ./bluetooth.nix
     ./borgbackup.nix
     ./cups.nix
