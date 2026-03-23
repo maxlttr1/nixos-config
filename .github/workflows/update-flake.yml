@@ -26,7 +26,7 @@ jobs:
 
     - name: Nix flake check
       id: flake-check
-      run: nix flake check
+      run: nix flake check --impure
 
     - name: Commit to the master branch
       run: |
