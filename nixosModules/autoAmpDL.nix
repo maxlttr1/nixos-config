@@ -69,7 +69,7 @@ in
         ffmpeg
         yt-dlp
         git
-      ];      
+      ];
     };
 
     systemd.timers."auto-amp-dl" = {
