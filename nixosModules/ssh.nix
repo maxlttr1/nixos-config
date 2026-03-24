@@ -25,7 +25,7 @@
 
     users.users = {
       "${settings.username}".openssh.authorizedKeys.keyFiles = [
-        /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.public
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICxC3atnZ1iNDK1tsIV4/rfWrGTUn5VrP2wxGY1lGl5+ maxlttr@terra"
       ];
     };
   };
