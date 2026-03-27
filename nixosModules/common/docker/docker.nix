@@ -87,8 +87,11 @@ in
 
         ProtectSystem = "strict";
         ProtectHome = true;
-        NoNewPriviliges = true;
-        ReadWritePaths = "/tmp/";
+        NoNewPrivileges = true;
+        ReadWritePaths = [ 
+          "/tmp/" 
+          "/home/GabwfBjEgF/.docker" 
+        ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
@@ -106,11 +109,15 @@ in
 
         ProtectSystem = "strict";
         ProtectHome = true;
-        NoNewPriviliges = true;
-        ReadWritePaths = "/tmp/";
+        NoNewPrivileges = true;
+        ReadWritePaths = [ 
+          "/tmp/" 
+          "/home/GabwfBjEgF/.docker" 
+        ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
+
       };
     };
   };
