@@ -19,7 +19,7 @@
         yearly = 1;
       };
       postHook = ''
-        ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup"
+        ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup
       '';
     };
   };
