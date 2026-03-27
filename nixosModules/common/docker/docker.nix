@@ -70,7 +70,7 @@ in
         Type = "oneshot";
         ExecStart = "${starting_script}";
 
-        ProtectSystem = "strict";
+        /*ProtectSystem = "strict";
         ProtectHome = true;
         NoNewPrivileges = true;
         ReadWritePaths = [
@@ -79,7 +79,7 @@ in
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
-        ProtectKernelTunables = true;
+        ProtectKernelTunables = true;*/
       };
     };
 
