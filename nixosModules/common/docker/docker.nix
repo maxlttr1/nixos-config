@@ -19,10 +19,9 @@ let
       ${pkgs.docker}/bin/docker network create proxy
     fi
 
-    # Start all the containers
     for file in ./nixosModules/common/docker/active/*.yml; do
       name=$(basename "$file" .yml)
-      ${pkgs.docker}/bin/docker compose --project-name $name -f $file up -d &
+      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
     done
     wait
     
@@ -38,13 +37,11 @@ let
     ${pkgs.git}/bin/git checkout master
     ${pkgs.git}/bin/git pull origin master
 
-    # Stop all containers started by docker compose
     for file in ./nixosModules/common/docker/active/*.yml; do
       name=$(basename "$file" .yml)
-      ${pkgs.docker}/bin/docker compose --project-name $name -f $file down -v --remove-orphans
+      ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
     done
 
-    # Remove unused data (append `--volumes` to remove unused volumes as well)
     ${pkgs.docker}/bin/docker system prune -a --volumes -f
 
     cd ..
@@ -95,7 +92,7 @@ in
         Type = "oneshot";
         ExecStart = "${stopping_script}";
 
-        ProtectSystem = "strict";
+        /*ProtectSystem = "strict";
         ProtectHome = true;
         NoNewPrivileges = true;
         ReadWritePaths = [
@@ -104,7 +101,7 @@ in
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
-        ProtectKernelTunables = true;
+        ProtectKernelTunables = true;*/
 
       };
     };
