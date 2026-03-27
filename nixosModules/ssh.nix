@@ -24,7 +24,7 @@
     #security.pam.services.sshd.googleAuthenticator.enable = true;
 
     users.users = {
-      "${settings.username}".openssh.authorizedKeys.keyFiles = [
+      "${settings.username}".openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICxC3atnZ1iNDK1tsIV4/rfWrGTUn5VrP2wxGY1lGl5+ maxlttr@terra"
       ];
     };
