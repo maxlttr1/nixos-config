@@ -63,7 +63,7 @@ in
       users = {
         docker-service = {
           group = "docker-service";
-          extraGroups = [ "docker" ];
+          extraGroups = [ "users" "docker" ];
           isSystemUser = true;
         };
       };
@@ -90,7 +90,7 @@ in
         NoNewPrivileges = true;
         ReadWritePaths = [
           "/tmp/"
-          "/home/GabwfBjEgF/.docker"
+          "/home/${settings.username}/.docker"
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
@@ -112,7 +112,7 @@ in
         NoNewPrivileges = true;
         ReadWritePaths = [
           "/tmp/"
-          "/home/GabwfBjEgF/.docker"
+          "/home/${settings.username}/.docker"
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
