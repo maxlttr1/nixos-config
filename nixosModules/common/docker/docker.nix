@@ -22,7 +22,7 @@ let
     # Start all the containers
     for file in ./nixosModules/common/docker/active/*.yml; do
       name=$(basename "$file" .yml)
-      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
+      ${pkgs.docker}/bin/docker compose --project-name $name -f $file up -d &
     done
     wait
     
@@ -41,7 +41,7 @@ let
     # Stop all containers started by docker compose
     for file in ./nixosModules/common/docker/active/*.yml; do
       name=$(basename "$file" .yml)
-      ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+      ${pkgs.docker}/bin/docker compose --project-name $name -f $file down -v --remove-orphans
     done
 
     # Remove unused data (append `--volumes` to remove unused volumes as well)
@@ -58,17 +58,6 @@ in
   };
 
   config = lib.mkIf config.custom.docker.enable {
-    users = {
-      groups.docker-service = { };
-      users = {
-        docker-service = {
-          group = "docker-service";
-          extraGroups = [ "users" "docker" ];
-          isSystemUser = true;
-        };
-      };
-    };
-
     virtualisation.docker = {
       enable = true;
     };
@@ -80,8 +69,7 @@ in
 
       serviceConfig = {
         WorkingDirectory = "/tmp/";
-        User = "docker-service";
-        Group = "docker-service";
+        User = "${settings.username}";
         Type = "oneshot";
         ExecStart = "${starting_script}";
 
