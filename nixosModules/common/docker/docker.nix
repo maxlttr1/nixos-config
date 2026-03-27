@@ -88,9 +88,9 @@ in
         ProtectSystem = "strict";
         ProtectHome = true;
         NoNewPrivileges = true;
-        ReadWritePaths = [ 
-          "/tmp/" 
-          "/home/GabwfBjEgF/.docker" 
+        ReadWritePaths = [
+          "/tmp/"
+          "/home/GabwfBjEgF/.docker"
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
@@ -110,9 +110,9 @@ in
         ProtectSystem = "strict";
         ProtectHome = true;
         NoNewPrivileges = true;
-        ReadWritePaths = [ 
-          "/tmp/" 
-          "/home/GabwfBjEgF/.docker" 
+        ReadWritePaths = [
+          "/tmp/"
+          "/home/GabwfBjEgF/.docker"
         ];
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
