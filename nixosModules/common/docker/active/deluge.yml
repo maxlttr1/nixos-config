@@ -21,8 +21,8 @@ services:
       - gluetun-deluge
     network_mode: "service:gluetun-deluge"
     environment:
-      - PUID=1000
-      - PGID=100
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=Etc/UTC
     volumes:
       - ${HOME}/docker/deluge/config:/config

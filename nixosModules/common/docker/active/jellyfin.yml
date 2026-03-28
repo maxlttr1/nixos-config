@@ -11,8 +11,8 @@ services:
       - traefik.http.routers.jellyfin-https.rule=Host(`jellyfin.maxlttr7.duckdns.org`)
       - traefik.http.services.jellyfin-https.loadbalancer.server.port=8096
     environment:
-      - PUID=1000
-      - PGID=100
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=Etc/UTC
     volumes:
       - ${HOME}/docker/jellyfin/library:/config
