@@ -33,22 +33,22 @@ let
   '';
 
   stopping_script = pkgs.writeShellScript "stopping_script" ''
-		if [ ! -d "nixos-config" ]; then
-		${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
-		fi
-		cd nixos-config/
-		${pkgs.git}/bin/git checkout master
-		${pkgs.git}/bin/git pull origin master
+    		if [ ! -d "nixos-config" ]; then
+    		${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
+    		fi
+    		cd nixos-config/
+    		${pkgs.git}/bin/git checkout master
+    		${pkgs.git}/bin/git pull origin master
 
-        for file in ./nixosModules/common/docker/active/*.yml; do
-          name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
-        done
+            for file in ./nixosModules/common/docker/active/*.yml; do
+              name=$(basename "$file" .yml)
+              ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+            done
 
-        ${pkgs.docker}/bin/docker system prune -a --volumes -f
+            ${pkgs.docker}/bin/docker system prune -a --volumes -f
 
-        cd ..
-        rm -r nixos-config/
+            cd ..
+            rm -r nixos-config/
   '';
 in
 
