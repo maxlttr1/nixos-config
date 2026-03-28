@@ -13,11 +13,11 @@
       };
     };
 
-    programs.firefox = {
+    programs.librewolf = {
       enable = true;
-      package = pkgs.librewolf;
       profiles.default.settings = {
-        "network.proxy.http" = "127.0.0.1";
+        "network.proxy.type" = 1; # 1 = Manual proxy configuration, 5 = Use system proxy
+        "network.proxy.http" = "100.68.245.10";
         "network.proxy.http_port" = 4444;
         # "network.proxy.socks" = "127.0.0.1";
         # "network.proxy.socks_port" = 4447;
