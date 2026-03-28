@@ -73,16 +73,15 @@ in
         Type = "oneshot";
         ExecStart = "${starting_script}";
 
-        /*ProtectSystem = "strict";
-        ProtectHome = true;
-        NoNewPrivileges = true;
+        ProtectSystem = "strict";
+        ProtectHome = "read-only";
         ReadWritePaths = [
           "/tmp/"
-          "/home/${settings.username}/.docker"
         ];
+        NoNewPrivileges = true;
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
-        ProtectKernelTunables = true;*/
+        ProtectKernelTunables = true;
       };
     };
 
@@ -95,17 +94,15 @@ in
         Type = "oneshot";
         ExecStart = "${stopping_script}";
 
-        /*ProtectSystem = "strict";
-        ProtectHome = true;
-        NoNewPrivileges = true;
+        ProtectSystem = "strict";
+        ProtectHome = "read-only";
         ReadWritePaths = [
           "/tmp/"
-          "/home/${settings.username}/.docker"
         ];
+        NoNewPrivileges = true;
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
-        ProtectKernelTunables = true;*/
-
+        ProtectKernelTunables = true;
       };
     };
   };

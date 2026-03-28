@@ -11,10 +11,6 @@
     };
 
     home.file.".ssh/config".text = ''
-      Host terra-terra
-          HostName terra-terra
-          User ${settings.username}
-          IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
       Host nexus-nexus
           HostName nexus-nexus
           User ${settings.username}
