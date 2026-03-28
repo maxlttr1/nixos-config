@@ -33,9 +33,6 @@ let
   '';
 
   stopping_script = pkgs.writeShellScript "stopping_script" ''
-	export PUID=$(id -u)
-	export PGID=$(id -g)
-
     if [ ! -d "nixos-config" ]; then
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
     fi
