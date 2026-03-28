@@ -2,53 +2,56 @@
 
 let
   starting_script = pkgs.writeShellScript "starting_script" ''
-    	export PUID=$(id -u)
-    	export PGID=$(id -g)
+    export PUID=$(id -u)
+    export PGID=$(id -g)
 
-        if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
-        fi
-        cd nixos-config/
-        ${pkgs.git}/bin/git checkout master
-        ${pkgs.git}/bin/git pull origin master
+    if [ ! -d "nixos-config" ]; then
+      ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
+    fi
+    cd nixos-config/
+    ${pkgs.git}/bin/git checkout master
+    ${pkgs.git}/bin/git pull origin master
 
-        if [ ! -f $HOME/docker/suaps/config.json ]; then
-          mkdir -p $HOME/docker/suaps
-          echo '{ "ids_resa": [] }' > $HOME/docker/suaps/config.json
-        fi
+    if [ ! -f $HOME/docker/suaps/config.json ]; then
+      mkdir -p $HOME/docker/suaps
+      echo '{ "ids_resa": [] }' > $HOME/docker/suaps/config.json
+    fi
 
-        # Create proxy network if not present for traefik
-        if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
-          ${pkgs.docker}/bin/docker network create proxy
-        fi
+    # Create proxy network if not present for traefik
+    if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
+      ${pkgs.docker}/bin/docker network create proxy
+    fi
 
-        for file in ./nixosModules/common/docker/active/*.yml; do
-          name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
-        done
-        wait
-    
-        cd ..
-        rm -r nixos-config/
+    for file in ./nixosModules/common/docker/active/*.yml; do
+      name=$(basename "$file" .yml)
+      ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
+    done
+    wait
+
+    cd ..
+    rm -r nixos-config/
   '';
 
   stopping_script = pkgs.writeShellScript "stopping_script" ''
-    		if [ ! -d "nixos-config" ]; then
-    		${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
-    		fi
-    		cd nixos-config/
-    		${pkgs.git}/bin/git checkout master
-    		${pkgs.git}/bin/git pull origin master
+    export PUID=$(id -u)
+    export PGID=$(id -g)
 
-            for file in ./nixosModules/common/docker/active/*.yml; do
-              name=$(basename "$file" .yml)
-              ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
-            done
+    if [ ! -d "nixos-config" ]; then
+    ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
+    fi
+    cd nixos-config/
+    ${pkgs.git}/bin/git checkout master
+    ${pkgs.git}/bin/git pull origin master
 
-            ${pkgs.docker}/bin/docker system prune -a --volumes -f
+    for file in ./nixosModules/common/docker/active/*.yml; do
+      name=$(basename "$file" .yml)
+      ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+    done
 
-            cd ..
-            rm -r nixos-config/
+    ${pkgs.docker}/bin/docker system prune -a --volumes -f
+
+    cd ..
+    rm -r nixos-config/
   '';
 in
 
