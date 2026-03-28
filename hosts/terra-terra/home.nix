@@ -5,6 +5,7 @@
     ../../homeManagerModules
   ];
 
+  custom.i2p-browser.enable = true;
   custom.pkgs.enable = true;
   custom.plasmaManager.enable = true;
   custom.vscode.enable = true;

@@ -12,7 +12,6 @@
     ./flatpak.nix
     ./gnupg.nix
     ./hyprland.nix
-    ./i2p.nix
     ./impermanence.nix
     ./intel.nix
     ./kdePlasma.nix
