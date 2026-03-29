@@ -26,30 +26,30 @@
           "keyword.enabled" = false; # Don't search .i2p domains
           "dom.security.https_only_mode" = false; # i2p doesn't use HTTPS
         };
-				bookmarks = {
-					force = true;
-					settings = [
-						{
-							name = "i2p";
-							toolbar = true;
-							bookmarks = [
-								{
-								name = "router console";
-								url = "http://100.68.245.10:7657/";
-								}
-								{
-								name = "planet.i2p";
-								url = "http://planet.i2p/";
-								}
-								{
-								name = "postman.i2p";
-								url = "http://tracker2.postman.i2p";
-								}
-							];
-						}
-					];
-				};
-			};
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "i2p";
+              toolbar = true;
+              bookmarks = [
+                {
+                  name = "router console";
+                  url = "http://100.68.245.10:7657/";
+                }
+                {
+                  name = "planet.i2p";
+                  url = "http://planet.i2p/";
+                }
+                {
+                  name = "postman.i2p";
+                  url = "http://tracker2.postman.i2p";
+                }
+              ];
+            }
+          ];
+        };
+      };
     };
   };
 }
