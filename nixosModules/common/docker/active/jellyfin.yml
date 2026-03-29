@@ -17,6 +17,7 @@ services:
     volumes:
       - ${HOME}/docker/jellyfin/library:/config
       - ${HOME}/docker/movies:/data/movies
+      - ${HOME}/docker/i2p/i2ptorrents:/data/movies/i2p
       - ${HOME}/docker/tvshows:/data/tvshows
       - ${HOME}/Syncthing/music:/data/music:ro
     ports:
