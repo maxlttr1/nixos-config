@@ -26,12 +26,14 @@
           "keyword.enabled" = false; # Don't search .i2p domains
           "dom.security.https_only_mode" = false; # i2p doesn't use HTTPS
         };
+        policies = {
+          NoDefaultBookmarks = false;
+        };
         bookmarks = {
           force = true;
           settings = [
             {
               name = "i2p";
-              toolbar = true;
               bookmarks = [
                 {
                   name = "router console";
