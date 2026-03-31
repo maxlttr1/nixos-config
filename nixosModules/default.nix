@@ -8,6 +8,7 @@
     ./borgbackup.nix
     ./cups.nix
     ./eduvpn.nix
+    ./fail2ban.nix
     ./fan.nix
     ./flatpak.nix
     ./gnupg.nix

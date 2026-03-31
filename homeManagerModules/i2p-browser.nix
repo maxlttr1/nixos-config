@@ -15,6 +15,9 @@
 
     programs.librewolf = {
       enable = true;
+      policies = {
+        NoDefaultBookmarks = false;
+      };
       profiles.default = {
         settings = {
           "network.proxy.type" = 1; # 1 = Manual proxy configuration, 5 = Use system proxy
@@ -25,9 +28,6 @@
           # "network.proxy.socks_port" = 4447;
           "keyword.enabled" = false; # Don't search .i2p domains
           "dom.security.https_only_mode" = false; # i2p doesn't use HTTPS
-        };
-        policies = {
-          NoDefaultBookmarks = false;
         };
         bookmarks = {
           force = true;

@@ -9,7 +9,6 @@
     ./boot.nix
     ./clamav.nix
     ./experimentalFeatures.nix
-    ./fail2ban.nix
     ./firewall.nix
     ./firmware.nix
     ./hostname.nix
@@ -35,7 +34,6 @@
   custom.clamav.enable = true;
   custom.docker.enable = true;
   custom.experimentalFeatures.enable = true;
-  custom.fail2ban.enable = true;
   custom.firewall.enable = true;
   custom.firmware.enable = true;
   custom.networkManager.enable = true;
