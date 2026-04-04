@@ -4,6 +4,7 @@ let
   starting_script = pkgs.writeShellScript "starting_script" ''
     export PUID=$(id -u)
     export PGID=$(id -g)
+    export TAILSCALE_IP=$(tailscale ip -4)
 
     if [ ! -d "nixos-config" ]; then
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
@@ -15,6 +16,11 @@ let
     if [ ! -f $HOME/docker/suaps/config.json ]; then
       mkdir -p $HOME/docker/suaps
       echo '{ "ids_resa": [] }' > $HOME/docker/suaps/config.json
+    fi
+
+    if [ ! -f $HOME/docker/traefik/acme.json ]; then
+      mkdir -p $HOME/docker/traefik
+      touch $HOME/docker/traefik/acme.json && chmod 600 $HOME/docker/traefik/acme.json
     fi
 
     # Create proxy network if not present for traefik
@@ -35,6 +41,7 @@ let
   stopping_script = pkgs.writeShellScript "stopping_script" ''
     export PUID=$(id -u)
     export PGID=$(id -g)
+    export TAILSCALE_IP=$(tailscale ip -4)
 
     if [ ! -d "nixos-config" ]; then
     ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git

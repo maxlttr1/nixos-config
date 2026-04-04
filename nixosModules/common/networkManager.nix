@@ -14,7 +14,7 @@
         macAddress = "random";
         backend = "wpa_supplicant"; # Default
       };
-      logLevel = "DEBUG";
+      # logLevel = "DEBUG";
     };
 
     services.resolved = {
