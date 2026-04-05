@@ -1,0 +1,9 @@
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:ollama
+    ports:
+      - 127.0.0.1:3030:8080
+      - "${TAILSCALE_IP}:3030:8080"
+    volumes:
+      - ${HOME}/docker/open-webui:/app/backend/data
+    restart: unless-stopped
