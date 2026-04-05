@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 {
   default = pkgs.mkShell {
@@ -12,13 +12,19 @@
 
   python = pkgs.mkShell {
     packages = with pkgs; [
-      python312
-      python312Packages.jupyterlab
-      python312Packages.numpy
-      python312Packages.matplotlib
-      python312Packages.flake8
-      python312Packages.black
+      (python312.withPackages(p: with p; [
+        matplotlib
+        numpy
+        pandas
+        requests
+      ]))
     ];
+
+    env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+      pkgs.stdenv.cc.cc.lib
+      pkgs.libz
+    ];
+
     shellHook = ''
       echo -e "\e[45m Python dev shell activated \e[0m"
     '';
