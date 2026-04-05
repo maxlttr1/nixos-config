@@ -12,7 +12,7 @@
 
   python = pkgs.mkShell {
     packages = with pkgs; [
-      (python312.withPackages(p: with p; [
+      (python312.withPackages (p: with p; [
         matplotlib
         numpy
         pandas
