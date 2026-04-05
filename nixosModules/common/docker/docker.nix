@@ -4,7 +4,7 @@ let
   starting_script = pkgs.writeShellScript "starting_script" ''
     export PUID=$(id -u)
     export PGID=$(id -g)
-    export TAILSCALE_IP=$(tailscale ip -4)
+    export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
     if [ ! -d "nixos-config" ]; then
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
@@ -41,10 +41,10 @@ let
   stopping_script = pkgs.writeShellScript "stopping_script" ''
     export PUID=$(id -u)
     export PGID=$(id -g)
-    export TAILSCALE_IP=$(tailscale ip -4)
+    export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
     if [ ! -d "nixos-config" ]; then
-    ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
+      ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git
     fi
     cd nixos-config/
     ${pkgs.git}/bin/git checkout master
