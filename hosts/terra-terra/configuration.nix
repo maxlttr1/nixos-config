@@ -14,7 +14,7 @@
   custom.swap = {
     swapFile = {
       enable = true;
-      sizeGiB = 18;
+      sizeGiB = 8;
     };
     zramSwap.enable = true;
   };
