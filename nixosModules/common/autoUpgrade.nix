@@ -13,7 +13,7 @@ let
     else
       ${pkgs.curl}/bin/curl -X POST "$url" \
         -H "Content-Type: application/json" \
-        -d "{\"content\": \"❌ NixOS upgrade failed on **$${config.networking.hostName}**\"}"
+        -d "{\"content\": \"❌ NixOS upgrade failed on **${config.networking.hostName}**\"}"
     fi
   '';
 in
