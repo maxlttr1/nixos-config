@@ -29,6 +29,7 @@
         			-w /home/$(id -un) \
         			custom-ubuntu /bin/bash
       '';
+      ssh-vps = "ssh root@$(cat /home/${settings.username}/.config/sops-nix/secrets/racknerd_ip) -i /home/${settings.username}/.config/sops-nix/secrets/racknerd_ssh.private";
     };
   };
 }
