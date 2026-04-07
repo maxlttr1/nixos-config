@@ -21,7 +21,7 @@
         "racknerd_ssh.private" = { mode = "0600"; };
         "gitlab-univ-nantes.public" = { mode = "0640"; };
         "gitlab-univ-nantes.private" = { mode = "0600"; };
-        "discord-webhook" = { mode = "0600";};
+        "discord-webhook" = { mode = "0600"; };
       };
     };
   };
