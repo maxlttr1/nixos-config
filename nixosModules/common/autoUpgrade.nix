@@ -70,8 +70,8 @@ in
         Type = "oneshot";
       };
       script = ''
-          mkdir -p ${webhookDir}
-          cp /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
+        mkdir -p ${webhookDir}
+        cp /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
       '';
       after = [ "sops-nix.service" ];
       wantedBy = [ "sops-nix.service" ];
