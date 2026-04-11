@@ -4,7 +4,7 @@ ARG UID
 ARG USERNAME
 
 RUN apt-get update && \
-	apt-get install -y python3 python3-pip npm gcc && \
+	apt-get install -y python3 python3-pip python3-venv npm gcc && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \

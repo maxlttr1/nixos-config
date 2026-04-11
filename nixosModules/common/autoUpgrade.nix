@@ -1,9 +1,11 @@
 { lib, config, pkgs, settings, ... }:
 
 let
+  webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
+  webhookDir = "/home/${settings.username}/.cache/sops-nix/secrets/";
   notifyScript = pkgs.writeShellScript "notify-discord" ''
     
-    url=$(cat /home/${settings.username}/.config/sops-nix/secrets/discord-webhook)
+    url=$(cat ${webhookPath})
     status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
     if [ $status -eq 0 ]; then
@@ -55,10 +57,24 @@ in
 
     systemd.services."nixos-upgrade-notification" = {
       description = "Send a notification nixos-upgrade.service ends";
+      after = [ "sops-nix.service" ];
       serviceConfig = {
         ExecStart = "${notifyScript}";
-        type = "oneshot";
+        Type = "oneshot";
       };
+    };
+
+    systemd.user.services."copy-discord-webhook" = {
+      description = "Copy Discord webhook secret to user home directory";
+      serviceConfig = {
+        Type = "oneshot";
+      };
+      script = ''
+          mkdir -p ${webhookDir}
+          cp /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
+      '';
+      after = [ "sops-nix.service" ];
+      wantedBy = [ "sops-nix.service" ];
     };
   };
 }
