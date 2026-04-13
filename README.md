@@ -65,7 +65,7 @@ sudo nixos-install --flake github:maxlttr1/nixos-config#terra-terra
 ### 4. Encrypted impermanence setups only: Create a Blank Snapshot of /root
 ```bash
 sudo cryptsetup open /dev/disk/by-partlabel/luks crypted
-sudo mount -o subvolid=5 /dev/mapper/crypted /mnt
+sudo mount -o subvolid=5 /dev/mapper/crypted /mnt # Mount top-level (root) subvolume of the entire btrfs fs
 ```
 
 List the contents:

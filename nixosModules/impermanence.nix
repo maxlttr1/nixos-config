@@ -42,16 +42,37 @@
     '';*/
 
     boot.initrd.postDeviceCommands = lib.mkAfter ''
+      LOGFILE=/mnt/rollback.log #  # Available during the boot process for debugging if the rollback fails, but won’t persist.
+      echo "[$(date -Is)] Rollback running" > $LOGFILE
       mkdir -p /mnt
-      mount -t btrfs /dev/mapper/crypted /mnt
+      mount -t btrfs -o subvolid=5 /dev/mapper/crypted /mnt
 
-      # Recursively delete all nested subvolumes inside /mnt/root
-      btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read subvolume; do
-        btrfs subvolume delete "/mnt/$subvolume"
-      done
+      if [ -d /mnt/root ] && [ -d /mnt/root-blank ]; then
+        # Recursively delete all nested subvolumes inside /mnt/root
+        btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read subvolume; do
+          echo "[$(date -Is)] Deleting /$subvolume subvolume..." >> $LOGFILE
+          if btrfs subvolume delete "/mnt/$subvolume" >> $LOGFILE 2>&1; then
+            echo "[$(date -Is)] Deleted /$subvolume successfully." >> $LOGFILE
+          else
+            echo "[$(date -Is)] Failed to delete /$subvolume!" >> $LOGFILE
+          fi
+        done
 
-      btrfs subvolume delete /mnt/root
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
+        echo "[$(date -Is)] Deleting /root subvolume..." >> $LOGFILE
+        if btrfs subvolume delete /mnt/root >> $LOGFILE 2>&1; then
+          echo "[$(date -Is)] Deleted /root successfully." >> $LOGFILE
+        else
+          echo "[$(date -Is)] Failed to delete /root!" >> $LOGFILE
+        fi
+
+        echo "[$(date -Is)] Restoring blank /root subvolume..." >> $LOGFILE
+        if btrfs subvolume snapshot /mnt/root-blank /mnt/root >> $LOGFILE 2>&1; then
+          echo "[$(date -Is)] Restored blank /root successfully." >> $LOGFILE
+        else
+          echo "[$(date -Is)] Failed to restore blank /root!" >> $LOGFILE
+        fi
+      fi
+
       umount /mnt
     '';
 
