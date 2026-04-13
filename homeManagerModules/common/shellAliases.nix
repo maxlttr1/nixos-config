@@ -24,8 +24,7 @@
       run-ubuntu = ''
             docker run -it --rm \
         			-u $(id -u):$(id -g) \
-        			-v "$HOME/Documents/:/home/$(id -un)/Documents" \
-        			-v "$HOME/mountedDisk/syncthing/:/home/$(id -un)/syncthing" \
+        			-v "$HOME/:/home/$(id -un)/" \
         			-w /home/$(id -un) \
         			custom-ubuntu /bin/bash
       '';
