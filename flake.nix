@@ -140,6 +140,17 @@
             })
           ] ++ modulesList;
         };
+
+        vm = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/vm
+            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
+              home-manager.users."${settings.username}" = import ./hosts/vm/home.nix;
+            })
+          ] ++ modulesList;
+        };
       };
 
       homeConfigurations = {
