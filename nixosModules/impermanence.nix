@@ -44,7 +44,7 @@
       LOGFILE=/mnt/rollback.log #  # Available during the boot process for debugging if the rollback fails, but won’t persist.
       echo "[$(date -Is)] Rollback running" > $LOGFILE
       mkdir -p /mnt
-      mount -t btrfs -o subvolid=5 /dev/mapper/crypted /mnt
+      mount -t btrfs /dev/mapper/crypted /mnt
 
       if [ -d /mnt/root ] && [ -d /mnt/root-blank ]; then
         # Recursively delete all nested subvolumes inside /mnt/root
