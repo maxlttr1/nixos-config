@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/vda";
         content = {
           type = "gpt";
           partitions = {
@@ -37,6 +37,15 @@
                       mountOptions = [
                         "subvol=root"
                         "compress=zstd"
+                        "noatime"
+                        "nosuid"
+                        "nodev"
+                      ];
+                    };
+                    "/root-blank" = {
+                      mountOptions = [
+                        "subvol=root-blank"
+                        "nodatacow"
                         "noatime"
                         "nosuid"
                         "nodev"
