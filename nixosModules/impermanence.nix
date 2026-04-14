@@ -41,7 +41,7 @@
       umount /btrfs_tmp
     '';*/
 
-    boot.initrd.postDeviceCommands = lib.mkAfter ''
+    /*boot.initrd.postDeviceCommands = lib.mkAfter ''
       LOGFILE=/mnt/rollback.log #  # Available during the boot process for debugging if the rollback fails, but won’t persist.
       echo "[$(date -Is)] Rollback running" > $LOGFILE
       mkdir -p /mnt
@@ -74,7 +74,7 @@
       fi
 
       umount /mnt
-    '';
+    '';*/
 
     fileSystems."/persist".neededForBoot = true;
     environment.persistence."/persist" = {
