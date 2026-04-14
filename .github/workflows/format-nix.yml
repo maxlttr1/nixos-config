@@ -1,8 +1,8 @@
 name: Format Nix Code
 
 on:
-  pull_request:
-  push:
+  # pull_request:
+  # push:
   workflow_dispatch:  # Allow manual trigger from GitHub UI
 
 jobs:

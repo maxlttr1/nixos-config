@@ -8,7 +8,7 @@ services:
       - traefik.http.routers.jellyfin-https.tls=true
       - traefik.http.routers.jellyfin-https.tls.certresolver=myresolver
       - traefik.http.routers.jellyfin-https.entrypoints=websecure
-      - traefik.http.routers.jellyfin-https.rule=Host(`jellyfin.maxlttr7.duckdns.org`)
+      - "traefik.http.routers.jellyfin-https.rule=Host(`jellyfin.maxlttr7.duckdns.org`) || Host(`jellyfin.maxlttr.fr`)"
       - traefik.http.services.jellyfin-https.loadbalancer.server.port=8096
     environment:
       - PUID=${PUID}

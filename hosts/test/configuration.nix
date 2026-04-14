@@ -1,10 +1,9 @@
-{ settings, ... }:
+{ lib, settings, ... }:
 
 {
   custom.hostname = "test";
 
   custom.impermanence.enable = true;
-  custom.impermanence.diskDevice = "/dev/sda2";
   custom.atd.enable = true;
   custom.bluetooth.enable = true;
   custom.flatpak.enable = true;
@@ -13,4 +12,7 @@
   custom.ld.enable = true;
   custom.pipewire.enable = true;
   custom.swap.zramSwap.enable = true;
+
+
+  custom.usbguard.enable = lib.mkForce false;
 }
