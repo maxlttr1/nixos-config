@@ -16,7 +16,7 @@
   };
 
   config = lib.mkIf config.custom.impermanence.enable {
-    boot.initrd.postResumeCommands = lib.mkAfter ''
+    /*boot.initrd.postResumeCommands = lib.mkAfter ''
       mkdir /btrfs_tmp
       mount ${config.custom.impermanence.diskDevice} /btrfs_tmp
       if [[ -e /btrfs_tmp/root ]]; then
