@@ -7,6 +7,6 @@
   custom.intel.enable = true;
 
 
-  custom.boot.enable = lib.mkForce true;
+  custom.boot.enable = lib.mkForce false;
   boot.loader.systemd-boot.enable = true;
 }
