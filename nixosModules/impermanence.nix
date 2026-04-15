@@ -41,34 +41,43 @@
     '';*/
 
     boot.initrd.postDeviceCommands = lib.mkAfter ''
-      LOGFILE=/mnt/rollback.log #  # Available during the boot process for debugging if the rollback fails, but won’t persist.
-      echo "[$(date -Is)] Rollback running" > $LOGFILE
-      mkdir -p /mnt
-      mount -t btrfs /dev/mapper/crypted /mnt
+      set -euo pipefail
+      echo "Starting impermanence rollback..."
 
-      if [ -d /mnt/root ] && [ -d /mnt/root-blank ]; then
-        # Recursively delete all nested subvolumes inside /mnt/root
-        btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read subvolume; do
-          echo "[$(date -Is)] Deleting /$subvolume subvolume..." >> $LOGFILE
-          if btrfs subvolume delete "/mnt/$subvolume" >> $LOGFILE 2>&1; then
-            echo "[$(date -Is)] Deleted /$subvolume successfully." >> $LOGFILE
-          else
-            echo "[$(date -Is)] Failed to delete /$subvolume!" >> $LOGFILE
+      LUKS_DEVICE="/dev/mapper/crypted"
+      if [[ ! -b "$LUKS_DEVICE" ]]; then
+        echo "LUKS device $LUKS_DEVICE not found! Aborting impermanence rollback."
+        exit 1
+      fi
+
+      mkdir -p /mnt
+      if ! mount -o subvol=/ "$LUKS_DEVICE" /mnt; then
+        echo "Error: Failed to mount root filesystem"
+        exit 1
+      fi
+
+      if [[ ! -d "/mnt/root-blank" ]]; then
+        echo "Error: /mnt/root-blank snapshot not found, skipping rollback"
+        umount /mnt || true
+        exit 1
+      fi
+
+      echo "Found root-blank snapshot, proceeding with rollback"
+
+      if [[ -d "/mnt/root" ]]; then
+        echo "Removing nested subvolumes..."
+        btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read -r subvolume; do
+          if [[ -n "$subvolume" ]]; then
+            echo "Deleting /$subvolume subvolume..."
+            btrfs subvolume delete "/mnt/$subvolume" || echo "Warning: Failed to delete $subvolume"
           fi
         done
 
-        echo "[$(date -Is)] Deleting /root subvolume..." >> $LOGFILE
-        if btrfs subvolume delete /mnt/root >> $LOGFILE 2>&1; then
-          echo "[$(date -Is)] Deleted /root successfully." >> $LOGFILE
-        else
-          echo "[$(date -Is)] Failed to delete /root!" >> $LOGFILE
-        fi
-
-        echo "[$(date -Is)] Restoring blank /root subvolume..." >> $LOGFILE
-        if btrfs subvolume snapshot /mnt/root-blank /mnt/root >> $LOGFILE 2>&1; then
-          echo "[$(date -Is)] Restored blank /root successfully." >> $LOGFILE
-        else
-          echo "[$(date -Is)] Failed to restore blank /root!" >> $LOGFILE
+        echo "Deleting /root subvolume..."
+        if ! btrfs subvolume delete /mnt/root; then
+          echo "Error: Failed to delete /root subvolume"
+          umount /mnt || true
+          exit 1
         fi
       fi
 
@@ -84,6 +93,7 @@
         "/var/lib/nixos" # Nixos state
         "/var/lib/NetworkManager" # Network device state - remembers connection
         "/var/lib/systemd/coredump" # Crash dumps
+        "/var/lib/sbctl" # sbctl keys and data (lanzaboote)
         "/etc/NetworkManager/system-connections" # WiFi/network profiles - remember networks
         # "/var/lib/flatpak/" # Flatpak system-wide runtimes data (runtimes, applications and configuration)
       ];
