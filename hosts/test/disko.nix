@@ -51,15 +51,6 @@
                         "nodev"
                       ];
                     };
-                    "/root-blank" = {
-                      mountOptions = [
-                        "subvol=root-blank"
-                        "nodatacow"
-                        "noatime"
-                        "nosuid"
-                        "nodev"
-                      ];
-                    };
                     "/nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
