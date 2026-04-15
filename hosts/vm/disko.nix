@@ -30,22 +30,22 @@
                 passwordFile = "/tmp/disk-encryption.key";
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ]; # force creation
+                  extraArgs = [ 
+                    "-L"
+                    "nixos"
+                    "-f" # force creation
+                  ];
+                  postCreateHook = ''
+                    mount -t btrfs /dev/disk/by-label/nixos /mnt
+                    btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
+                    umount /mnt
+                  '';
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
                       mountOptions = [
                         "subvol=root"
                         "compress=zstd"
-                        "noatime"
-                        "nosuid"
-                        "nodev"
-                      ];
-                    };
-                    "/root-blank" = {
-                      mountOptions = [
-                        "subvol=root-blank"
-                        "nodatacow"
                         "noatime"
                         "nosuid"
                         "nodev"
