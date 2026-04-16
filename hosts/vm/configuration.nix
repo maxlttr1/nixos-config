@@ -8,9 +8,11 @@
 
 
   custom.boot.enable = lib.mkForce false;
+  
   boot.loader = {
     grub = {
       enable = true;
+      device = "/dev/vda1";
       efiSupport = true;
     };
     efi.canTouchEfiVariables = true;
