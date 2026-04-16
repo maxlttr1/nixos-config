@@ -9,10 +9,5 @@
 
   custom.boot.enable = lib.mkForce false;
   
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "/dev/vda";
-    };
-  };
+  boot.loader.grub.enable = true;
 }
