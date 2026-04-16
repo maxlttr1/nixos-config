@@ -40,7 +40,7 @@
       umount /btrfs_tmp
     '';*/
 
-    /*boot.initrd.postDeviceCommands = lib.mkAfter ''
+    boot.initrd.postDeviceCommands = lib.mkAfter ''
       set -euo pipefail
       echo "Starting impermanence rollback..."
 
@@ -82,7 +82,7 @@
       fi
 
       umount /mnt
-    '';*/
+    '';
 
     fileSystems."/persist".neededForBoot = true;
     environment.persistence."/persist" = {
