@@ -8,5 +8,11 @@
 
 
   custom.boot.enable = lib.mkForce false;
-  boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    grub = {
+      enable = true;
+      efiSupport = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 }
