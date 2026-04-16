@@ -9,5 +9,8 @@
 
   custom.boot.enable = lib.mkForce false;
   
-  boot.loader.grub.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    enableCryptodisk = true;
+  };
 }
