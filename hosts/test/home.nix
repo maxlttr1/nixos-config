@@ -5,12 +5,6 @@
     ../../homeManagerModules
   ];
 
-  custom.pkgs.enable = true;
-  custom.plasmaManager.enable = true;
-  custom.vscode.enable = true;
-  custom.xdgCustom.enable = true;
-  custom.yakuake.enable = true;
-
   home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
 
