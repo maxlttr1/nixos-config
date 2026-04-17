@@ -31,6 +31,9 @@
         Type = "oneshot";
         User = "${settings.username}";
       };
+      path = [
+        "${pkgs.borgbackup}"
+      ];
       script = ''
         if [ ! -d "${config.services.borgbackup.jobs."borgbackup-job".repo}" ]; then
           borg init --encryption=none ${config.services.borgbackup.jobs."borgbackup-job".repo}
