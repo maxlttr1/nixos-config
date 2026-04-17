@@ -22,23 +22,5 @@
         ${pkgs.borgbackup}/bin/borg compact ${config.services.borgbackup.jobs."borgbackup-job".repo}
       '';
     };
-
-    systemd.services."borgbackup-create-repo" = {
-      description = "Create backup repo for Borg if needed";
-      before = [ "borgbackup-job-borgbackup-job.service" ];
-      wantedBy = [ "borgbackup-job-borgbackup-job.service" ];
-      serviceConfig = {
-        Type = "oneshot";
-        User = "${settings.username}";
-      };
-      path = [
-        "${pkgs.borgbackup}"
-      ];
-      script = ''
-        if [ ! -d "${config.services.borgbackup.jobs."borgbackup-job".repo}" ]; then
-          borg init --encryption=none ${config.services.borgbackup.jobs."borgbackup-job".repo}
-        fi
-      '';
-    };
   };
 }
