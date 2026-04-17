@@ -13,4 +13,6 @@
     enable = true;
     enableCryptodisk = true;
   };
+  
+  custom.usbguard.enable = lib.mkForce false;
 }

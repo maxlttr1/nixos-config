@@ -29,6 +29,7 @@
       wantedBy = [ "borgbackup-job-borgbackup-job.service" ];
       serviceConfig = {
         Type = "oneshot";
+        User = "${settings.username}";
       };
       script = ''
         mkdir -p ${config.services.borgbackup.jobs."borgbackup-job".repo}
