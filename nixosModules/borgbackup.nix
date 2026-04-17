@@ -22,5 +22,17 @@
         ${pkgs.borgbackup}/bin/borg compact /home/${settings.username}/Syncthing-backup
       '';
     };
+
+    systemd.services."borg-backup-create-directory" = {
+      description = "Create backup directory for Borg if needed";
+      before = [ "borgbackup-job.service" ];
+      wantedBy = [ "borgbackup-job.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+      };
+      script = ''
+        mkdir -p ${config.services.borgbackup.jobs."borgbackup-job".repo}
+      '';
+    };
   };
 }
