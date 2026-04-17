@@ -23,8 +23,8 @@
       '';
     };
 
-    systemd.services."borgbackup-create-directory" = {
-      description = "Create backup directory for Borg if needed";
+    systemd.services."borgbackup-create-repo" = {
+      description = "Create backup repo for Borg if needed";
       before = [ "borgbackup-job-borgbackup-job.service" ];
       wantedBy = [ "borgbackup-job-borgbackup-job.service" ];
       serviceConfig = {
@@ -32,7 +32,9 @@
         User = "${settings.username}";
       };
       script = ''
-        mkdir -p ${config.services.borgbackup.jobs."borgbackup-job".repo}
+        if [ ! -d "${config.services.borgbackup.jobs."borgbackup-job".repo}" ]; then
+          borg init --encryption=none ${config.services.borgbackup.jobs."borgbackup-job".repo}
+        fi
       '';
     };
   };
