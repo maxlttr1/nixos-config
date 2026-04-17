@@ -23,10 +23,10 @@
       '';
     };
 
-    systemd.services."borg-backup-create-directory" = {
+    systemd.services."borgbackup-create-directory" = {
       description = "Create backup directory for Borg if needed";
-      before = [ "borgbackup-job.service" ];
-      wantedBy = [ "borgbackup-job.service" ];
+      before = [ "borgbackup-job-borgbackup-job.service" ];
+      wantedBy = [ "borgbackup-job-borgbackup-job.service" ];
       serviceConfig = {
         Type = "oneshot";
       };
