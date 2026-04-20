@@ -18,6 +18,13 @@
         monthly = 1;
         yearly = 1;
       };
+      postInit = ''
+        if [[ ! -d ${config.services.borgbackup.jobs."borgbackup-job".repo} ]]; then
+          ${pkgs.borgbackup}/bin/borg init \
+            --encryption=${config.services.borgbackup.jobs."borgbackup-job".encryption.mode} \
+            ${config.services.borgbackup.jobs."borgbackup-job".repo}
+        fi 
+      '';
       postHook = ''
         ${pkgs.borgbackup}/bin/borg compact ${config.services.borgbackup.jobs."borgbackup-job".repo}
       '';

@@ -3,21 +3,6 @@
 let
   webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
   webhookDir = "/home/${settings.username}/.cache/sops-nix/secrets/";
-  notifyScript = pkgs.writeShellScript "notify-discord" ''
-    
-    url=$(cat ${webhookPath})
-    status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
-
-    if [ $status -eq 0 ]; then
-      ${pkgs.curl}/bin/curl -X POST "$url" \
-        -H "Content-Type: application/json" \
-        -d "{\"content\": \"✅ NixOS upgrade successful on **${config.networking.hostName}**\"}"
-    else
-      ${pkgs.curl}/bin/curl -X POST "$url" \
-        -H "Content-Type: application/json" \
-        -d "{\"content\": \"❌ NixOS upgrade failed on **${config.networking.hostName}**\"}"
-    fi
-  '';
 in
 
 {
@@ -51,17 +36,20 @@ in
     };
 
     systemd.services."nixos-upgrade" = {
-      onSuccess = [ "nixos-upgrade-notification.service" ];
-      onFailure = [ "nixos-upgrade-notification.service" ];
-    };
+      postStop = ''
+        url=$(cat ${webhookPath})
+        status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
-    systemd.services."nixos-upgrade-notification" = {
-      description = "Send a notification nixos-upgrade.service ends";
-      after = [ "sops-nix.service" ];
-      serviceConfig = {
-        ExecStart = "${notifyScript}";
-        Type = "oneshot";
-      };
+        if [ $status -eq 0 ]; then
+          ${pkgs.curl}/bin/curl -X POST "$url" \
+            -H "Content-Type: application/json" \
+            -d "{\"content\": \"✅ NixOS upgrade successful on **${config.networking.hostName}**\"}"
+        else
+          ${pkgs.curl}/bin/curl -X POST "$url" \
+            -H "Content-Type: application/json" \
+            -d "{\"content\": \"❌ NixOS upgrade failed on **${config.networking.hostName}**\"}"
+        fi
+      '';
     };
 
     systemd.user.services."copy-discord-webhook" = {
