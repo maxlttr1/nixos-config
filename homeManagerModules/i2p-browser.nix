@@ -8,7 +8,7 @@
       i2p-browser = {
         name = "i2p Browser";
         genericName = "Web Browser";
-        exec = "${pkgs.librewolf}/bin/librewolf";
+        exec = "librewolf -P default";
         icon = "librewolf";
       };
     };
@@ -34,6 +34,7 @@
           settings = [
             {
               name = "i2p";
+              toolbar = true;
               bookmarks = [
                 {
                   name = "router console";
