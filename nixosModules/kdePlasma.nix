@@ -21,7 +21,7 @@
     };
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      #discover
+      discover
       elisa
       #kate
       khelpcenter
