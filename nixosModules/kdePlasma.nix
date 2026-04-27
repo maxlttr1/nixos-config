@@ -26,6 +26,7 @@
       #kate
       khelpcenter
       #konsole
+      krdp
     ];
   };
 }
