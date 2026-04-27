@@ -3,7 +3,6 @@
 {
   custom.hostname = "terra-terra";
 
-  custom.atd.enable = true;
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;
@@ -17,6 +16,7 @@
       sizeGiB = 8;
     };
     zramSwap.enable = true;
+    swappiness = 10;
   };
   custom.tlp.enable = true;
   custom.touchpad.enable = true;
