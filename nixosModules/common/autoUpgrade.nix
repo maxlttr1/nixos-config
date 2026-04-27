@@ -23,7 +23,7 @@ in
         #"--update-input"
         #"nixpkgs-main"
         "-L" # Show logs
-        "--refresh" # Force fresh fetch from GitHub
+        # "--refresh" # Force fresh fetch from GitHub
       ];
       dates = config.custom.autoUpgrade.frequency;
       persistent = true;
