@@ -1,0 +1,26 @@
+services:
+  gotify:
+    image: gotify/server:latest
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gotify-https.tls=true
+      - traefik.http.routers.gotify-https.tls.certresolver=myresolver
+      - traefik.http.routers.gotify-https.entrypoints=websecure
+      - traefik.http.routers.gotify-https.rule=Host(`gotify.maxlttr.fr`)
+      - traefik.http.services.gotify-https.loadbalancer.server.port=8096
+    user: "${PUID}:${PGID}"
+    environment:
+      TZ: "Europe/Paris"
+      GOTIFY_DEFAULTUSER_PASS: 'admin'
+    volumes:
+      - ${HOME}/docker/gotify/gotify_data:/app/data
+    ports:
+      - 127.0.0.1:8880:80
+      - ${TAILSCALE_IP}:8080:80
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
