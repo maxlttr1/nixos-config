@@ -18,7 +18,7 @@ services:
       - ${HOME}/docker/gotify/gotify_data:/app/data
     ports:
       - 127.0.0.1:8880:80
-      - ${TAILSCALE_IP}:8080:80
+      - ${TAILSCALE_IP}:8880:80
     restart: unless-stopped
 
 networks:
