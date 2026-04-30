@@ -6,7 +6,7 @@
   config = lib.mkIf config.custom.fonts.enable {
     fonts.fontconfig.enable = true;
 
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       nerd-fonts.mononoki
     ];
   };

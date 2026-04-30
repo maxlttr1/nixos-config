@@ -15,8 +15,8 @@
     */
 
     /*
-      environment.systemPackages = with pkgs.stable; [
-      sbctl
+      environment.systemPackages = with pkgs; [
+        sbctl
       ];
     */
 

@@ -4,13 +4,17 @@
   options.custom.pkgs.enable = lib.mkEnableOption "additional packages";
 
   config = lib.mkIf config.custom.pkgs.enable {
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       bleachbit
       direnv
       typst
       typst-live
       vlc
-    ];
+    ] ++ (with pkgs.stable; [
+
+    ]) ++ (with pkgs.unstable; [
+
+	]);
 
     services.flatpak = {
       update.auto = {

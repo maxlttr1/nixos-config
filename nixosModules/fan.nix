@@ -24,7 +24,7 @@
       '';
     };
 
-    environment.systemPackages = with pkgs.stable; [
+    environment.systemPackages = with pkgs; [
       gnuplot
       lm_sensors
     ];

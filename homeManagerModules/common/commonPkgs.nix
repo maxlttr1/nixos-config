@@ -4,7 +4,7 @@
   options.custom.commonPkgs.enable = lib.mkEnableOption "common packages";
 
   config = lib.mkIf config.custom.commonPkgs.enable {
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       age
       # at
       bat
@@ -25,6 +25,10 @@
       unrar
       vim
       wget
-    ];
+    ] ++ (with pkgs.stable; [
+
+    ]) ++ (with pkgs.unstable; [
+
+	  ]);
   };
 }

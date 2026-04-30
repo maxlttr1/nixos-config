@@ -8,7 +8,7 @@ in
   options.custom.hyprland.enable = lib.mkEnableOption "Hyprland wayland compositor";
 
   config = lib.mkIf config.custom.hyprland.enable {
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       xfce.thunar
       # lf
       hyprpaper
@@ -21,7 +21,7 @@ in
       enable = true;
       font = {
         name = font;
-        package = pkgs.stable.nerd-fonts.mononoki;
+        package = pkgs.nerd-fonts.mononoki;
         size = 10;
       };
       colorScheme = "dark";

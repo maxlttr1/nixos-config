@@ -11,7 +11,7 @@
       '';*/
     };
 
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       fishPlugins.autopair # Auto-complete matching pairs in the Fish command line
       fishPlugins.done # Automatically receive notifications when long processes finish
       fishPlugins.fifc # Fzf powers on top of fish completion engine and allows customizable completion rules

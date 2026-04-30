@@ -4,7 +4,7 @@
   options.custom.yakuake.enable = lib.mkEnableOption "Enable Yakuake terminal emulator";
 
   config = lib.mkIf config.custom.yakuake.enable {
-    home.packages = with pkgs.stable; [
+    home.packages = with pkgs; [
       kdePackages.yakuake
     ];
 
