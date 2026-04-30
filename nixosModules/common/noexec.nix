@@ -13,6 +13,7 @@
     ];
     "/tmp" = {
       device = "/tmp";
+      fsType = "ext4";
       options = [
         "bind"
         "noexec"
@@ -20,6 +21,7 @@
     };
     "/run/media" = {
       device = "/run/media";
+      fsType = "ext4";
       options = lib.mkAfter [
         "bind"
         "noexec"
@@ -27,6 +29,7 @@
     };
     "/home/${settings.username}/Public" = lib.mkIf config.custom.users.enable {
       device = "/home/${settings.username}/Public";
+      fsType = "ext4";
       options = lib.mkAfter [
         "bind"
         "noexec"
@@ -34,6 +37,7 @@
     };
     "/home/${settings.username}/Downloads" = lib.mkIf config.custom.users.enable {
       device = "/home/${settings.username}/Downloads";
+      fsType = "ext4";
       options = lib.mkAfter [
         "bind"
         "noexec"
