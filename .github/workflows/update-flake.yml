@@ -75,11 +75,15 @@ jobs:
     - name: Success notifications
       if: success()
       run: |
-          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
-          -H "Content-Type: application/json" \
-          -d "{\"content\": \"✅ Nix flake.lock updated and passed check.\"}"
+          git diff flake.lock > flake-update.diff || true
 
-      #   curl -d "✅ Nix flake.lock updated and passed check" ntfy.sh/${{ secrets.NTFY_URL }}
+          changes=$(cat ./flake-update.diff | head -c 1900)
+          
+          payload=$(${pkgs.jq}/bin/jq -n --arg msg "✅ Nix flake.lock updated and passed check.
+          **Summary** \`\`\`$changes
+          ...\`\`\`" '{content: $msg}')
+          
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} -H "Content-Type: application/json" -d "$payload"
 
     - name: Failure notifications
       if: failure()
@@ -87,8 +91,6 @@ jobs:
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
           -H "Content-Type: application/json" \
           -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
-
-      #    curl -d "❌ Nix flake update failed (will retry next week)" ntfy.sh/${{ secrets.NTFY_URL }}
 
 
     
