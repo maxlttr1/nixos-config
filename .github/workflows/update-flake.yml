@@ -79,7 +79,7 @@ jobs:
 
           changes=$(cat ./flake-update.diff | head -c 1900)
           
-          payload=$(${pkgs.jq}/bin/jq -n --arg msg "✅ Nix flake.lock updated and passed check.
+          payload=$(jq -n --arg msg "✅ Nix flake.lock updated and passed check.
           **Summary** \`\`\`$changes
           ...\`\`\`" '{content: $msg}')
           
