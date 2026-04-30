@@ -6,4 +6,5 @@ services:
       - "${TAILSCALE_IP}:3030:8080"
     volumes:
       - ${HOME}/docker/open-webui:/app/backend/data
+      - ${HOME}/docker/open-webui/.ollama:/root/.ollama
     restart: unless-stopped
