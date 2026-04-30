@@ -81,7 +81,7 @@ jobs:
           
           payload=$(jq -n --arg msg "✅ Nix flake.lock updated and passed check.
           **Summary** \`\`\`$changes
-          ...\`\`\`" '{content: $msg}')
+          \`\`\`" '{content: $msg}')
           
           curl -X POST ${{ secrets.DISCORD_WEBHOOK }} -H "Content-Type: application/json" -d "$payload"
 

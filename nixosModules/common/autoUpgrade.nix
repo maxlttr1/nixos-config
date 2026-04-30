@@ -53,7 +53,7 @@ in
           
           payload=$(${pkgs.jq}/bin/jq -n --arg msg "✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*
           **Summary** \`\`\`$summary
-          ...\`\`\`" '{content: $msg}')
+          \`\`\`" '{content: $msg}')
           
           ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
         else
