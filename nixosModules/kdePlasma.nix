@@ -7,10 +7,14 @@
 
   config = lib.mkIf config.custom.kdePlasma.enable {
     services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.autoNumlock = true;
-    services.displayManager.sddm.wayland.enable = true; # Launch sddm in Wayland too (try to avoid running an X server)
-    services.displayManager.defaultSession = "plasma"; # plasma or plasmax11
+    services.displayManager = {
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+        wayland.enable = true; # Launch sddm in Wayland too (try to avoid running an X server)
+      };
+      defaultSession = "plasma"; # plasma or plasmax11
+    };
 
     programs.kdeconnect.enable = true;
 
