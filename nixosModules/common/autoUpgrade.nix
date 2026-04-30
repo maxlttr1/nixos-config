@@ -36,21 +36,53 @@ in
     };
 
     systemd.services."nixos-upgrade" = {
+      preStart = ''
+        cd /tmp
+        ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config
+        ${pkgs.nix}/bin/nix store diff-closures /var/run/current-system ./result > /tmp/nixos-upgrade-changes.txt
+        rm -r ./result
+      '';
       postStop = ''
         url=$(cat ${webhookPath})
         status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
         if [ $status -eq 0 ]; then
-          ${pkgs.curl}/bin/curl -X POST "$url" \
-            -H "Content-Type: application/json" \
-            -d "{\"content\": \"✅ NixOS upgrade successful on **${config.networking.hostName}**\"}"
+          changes=$(cat /tmp/nixos-upgrade-changes.txt)
+          total=$(echo "$changes" | wc -l)
+          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e kernel | head -c 1900)
+          
+          payload=$(${pkgs.jq}/bin/jq -n --arg msg "✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*
+          **Summary** \`\`\`$summary
+          ...\`\`\`" '{content: $msg}')
+          
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
         else
-          ${pkgs.curl}/bin/curl -X POST "$url" \
-            -H "Content-Type: application/json" \
-            -d "{\"content\": \"❌ NixOS upgrade failed on **${config.networking.hostName}**\"}"
+          error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
+          
+          payload=$(${pkgs.jq}/bin/jq -n --arg msg "❌ NixOS upgrade failed on **${config.networking.hostName}**
+          **Error log:** \`\`\`$error_log\`\`\`" '{content: $msg}')
+
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
         fi
       '';
     };
+
+
+    /*
+    payload=$(${pkgs.jq}/bin/jq -n --arg msg "# Titre\n$error_log" '{
+            title: "Markdown Example",
+            message: $msg,
+            priority: 5,
+            extras: {
+              "client::display": {
+                contentType: "text/markdown"
+              }
+            }
+          }')
+          curl "https://nexus-nexus/message?token=A." \
+            -H "Content-Type: application/json" \
+            -d "$payload"
+    */
 
     systemd.user.services."copy-discord-webhook" = {
       description = "Copy Discord webhook secret to user home directory";
