@@ -20,7 +20,10 @@
       ];
     */
 
-    boot.loader.systemd-boot.enable = lib.mkForce false;
+    boot.loader.systemd-boot = {
+      enable = lib.mkForce false;
+      consoleMode = "max";
+    };
 
     boot.lanzaboote = {
       enable = true;
