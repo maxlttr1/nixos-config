@@ -1,6 +1,7 @@
 { lib, config, pkgs, settings, ... }:
 
 let
+  githubTokenPath = "/home/${settings.username}/.cache/sops-nix/secrets/github-token";
   webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
   webhookDir = "/home/${settings.username}/.cache/sops-nix/secrets/";
 in
@@ -10,7 +11,7 @@ in
     custom.autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
     custom.autoUpgrade.frequency = lib.mkOption {
       description = "AutoUpgrade frequency";
-      default = "02:00";
+      default = "weekly";
       type = lib.types.enum [ "02:00" "daily" "weekly" "monthly" "yearly" ];
     };
   };
@@ -91,6 +92,7 @@ in
       };
       script = ''
         mkdir -p ${webhookDir}
+        cp /home/${settings.username}/.config/sops-nix/secrets/github-token ${githubTokenPath}
         cp /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
       '';
       after = [ "sops-nix.service" ];
