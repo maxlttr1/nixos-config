@@ -6,11 +6,15 @@
   };
 
   config = lib.mkIf config.custom.optimise.enable {
-    nix.optimise.automatic = true; #periodic optimisation of the nix store
-    nix.settings.auto-optimise-store = true; #the store can be optimised during every build. This may slow down builds
+    /*nix.optimise = {
+      automatic = true;
+      dates = ["weekly"];
+      persistent = true;
+    };*/
+    
+    nix.settings.auto-optimise-store = true; # Optimise store during every build. This may slow down builds
 
     nix.gc = {
-      #Automated Garbage collection
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 14d";
