@@ -12,6 +12,7 @@
       age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
+        "github-token" = { mode = "0600"; };
         "vpn.env" = { mode = "0600"; };
         "suaps.env" = { mode = "0600"; };
         "nixos_ssh_setup.public" = { mode = "0640"; };
