@@ -2,6 +2,7 @@
 
 let
   githubTokenPath = "/home/${settings.username}/.cache/sops-nix/secrets/github-token";
+  webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
 in
 
 {
@@ -29,7 +30,6 @@ in
           echo "GitHub token file not found at ${githubTokenPath}"
           exit 1
         fi
-        
         githubToken=$(cat ${githubTokenPath})
         
         mkdir -p /home/${settings.username}/.cache/
@@ -86,6 +86,18 @@ in
         if ${pkgs.git}/bin/git branch --list "$BRANCH" | grep -q .; then
           ${pkgs.git}/bin/git switch master
           ${pkgs.git}/bin/git branch -D "$BRANCH"
+        fi
+      '';
+      postStop = ''
+        url=$(cat ${webhookPath})
+        status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
+
+        if [ $status -eq 0 ]; then
+          payload="✅ Nix flake.lock updated and passed check."          
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+        else
+          payload="❌ Nix flake update failed."          
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
         fi
       '';
     };
