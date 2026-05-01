@@ -78,7 +78,7 @@ in
           https://api.github.com/repos/maxlttr1/nixos-config/pulls \
           -d "{
             \"title\": \"Update to flake.lock on $DATE\",
-            \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake .#nexus-nexus --build-host $(id -un)@nexus-nexus\",
+            \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH or sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\",
             \"head\": \"$BRANCH\",
             \"base\": \"master\"
           }"
