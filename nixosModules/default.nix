@@ -4,6 +4,7 @@
 
     ./atd.nix
     ./autoAmpDL.nix
+    ./autoFlakeUpdate.nix
     ./bluetooth.nix
     ./borgbackup.nix
     ./cups.nix

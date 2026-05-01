@@ -1,6 +1,7 @@
 {
   custom.hostname = "nexus-nexus";
 
+  custom.autoFlakeUpdate.enable = true;
   custom.borgbackup.enable = true;
   custom.fail2ban.enable = true;
   custom.intel.enable = true;
