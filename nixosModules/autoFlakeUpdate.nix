@@ -93,11 +93,10 @@ in
         status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
         if [ $status -eq 0 ]; then
-          payload="✅ Nix flake.lock updated and passed check."          
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"✅ Nix flake.lock updated and passed check.\"}"
         else
           payload="❌ Nix flake update failed."          
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
         fi
       '';
     };
