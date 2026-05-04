@@ -7,6 +7,7 @@
     home.packages = with pkgs; [
       bleachbit
       direnv
+      signal-desktop # Unverified on flathub
       typst
       typst-live
       vlc
@@ -28,7 +29,6 @@
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
         "com.github.jeromerobert.pdfarranger"
-        "org.signal.Signal"
         "com.valvesoftware.Steam"
         "org.mozilla.Thunderbird"
         "org.torproject.torbrowser-launcher"
