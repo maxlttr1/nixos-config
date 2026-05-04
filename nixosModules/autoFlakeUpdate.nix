@@ -23,8 +23,10 @@ in
         User = "${settings.username}";
         WorkingDirectory = "/home/${settings.username}/";
       };
+
       script = ''
         set -euox pipefail
+        export PATH=${pkgs.git}/bin:$PATH # Needed for nix flake update
 
         if [ ! -f ${githubTokenPath} ]; then
           echo "GitHub token file not found at ${githubTokenPath}"
