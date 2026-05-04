@@ -4,11 +4,8 @@
   options.custom.ssh.enable = lib.mkEnableOption "SSH agent and configuration";
 
   config = lib.mkIf config.custom.ssh.enable {
-    services.ssh-agent = {
-      enable = true;
-      enableFishIntegration = true;
-      enableBashIntegration = true;
-    };
+    services.ssh-agent.enable = true;
+      
 
     home.file.".ssh/config".text = ''
       Host nexus-nexus
