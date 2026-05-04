@@ -15,31 +15,33 @@ in
 {
   options.custom.plasmaManager.enable = lib.mkEnableOption "KDE Plasma manager";
 
-
   config = lib.mkIf config.custom.plasmaManager.enable {
-    home.file.".config/mimeapps.list".text = ''
-      [Added Associations]
-      application/json=org.kde.kwrite.desktop;
-      application/pdf=io.gitlab.librewolf-community.desktop;
-      application/x-docbook+xml=org.kde.kwrite.desktop;
-      application/x-yaml=org.kde.kwrite.desktop;
-      text/markdown=org.kde.kwrite.desktop;
-      text/plain=org.kde.kwrite.desktop;
-      text/x-cmake=org.kde.kwrite.desktop;
-      x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
-      x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
+    home.file.".config/mimeapps.list" = {
+	  text = ''
+		[Added Associations]
+		application/json=org.kde.kwrite.desktop;
+		application/pdf=io.gitlab.librewolf-community.desktop;
+		application/x-docbook+xml=org.kde.kwrite.desktop;
+		application/x-yaml=org.kde.kwrite.desktop;
+		text/markdown=org.kde.kwrite.desktop;
+		text/plain=org.kde.kwrite.desktop;
+		text/x-cmake=org.kde.kwrite.desktop;
+		x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
+		x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
 
-      [Default Applications]
-      application/json=org.kde.kwrite.desktop;
-      application/pdf=io.gitlab.librewolf-community.desktop;
-      application/x-docbook+xml=org.kde.kwrite.desktop;
-      application/x-yaml=org.kde.kwrite.desktop;
-      text/markdown=org.kde.kwrite.desktop;
-      text/plain=org.kde.kwrite.desktop;
-      text/x-cmake=org.kde.kwrite.desktop;
-      x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
-      x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
-    '';
+		[Default Applications]
+		application/json=org.kde.kwrite.desktop;
+		application/pdf=io.gitlab.librewolf-community.desktop;
+		application/x-docbook+xml=org.kde.kwrite.desktop;
+		application/x-yaml=org.kde.kwrite.desktop;
+		text/markdown=org.kde.kwrite.desktop;
+		text/plain=org.kde.kwrite.desktop;
+		text/x-cmake=org.kde.kwrite.desktop;
+		x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
+		x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
+		'';
+	  force = true;
+	};
 
     programs.plasma = {
       enable = true;
