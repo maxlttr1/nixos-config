@@ -36,10 +36,12 @@
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     lanzaboote = {
