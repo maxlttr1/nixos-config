@@ -39,7 +39,11 @@ in
     systemd.services."nixos-upgrade" = {
       preStart = ''
         cd /tmp
-        ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config
+        if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
+          echo "Failed to build new system configuration"
+          exit 1
+        fi
+        
         ${pkgs.nix}/bin/nix store diff-closures /var/run/current-system ./result > /tmp/nixos-upgrade-changes.txt
         rm -r ./result
       '';
@@ -47,43 +51,29 @@ in
         url=$(cat ${webhookPath})
         status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
-        if [ $status -eq 0 ]; then
+        if [ $status -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
           changes=$(cat /tmp/nixos-upgrade-changes.txt)
-          total=$(echo "$changes" | wc -l)
-          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e kernel | head -c 1900)
+          total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
+          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
           
-          payload=$(${pkgs.jq}/bin/jq -n --arg msg "✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*
-          **Summary** \`\`\`$summary
-          \`\`\`" '{content: $msg}')
-          
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+          if [ -n "$summary" ]; then
+            msg="# ✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*
+            ## Summary:
+\`\`\`$summary\`\`\`"
+          else
+            msg="# ✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*"
+          fi       
         else
           error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
-          
-          payload=$(${pkgs.jq}/bin/jq -n --arg msg "❌ NixOS upgrade failed on **${config.networking.hostName}**
-          **Error log:** \`\`\`$error_log\`\`\`" '{content: $msg}')
-
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+          msg="# ❌ NixOS upgrade failed on **${config.networking.hostName}**
+          ## Error log:
+\`\`\`$error_log\`\`\`"
         fi
+        
+        payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}')
+        ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"  
       '';
     };
-
-
-    /*
-    payload=$(${pkgs.jq}/bin/jq -n --arg msg "# Titre\n$error_log" '{
-            title: "Markdown Example",
-            message: $msg,
-            priority: 5,
-            extras: {
-              "client::display": {
-                contentType: "text/markdown"
-              }
-            }
-          }')
-          curl "https://nexus-nexus/message?token=A." \
-            -H "Content-Type: application/json" \
-            -d "$payload"
-    */
 
     systemd.user.services."copy-discord-webhook" = {
       description = "Copy Discord webhook secret to user home directory";
