@@ -57,15 +57,15 @@ in
           summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
           
           if [ -n "$summary" ]; then
-            msg="# ✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*
+            msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
             ## Summary:
 \`\`\`$summary\`\`\`"
           else
-            msg="# ✅ NixOS upgrade successful on **${config.networking.hostName}**: *$total packages changed*"
+            msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*"
           fi       
         else
           error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
-          msg="# ❌ NixOS upgrade failed on **${config.networking.hostName}**
+          msg="# ❌ NixOS upgrade failed on \`${config.networking.hostName}\`
           ## Error log:
 \`\`\`$error_log\`\`\`"
         fi
