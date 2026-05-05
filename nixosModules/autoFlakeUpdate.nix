@@ -10,8 +10,8 @@ in
     custom.autoFlakeUpdate.enable = lib.mkEnableOption "Enable automatic NixOS flake input updates";
     custom.autoFlakeUpdate.frequency = lib.mkOption {
       description = "Frequency of automatic flake input updates";
-      default = "weekly";
-      type = lib.types.enum [ "daily" "weekly" "monthly" "yearly" ];
+      default = "Sat 2:00";
+      type = lib.types.enum [ "daily" "Sat 2:00" "weekly" "monthly" "yearly" ];
     };
   };
 
@@ -21,9 +21,19 @@ in
       serviceConfig = {
         Type = "oneshot";
         User = "${settings.username}";
-        WorkingDirectory = "/home/${settings.username}/";
-      };
+        WorkingDirectory = "/home/${settings.username}/.cache";
 
+        ProtectSystem = "strict";
+        ProtectHome = "read-only";
+        ReadWritePaths = [
+          "/home/${settings.username}/.cache/"
+          "/tmp"
+        ];
+        NoNewPrivileges = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+      };
       script = ''
         set -euox pipefail
         export PATH=${pkgs.git}/bin:$PATH # Needed for nix flake update
@@ -34,14 +44,11 @@ in
         fi
         githubToken=$(cat ${githubTokenPath})
         
-        mkdir -p /home/${settings.username}/.cache/
-        if [ ! -d /home/${settings.username}/.cache/nixos-config ]; then
-          ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git /home/${settings.username}/.cache/nixos-config
-        else
-          echo "Flake input directory already exists. Skipping clone."
+        if [ ! -d "nixos-config" ]; then
+          ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
-        cd /home/${settings.username}/.cache/nixos-config
+        cd nixos-config/
         ${pkgs.git}/bin/git reset --hard origin/master
         ${pkgs.git}/bin/git fetch origin
         ${pkgs.git}/bin/git checkout master
@@ -52,6 +59,7 @@ in
           exit 1
         fi
 
+        ${pkgs.git}/bin/git add flake.lock
         if ! ${pkgs.nix}/bin/nix flake check; then
           echo "Flake check failed"
           exit 1
@@ -68,7 +76,6 @@ in
         BRANCH="flake-auto-update-$DATE"
         echo "Generated branch: $BRANCH"
         ${pkgs.git}/bin/git checkout -B "$BRANCH"
-        ${pkgs.git}/bin/git add flake.lock
         ${pkgs.git}/bin/git commit -m "Update flake.lock" || true
         ${pkgs.git}/bin/git push origin "$BRANCH"
     
@@ -91,6 +98,8 @@ in
         fi
       '';
       postStop = ''
+        set -euox pipefail
+        
         url=$(cat ${webhookPath})
         status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
@@ -104,7 +113,13 @@ in
     };
 
     systemd.timers."nixos-flake-update" = {
-      wantedBy = [ "multi-user.target" ];
+      after = [ 
+        "multi-user.target"
+        "network-online.target" 
+      ];
+      requires = [ 
+        "network-online.target" 
+      ];
       timerConfig = {
         OnCalendar = "${config.custom.autoFlakeUpdate.frequency}";
         Persistent = true;

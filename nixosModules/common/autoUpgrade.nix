@@ -11,8 +11,8 @@ in
     custom.autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
     custom.autoUpgrade.frequency = lib.mkOption {
       description = "AutoUpgrade frequency";
-      default = "weekly";
-      type = lib.types.enum [ "02:00" "daily" "weekly" "monthly" "yearly" ];
+      default = "Sun 2:00";
+      type = lib.types.enum [ "02:00" "daily" "Sun 2:00" "weekly" "monthly" "yearly" ];
     };
   };
 
@@ -38,6 +38,8 @@ in
 
     systemd.services."nixos-upgrade" = {
       preStart = ''
+        set -euox pipefail
+
         cd /tmp
         if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
           echo "Failed to build new system configuration"
@@ -48,6 +50,8 @@ in
         rm -r ./result
       '';
       postStop = ''
+        set -euox pipefail
+
         url=$(cat ${webhookPath})
         status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
 
@@ -81,6 +85,8 @@ in
         Type = "oneshot";
       };
       script = ''
+        set -euox pipefail
+        
         mkdir -p ${webhookDir}
         cp /home/${settings.username}/.config/sops-nix/secrets/github-token ${githubTokenPath}
         cp /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
