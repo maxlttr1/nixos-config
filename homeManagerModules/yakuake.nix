@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.custom.yakuake.enable = lib.mkEnableOption "Enable Yakuake terminal emulator";
@@ -8,7 +13,7 @@
       kdePackages.yakuake
     ];
 
-    home .file.".config/yakuakerc".text = lib.mkIf config.custom.yakuake.enable ''
+    home.file.".config/yakuakerc".text = lib.mkIf config.custom.yakuake.enable ''
       [Dialogs]
       FirstRun=false
     '';
