@@ -6,13 +6,17 @@
   };
 
   config = lib.mkIf config.custom.optimise.enable {
-    /*nix.optimise = {
-      automatic = true;
-      dates = ["weekly"];
-      persistent = true;
-    };*/
-    
+    /*
+      nix.optimise = {
+        automatic = true;
+        dates = ["weekly"];
+        persistent = true;
+      };
+    */
+
     nix.settings.auto-optimise-store = true; # Optimise store during every build. This may slow down builds
+
+    nix.daemonCPUSchedPolicy = "idle"; # Idle is for extremely low-priority tasks that should only be run when no other task requires CPU time
 
     nix.gc = {
       automatic = true;
