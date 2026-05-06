@@ -24,11 +24,9 @@
         "/home"
         "/root"
         "/opt"
-        "/tmp"
         "/etc"
         "/var"
         "/usr"
-        "/nix"
       ];
     };
   };
