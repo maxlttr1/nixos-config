@@ -1,4 +1,4 @@
-{ config, pkgs, settings, ... }:
+{ settings, ... }:
 
 {
   imports = [
@@ -6,6 +6,7 @@
   ];
 
   custom.i2p-browser.enable = true;
+  custom.kate.enable = true;
   custom.pkgs.enable = true;
   custom.plasmaManager.enable = true;
   custom.vscode.enable = true;

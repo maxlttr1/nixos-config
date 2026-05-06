@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.custom.commonPkgs.enable = lib.mkEnableOption "common packages";
@@ -25,10 +30,6 @@
       unrar
       vim
       wget
-    ] ++ (with pkgs.stable; [
-
-    ]) ++ (with pkgs.unstable; [
-
-	  ]);
+    ];
   };
 }

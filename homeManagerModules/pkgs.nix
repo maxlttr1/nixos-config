@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.custom.pkgs.enable = lib.mkEnableOption "additional packages";
@@ -7,20 +12,16 @@
     home.packages = with pkgs; [
       bleachbit
       direnv
-      signal-desktop # Unverified on flathub
+      unstable.signal-desktop # Unverified on flathub
       typst
       typst-live
       vlc
-    ] ++ (with pkgs.stable; [
-
-    ]) ++ (with pkgs.unstable; [
-
-	]);
+    ];
 
     services.flatpak = {
       update.auto = {
         enable = true;
-        onCalendar = "daily";
+        onCalendar = "weekly";
       };
       packages = [
         "com.google.Chrome"
