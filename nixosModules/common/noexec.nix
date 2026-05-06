@@ -1,4 +1,9 @@
-{ lib, config, settings, ... }:
+{
+  lib,
+  config,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -11,14 +16,6 @@
       "nodev"
       "noatime"
     ];
-    "/tmp" = {
-      device = "/tmp";
-      fsType = "ext4";
-      options = [
-        "bind"
-        "noexec"
-      ];
-    };
     "/run/media" = {
       device = "/run/media";
       fsType = "ext4";

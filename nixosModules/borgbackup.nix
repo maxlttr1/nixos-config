@@ -1,4 +1,10 @@
-{ lib, config, pkgs, settings, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -12,18 +18,16 @@
       encryption.mode = "none";
       repo = "/home/${settings.username}/Syncthing-backup";
       compression = "auto,zstd";
-      startAt = "daily";
+      startAt = "monthly";
       prune.keep = {
-        weekly = 1;
-        monthly = 1;
-        yearly = 1;
+        monthly = 2;
       };
       postInit = ''
         if [[ ! -d ${config.services.borgbackup.jobs."borgbackup-job".repo} ]]; then
           ${pkgs.borgbackup}/bin/borg init \
             --encryption=${config.services.borgbackup.jobs."borgbackup-job".encryption.mode} \
             ${config.services.borgbackup.jobs."borgbackup-job".repo}
-        fi 
+        fi
       '';
       postHook = ''
         ${pkgs.borgbackup}/bin/borg compact ${config.services.borgbackup.jobs."borgbackup-job".repo}
