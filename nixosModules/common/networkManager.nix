@@ -1,4 +1,9 @@
-{ lib, config, settings, ... }:
+{
+  lib,
+  config,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -21,7 +26,11 @@
       enable = true;
       dnsovertls = "opportunistic";
       dnssec = "allow-downgrade";
-      fallbackDns = [ "9.9.9.9" "1.1.1.1" "8.8.8.8" ];
+      fallbackDns = [
+        "9.9.9.9"
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
     };
 
     users.users."${settings.username}".extraGroups = [ "networkmanager" ];

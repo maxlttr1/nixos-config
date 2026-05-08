@@ -1,4 +1,9 @@
-{ lib, config, settings, ... }:
+{
+  lib,
+  config,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -11,15 +16,17 @@
       openFirewall = true;
       settings = {
         global = {
-          /*"workgroup" = "WORKGROUP";
-          "server string" = "smbnix";
-          "netbios name" = "smbnix";
-          "security" = "user";
-          "hosts allow" = "192.168.0. 127.0.0.1 localhost";
-          "hosts deny" = "0.0.0.0/0";
-          "guest account" = "nobody";
-          #"map to guest" = "bad user";
-          "invalid users" = [ "root" ];*/
+          /*
+            "workgroup" = "WORKGROUP";
+            "server string" = "smbnix";
+            "netbios name" = "smbnix";
+            "security" = "user";
+            "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+            "hosts deny" = "0.0.0.0/0";
+            "guest account" = "nobody";
+            #"map to guest" = "bad user";
+            "invalid users" = [ "root" ];
+          */
         };
         "share" = {
           "path" = "/home/${settings.username}/Samba";
@@ -34,7 +41,7 @@
       };
     };
 
-    # samba-wsdd service is used to advertise the shares to Windows hosts 
+    # samba-wsdd service is used to advertise the shares to Windows hosts
     services.samba-wsdd = {
       enable = true;
       openFirewall = true;

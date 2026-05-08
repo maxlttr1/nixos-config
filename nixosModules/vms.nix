@@ -1,4 +1,10 @@
-{ lib, config, settings, pkgs, ... }:
+{
+  lib,
+  config,
+  settings,
+  pkgs,
+  ...
+}:
 
 {
   options = {
@@ -18,9 +24,11 @@
     services.spice-vdagentd.enable = true; # enable copy and paste between host and guest
 
     # Quickemu
-    /*environment.systemPackages = with pkgs; [
-      quickgui
-      quickemu
-    ];*/
+    /*
+      environment.systemPackages = with pkgs; [
+        quickgui
+        quickemu
+      ];
+    */
   };
 }

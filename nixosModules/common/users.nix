@@ -1,4 +1,9 @@
-{ lib, config, settings, ... }:
+{
+  lib,
+  config,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -13,7 +18,7 @@
         hashedPassword = "$y$j9T$cVaStq4nQnBE2Iz3wrZIM1$UdvZmv2wmvy93xnNl4h403DI30v8G8satfg4r0.vN9.";
       };
       "root" = {
-        hashedPassword = null; # Disable root login using a password 
+        hashedPassword = null; # Disable root login using a password
       };
     };
 

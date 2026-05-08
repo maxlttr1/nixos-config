@@ -1,4 +1,10 @@
-{ config, lib, pkgs, settings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  settings,
+  ...
+}:
 
 let
   font = "Mononoki Nerd Font Mono";

@@ -1,11 +1,17 @@
-{ lib, config, pkgs, settings, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  settings,
+  ...
+}:
 
 let
   script = pkgs.writeShellScript "script" ''
     whoami
     ls -l "/home/GabwfBjEgF/mountedDisk/syncthing/music/cookies.firefox-private.txt"
     cat "/home/GabwfBjEgF/mountedDisk/syncthing/music/cookies.firefox-private.txt" | head -n 5
-    
+
     if [ ! -d "AutoAmpDL" ]; then
       ${pkgs.git}/bin/git clone https://github.com/maxlttr1/AutoAmpDL.git
     fi
@@ -25,7 +31,12 @@ in
     custom.autoAmpDL.frequency = lib.mkOption {
       description = "AutoAmpDL frequency";
       default = "weekly";
-      type = lib.types.enum [ "daily" "weekly" "monthly" "yearly" ];
+      type = lib.types.enum [
+        "daily"
+        "weekly"
+        "monthly"
+        "yearly"
+      ];
     };
     custom.autoAmpDL.url = lib.mkOption {
       description = "URL to download from";
@@ -63,9 +74,11 @@ in
         ExecStart = "${script}";
       };
       path = with pkgs; [
-        (python312.withPackages (ps: with ps; [
-          rich
-        ]))
+        (python312.withPackages (
+          ps: with ps; [
+            rich
+          ]
+        ))
         ffmpeg
         yt-dlp
         git

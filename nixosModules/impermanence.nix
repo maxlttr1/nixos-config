@@ -1,4 +1,9 @@
-{ lib, config, settings, ... }:
+{
+  lib,
+  config,
+  settings,
+  ...
+}:
 
 {
   options = {
@@ -16,29 +21,31 @@
   };
 
   config = lib.mkIf config.custom.impermanence.enable {
-    /*boot.initrd.postResumeCommands = lib.mkAfter ''
-      mkdir /btrfs_tmp
-      mount ${config.custom.impermanence.diskDevice} /btrfs_tmp
-      if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-      fi
+    /*
+      boot.initrd.postResumeCommands = lib.mkAfter ''
+        mkdir /btrfs_tmp
+        mount ${config.custom.impermanence.diskDevice} /btrfs_tmp
+        if [[ -e /btrfs_tmp/root ]]; then
+          mkdir -p /btrfs_tmp/old_roots
+          timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+          mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+        fi
 
-      delete_subvolume_recursively() {
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-          delete_subvolume_recursively "/btrfs_tmp/$i"
+        delete_subvolume_recursively() {
+          for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+            delete_subvolume_recursively "/btrfs_tmp/$i"
+          done
+          btrfs subvolume delete "$1"
+        }
+
+        for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${config.custom.impermanence.retentionDays}); do
+          delete_subvolume_recursively "$i"
         done
-        btrfs subvolume delete "$1"
-      }
 
-      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${config.custom.impermanence.retentionDays}); do
-        delete_subvolume_recursively "$i"
-      done
-
-      btrfs subvolume create /btrfs_tmp/root
-      umount /btrfs_tmp
-    '';*/
+        btrfs subvolume create /btrfs_tmp/root
+        umount /btrfs_tmp
+      '';
+    */
 
     boot.initrd.postDeviceCommands = lib.mkAfter ''
       set -euo pipefail
@@ -104,7 +111,7 @@
           ".local/share/direnv" # Direnv states
           ".local/share/fish" # fish shell data
           ".config/fish" # fish shell config
-          ".local/share/z" # zoxide 
+          ".local/share/z" # zoxide
           ".config/Code" # VSCode
           ".vscode" # VSCode
         ]

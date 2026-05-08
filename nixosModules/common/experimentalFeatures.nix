@@ -6,8 +6,9 @@
   };
 
   config = lib.mkIf config.custom.experimentalFeatures.enable {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }
-
-

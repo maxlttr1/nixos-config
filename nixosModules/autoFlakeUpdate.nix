@@ -1,4 +1,10 @@
-{ lib, config, pkgs, settings, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  settings,
+  ...
+}:
 
 let
   githubTokenPath = "/home/${settings.username}/.cache/sops-nix/secrets/github-token";
@@ -11,7 +17,13 @@ in
     custom.autoFlakeUpdate.frequency = lib.mkOption {
       description = "Frequency of automatic flake input updates";
       default = "Sat 2:00";
-      type = lib.types.enum [ "daily" "Sat 2:00" "weekly" "monthly" "yearly" ];
+      type = lib.types.enum [
+        "daily"
+        "Sat 2:00"
+        "weekly"
+        "monthly"
+        "yearly"
+      ];
     };
   };
 
@@ -43,7 +55,7 @@ in
           exit 1
         fi
         githubToken=$(cat ${githubTokenPath})
-        
+
         if [ ! -d "nixos-config" ]; then
           ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
@@ -78,7 +90,7 @@ in
         ${pkgs.git}/bin/git checkout -B "$BRANCH"
         ${pkgs.git}/bin/git commit -m "Update flake.lock" || true
         ${pkgs.git}/bin/git push origin "$BRANCH"
-    
+
         ${pkgs.curl}/bin/curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
@@ -99,7 +111,7 @@ in
       '';
       postStop = ''
         set -euox pipefail
-        
+
         url=$(cat ${webhookPath})
         status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
@@ -113,12 +125,12 @@ in
     };
 
     systemd.timers."nixos-flake-update" = {
-      after = [ 
+      after = [
         "multi-user.target"
-        "network-online.target" 
+        "network-online.target"
       ];
-      requires = [ 
-        "network-online.target" 
+      requires = [
+        "network-online.target"
       ];
       timerConfig = {
         OnCalendar = "${config.custom.autoFlakeUpdate.frequency}";

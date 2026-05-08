@@ -1,4 +1,10 @@
-{ config, lib, pkgs, settings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  settings,
+  ...
+}:
 
 {
   options.custom.librewolf.enable = lib.mkEnableOption "librewolf browser";

@@ -12,12 +12,14 @@
 
   python = pkgs.mkShell {
     packages = with pkgs; [
-      (python312.withPackages (p: with p; [
-        matplotlib
-        numpy
-        pandas
-        requests
-      ]))
+      (python312.withPackages (
+        p: with p; [
+          matplotlib
+          numpy
+          pandas
+          requests
+        ]
+      ))
     ];
 
     env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
@@ -57,10 +59,12 @@
       gdbgui
     ];
 
-    /*CC = "${pkgs.gcc}/bin/gcc";
-      CXX = "${pkgs.gcc}/bin/g++";
-      CFLAGS = "-Wall -Wextra -Werror";
-    CXXFLAGS = "-Wall -Wextra -Werror";*/
+    /*
+      CC = "${pkgs.gcc}/bin/gcc";
+        CXX = "${pkgs.gcc}/bin/g++";
+        CFLAGS = "-Wall -Wextra -Werror";
+      CXXFLAGS = "-Wall -Wextra -Werror";
+    */
 
     shellHook = ''
       echo -e "\e[45m C++ dev shell activated \e[0m"
@@ -80,7 +84,7 @@
     packages = with pkgs; [
       compose2nix
       nix
-      nixpkgs-fmt
+      nixfmt
       sops
     ];
 

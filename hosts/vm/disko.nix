@@ -20,7 +20,7 @@
                 passwordFile = "/tmp/disk-encryption.key";
                 content = {
                   type = "btrfs";
-                  extraArgs = [ 
+                  extraArgs = [
                     "-L"
                     "nixos"
                     "-f" # force creation

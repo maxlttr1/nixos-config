@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   options = {
@@ -6,19 +11,21 @@
   };
 
   config = lib.mkIf config.custom.hyprland.enable {
-    /*services.greetd = {
-      enable = true;
-      package = pkgs.tuigreet;
-      settings = {
-        default_session = {
-                                                                                                                                                                            		command = ''
-                                                                                                                                                                                                                                                                			"${pkgs.tuigreet}/bin/tuigreet" \
-                                                                                                                                                                                                                                                                			--time --remember --remember-session --sessions \
-                                                                                                                                                                                                                                                                			"${pkgs.hyprland}/share/waylanddev-sessions"
-                                                                                                                                                                            		'';
+    /*
+      services.greetd = {
+        enable = true;
+        package = pkgs.tuigreet;
+        settings = {
+          default_session = {
+                                                                                                                                                                              		command = ''
+                                                                                                                                                                                                                                                                  			"${pkgs.tuigreet}/bin/tuigreet" \
+                                                                                                                                                                                                                                                                  			--time --remember --remember-session --sessions \
+                                                                                                                                                                                                                                                                  			"${pkgs.hyprland}/share/waylanddev-sessions"
+                                                                                                                                                                              		'';
+          };
         };
       };
-    };*/
+    */
 
     services.displayManager.gdm.enable = true;
 
@@ -26,16 +33,18 @@
     # literally no documentation about this anywhere.
     # might be good to write about this...
     # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
-    /*systemd.services.greetd.serviceConfig = {
-      Type = "idle";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal"; # Without this errors will spam on screen
-      # Without these bootlogs will spam on screen
-      TTYReset = true;
-      TTYVHangup = true;
-      TTYVTDisallocate = true;
-    };*/
+    /*
+      systemd.services.greetd.serviceConfig = {
+        Type = "idle";
+        StandardInput = "tty";
+        StandardOutput = "tty";
+        StandardError = "journal"; # Without this errors will spam on screen
+        # Without these bootlogs will spam on screen
+        TTYReset = true;
+        TTYVHangup = true;
+        TTYVTDisallocate = true;
+      };
+    */
 
     programs.hyprland = {
       enable = true;

@@ -9,4 +9,3 @@
     security.apparmor.enable = true;
   };
 }
-

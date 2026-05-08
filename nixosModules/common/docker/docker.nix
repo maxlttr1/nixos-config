@@ -1,4 +1,10 @@
-{ pkgs, settings, config, lib, ... }:
+{
+  pkgs,
+  settings,
+  config,
+  lib,
+  ...
+}:
 
 let
   serviceConfig = {
@@ -82,7 +88,7 @@ in
       serviceConfig = serviceConfig;
       script = ''
         set -euox pipefail
-        
+
         export PUID=$(id -u)
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
@@ -107,4 +113,3 @@ in
     };
   };
 }
-

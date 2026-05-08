@@ -1,11 +1,20 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   options = {
     custom.kernel = lib.mkOption {
       description = "Enable kernel hardening and configuration";
       default = "linuxPackages";
-      type = lib.types.enum [ "linuxPackages" "linuxPackages_latest" "linuxPackages_hardened" ];
+      type = lib.types.enum [
+        "linuxPackages"
+        "linuxPackages_latest"
+        "linuxPackages_hardened"
+      ];
     };
   };
 
@@ -40,7 +49,7 @@
       "kernel.ctrl-alt-del" = 0;
       # Enable BPF JIT hardening - mitigates JIT spraying attacks on eBPF code
       "net.core.bpf_jit_harden" = 2;
-      # Toggles whether or not unprivileged processes can create user namespaces	
+      # Toggles whether or not unprivileged processes can create user namespaces
       "kernel.unprivileged_userns_clone" = 1;
       # Restrict userfaultfd to privileged processes only (mitigates kernel exploitation techniques and use-after-free flaws)
       "vm.unprivileged_userfaultfd" = 0;
@@ -48,7 +57,7 @@
       "kernel.randomize_va_space" = 2;
       # Disable loading of kernel modules
       # "kernel.modules_disabled" = 1;
-      
+
       ############################
       ### FILESYSTEM HARDENING ###
       ############################

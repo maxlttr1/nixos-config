@@ -23,13 +23,15 @@
 
   config = lib.mkMerge [
     (lib.mkIf config.custom.swap.swapFile.enable {
-      swapDevices = [{
-        device = "/var/lib/swapfile";
-        #label = "swapfile";
-        # randomEncryption.enable = true; 
-        size = config.custom.swap.swapFile.sizeGiB * 1024; # Size is in megabytes
-        # priority = 2048; # Priority is a value between 0 and 32767. Higher numbers indicate higher priority. null lets the kernel choose a priority, which will show up as a negative value.
-      }];
+      swapDevices = [
+        {
+          device = "/var/lib/swapfile";
+          #label = "swapfile";
+          # randomEncryption.enable = true;
+          size = config.custom.swap.swapFile.sizeGiB * 1024; # Size is in megabytes
+          # priority = 2048; # Priority is a value between 0 and 32767. Higher numbers indicate higher priority. null lets the kernel choose a priority, which will show up as a negative value.
+        }
+      ];
     })
     (lib.mkIf config.custom.swap.zramSwap.enable {
       zramSwap = {

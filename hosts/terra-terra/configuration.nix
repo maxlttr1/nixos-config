@@ -43,5 +43,6 @@
     ];
   };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/c3e6f523-f97e-4166-8208-06eefd778df2";
+  boot.initrd.luks.devices."crypted".device =
+    "/dev/disk/by-uuid/c3e6f523-f97e-4166-8208-06eefd778df2";
 }

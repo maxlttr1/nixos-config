@@ -48,13 +48,21 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    /*nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };*/
+    /*
+      nix-index-database = {
+        url = "github:nix-community/nix-index-database";
+        inputs.nixpkgs.follows = "nixpkgs-stable";
+      };
+    */
   };
 
-  outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs-stable,
+      nixpkgs-unstable,
+      ...
+    }:
     let
       settings = {
         username = "GabwfBjEgF";
@@ -80,8 +88,10 @@
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
           inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          /*inputs.nix-index-database.homeModules.default
-          { programs.nix-index-database.comma.enable = true; }*/
+          /*
+            inputs.nix-index-database.homeModules.default
+            { programs.nix-index-database.comma.enable = true; }
+          */
         ];
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {
@@ -96,7 +106,8 @@
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
         (
-          { config, pkgs, ... }: {
+          { config, pkgs, ... }:
+          {
             nixpkgs.overlays = [
               overlay-nixpkgs
               inputs.nix-vscode-extensions.overlays.default
@@ -117,7 +128,8 @@
           modules = [
             ./hosts/terra-terra
             homeManagerConfig
-          ] ++ modulesList;
+          ]
+          ++ modulesList;
         };
 
         nexus-nexus = nixpkgs-stable.lib.nixosSystem {
@@ -128,7 +140,8 @@
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
               home-manager.users."${settings.username}" = import ./hosts/nexus-nexus/home.nix;
             })
-          ] ++ modulesList;
+          ]
+          ++ modulesList;
         };
 
         test = nixpkgs-stable.lib.nixosSystem {
@@ -139,7 +152,8 @@
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
               home-manager.users."${settings.username}" = import ./hosts/test/home.nix;
             })
-          ] ++ modulesList;
+          ]
+          ++ modulesList;
         };
 
         vm = nixpkgs-stable.lib.nixosSystem {
@@ -150,7 +164,8 @@
             (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
               home-manager.users."${settings.username}" = import ./hosts/vm/home.nix;
             })
-          ] ++ modulesList;
+          ]
+          ++ modulesList;
         };
       };
 

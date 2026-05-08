@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.custom.vscode.enable = lib.mkEnableOption "VS Code editor";
@@ -22,7 +27,7 @@
           # llvm-vs-code-extensions.vscode-clangd
           # Javascript
           robole.javascript-snippets
-          christian-kohler.path-intellisense # autocompletes filenames 
+          christian-kohler.path-intellisense # autocompletes filenames
           # Java
           vscjava.vscode-java-debug
           vscjava.vscode-java-dependency
