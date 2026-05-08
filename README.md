@@ -55,7 +55,11 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
   --mode destroy,format,mount \
   ./disko.nix
 ```
-### 2. Import your ssh keys in `/mnt/etc/sops/age/keys.txt` in order for nix-sops to work
+### 2. Import your ssh keys in `/mnt/etc/sops/age/keys.txt` and set permissions in order for nix-sops to work
+```bash
+sudo cp $PATH_TO_FILE/keys.txt /mnt/etc/sops/age/keys.txt
+sudo chown 600 /mnt/etc/sops/age/keys.txt
+```
 
 ### 3. Install Nixos (ensure having the correct hardware-configuration)
 ```bash

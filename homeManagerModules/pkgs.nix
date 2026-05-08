@@ -10,12 +10,31 @@
 
   config = lib.mkIf config.custom.pkgs.enable {
     home.packages = with pkgs; [
+      # age
+      # at
       bleachbit
+      # cron
+      curl
       direnv
+      # eza
+      fastfetch
+      fd
+      fzf
+      htop
+      # lf
+      magic-wormhole
+      ncdu
+      powertop
+      ripgrep-all
       unstable.signal-desktop # Unverified on flathub
+      tldr
       typst
       typst-live
+      # unp
+      # unrar
+      # vim
       vlc
+      # wget
     ];
 
     services.flatpak = {

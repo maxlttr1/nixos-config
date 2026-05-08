@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.custom.fish.enable = lib.mkEnableOption "fish shell with plugins";
@@ -6,9 +11,11 @@
   config = lib.mkIf config.custom.fish.enable {
     programs.fish = {
       enable = true;
-      /*interactiveShellInit = ''
-        fish_config theme choose Dracula
-      '';*/
+      /*
+        interactiveShellInit = ''
+          fish_config theme choose Dracula
+        '';
+      */
     };
 
     home.packages = with pkgs; [
@@ -16,7 +23,6 @@
       fishPlugins.done # Automatically receive notifications when long processes finish
       fishPlugins.fifc # Fzf powers on top of fish completion engine and allows customizable completion rules
       fishPlugins.fzf # Ef-fish-ient fish keybindings for fzf
-      fishPlugins.sponge # Keeps your fish shell history clean from typos
       fishPlugins.tide
       fishPlugins.z
     ];

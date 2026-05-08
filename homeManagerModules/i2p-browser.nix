@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   options.custom.i2p-browser.enable = lib.mkEnableOption "Enable i2p librewolf browser and desktop entry";
