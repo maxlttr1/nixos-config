@@ -83,8 +83,7 @@
   nix = pkgs.mkShell {
     packages = with pkgs; [
       compose2nix
-      nix
-      nixfmt
+      nixfmt-tree
       sops
     ];
 
