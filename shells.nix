@@ -116,4 +116,14 @@
     '';
   };
 
+  android = pkgs.mkShell {
+    packages = with pkgs; [
+      android-tools
+      universal-android-debloater
+    ];
+
+    shellHook = ''
+      echo -e "\e[45m Android dev shell activated \e[0m"
+    '';
+  };
 }

@@ -16,6 +16,7 @@
       # cron
       curl
       direnv
+      element-desktop
       # eza
       fastfetch
       fd

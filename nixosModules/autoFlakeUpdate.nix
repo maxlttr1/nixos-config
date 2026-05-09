@@ -110,17 +110,20 @@ in
         fi
       '';
       postStop = ''
-        set -euox pipefail
+                set -euox pipefail
 
-        url=$(cat ${webhookPath})
-        status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
+                url=$(cat ${webhookPath})
+                status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
-        if [ $status -eq 0 ]; then
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"✅ Nix flake.lock updated and passed check.\"}"
-        else
-          payload="❌ Nix flake update failed."          
-          ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
-        fi
+                if [ $status -eq 0 ]; then
+                  ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"# ✅ Nix flake.lock updated and passed check.
+        Please test it locally and merge the PR:
+        \`\`\`sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH\`\`\`\`\`\`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\`\`\`
+        \"}"
+                else
+                  payload="❌ Nix flake update failed."
+                  ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
+                fi
       '';
     };
 
