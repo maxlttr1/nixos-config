@@ -2,10 +2,10 @@
 
 {
   options = {
-    custom.optimise.enable = lib.mkEnableOption "Enable Nix store optimization and garbage collection";
+    custom.nix-optimise.enable = lib.mkEnableOption "Enable Nix optimization";
   };
 
-  config = lib.mkIf config.custom.optimise.enable {
+  config = lib.mkIf config.custom.nix-optimise.enable {
     /*
       nix.optimise = {
         automatic = true;

@@ -15,7 +15,7 @@
     ./kernel.nix
     ./networkManager.nix
     ./noexec.nix
-    ./optimise.nix
+    ./nix-optimise.nix
     ./stateVersion.nix
     ./syncthing.nix
     ./systemd.nix
@@ -38,7 +38,7 @@
   custom.firmware.enable = true;
   custom.networkManager.enable = true;
   custom.noexec.enable = true;
-  custom.optimise.enable = true;
+  custom.nix-optimise.enable = true;
   custom.syncthing.enable = true;
   custom.systemd.enable = true;
   custom.tailscale.enable = true;
