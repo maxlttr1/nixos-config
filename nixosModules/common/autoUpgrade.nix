@@ -54,13 +54,14 @@ in
         set -euox pipefail
 
         cd /tmp
+        rm -rf ./result
         if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
           echo "Failed to build new system configuration"
           exit 1
         fi
 
         ${pkgs.nix}/bin/nix store diff-closures /var/run/current-system ./result > /tmp/nixos-upgrade-changes.txt
-        rm -r ./result
+        rm -rf ./result
       '';
       postStop = ''
                 set -euox pipefail
