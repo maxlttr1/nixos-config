@@ -16,6 +16,7 @@
         [ ]
         ++ lib.optionals (config.custom.pkgs.enable) [
           "${pkgs.signal-desktop}/share/applications/signal.desktop"
+          "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
           "/home/${settings.username}/.local/share/flatpak/exports/share/applications/dev.vencord.Vesktop.desktop"
         ]
         ++ lib.optionals (config.custom.yakuake.enable) [
