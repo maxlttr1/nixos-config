@@ -60,8 +60,8 @@ in
           ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
-        git config user.name "nixos-flake-update"
-        git config user.email "nixos-flake-update@users.noreply.github.com"
+        git config --local user.name "nixos-flake-update"
+        git config --local user.email "nixos-flake-update@users.noreply.github.com"
 
         cd nixos-config/
         ${pkgs.git}/bin/git fetch origin
