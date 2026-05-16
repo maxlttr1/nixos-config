@@ -60,11 +60,14 @@ in
           ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
+        git config user.name "nixos-flake-update"
+        git config user.email "nixos-flake-update@users.noreply.github.com"
+
         cd nixos-config/
-        ${pkgs.git}/bin/git reset --hard origin/master
         ${pkgs.git}/bin/git fetch origin
         ${pkgs.git}/bin/git checkout master
         ${pkgs.git}/bin/git pull origin master
+        ${pkgs.git}/bin/git reset --hard origin/master
 
         if ! ${pkgs.nix}/bin/nix flake update; then
           echo "Flake update failed"
