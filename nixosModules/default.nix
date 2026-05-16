@@ -12,6 +12,7 @@
     ./fail2ban.nix
     ./fan.nix
     ./flatpak.nix
+    ./gaming.nix
     ./gnupg.nix
     ./hyprland.nix
     ./impermanence.nix

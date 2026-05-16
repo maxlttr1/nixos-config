@@ -6,6 +6,7 @@
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;
+  custom.gaming.enable = true;
   custom.intel.enable = true;
   custom.kdePlasma.enable = true;
   custom.ld.enable = true;
