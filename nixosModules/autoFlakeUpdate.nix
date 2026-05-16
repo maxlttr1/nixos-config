@@ -89,7 +89,6 @@ in
 
         DATE=$(date +'%Y-%m-%d')
         BRANCH="flake-auto-update-$DATE"
-        export BRANCH
         echo "Generated branch: $BRANCH"
         ${pkgs.git}/bin/git checkout -B "$BRANCH"
         ${pkgs.git}/bin/git commit -m "Update flake.lock" || true
@@ -114,6 +113,8 @@ in
         fi
       '';
       postStop = ''
+                DATE=$(date +'%Y-%m-%d')
+                BRANCH="flake-auto-update-$DATE"
                 set -euox pipefail
 
                 url=$(cat ${webhookPath})
