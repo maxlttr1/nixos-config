@@ -135,6 +135,7 @@ in
       requires = [
         "network-online.target"
       ];
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "${config.custom.autoFlakeUpdate.frequency}";
         Persistent = true;
