@@ -64,32 +64,33 @@ in
         rm -rf ./result
       '';
       postStop = ''
-                set -euox pipefail
+        set -uox pipefail
 
-                url=$(cat ${webhookPath})
-                status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value)
+        url=$(cat ${webhookPath} || echo "")
+        status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
 
-                if [ $status -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
-                  changes=$(cat /tmp/nixos-upgrade-changes.txt)
-                  total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
-                  summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
+        if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
+          changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
+          total=$(echo "$changes" | grep -cve '^[[:space:]]*$' || echo 0)
+          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900 || echo "")
 
-                  if [ -n "$summary" ]; then
-                    msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
-                    ## Summary:
-        \`\`\`$summary\`\`\`"
-                  else
-                    msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*"
-                  fi
-                else
-                  error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
-                  msg="# ❌ NixOS upgrade failed on \`${config.networking.hostName}\`
-                  ## Error log:
-        \`\`\`$error_log\`\`\`"
-                fi
+          if [ -n "$summary" ]; then
+            msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
+            ## Summary:
+\`\`\`$summary\`\`\`"
+          else
+            msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*"
+          fi
+        else
+          error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900 || echo "")
+          msg="# ❌ NixOS upgrade failed on \`${config.networking.hostName}\`
+          ## Error log:
+\`\`\`$error_log\`\`\`"
+        fi
 
-                payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}')
-                ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload"
+        payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
+        ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
+        exit 0
       '';
     };
 
@@ -99,7 +100,7 @@ in
         Type = "oneshot";
       };
       script = ''
-        set -euox pipefail
+        set -uox pipefail
 
         mkdir -p ${webhookDir}
         cp -f /home/${settings.username}/.config/sops-nix/secrets/github-token ${githubTokenPath}
