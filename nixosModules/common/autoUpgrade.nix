@@ -71,8 +71,8 @@ in
 
         if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
           changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
-          total=$(echo "$changes" | grep -cve '^[[:space:]]*$' || echo 0)
-          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900 || echo "")
+          total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
+          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
 
           if [ -n "$summary" ]; then
             msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
@@ -82,7 +82,7 @@ in
             msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*"
           fi
         else
-          error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900 || echo "")
+          error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
           msg="# ❌ NixOS upgrade failed on \`${config.networking.hostName}\`
           ## Error log:
 \`\`\`$error_log\`\`\`"
@@ -90,6 +90,7 @@ in
 
         payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
         ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
+        rm -f /tmp/nixos-upgrade-changes.txt
         exit 0
       '';
     };

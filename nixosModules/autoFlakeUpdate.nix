@@ -61,6 +61,8 @@ in
         fi
 
         cd nixos-config/
+        git config --local user.name "nixos-flake-update"
+        git config --local user.email "nixos-flake-update@users.noreply.github.com"
         ${pkgs.git}/bin/git fetch origin
         ${pkgs.git}/bin/git checkout master
         ${pkgs.git}/bin/git pull origin master
@@ -118,14 +120,16 @@ in
                 status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
                 if [ $status -eq 0 ]; then
-                  ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"# ✅ Nix flake.lock updated and passed check.
+                  msg="# ✅ Nix flake.lock updated and passed check.
         Please test it locally and merge the PR:
-        \`\`\`sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH\`\`\`\`\`\`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\`\`\`
-        \"}"
+        \`sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH\`
+        \`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\`"
                 else
-                  payload="❌ Nix flake update failed."
-                  ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "{\"content\": \"❌ Nix flake update failed (will retry tomorrow).\"}"
+                  msg="# ❌ Nix flake update failed."
                 fi
+
+                payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
+                ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
       '';
     };
 
