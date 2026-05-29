@@ -28,6 +28,8 @@
     boot.loader.systemd-boot = {
       enable = lib.mkForce false;
       consoleMode = "max";
+      configurationLimit = 10;
+      editor = false;
     };
 
     boot.lanzaboote = {
