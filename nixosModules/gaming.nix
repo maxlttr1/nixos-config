@@ -21,11 +21,16 @@
         enable = true;
         remotePlay.openFirewall = true;
         # gamescopeSession.enable = true; # Run a GameScope driven Steam session from your display-manager
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
       };
-      /*gamescope = {
-        enable = true; # gamescope -w 1280 -h 720 -W 1920 -H 1080 -r 70 -f -F fsr --mangoapp -- %command%
-        # capSysNice = true;
-      };*/
+      /*
+        gamescope = {
+          enable = true; # gamescope -w 1280 -h 720 -W 1920 -H 1080 -r 70 -f -F fsr --mangoapp -- %command%
+          # capSysNice = true;
+        };
+      */
     };
   };
 }
