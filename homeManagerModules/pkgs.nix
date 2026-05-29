@@ -25,7 +25,7 @@
       # lf
       magic-wormhole
       ncdu
-      powertop
+      # powertop
       ripgrep-all
       unstable.signal-desktop # Unverified on flathub
       tldr
