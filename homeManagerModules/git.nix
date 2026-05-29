@@ -12,7 +12,7 @@
       };
       includes = [
         {
-          condition = "gitdir:~/polytech_projects/";
+          condition = "gitdir:~/Documents/polytech_projects/";
           contents = {
             user.email = "maxime.lettier@etu.univ-nantes.fr";
             user.name = "Maxime LETTIER";
