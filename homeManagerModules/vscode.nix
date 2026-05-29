@@ -18,28 +18,37 @@
           ms-python.python
           ms-python.vscode-pylance
           ms-python.vscode-python-envs
+          ms-python.black-formatter
           ms-python.debugpy
+
           # Nix
           jnoortheen.nix-ide
+
           # C/C++
           ms-vscode.cpptools
           ms-vscode.cmake-tools
           # llvm-vs-code-extensions.vscode-clangd
+
           # Javascript
           robole.javascript-snippets
-          christian-kohler.path-intellisense # autocompletes filenames
+          # christian-kohler.path-intellisense # autocompletes filenames
+
           # Java
           vscjava.vscode-java-debug
           vscjava.vscode-java-dependency
           redhat.java
           vscjava.vscode-java-test
+
           # HTML/CSS and Web
           ecmel.vscode-html-css
+
           # Language pack
           james-yu.latex-workshop
           yzhang.markdown-all-in-one
+
           # Yaml
           redhat.vscode-yaml
+
           # Utilities
           ms-vsliveshare.vsliveshare
           formulahendry.auto-rename-tag
@@ -70,16 +79,40 @@
           "workbench.colorTheme" = "One Dark Pro Night Flat";
           "workbench.iconTheme" = "material-icon-theme";
           "workbench.startupEditor" = "none";
-          "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
-          "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+          # "typescript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
+          # "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
           "cmake.options.statusBarVisibility" = "visible";
           "explorer.confirmDragAndDrop" = false;
-          "editor.insertSpaces" = false;
-          "editor.tabSize" = 4;
-          "editor.detectIndentation" = false;
+          "editor.insertSpaces" = true;
+          "editor.detectIndentation" = true;
+          # "editor.tabSize" = 4;
+
+          # Formatting
+          "editor.formatOnPaste" = true;
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+
+          # Nix
+          "nix.serverPath" = "nixd";
+          "nix.enableLanguageServer" = true;
+          "nix.formatterPath" = "nixfmt";
+
+          # Python
           "python.useEnvironmentsExtension" = true;
+          "python.languageServer" = "Pylance";
+          "[python]" = {
+            "editor.defaultFormatter" = "ms-python.black-formatter";
+          };
+
+          # Git
+          "diffEditor.ignoreTrimWhitespace" = false;
         };
       };
     };
+
+    home.packages = with pkgs; [
+      nixd
+      nixfmt
+    ];
   };
 }
