@@ -44,13 +44,13 @@
         onCalendar = "weekly";
       };
       packages = [
+        "com.usebottles.bottles"
         "com.google.Chrome"
         "io.github.finefindus.Hieroglyphic"
         "org.libreoffice.LibreOffice"
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
         "com.github.jeromerobert.pdfarranger"
-        "com.valvesoftware.Steam"
         "org.mozilla.Thunderbird"
         "org.torproject.torbrowser-launcher"
         "dev.vencord.Vesktop"
