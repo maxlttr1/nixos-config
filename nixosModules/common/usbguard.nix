@@ -21,6 +21,7 @@
             allow id 8087:0026 serial "" name "" hash "Z5csNGxiUukPPZwSHPyUqpVCNagsfOSSNL2CfXhw4IY=" parent-hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" via-port "3-10" with-interface { e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 e0:01:01 } with-connect-type "hardwired"
             allow id 04e8:6860 serial "RZCRB05565A" name "SAMSUNG_Android" hash "AVQVCSMl00gEySbd+ltvNU7pv9Mvc8fBOnZxUeeFp50=" parent-hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" with-interface ff:42:01 with-connect-type "hotplug"
             allow id 045e:0b12 serial "3039373133383831313131303237" name "Controller" hash "nt5lDChNNb1PIclpidTd2XgZ8g9hwEG3aBb8nPAZdQI=" parent-hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" with-interface { ff:47:d0 ff:47:d0 ff:47:d0 ff:47:d0 ff:47:d0 ff:47:d0 } with-connect-type "hotplug"
+            allow id 248a:8514 serial "" name "Wireless Receiver" hash "zulK/NhJdmD5kjm5RpHh4JyiYVA28b37yd8ynD/biT4=" parent-hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" with-interface { 03:01:02 03:01:01 } with-connect-type "hotplug"
           ''
         else if config.networking.hostName == "nexus-nexus" then
           ''
