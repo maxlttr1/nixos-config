@@ -9,10 +9,10 @@
     ./experimentalFeatures.nix
     ./firewall.nix
     ./firmware.nix
+    ./fsOptimizations.nix
     ./hostname.nix
     ./kernel.nix
     ./networkManager.nix
-    ./noexec.nix
     ./nix-optimise.nix
     ./stateVersion.nix
     ./syncthing.nix
@@ -24,16 +24,16 @@
   ];
 
   custom.allowUnfree.enable = true;
-  custom.apparmor.enable = true;
+  # custom.apparmor.enable = true;
   custom.autoUpgrade.enable = true;
   custom.boot.enable = true;
   custom.clamav.enable = true;
   custom.docker.enable = true;
   custom.experimentalFeatures.enable = true;
+  custom.fsOptimizations.enable = true;
   custom.firewall.enable = true;
   custom.firmware.enable = true;
   custom.networkManager.enable = true;
-  custom.noexec.enable = true;
   custom.nix-optimise.enable = true;
   custom.syncthing.enable = true;
   custom.systemd.enable = true;
