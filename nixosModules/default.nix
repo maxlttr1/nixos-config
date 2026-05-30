@@ -3,7 +3,9 @@
     ./common
 
     ./atd.nix
+    ./auditd.nix
     ./autoAmpDL.nix
+    ./autoCpufreq.nix
     ./autoFlakeUpdate.nix
     ./bluetooth.nix
     ./borgbackup.nix

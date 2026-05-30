@@ -3,8 +3,6 @@
     ./docker/docker.nix
     ./allowUnfree.nix
     ./apparmor.nix
-    ./auditd.nix
-    ./autoCpufreq.nix
     ./autoUpgrade.nix
     ./boot.nix
     ./clamav.nix
@@ -27,8 +25,6 @@
 
   custom.allowUnfree.enable = true;
   custom.apparmor.enable = true;
-  custom.auditd.enable = true;
-  custom.autoCpufreq.enable = true;
   custom.autoUpgrade.enable = true;
   custom.boot.enable = true;
   custom.clamav.enable = true;
