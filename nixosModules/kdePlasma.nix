@@ -18,6 +18,7 @@
         autoNumlock = true;
         wayland.enable = true; # Launch sddm in Wayland too (try to avoid running an X server)
       };
+      plasma-login-manager.enable = true;
       defaultSession = "plasma"; # plasma or plasmax11
     };
 
