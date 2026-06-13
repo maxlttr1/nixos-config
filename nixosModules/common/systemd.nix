@@ -13,8 +13,8 @@
       Audit=no
     '';
 
-    systemd.coredump.extraConfig = ''
-      MaxUse=500M
-    '';
+    systemd.coredump.settings.Coredump = {
+      MaxUse = "500M";
+    };
   };
 }
