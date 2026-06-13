@@ -2,11 +2,11 @@
   description = "KakouKakou";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -105,15 +105,12 @@
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
-        (
-          { config, pkgs, ... }:
-          {
-            nixpkgs.overlays = [
-              overlay-nixpkgs
-              inputs.nix-vscode-extensions.overlays.default
-            ];
-          }
-        )
+        {
+          nixpkgs.overlays = [
+            overlay-nixpkgs
+            inputs.nix-vscode-extensions.overlays.default
+          ];
+        }
       ];
 
       shells = import ./shells.nix {
