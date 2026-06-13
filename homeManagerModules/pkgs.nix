@@ -50,6 +50,7 @@
         "org.libreoffice.LibreOffice"
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
+        "md.obsidian.Obsidian"
         "com.github.jeromerobert.pdfarranger"
         "org.mozilla.Thunderbird"
         "org.torproject.torbrowser-launcher"
