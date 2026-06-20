@@ -51,17 +51,21 @@ in
     programs.plasma = {
       enable = true;
       workspace = {
-        cursor = {
-          theme = "Breeze_Light";
-          #size = 32;
-        };
-        theme = "breeze";
-        colorScheme = "BreezeDark";
+        /*
+          cursor = {
+            theme = "Breeze_Light";
+            #size = 32;
+          };
+        */
+        # theme = "breeze";
+        # colorScheme = "BreezeDark";
         # iconTheme = "Papirus-Dark";
-        windowDecorations = {
-          library = "org.kde.kwin.default";
-          theme = "Breeze";
-        };
+        /*
+          windowDecorations = {
+            library = "org.kde.kwin.default";
+            theme = "Breeze";
+          };
+        */
         inherit wallpaperSlideShow;
       };
       immutableByDefault = false;
@@ -93,7 +97,7 @@ in
         temperature.day = 4500;
         temperature.night = 2500;
       };
-      krunner.position = "center";
+      krunner.position = "top";
       shortcuts = {
         kwin = {
           "Window Maximize" = "Meta+F";
@@ -115,11 +119,12 @@ in
       };
       panels = [
         {
-          location = "bottom";
+          location = "top";
           floating = true;
-          opacity = "adaptive";
+          opacity = "opaque";
           hiding = "none";
-          #height = 42;
+          height = 36;
+          lengthMode = "fill";
           widgets = [
             {
               name = "org.kde.plasma.kickoff";
