@@ -1,7 +1,7 @@
 { settings, ... }:
 
 {
-  custom.hostname = "vm-nixos";
+  custom.hostname = "vm-ninja";
 
   custom.flatpak.enable = true;
   custom.kdePlasma.enable = true;
