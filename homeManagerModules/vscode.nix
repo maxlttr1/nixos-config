@@ -67,10 +67,6 @@
           "extensions.ignoreRecommendations" = true;
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 1000;
-          "git.autofetch" = "all";
-          "git.confirmSync" = false;
-          "git.enableSmartCommit" = true;
-          "git.smartCommitChanges" = "all";
           "redhat.telemetry.enabled" = false;
           "telemetry.enableTelemetry" = false;
           "telemetry.feedback.enabled" = false;
@@ -83,14 +79,14 @@
           # "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
           "cmake.options.statusBarVisibility" = "visible";
           "explorer.confirmDragAndDrop" = false;
-          "editor.insertSpaces" = true;
-          "editor.detectIndentation" = true;
-          # "editor.tabSize" = 4;
-
+          
           # Formatting
           "editor.formatOnPaste" = true;
           "editor.formatOnSave" = true;
           "editor.formatOnType" = true;
+          "editor.insertSpaces" = true;
+          "editor.detectIndentation" = true;
+          # "editor.tabSize" = 4;
 
           # Nix
           "nix.serverPath" = "nixd";
@@ -106,6 +102,10 @@
 
           # Git
           "diffEditor.ignoreTrimWhitespace" = false;
+          "git.autofetch" = "all";
+          "git.confirmSync" = false;
+          "git.enableSmartCommit" = true;
+          "git.smartCommitChanges" = "all";
         };
       };
     };
