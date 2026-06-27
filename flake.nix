@@ -164,6 +164,16 @@
           ]
           ++ modulesList;
         };
+
+        vm-ninja = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/vm-ninja
+            homeManagerConfig
+          ]
+          ++ modulesList;
+        };
       };
 
       homeConfigurations = {
