@@ -63,9 +63,8 @@ in
         cd nixos-config/
         git config --local user.name "nixos-flake-update"
         git config --local user.email "nixos-flake-update@users.noreply.github.com"
-        ${pkgs.git}/bin/git fetch origin
+        ${pkgs.git}/bin/git fetch origin master
         ${pkgs.git}/bin/git checkout master
-        ${pkgs.git}/bin/git pull origin master
         ${pkgs.git}/bin/git reset --hard origin/master
 
         if ! ${pkgs.nix}/bin/nix flake update; then
