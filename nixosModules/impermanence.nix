@@ -47,40 +47,110 @@
       '';
     */
 
-    boot.initrd.postDeviceCommands = lib.mkAfter ''
-      set -euo pipefail
-      echo "Starting impermanence rollback (safe mode)..."
+    /*
+      boot.initrd.postDeviceCommands = lib.mkAfter ''
+        set -euo pipefail
+        echo "Starting impermanence rollback (safe mode)..."
 
-      LUKS_DEVICE="/dev/mapper/crypted"
-      if [[ ! -b "$LUKS_DEVICE" ]]; then
-        echo "LUKS device $LUKS_DEVICE not found! Aborting impermanence rollback."
-        exit 1
-      fi
+        LUKS_DEVICE="/dev/mapper/crypted"
+        if [[ ! -b "$LUKS_DEVICE" ]]; then
+          echo "LUKS device $LUKS_DEVICE not found! Aborting impermanence rollback."
+          exit 1
+        fi
 
-      mkdir -p /mnt
-      if ! mount -o subvol=/ "$LUKS_DEVICE" /mnt; then
-        echo "Error: Failed to mount root filesystem"
-        exit 1
-      fi
+        mkdir -p /mnt
+        if ! mount -o subvol=/ "$LUKS_DEVICE" /mnt; then
+          echo "Error: Failed to mount root filesystem"
+          exit 1
+        fi
 
-      if [[ ! -d "/mnt/root-blank" ]]; then
-        echo "Error: /mnt/root-blank snapshot not found, skipping rollback"
-        umount /mnt || true
-        exit 1
-      fi
+        if [[ ! -d "/mnt/root-blank" ]]; then
+          echo "Error: /mnt/root-blank snapshot not found, skipping rollback"
+          umount /mnt || true
+          exit 1
+        fi
 
-      echo "Found root-blank snapshot, proceeding with safe rollback"
+        echo "Found root-blank snapshot, proceeding with safe rollback"
 
-      # Move current root aside instead of deleting it (avoid kernel panic)
-      if [[ -d "/mnt/root" ]]; then
-        mv /mnt/root "/mnt/root-old-$(date +%s)"
-      fi
+        # Move current root aside instead of deleting it (avoid kernel panic)
+        if [[ -d "/mnt/root" ]]; then
+          mv /mnt/root "/mnt/root-old-$(date +%s)"
+        fi
 
-      # Restore root-blank snapshot as new root
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
+        # Restore root-blank snapshot as new root
+        btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
-      umount /mnt
-    '';
+        umount /mnt
+      '';
+    */
+    boot.initrd.systemd.services.rollback = {
+      description = "Rollback BTRFS root subvolume to a pristine state";
+      wantedBy = [ "initrd.target" ];
+      after = [ "systemd-cryptsetup@crypted.service" ];
+      before = [ "sysroot.mount" ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+         set -euo pipefail
+
+         echo "Starting impermanence rollback..."
+
+        LUKS_DEVICE="/dev/mapper/crypted"
+         if [[ ! -b "$LUKS_DEVICE" ]]; then
+           echo "LUKS device $LUKS_DEVICE not found! Aborting impermanence rollback."
+           exit 1
+         fi
+
+         echo "Found LUKS device: $LUKS_DEVICE"
+
+         mkdir -p /mnt
+
+         if ! mount -t btrfs "$LUKS_DEVICE" /mnt; then
+           echo "Error: Failed to mount top level  subvolume"
+           exit 1
+         fi
+
+         if [[ ! -d "/mnt/root-blank" ]]; then
+           echo "Error: /mnt/root-blank snapshot not found, skipping rollback"
+           umount /mnt || true
+           exit 0
+         fi
+
+         echo "Found root-blank snapshot, proceeding with rollback"
+
+
+
+
+
+
+         if [[ -d "/mnt/root" ]]; then
+           echo "Removing nested subvolumes..."
+           btrfs subvolume list -o /mnt/root | cut -f9 -d' ' | while read -r subvolume; do
+             if [[ -n "$subvolume" ]]; then
+               echo "Deleting /$subvolume subvolume..."
+               btrfs subvolume delete "/mnt/$subvolume" || echo "Warning: Failed to delete $subvolume"
+             fi
+           done
+
+           echo "Deleting /root subvolume..."
+           if ! btrfs subvolume delete /mnt/root; then
+             echo "Error: Failed to delete /root subvolume"
+             umount /mnt || true
+             exit 1
+           fi
+         fi
+
+         echo "Restoring blank /root subvolume..."
+         if ! btrfs subvolume snapshot /mnt/root-blank /mnt/root; then
+           echo "Error: Failed to create snapshot"
+           umount /mnt || true
+           exit 1
+         fi
+
+         echo "Rollback completed successfully"
+         umount /mnt || echo "Warning: Failed to unmount /mnt"
+      '';
+    };
 
     fileSystems."/persist".neededForBoot = true;
     environment.persistence."/persist" = {
