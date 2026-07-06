@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/ata-CT500BX500SSD1_2339E87A81B5";
         content = {
           type = "gpt";
           partitions = {
