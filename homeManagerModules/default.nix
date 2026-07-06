@@ -2,6 +2,7 @@
   imports = [
     ./common
 
+    ./firefox.nix
     ./fish.nix
     ./fonts.nix
     ./git.nix

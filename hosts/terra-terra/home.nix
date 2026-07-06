@@ -19,6 +19,8 @@
   custom.xdgCustom.enable = true;
   custom.yakuake.enable = true;
 
+  custom.firefox.enable = true;
+
   home.username = "${settings.username}";
   home.homeDirectory = "/home/${settings.username}";
 
