@@ -79,7 +79,10 @@
           # "javascript.suggest.paths" = false; # To use Path Intellisense completion instead of the default
           "cmake.options.statusBarVisibility" = "visible";
           "explorer.confirmDragAndDrop" = false;
-          
+          "window.autoDetectColorScheme" = true;
+          "workbench.preferredLightColorTheme" = "Light 2026";
+          "workbench.preferredDarkColorTheme" = "One Dark Pro Night Flat";
+
           # Formatting
           "editor.formatOnPaste" = true;
           "editor.formatOnSave" = true;
