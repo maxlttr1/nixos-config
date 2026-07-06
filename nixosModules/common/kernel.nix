@@ -21,6 +21,36 @@
   config = {
     boot.kernelPackages = pkgs."${config.custom.kernel}";
 
+    boot.blacklistedKernelModules = [
+      # Obscure network protocols
+      "ax25"
+      "netrom"
+      "rose"
+
+      # Old or rare or insufficiently audited filesystems
+      "adfs"
+      "affs"
+      "bfs"
+      "befs"
+      "cramfs"
+      "efs"
+      "erofs"
+      "exofs"
+      "freevxfs"
+      "f2fs"
+      "hfs"
+      "hpfs"
+      "jfs"
+      "minix"
+      "nilfs2"
+      "ntfs"
+      "omfs"
+      "qnx4"
+      "qnx6"
+      "sysv"
+      "ufs"
+    ];
+
     # Kernel sysctl settings (runtime parameters - can be changed without reboot)
     boot.kernel.sysctl = {
       ###################################
@@ -28,6 +58,8 @@
       ###################################
       # Prevent coredumps from SUID programs (blocks info leaks from privileged processes)
       "fs.suid_dumpable" = 0;
+      # Disable core dump handling
+      "kernel.core_pattern" = "|/bin/false";
       # Include process ID in coredump filename (prevents predictable filename exploits)
       "kernel.core_uses_pid" = 1;
       # Disable kexec - prevents loading a new kernel without reboot (security feature)
