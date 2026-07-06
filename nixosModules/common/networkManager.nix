@@ -24,13 +24,14 @@
 
     services.resolved = {
       enable = true;
-      dnsovertls = "opportunistic";
-      dnssec = "allow-downgrade";
-      fallbackDns = [
-        "9.9.9.9"
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
+      settings.Resolve = {
+        DNS = [
+          "1.1.1.1#one.one.one.one"
+          "8.8.8.8#dns.google"
+        ];
+        DNSOverTLS = "opportunistic";
+        DNSSEC = "allow-downgrade";
+      };
     };
 
     users.users."${settings.username}".extraGroups = [ "networkmanager" ];
