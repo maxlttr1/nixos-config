@@ -1,0 +1,29 @@
+services:
+  freshrss:
+    image: freshrss/freshrss
+    volumes:
+      - ${HOME}/docker/freshrss/freshrss_extensions:/var/www/FreshRSS/extensions
+      - ${HOME}/docker/freshrss/freshrss_data:/var/www/FreshRSS/data
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.freshrss-https.tls=true
+      - traefik.http.routers.freshrss-https.tls.certresolver=myresolver
+      - traefik.http.routers.freshrss-https.entrypoints=websecure
+      - "traefik.http.routers.freshrss-https.rule=Host(`freshrss.maxlttr7.duckdns.org`) || Host(`freshrss.maxlttr.fr`)"
+      - traefik.http.services.freshrss-https.loadbalancer.server.port=80
+    environment:
+      - "CRON_MIN=1,31"
+      - TZ=Europe/Paris
+    ports:
+      - 8080:80
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
