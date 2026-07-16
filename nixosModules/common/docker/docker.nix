@@ -8,9 +8,9 @@
 
 let
   serviceConfig = {
-    WorkingDirectory = "/home/${settings.username}/.cache/";
-    User = "${settings.username}";
     Type = "oneshot";
+    User = "${settings.username}";
+    WorkingDirectory = "/home/${settings.username}/.cache/";
 
     ProtectSystem = "strict";
     ProtectHome = "read-only";
@@ -47,7 +47,7 @@ in
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
         if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
+          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
         cd nixos-config/
@@ -94,7 +94,7 @@ in
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
         if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
+          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
         cd nixos-config/
