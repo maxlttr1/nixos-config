@@ -1,7 +1,6 @@
 {
   imports = [
     ./docker/docker.nix
-    ./allowUnfree.nix
     ./apparmor.nix
     ./autoUpgrade.nix
     ./boot.nix
@@ -23,7 +22,6 @@
     ./users.nix
   ];
 
-  custom.allowUnfree.enable = true;
   # custom.apparmor.enable = true;
   custom.autoUpgrade.enable = true;
   custom.boot.enable = true;

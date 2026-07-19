@@ -80,6 +80,15 @@
         };
       };
 
+      myNixpkgs = import nixpkgs-stable {
+        system = settings.system;
+        config.allowUnfree = true;
+        overlays = [
+          overlay-nixpkgs
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
+
       homeManagerConfig = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -105,22 +114,17 @@
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
-        {
-          nixpkgs.overlays = [
-            overlay-nixpkgs
-            inputs.nix-vscode-extensions.overlays.default
-          ];
-        }
       ];
 
       shells = import ./shells.nix {
-        inherit (import nixpkgs-stable { system = "${settings.system}"; }) pkgs;
+        pkgs = myNixpkgs;
       };
     in
     {
       nixosConfigurations = {
         terra-terra = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
+          pkgs = myNixpkgs;
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/terra-terra
@@ -131,6 +135,7 @@
 
         nexus-nexus = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
+          pkgs = myNixpkgs;
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/nexus-nexus
@@ -143,6 +148,7 @@
 
         test = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
+          pkgs = myNixpkgs;
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/test
@@ -155,6 +161,7 @@
 
         vm = nixpkgs-stable.lib.nixosSystem {
           system = settings.system;
+          pkgs = myNixpkgs;
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/vm
@@ -164,27 +171,36 @@
           ]
           ++ modulesList;
         };
+      };
 
-        vm-ninja = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          specialArgs = { inherit inputs settings; };
+      checks."${settings.system}" = {
+        minimal = import ./tests/minimal.nix {
+          inherit inputs settings self;
+          pkgs = myNixpkgs;
+          lib = myNixpkgs.lib;
           modules = [
-            ./hosts/vm-ninja
-            homeManagerConfig
+            ({ ... }: {
+              _module.args = {
+                inherit settings inputs;
+              };
+            })
+            ./hosts/minimal
+            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
+              home-manager.users."${settings.username}" = import ./hosts/minimal/home.nix;
+            })
           ]
           ++ modulesList;
         };
       };
 
       homeConfigurations = {
-        laptop = inputs.home-manager-unstable.lib.homeManagerConfiguration {
+        laptop = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-stable {
             system = settings.system;
             config.allowUnfree = true;
-            nixpkgs.overlays = [
+            overlays = [
               overlay-nixpkgs
               inputs.nix-vscode-extensions.overlays.default
-              inputs.nix-firefox-addons.overlays.default
             ];
           };
 
