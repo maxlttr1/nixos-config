@@ -42,10 +42,17 @@
     })
 
     (lib.mkIf config.custom.gaming.enable {
+      boot.kernelModules = [ "ntsync" ];
+
       environment.systemPackages = with pkgs; [
-        gamemode # MANGOHUD_CONFIG=fps_limit=60 mangohud gamemoderun %command%
-        mangohud # Shift_R+F12 : Toggle Hud / mangohud %command%
+        # DXVK_CONFIG="dxgi.maxFrameRate = 60; d3d9.maxFrameRate = 60" PROTON_LOG=1 MANGOHUD_CONFIG=fps_limit=0,60 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%
+        mangohud # Shift_R+F12 : Toggle Hud / Shift_L+F1: Cyle between fps limits/ mangohud %command%
       ];
+
+      programs.gamemode = {
+        enable = true;
+        enableRenice = true;
+      };
 
       hardware.xone.enable = true; # Xbox One controller support
 
