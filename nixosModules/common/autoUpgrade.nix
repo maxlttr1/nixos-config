@@ -72,7 +72,7 @@ in
 
                 if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
                   changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
-                  total=$(printf '%s\n' "$changes" | awk 'NF { count++ } END { print count + 0 }')
+                  total=$(printf '%s\n' "$changes" | ${pkgs.gawk}/bin/awk 'NF { count++ } END { print count + 0 }')
                   summary=$(printf '%s\n' "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900 || true)
 
                   if [ -n "$summary" ]; then
