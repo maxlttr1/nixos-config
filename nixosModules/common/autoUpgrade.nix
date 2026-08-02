@@ -72,15 +72,9 @@ in
 
                 if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
                   changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
-<<<<<<< Updated upstream
-                  total=$(printf '%s\n' "$changes" | ${pkgs.gawk}/bin/awk 'NF { count++ } END { print count + 0 }')
-                  summary=$(printf '%s\n' "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900 || true)
-
-=======
                   total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
                   summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
                   
->>>>>>> Stashed changes
                   if [ -n "$summary" ]; then
                     msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
                     ## Summary:
