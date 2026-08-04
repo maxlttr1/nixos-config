@@ -94,6 +94,7 @@
         home-manager.useUserPackages = true;
         home-manager.users."${settings.username}" = import ./hosts/terra-terra/home.nix;
         home-manager.sharedModules = [
+          ./homeManagerModules
           inputs.plasma-manager.homeModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
           inputs.nix-flatpak.homeManagerModules.nix-flatpak
@@ -224,6 +225,7 @@
           };
 
           modules = [
+            ./homeManagerModules
             ./hosts/terra/home.nix
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
