@@ -3,6 +3,5 @@
     ./configuration.nix
     ./disko.nix
     ./hardware-configuration.nix
-    ../../nixosModules
   ];
 }
