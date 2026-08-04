@@ -89,24 +89,25 @@
         ];
       };
 
-      homeManagerConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./hosts/terra-terra/home.nix;
-        home-manager.sharedModules = [
-          ./homeManagerModules
-          inputs.plasma-manager.homeModules.plasma-manager
-          inputs.sops-nix.homeManagerModules.sops
-          inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          /*
-            inputs.nix-index-database.homeModules.default
-            { programs.nix-index-database.comma.enable = true; }
-          */
-        ];
-        home-manager.backupFileExtension = "backup";
-        home-manager.extraSpecialArgs = {
-          settings = settings;
-          inherit inputs;
+      mkHomeManagerConfig = homeFile: {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users."${settings.username}" = import homeFile;
+          sharedModules = [
+            ./homeManagerModules
+            inputs.plasma-manager.homeModules.plasma-manager
+            inputs.sops-nix.homeManagerModules.sops
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
+            /*
+              inputs.nix-index-database.homeModules.default
+              { programs.nix-index-database.comma.enable = true; }t
+            */
+          ];
+          backupFileExtension = "backup";
+          extraSpecialArgs = {
+            inherit inputs settings;
+          };
         };
       };
 
@@ -130,7 +131,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/terra-terra
-            homeManagerConfig
+            (mkHomeManagerConfig ./hosts/terra-terra/home.nix)
           ]
           ++ modulesList;
         };
@@ -141,9 +142,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/nexus-nexus
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/nexus-nexus/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/nexus-nexus/home.nix)
           ]
           ++ modulesList;
         };
@@ -154,9 +153,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/test
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/test/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/test/home.nix)
           ]
           ++ modulesList;
         };
@@ -167,9 +164,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/vm
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/vm/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/vm/home.nix)
           ]
           ++ modulesList;
         };
@@ -180,9 +175,7 @@
           specialArgs = { inherit inputs settings; };
           modules = [
             ./hosts/vm-desktop
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/vm-desktop/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/vm-desktop/home.nix)
           ]
           ++ modulesList;
         };
@@ -200,9 +193,7 @@
               };
             })
             ./hosts/minimal
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/minimal/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/minimal/home.nix)
           ]
           ++ modulesList;
         };
@@ -226,7 +217,7 @@
 
           modules = [
             ./homeManagerModules
-            ./hosts/terra/home.nix
+            (mkHomeManagerConfig ./hosts/terra-terra/home.nix)
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
