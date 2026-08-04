@@ -171,6 +171,19 @@
           ]
           ++ modulesList;
         };
+
+        vm-desktop = nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          pkgs = myNixpkgs;
+          specialArgs = { inherit inputs settings; };
+          modules = [
+            ./hosts/vm-desktop
+            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
+              home-manager.users."${settings.username}" = import ./hosts/vm-desktop/home.nix;
+            })
+          ]
+          ++ modulesList;
+        };
       };
 
       checks."${settings.system}" = {
