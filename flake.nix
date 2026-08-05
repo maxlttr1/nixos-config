@@ -69,6 +69,15 @@
         system = "x86_64-linux";
       };
 
+      myNixpkgs = import nixpkgs-stable {
+        system = settings.system;
+        config.allowUnfree = true;
+        overlays = [
+          overlay-nixpkgs
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
+      
       overlay-nixpkgs = final: prev: {
         stable = import nixpkgs-stable {
           system = settings.system;
@@ -80,41 +89,47 @@
         };
       };
 
-      myNixpkgs = import nixpkgs-stable {
-        system = settings.system;
-        config.allowUnfree = true;
-        overlays = [
-          overlay-nixpkgs
-          inputs.nix-vscode-extensions.overlays.default
-        ];
-      };
-
-      homeManagerConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${settings.username}" = import ./hosts/terra-terra/home.nix;
-        home-manager.sharedModules = [
-          inputs.plasma-manager.homeModules.plasma-manager
-          inputs.sops-nix.homeManagerModules.sops
-          inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          /*
-            inputs.nix-index-database.homeModules.default
-            { programs.nix-index-database.comma.enable = true; }
-          */
-        ];
-        home-manager.backupFileExtension = "backup";
-        home-manager.extraSpecialArgs = {
-          settings = settings;
-          inherit inputs;
-        };
-      };
-
       modulesList = [
+        ./nixosModules
+        ./disko
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
       ];
+
+      mkHomeManagerConfig = homeFile: {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users."${settings.username}" = import homeFile;
+          sharedModules = [
+            ./homeManagerModules
+            inputs.plasma-manager.homeModules.plasma-manager
+            inputs.sops-nix.homeManagerModules.sops
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
+            /*
+              inputs.nix-index-database.homeModules.default
+              { programs.nix-index-database.comma.enable = true; }t
+            */
+          ];
+          backupFileExtension = "backup";
+          extraSpecialArgs = {
+            inherit inputs settings;
+          };
+        };
+      };
+
+      mkHost = hostname: nixpkgs-stable.lib.nixosSystem {
+        system = settings.system;
+        pkgs = myNixpkgs;
+        specialArgs = { inherit inputs settings hostname; };
+        modules = [
+          ./hosts/${hostname}
+          (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
+        ]
+        ++ modulesList;
+      };
 
       shells = import ./shells.nix {
         pkgs = myNixpkgs;
@@ -122,55 +137,9 @@
     in
     {
       nixosConfigurations = {
-        terra-terra = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/terra-terra
-            homeManagerConfig
-          ]
-          ++ modulesList;
-        };
-
-        nexus-nexus = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/nexus-nexus
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/nexus-nexus/home.nix;
-            })
-          ]
-          ++ modulesList;
-        };
-
-        test = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/test
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/test/home.nix;
-            })
-          ]
-          ++ modulesList;
-        };
-
-        vm = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/vm
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/vm/home.nix;
-            })
-          ]
-          ++ modulesList;
-        };
+        terra-terra = mkHost "terra-terra";
+        nexus-nexus = mkHost "nexus-nexus";
+        vm-desktop = mkHost "vm-desktop";
       };
 
       checks."${settings.system}" = {
@@ -182,12 +151,11 @@
             ({ ... }: {
               _module.args = {
                 inherit settings inputs;
+                hostname = "minimal";
               };
             })
             ./hosts/minimal
-            (nixpkgs-stable.lib.recursiveUpdate homeManagerConfig {
-              home-manager.users."${settings.username}" = import ./hosts/minimal/home.nix;
-            })
+            (mkHomeManagerConfig ./hosts/minimal/home.nix)
           ]
           ++ modulesList;
         };
@@ -210,7 +178,8 @@
           };
 
           modules = [
-            ./hosts/terra/home.nix
+            ./homeManagerModules
+            (mkHomeManagerConfig ./hosts/terra-terra/home.nix)
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
             inputs.nix-flatpak.homeManagerModules.nix-flatpak

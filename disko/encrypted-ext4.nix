@@ -1,9 +1,11 @@
-{
+{ config, lib, ... }:
+
+lib.mkIf (config.custom.disko.enable && config.custom.disko.layout == "encrypted-ext4") {
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-WDC_PC_SN530_SDBPNPZ-256G-1002_21371G804437";
+        device = "${config.custom.disko.device}";
         content = {
           type = "gpt";
           partitions = {
@@ -23,6 +25,7 @@
                 type = "luks";
                 name = "crypted";
                 passwordFile = "/tmp/disk-encryption.key";
+                settings.allowDiscards = true;
                 content = {
                   type = "filesystem";
                   format = "ext4";

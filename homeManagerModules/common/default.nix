@@ -2,6 +2,7 @@
   imports = [
     ./commonPkgs.nix
     ./gc.nix
+    ./general.nix
     ./sops.nix
   ];
 

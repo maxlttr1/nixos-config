@@ -10,8 +10,8 @@
     ./bluetooth.nix
     ./borgbackup.nix
     ./cups.nix
+    ./disko.nix
     ./eduvpn.nix
-    ./fail2ban.nix
     ./fan.nix
     ./flatpak.nix
     ./gaming.nix

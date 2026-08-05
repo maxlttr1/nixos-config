@@ -1,9 +1,11 @@
-{
+{ config, lib, ... }:
+
+lib.mkIf (config.custom.disko.enable && config.custom.disko.layout == "ext4") {
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-CT500BX500SSD1_2339E87A81B5";
+        device = "${config.custom.disko.device}";
         content = {
           type = "gpt";
           partitions = {
