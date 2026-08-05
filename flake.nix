@@ -140,6 +140,7 @@
         nexus-nexus = mkHost "nexus-nexus";
         test = mkHost "test";
         vm = mkHost "vm";
+        vm-desktop = mkHost "vm-desktop";
       };
 
       checks."${settings.system}" = {
