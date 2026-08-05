@@ -39,7 +39,7 @@ sudo cp --verbose --archive --parents /etc/sops/age/keys.txt ${root}
 ```bash
 sudo nix run github:nix-community/nixos-anywhere -- \
   --generate-hardware-config nixos-generate-config ./hosts/terra-terra/hardware-configuration.nix \
-  # --disk-encryption-keys /tmp/disk-encryption.key <(pass DISK-ENCRYPTION-PASSWD) \
+  --disk-encryption-keys /tmp/disk-encryption.key <(pass DISK-ENCRYPTION-PASSWD) \
   --extra-files $root \
   --flake github:maxlttr1/nixos-config#terra-terra \
   --target-host nixos@192.168.1.22
@@ -50,10 +50,9 @@ sudo nix run github:nix-community/nixos-anywhere -- \
 ### 1. Partition & Mount Disks (⚠️ Destroys data)
 ```bash
 printf "DISK-ENCRYPTION-PASSWD" > /tmp/disk-encryption.key
-curl -O https://raw.githubusercontent.com/maxlttr1/nixos-config/refs/heads/master/hosts/terra-terra/disko.nix
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
-  ./disko.nix
+  --flake github:maxlttr1/nixos-config#terra-terra
 ```
 ### 2. Import your ssh keys in `/mnt/etc/sops/age/keys.txt` and set permissions in order for nix-sops to work
 ```bash
