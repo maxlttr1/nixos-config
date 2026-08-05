@@ -10,6 +10,7 @@
     ./bluetooth.nix
     ./borgbackup.nix
     ./cups.nix
+    ./disko.nix
     ./eduvpn.nix
     ./fan.nix
     ./flatpak.nix
