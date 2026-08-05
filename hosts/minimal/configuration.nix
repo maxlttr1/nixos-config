@@ -1,8 +1,6 @@
 { lib, ... }:
 
 {
-  custom.hostname = "minimal";
-
   custom.boot.enable = lib.mkForce false;
   custom.clamav.enable = lib.mkForce false;
   # custom.flatpak.enable = true;

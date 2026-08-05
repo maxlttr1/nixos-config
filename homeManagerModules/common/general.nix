@@ -1,15 +1,6 @@
-{
-  config,
-  pkgs,
-  settings,
-  ...
-}:
+{ settings, ... }:
 
 {
-  imports = [
-    ../../homeManagerModules
-  ];
-
   home.username = settings.username;
   home.homeDirectory = "/home/${settings.username}";
 
