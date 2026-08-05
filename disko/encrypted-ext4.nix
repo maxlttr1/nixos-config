@@ -25,6 +25,7 @@ lib.mkIf (config.custom.disko.enable && config.custom.disko.layout == "encrypted
                 type = "luks";
                 name = "crypted";
                 passwordFile = "/tmp/disk-encryption.key";
+                settings.allowDiscards = true;
                 content = {
                   type = "filesystem";
                   format = "ext4";
