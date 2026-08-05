@@ -7,7 +7,7 @@
       device = lib.mkOption {
         type = lib.types.str;
         description = "The device to be used for Disko configuration";
-        examples = [
+        example = [
           "/dev/disk/by-id/nvme-WDC_PC_SN530_SDBPNPZ-256G-1002_21371G804437"
           "/dev/vda"
         ];
