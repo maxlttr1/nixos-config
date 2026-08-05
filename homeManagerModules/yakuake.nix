@@ -13,7 +13,7 @@
       kdePackages.yakuake
     ];
 
-    home.file.".config/yakuakerc".text = lib.mkIf config.custom.yakuake.enable ''
+    home.file.".config/yakuakerc".text = ''
       [Dialogs]
       FirstRun=false
     '';
