@@ -10,7 +10,10 @@
       enable = true;
       sizeGiB = 8;
     };
-    zramSwap.enable = true;
+    zramSwap = {
+      enable = true;
+      memoryPercent = 100;
+    };
     swappiness = 180;
   };
 }
