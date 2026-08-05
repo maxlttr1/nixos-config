@@ -69,6 +69,15 @@
         system = "x86_64-linux";
       };
 
+      myNixpkgs = import nixpkgs-stable {
+        system = settings.system;
+        config.allowUnfree = true;
+        overlays = [
+          overlay-nixpkgs
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
+      
       overlay-nixpkgs = final: prev: {
         stable = import nixpkgs-stable {
           system = settings.system;
@@ -80,14 +89,13 @@
         };
       };
 
-      myNixpkgs = import nixpkgs-stable {
-        system = settings.system;
-        config.allowUnfree = true;
-        overlays = [
-          overlay-nixpkgs
-          inputs.nix-vscode-extensions.overlays.default
-        ];
-      };
+      modulesList = [
+        ./nixosModules
+        inputs.home-manager.nixosModules.home-manager
+        inputs.disko.nixosModules.disko
+        inputs.impermanence.nixosModules.impermanence
+        inputs.lanzaboote.nixosModules.lanzaboote
+      ];
 
       mkHomeManagerConfig = homeFile: {
         home-manager = {
@@ -111,13 +119,16 @@
         };
       };
 
-      modulesList = [
-        ./nixosModules
-        inputs.home-manager.nixosModules.home-manager
-        inputs.disko.nixosModules.disko
-        inputs.impermanence.nixosModules.impermanence
-        inputs.lanzaboote.nixosModules.lanzaboote
-      ];
+      mkHost = hostname: nixpkgs-stable.lib.nixosSystem {
+        system = settings.system;
+        pkgs = myNixpkgs;
+        specialArgs = { inherit inputs settings; };
+        modules = [
+          ./hosts/${hostname}
+          (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
+        ]
+        ++ modulesList;
+      };
 
       shells = import ./shells.nix {
         pkgs = myNixpkgs;
@@ -125,60 +136,10 @@
     in
     {
       nixosConfigurations = {
-        terra-terra = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/terra-terra
-            (mkHomeManagerConfig ./hosts/terra-terra/home.nix)
-          ]
-          ++ modulesList;
-        };
-
-        nexus-nexus = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/nexus-nexus
-            (mkHomeManagerConfig ./hosts/nexus-nexus/home.nix)
-          ]
-          ++ modulesList;
-        };
-
-        test = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/test
-            (mkHomeManagerConfig ./hosts/test/home.nix)
-          ]
-          ++ modulesList;
-        };
-
-        vm = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/vm
-            (mkHomeManagerConfig ./hosts/vm/home.nix)
-          ]
-          ++ modulesList;
-        };
-
-        vm-desktop = nixpkgs-stable.lib.nixosSystem {
-          system = settings.system;
-          pkgs = myNixpkgs;
-          specialArgs = { inherit inputs settings; };
-          modules = [
-            ./hosts/vm-desktop
-            (mkHomeManagerConfig ./hosts/vm-desktop/home.nix)
-          ]
-          ++ modulesList;
-        };
+        terra-terra = mkHost "terra-terra";
+        nexus-nexus = mkHost "nexus-nexus";
+        test = mkHost "test";
+        vm = mkHost "vm";
       };
 
       checks."${settings.system}" = {
