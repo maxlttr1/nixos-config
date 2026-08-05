@@ -91,6 +91,7 @@
 
       modulesList = [
         ./nixosModules
+        ./disko
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
