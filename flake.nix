@@ -125,7 +125,8 @@
         pkgs = myNixpkgs;
         specialArgs = { inherit inputs settings hostname; };
         modules = [
-          ./hosts/${hostname}
+          ./hosts/${hostname}/configuration.nix
+          ./hosts/${hostname}/hardware-configuration.nix
           (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
         ]
         ++ modulesList;
@@ -154,7 +155,7 @@
                 hostname = "minimal";
               };
             })
-            ./hosts/minimal
+            ./hosts/minimal/configuration.nix
             (mkHomeManagerConfig ./hosts/minimal/home.nix)
           ]
           ++ modulesList;
