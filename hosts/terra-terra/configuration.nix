@@ -1,8 +1,6 @@
 { settings, ... }:
 
 {
-  custom.hostname = "terra-terra";
-
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;

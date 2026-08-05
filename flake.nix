@@ -122,7 +122,7 @@
       mkHost = hostname: nixpkgs-stable.lib.nixosSystem {
         system = settings.system;
         pkgs = myNixpkgs;
-        specialArgs = { inherit inputs settings; };
+        specialArgs = { inherit inputs settings hostname; };
         modules = [
           ./hosts/${hostname}
           (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
@@ -152,6 +152,7 @@
             ({ ... }: {
               _module.args = {
                 inherit settings inputs;
+                hostname = "minimal";
               };
             })
             ./hosts/minimal
