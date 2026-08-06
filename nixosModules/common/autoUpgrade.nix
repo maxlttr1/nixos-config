@@ -50,22 +50,20 @@ in
     };
 
     systemd.services."nixos-upgrade" = {
-      after = [ "network-online.target" ];
       preStart = ''
-        set -euox pipefail
+        set -euo pipefail
 
-        cd /tmp
-        rm -rf ./result
+        rm -f ./result
         if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
           echo "Failed to build new system configuration"
           exit 1
         fi
 
         ${pkgs.nix}/bin/nix store diff-closures /var/run/current-system ./result > /tmp/nixos-upgrade-changes.txt
-        rm -rf ./result
+        rm -f ./result
       '';
       postStop = ''
-                set -uox pipefail
+                set -uo pipefail
 
                 url=$(cat ${webhookPath} || echo "")
                 status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
@@ -102,7 +100,7 @@ in
         Type = "oneshot";
       };
       script = ''
-        set -uox pipefail
+        set -uo pipefail
 
         mkdir -p ${webhookDir}
         cp -f /home/${settings.username}/.config/sops-nix/secrets/github-token ${githubTokenPath}

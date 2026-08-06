@@ -30,6 +30,13 @@ in
   config = lib.mkIf config.custom.autoFlakeUpdate.enable {
     systemd.services."nixos-flake-update" = {
       description = "Update NixOS flake inputs";
+      after = [
+        "multi-user.target"
+        "network-online.target"
+      ];
+      requires = [
+        "network-online.target"
+      ];
       serviceConfig = {
         Type = "oneshot";
         User = "${settings.username}";
@@ -39,7 +46,6 @@ in
         ProtectHome = "read-only";
         ReadWritePaths = [
           "/home/${settings.username}/.cache/"
-          "/tmp"
         ];
         NoNewPrivileges = true;
         ProtectKernelLogs = true;
@@ -47,7 +53,7 @@ in
         ProtectKernelTunables = true;
       };
       script = ''
-        set -euox pipefail
+        set -euo pipefail
         export PATH=${pkgs.git}/bin:$PATH # Needed for nix flake update
 
         if [ ! -f ${githubTokenPath} ]; then
@@ -79,11 +85,13 @@ in
         fi
 
         for hostname in "nexus-nexus" "terra-terra"; do
+          rm -f ./result
           if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake .#$hostname; then
             echo "Nixos-rebuild build failed for $hostname"
             exit 1
           fi
         done
+        rm -f ./result
 
         DATE=$(date +'%Y-%m-%d')
         BRANCH="flake-auto-update-$DATE"
@@ -113,7 +121,7 @@ in
       postStop = ''
                 DATE=$(date +'%Y-%m-%d')
                 BRANCH="flake-auto-update-$DATE"
-                set -euox pipefail
+                set -euo pipefail
 
                 url=$(cat ${webhookPath})
                 status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
@@ -133,13 +141,6 @@ in
     };
 
     systemd.timers."nixos-flake-update" = {
-      after = [
-        "multi-user.target"
-        "network-online.target"
-      ];
-      requires = [
-        "network-online.target"
-      ];
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "${config.custom.autoFlakeUpdate.frequency}";
