@@ -90,8 +90,10 @@ in
         };
       };
       powerdevil = {
-        AC.whenSleepingEnter = "standbyThenHibernate";
+        AC.whenSleepingEnter = "standby";
         battery.whenSleepingEnter = "standbyThenHibernate";
+        batteryLevels.criticalAction = "hibernate";
+        lowBattery.whenSleepingEnter = "standbyThenHibernate";
       };
       kwin.nightLight = {
         enable = true;
