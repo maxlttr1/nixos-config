@@ -90,8 +90,8 @@ in
         };
       };
       powerdevil = {
-        AC.whenSleepingEnter = "hybridSleep";
-        battery.whenSleepingEnter = "hybridSleep";
+        AC.whenSleepingEnter = "standbyThenHibernate";
+        battery.whenSleepingEnter = "standbyThenHibernate";
       };
       kwin.nightLight = {
         enable = true;
