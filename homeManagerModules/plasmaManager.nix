@@ -89,6 +89,10 @@ in
           showMediaControls = false;
         };
       };
+      powerdevil = {
+        AC.whenSleepingEnter = "hybridSleep";
+        battery.whenSleepingEnter = "hybridSleep";
+      };
       kwin.nightLight = {
         enable = true;
         # location.latitude = "46.04";
