@@ -18,10 +18,6 @@
 
     users.users.${settings.username}.extraGroups = [ "docker" ];
 
-    systemd.tmpfiles.rules = [
-      "d /home/${settings.username}/docker 0750 ${settings.username} users -"
-    ];
-    
     systemd.services."docker-containers" = {
       description = "Docker container management";
       after = [ 
@@ -37,15 +33,17 @@
       serviceConfig = {
         Type = "oneshot";
         User = "${settings.username}";
-        CacheDirectory = "docker-containers";
-        CacheDirectoryMode = "0700";
-        WorkingDirectory = "/var/cache/docker-containers";
-        ReadWritePaths = [
-          "/home/${settings.username}/docker"
-        ];
-        RemainAfterExit = true;
 
         ProtectSystem = "strict";
+        ProtectHome="read-only";
+        CacheDirectory = "docker-containers";
+        CacheDirectoryMode = "0700";
+        StateDirectory = "docker-containers";
+        StateDirectoryMode = "0700";
+        WorkingDirectory = "/var/cache/docker-containers";
+
+        RemainAfterExit = true;
+        
         NoNewPrivileges = true;
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
@@ -72,14 +70,14 @@
 
         cd nixos-config/
 
-        if [ ! -f $HOME/docker/suaps/config.json ]; then
-          mkdir -p $HOME/docker/suaps
-          echo '{ "ids_resa": [] }' > $HOME/docker/suaps/config.json
+        if [ ! -f $STATE_DIRECTORY/suaps/config.json ]; then
+          mkdir -p $STATE_DIRECTORY/suaps
+          echo '{ "ids_resa": [] }' > $STATE_DIRECTORY/suaps/config.json
         fi
 
-        if [ ! -f $HOME/docker/traefik/acme.json ]; then
-          mkdir -p $HOME/docker/traefik
-          touch $HOME/docker/traefik/acme.json && chmod 600 $HOME/docker/traefik/acme.json
+        if [ ! -f $STATE_DIRECTORY/traefik/acme.json ]; then
+          mkdir -p $STATE_DIRECTORY/traefik
+          touch $STATE_DIRECTORY/traefik/acme.json && chmod 600 $STATE_DIRECTORY/traefik/acme.json
         fi
 
         # Create proxy network if not present for traefik
@@ -89,16 +87,21 @@
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
+          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
         done
-        wait
       '';
       preStop = ''
+        set -euox pipefail
+
+        export PUID=$(id -u)
+        export PGID=$(id -g)
+        export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
+
         cd nixos-config/
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+          ${pkgs.docker}/bin/docker compose -p $name -f $file down --remove-orphans
         done
 
         # ${pkgs.docker}/bin/docker system prune -a --volumes -f

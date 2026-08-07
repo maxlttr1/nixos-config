@@ -5,6 +5,6 @@ services:
       - 127.0.0.1:3030:8080
       - "${TAILSCALE_IP}:3030:8080"
     volumes:
-      - ${HOME}/docker/open-webui:/app/backend/data
-      - ${HOME}/docker/open-webui/.ollama:/root/.ollama
+      - $STATE_DIRECTORY/open-webui:/app/backend/data
+      - $STATE_DIRECTORY/open-webui/.ollama:/root/.ollama
     restart: unless-stopped

@@ -2,7 +2,7 @@ services:
   uptime-kuma:
     image: louislam/uptime-kuma:latest
     volumes:
-      - ${HOME}/docker/uptime-kuma/uptime-kuma:/app/data
+      - $STATE_DIRECTORY/uptime-kuma/uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 127.0.0.1:3001:3001

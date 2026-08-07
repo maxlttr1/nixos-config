@@ -5,8 +5,8 @@ services:
       - JVM_XMX=512m
       - EXT_PORT=54323
     volumes:
-      - ${HOME}/docker/i2p/i2pconfig:/i2p/.i2p
-      - ${HOME}/docker/i2p/i2ptorrents:/i2psnark
+      - $STATE_DIRECTORY/i2p/i2pconfig:/i2p/.i2p
+      - $STATE_DIRECTORY/i2p/i2ptorrents:/i2psnark
     ports:
       - "127.0.0.1:4444:4444"   # HTTP Proxy
       - "${TAILSCALE_IP}:4444:4444"

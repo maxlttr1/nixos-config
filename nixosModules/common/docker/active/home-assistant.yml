@@ -2,7 +2,7 @@ services:
   home-assistant:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - ${HOME}/docker/homeAssistant:/config
+      - $STATE_DIRECTORY/homeAssistant:/config
       - /etc/localtime:/etc/localtime:ro
     #   - /run/dbus:/run/dbus:ro # For bluetooth support
     privileged: true
