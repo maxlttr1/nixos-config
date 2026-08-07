@@ -67,7 +67,6 @@
         export PUID=$(id -u)
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
-        export STATE_DIRECTORY="$STATE_DIRECTORY"
 
         cd nixos-config/
 
@@ -88,9 +87,8 @@
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
+          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
         done
-        wait
       '';
       preStop = ''
         set -euox pipefail
@@ -98,13 +96,12 @@
         export PUID=$(id -u)
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
-        export STATE_DIRECTORY="$STATE_DIRECTORY"
 
         cd nixos-config/
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
+          ${pkgs.docker}/bin/docker compose -p $name -f $file down --remove-orphans
         done
 
         # ${pkgs.docker}/bin/docker system prune -a --volumes -f
