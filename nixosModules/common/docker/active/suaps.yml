@@ -2,7 +2,7 @@ services:
   suaps:
     image: ghcr.io/flash2974/reservercreneausuaps-app:latest
     volumes:
-      - ${HOME}/docker/suaps/config.json:/app/config/config.json
+      - $STATE_DIRECTORY/suaps/config.json:/app/config/config.json
     env_file:
       - ${HOME}/.config/sops-nix/secrets/suaps.env
     ports:

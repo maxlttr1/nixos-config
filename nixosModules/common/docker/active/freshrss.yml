@@ -2,8 +2,8 @@ services:
   freshrss:
     image: freshrss/freshrss
     volumes:
-      - ${HOME}/docker/freshrss/freshrss_extensions:/var/www/FreshRSS/extensions
-      - ${HOME}/docker/freshrss/freshrss_data:/var/www/FreshRSS/data
+      - $STATE_DIRECTORY/freshrss/freshrss_extensions:/var/www/FreshRSS/extensions
+      - $STATE_DIRECTORY/freshrss/freshrss_data:/var/www/FreshRSS/data
     networks:
       - proxy
     labels:

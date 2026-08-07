@@ -10,8 +10,8 @@ services:
       - "${TAILSCALE_IP}:8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${HOME}/docker/traefik/:/var/traefik/certs/:rw
-      # touch ${HOME}/docker/traefik/acme.json && chmod 600 ${HOME}/docker/traefik/acme.json
+      - $STATE_DIRECTORY/traefik/:/var/traefik/certs/:rw
+      # touch $STATE_DIRECTORY/traefik/acme.json && chmod 600 $STATE_DIRECTORY/traefik/acme.json
     command:
       - "--global.sendAnonymousUsage=false"
       - "--log.level=DEBUG"

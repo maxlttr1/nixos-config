@@ -26,6 +26,6 @@ services:
       - PGID=${PGID}
       - TZ=Etc/UTC
     volumes:
-      - ${HOME}/docker/deluge/config:/config
-      - ${HOME}/docker/movies:/downloads
+      - $STATE_DIRECTORY/deluge/config:/config
+      - $STATE_DIRECTORY/movies:/downloads
     restart: unless-stopped
