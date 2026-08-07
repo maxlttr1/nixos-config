@@ -40,13 +40,13 @@ in
       serviceConfig = {
         Type = "oneshot";
         User = "${settings.username}";
-        WorkingDirectory = "/home/${settings.username}/.cache";
-
+        
         ProtectSystem = "strict";
-        ProtectHome = "read-only";
-        ReadWritePaths = [
-          "/home/${settings.username}/.cache/"
-        ];
+        ProtectHome="read-only";
+        CacheDirectory = "nixos-flake-update";
+        CacheDirectoryMode = "0700";
+        WorkingDirectory = "/var/cache/nixos-flake-update";
+
         NoNewPrivileges = true;
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
