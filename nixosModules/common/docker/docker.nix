@@ -6,24 +6,6 @@
   ...
 }:
 
-let
-  serviceConfig = {
-    Type = "oneshot";
-    User = "${settings.username}";
-    WorkingDirectory = "/home/${settings.username}/.cache/";
-
-    ProtectSystem = "strict";
-    ProtectHome = "read-only";
-    ReadWritePaths = [
-      "/home/${settings.username}/"
-    ];
-    NoNewPrivileges = true;
-    ProtectKernelLogs = true;
-    ProtectKernelModules = true;
-    ProtectKernelTunables = true;
-  };
-in
-
 {
   options = {
     custom.docker.enable = lib.mkEnableOption "Enable automatic Docker container management";
@@ -36,9 +18,47 @@ in
 
     users.users.${settings.username}.extraGroups = [ "docker" ];
 
-    systemd.services."docker-containers-start" = {
-      description = "Start Docker containers";
-      serviceConfig = serviceConfig;
+    systemd.services."docker-containers" = {
+      description = "Docker container management";
+      after = [ 
+        "docker.service"
+        "network-online.target"
+        "tailscaled.service"
+      ];
+      wants = [ 
+        "docker.service"
+        "network-online.target"
+        "tailscaled.service"
+      ];
+      serviceConfig = {
+        Type = "oneshot";
+        User = "${settings.username}";
+        CacheDirectory = "docker-containers";
+        CacheDirectoryMode = "0700";
+        WorkingDirectory = "/var/cache/docker-containers";
+        ReadWritePaths = [
+          "/home/${settings.username}/docker"
+        ];
+        RemainAfterExit = true;
+
+        ProtectSystem = "strict";
+        NoNewPrivileges = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+      };
+      preStart = ''
+        set -euox pipefail
+
+        if [ ! -d "nixos-config" ]; then
+          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
+        fi
+
+        cd nixos-config/
+        ${pkgs.git}/bin/git fetch origin master
+        ${pkgs.git}/bin/git checkout master
+        ${pkgs.git}/bin/git reset --hard origin/master
+      '';
       script = ''
         set -euox pipefail
 
@@ -46,16 +66,7 @@ in
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
-        if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
-        fi
-
         cd nixos-config/
-        ${pkgs.git}/bin/git reset --hard origin/master
-        ${pkgs.git}/bin/git fetch origin
-        ${pkgs.git}/bin/git checkout master
-        ${pkgs.git}/bin/git pull origin master
-
 
         if [ ! -f $HOME/docker/suaps/config.json ]; then
           mkdir -p $HOME/docker/suaps
@@ -77,38 +88,16 @@ in
           ${pkgs.docker}/bin/docker compose -p $name -f $file up -d &
         done
         wait
-
-        cd ..
-        rm -r nixos-config/
       '';
-    };
-
-    systemd.services."docker-containers-stop" = {
-      description = "Stop Docker containers";
-      serviceConfig = serviceConfig;
-      script = ''
-        set -euox pipefail
-
-        export PUID=$(id -u)
-        export PGID=$(id -g)
-        export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
-
-        if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
-        fi
-
+      preStop = ''
         cd nixos-config/
-        ${pkgs.git}/bin/git reset --hard origin/master
-        ${pkgs.git}/bin/git fetch origin
-        ${pkgs.git}/bin/git checkout master
-        ${pkgs.git}/bin/git pull origin master
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
           ${pkgs.docker}/bin/docker compose -p $name -f $file down -v --remove-orphans
         done
 
-        ${pkgs.docker}/bin/docker system prune -a --volumes -f
+        # ${pkgs.docker}/bin/docker system prune -a --volumes -f
       '';
     };
   };
