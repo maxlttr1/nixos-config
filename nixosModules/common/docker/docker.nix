@@ -18,6 +18,10 @@
 
     users.users.${settings.username}.extraGroups = [ "docker" ];
 
+    systemd.tmpfiles.rules = [
+      "d /home/${settings.username}/docker 0700 ${settings.username} users -"
+    ];
+    
     systemd.services."docker-containers" = {
       description = "Docker container management";
       after = [ 
