@@ -1,8 +1,6 @@
 { settings, ... }:
 
 {
-  custom.hostname = "terra-terra";
-
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;
@@ -48,9 +46,8 @@
   };
   fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours/polytech" = {
     device = "/home/${settings.username}/mountedDisk/syncthing/cours/polytech";
-    fsType = "ext4";
+    fsType = "none";
     options = [
-      "nofail"
       "bind"
       "exec"
     ];

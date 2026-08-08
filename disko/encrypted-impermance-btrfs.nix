@@ -1,11 +1,11 @@
-{ settings, ... }:
+{ config, lib, ... }:
 
-{
+lib.mkIf (config.custom.disko.enable && config.custom.disko.layout == "encrypted-impermance-btrfs") {
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = "${settings.diskID}";
+        device = "${config.custom.disko.device}";
         content = {
           type = "gpt";
           partitions = {
@@ -30,6 +30,7 @@
                 type = "luks";
                 name = "crypted";
                 passwordFile = "/tmp/disk-encryption.key";
+                settings.allowDiscards = true;
                 content = {
                   type = "btrfs";
                   extraArgs = [
