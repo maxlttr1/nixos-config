@@ -144,8 +144,8 @@
       # Enables randomization in the kernel’s page allocator
       "page_alloc.shuffle=1"
       # Enables zeroing of memory during allocation and free time (helps mitigate use-after-free vulnerabilaties)
-      "init_on_alloc=1"
-      "init_on_free=1"
+      # "init_on_alloc=1"
+      # "init_on_free=1"
       # Makes it harder to influence slab cache layout
       "slab_nomerge"
     ];

@@ -130,7 +130,7 @@ in
               name = "org.kde.plasma.kickoff";
               config = {
                 General = {
-                  icon = "plasma-symbolic";
+                  icon = "nix-snowflake";
                   alphaSort = true;
                 };
               };
@@ -155,6 +155,7 @@ in
                   "org.kde.plasma.bluetooth"
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.kdeconnect"
+                  "org.kde.plasma.weather"
                 ];
                 hidden = [ ];
               };

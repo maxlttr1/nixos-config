@@ -12,6 +12,7 @@
     ./librewolf.nix
     ./pkgs.nix
     ./plasmaManager.nix
+    ./rsibreak.nix
     ./shellAliases.nix
     ./sops-more.nix
     ./ssh.nix

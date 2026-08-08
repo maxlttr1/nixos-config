@@ -12,6 +12,5 @@
       sizeGiB = 8;
     };
     zramSwap.enable = true;
-    swappiness = 30;
   };
 }

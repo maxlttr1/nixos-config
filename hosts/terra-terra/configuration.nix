@@ -16,14 +16,24 @@
   custom.swap = {
     swapFile = {
       enable = true;
-      sizeGiB = 8;
+      sizeGiB = 16;
     };
-    zramSwap.enable = true;
-    swappiness = 10;
+    zramSwap = {
+      enable = true;
+      memoryPercent = 100;
+    };
+    swappiness = 150;
+    resume = {
+      enable = true;
+      offset = 33624064;
+      device = "3f6e674d-f4f2-4589-bc34-a0dffb35fb6b";
+    };
   };
   custom.tlp.enable = true;
   custom.touchpad.enable = true;
   custom.vms.enable = true;
+
+  services.teamviewer.enable = true;
 
   fileSystems."/home/${settings.username}/mountedDisk" = {
     device = "/dev/mapper/crypted";
