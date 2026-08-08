@@ -24,15 +24,17 @@
       ];
     */
 
-    boot = {
-      loader.timeout = 0;
-      initrd.verbose = false;
-      kernelParams = [
-        "quiet"
-        "loglevel=3"
-        "udev.log_level=3"
-      ];
-    };
+    /*
+      boot = {
+        loader.timeout = 0;
+        initrd.verbose = false;
+        kernelParams = [
+          "quiet"
+          "loglevel=3"
+          "udev.log_level=3"
+        ];
+      };
+    */
 
     boot.loader.systemd-boot = {
       enable = lib.mkForce false;
