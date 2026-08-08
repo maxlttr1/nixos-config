@@ -23,7 +23,7 @@
     swappiness = 150;
     resume = {
       enable = true;
-      offset = 33624064;
+      offset = 6213632;
       device = "3f6e674d-f4f2-4589-bc34-a0dffb35fb6b";
     };
   };
