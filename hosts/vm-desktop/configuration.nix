@@ -5,4 +5,15 @@
   };
   custom.kdePlasma.enable = true;
   custom.pipewire.enable = true;
+  custom.swap = {
+    swapFile = {
+      enable = true;
+      sizeGiB = 8;
+    };
+    zramSwap = {
+      enable = true;
+      memoryPercent = 100;
+    };
+    swappiness = 180;
+  };
 }

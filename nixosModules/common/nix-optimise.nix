@@ -26,6 +26,7 @@
 
     nix.settings = {
       substituters = [
+        "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://maxlttr1.cachix.org"

@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    impermanence = {
+    /*impermanence = {
       url = "github:nix-community/impermanence";
       inputs = {
         nixpkgs.follows = "";
@@ -94,7 +94,7 @@
         ./disko
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
-        inputs.impermanence.nixosModules.impermanence
+        # inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
       ];
 
@@ -125,7 +125,8 @@
         pkgs = myNixpkgs;
         specialArgs = { inherit inputs settings hostname; };
         modules = [
-          ./hosts/${hostname}
+          ./hosts/${hostname}/configuration.nix
+          ./hosts/${hostname}/hardware-configuration.nix
           (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
         ]
         ++ modulesList;
@@ -154,7 +155,7 @@
                 hostname = "minimal";
               };
             })
-            ./hosts/minimal
+            ./hosts/minimal/configuration.nix
             (mkHomeManagerConfig ./hosts/minimal/home.nix)
           ]
           ++ modulesList;

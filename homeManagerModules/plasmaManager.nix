@@ -89,11 +89,17 @@ in
           showMediaControls = false;
         };
       };
+      powerdevil = {
+        AC.whenSleepingEnter = "standby";
+        battery.whenSleepingEnter = "standbyThenHibernate";
+        batteryLevels.criticalAction = "hibernate";
+        lowBattery.whenSleepingEnter = "standbyThenHibernate";
+      };
       kwin.nightLight = {
         enable = true;
-        location.latitude = "46.04";
-        location.longitude = "0.69";
-        mode = "location";
+        # location.latitude = "46.04";
+        # location.longitude = "0.69";
+        mode = "automatic";
         temperature.day = 4500;
         temperature.night = 2500;
       };
