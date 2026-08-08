@@ -53,6 +53,12 @@
     ];
   };
 
-  boot.initrd.luks.devices."crypted".device =
+  environment.etc.crypttab.text = ''
+    crypted UUID=c3e6f523-f97e-4166-8208-06eefd778df2 /root/disk.key
+  '';
+
+  /*
+    boot.initrd.luks.devices."crypted".device =
     "/dev/disk/by-uuid/c3e6f523-f97e-4166-8208-06eefd778df2";
+  */
 }

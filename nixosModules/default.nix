@@ -17,7 +17,7 @@
     ./gaming.nix
     ./gnupg.nix
     ./hyprland.nix
-    ./impermanence.nix
+    # ./impermanence.nix
     ./intel.nix
     ./kdePlasma.nix
     ./ld.nix
