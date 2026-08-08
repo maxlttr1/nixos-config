@@ -26,13 +26,15 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    /*impermanence = {
-      url = "github:nix-community/impermanence";
-      inputs = {
-        nixpkgs.follows = "";
-        home-manager.follows = "";
+    /*
+      impermanence = {
+        url = "github:nix-community/impermanence";
+        inputs = {
+          nixpkgs.follows = "";
+          home-manager.follows = "";
+        };
       };
-    };
+    */
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
@@ -77,7 +79,7 @@
           inputs.nix-vscode-extensions.overlays.default
         ];
       };
-      
+
       overlay-nixpkgs = final: prev: {
         stable = import nixpkgs-stable {
           system = settings.system;
@@ -120,17 +122,19 @@
         };
       };
 
-      mkHost = hostname: nixpkgs-stable.lib.nixosSystem {
-        system = settings.system;
-        pkgs = myNixpkgs;
-        specialArgs = { inherit inputs settings hostname; };
-        modules = [
-          ./hosts/${hostname}/configuration.nix
-          ./hosts/${hostname}/hardware-configuration.nix
-          (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
-        ]
-        ++ modulesList;
-      };
+      mkHost =
+        hostname:
+        nixpkgs-stable.lib.nixosSystem {
+          system = settings.system;
+          pkgs = myNixpkgs;
+          specialArgs = { inherit inputs settings hostname; };
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}/hardware-configuration.nix
+            (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
+          ]
+          ++ modulesList;
+        };
 
       shells = import ./shells.nix {
         pkgs = myNixpkgs;
