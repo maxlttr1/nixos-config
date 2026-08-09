@@ -43,6 +43,7 @@ in
 
         ProtectSystem = "strict";
         ProtectHome = "read-only";
+        PrivateTmp = true;
         ReadWritePaths = [
           "/home/${settings.username}/.cache/nix"
         ];
@@ -122,10 +123,10 @@ in
         fi
       '';
       postStop = ''
+                set -euox pipefail
                 DATE=$(date +'%Y-%m-%d')
                 BRANCH="flake-auto-update-$DATE"
-                set -euo pipefail
-
+                
                 url=$(cat ${webhookPath})
                 status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 

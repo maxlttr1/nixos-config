@@ -53,7 +53,7 @@ in
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       preStart = ''
-        set -euo pipefail
+        set -euox pipefail
 
         rm -f ./result
         if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
@@ -65,7 +65,7 @@ in
         rm -f ./result
       '';
       postStop = ''
-                set -uo pipefail
+                set -uox pipefail
 
                 url=$(cat ${webhookPath} || echo "")
                 status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
