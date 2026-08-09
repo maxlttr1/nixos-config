@@ -50,6 +50,8 @@ in
     };
 
     systemd.services."nixos-upgrade" = {
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
       preStart = ''
         set -euo pipefail
 
