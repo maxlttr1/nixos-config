@@ -34,15 +34,18 @@ in
         "multi-user.target"
         "network-online.target"
       ];
-      requires = [
+      wants = [
         "network-online.target"
       ];
       serviceConfig = {
         Type = "oneshot";
         User = "${settings.username}";
-        
+
         ProtectSystem = "strict";
-        ProtectHome="read-only";
+        ProtectHome = "read-only";
+        ReadWritePaths = [
+          "/home/${settings.username}/.cache/nix"
+        ];
         CacheDirectory = "nixos-flake-update";
         CacheDirectoryMode = "0700";
         WorkingDirectory = "/var/cache/nixos-flake-update";
