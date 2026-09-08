@@ -50,10 +50,12 @@
               install_url = moz "youtube-recommended-videos"; # Unhook
               installation_mode = "force_installed";
             };
-            "{a8cf72f7-09b7-4cd4-9aaa-7a023bf09916}" = {
-              install_url = moz "besttimetracker";
-              installation_mode = "force_installed";
-            };
+            /*
+              "{a8cf72f7-09b7-4cd4-9aaa-7a023bf09916}" = {
+                install_url = moz "besttimetracker";
+                installation_mode = "force_installed";
+              };
+            */
           };
         Homepage = {
           URL = "about:blank";

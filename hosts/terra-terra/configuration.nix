@@ -44,8 +44,8 @@
       "noexec"
     ];
   };
-  fileSystems."/home/${settings.username}/mountedDisk/syncthing/cours/polytech" = {
-    device = "/home/${settings.username}/mountedDisk/syncthing/cours/polytech";
+  fileSystems."/home/${settings.username}/mountedDisk/syncthing/Cours/polytech" = {
+    device = "/home/${settings.username}/mountedDisk/syncthing/Cours/polytech";
     fsType = "none";
     options = [
       "bind"
