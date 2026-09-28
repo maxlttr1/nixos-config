@@ -16,7 +16,7 @@
       # cron
       curl
       direnv
-      element-desktop
+      # element-desktop
       # eza
       fastfetch
       fd
@@ -27,7 +27,7 @@
       ncdu
       # powertop
       ripgrep-all
-      unstable.signal-desktop # Unverified on flathub
+      unstable.signal-desktop # Because unverified on flathub
       tldr
       typst
       typst-live
@@ -51,8 +51,8 @@
         "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
         "md.obsidian.Obsidian"
-        "com.github.jeromerobert.pdfarranger"
-        "org.mozilla.Thunderbird"
+        # "com.github.jeromerobert.pdfarranger"
+        # "org.mozilla.Thunderbird"
         "org.torproject.torbrowser-launcher"
         "dev.vencord.Vesktop"
       ];
