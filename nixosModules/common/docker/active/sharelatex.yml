@@ -1,0 +1,49 @@
+services:
+  sharelatex:
+    image: sharelatex/sharelatex
+    ports:
+      - 127.0.0.1:6060:80
+      - "${TAILSCALE_IP}:80:80"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin-https.tls=true
+      - traefik.http.routers.jellyfin-https.tls.certresolver=myresolver
+      - traefik.http.routers.jellyfin-https.entrypoints=websecure
+      - "traefik.http.routers.jellyfin-https.rule=Host(`overleaf.maxlttr7.duckdns.org`) || Host(`overleaf.maxlttr.fr`)"
+      - traefik.http.services.jellyfin-https.loadbalancer.server.port=6060
+    volumes:
+      - ./overleaf/data:/var/lib/overleaf
+      - ./overleaf/logs:/var/log/overleaf
+    environment:
+      OVERLEAF_MONGO_URL: mongodb://mongo/sharelatex
+      OVERLEAF_REDIS_HOST: redis
+      OVERLEAF_INVITE_TOKEN_SECRET: ${OVERLEAF_INVITE_TOKEN_SECRET}
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    command: --replSet overleaf
+    volumes:
+      - ./overleaf/mongo:/data/db
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'mongosh --quiet --eval ''try { rs.status().ok } catch (e) { rs.initiate({_id:"overleaf",members:[{_id:0,host:"mongo:27017"}]}).ok }''',
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    volumes:
+      - ./overleaf/redis:/data
+    restart: unless-stopped

@@ -20,12 +20,12 @@
 
     systemd.services."docker-containers" = {
       description = "Docker container management";
-      after = [ 
+      after = [
         "docker.service"
         "network-online.target"
         "tailscaled.service"
       ];
-      wants = [ 
+      wants = [
         "docker.service"
         "network-online.target"
         "tailscaled.service"
@@ -35,7 +35,7 @@
         User = "${settings.username}";
 
         ProtectSystem = "strict";
-        ProtectHome="read-only";
+        ProtectHome = "read-only";
         CacheDirectory = "docker-containers";
         CacheDirectoryMode = "0700";
         StateDirectory = "docker-containers";
@@ -43,7 +43,7 @@
         WorkingDirectory = "/var/cache/docker-containers";
 
         RemainAfterExit = true;
-        
+
         NoNewPrivileges = true;
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
@@ -67,6 +67,7 @@
         export PUID=$(id -u)
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
+        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat ${settings.secretsPath}/OVERLEAF_INVITE_TOKEN_SECRET)
 
         cd nixos-config/
 
@@ -96,6 +97,7 @@
         export PUID=$(id -u)
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
+        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat ${settings.secretsPath}/OVERLEAF_INVITE_TOKEN_SECRET)
 
         cd nixos-config/
 
