@@ -3,7 +3,7 @@ services:
     image: sharelatex/sharelatex
     ports:
       - 127.0.0.1:6060:80
-      - "${TAILSCALE_IP}:80:80"
+      - "${TAILSCALE_IP}:6060:80"
     labels:
       - traefik.enable=true
       - traefik.http.routers.jellyfin-https.tls=true
