@@ -69,6 +69,8 @@
       settings = {
         username = "GabwfBjEgF";
         system = "x86_64-linux";
+        secretsPath = "/home/${settings.username}/.config/sops-nix/secrets";
+        secretsCachePath = "/home/${settings.username}/.cache/sops-nix/secrets";
       };
 
       myNixpkgs = import nixpkgs-stable {
