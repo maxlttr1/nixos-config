@@ -50,6 +50,7 @@
           redhat.vscode-yaml
 
           # Utilities
+          myriad-dreamin.tinymist # Typst
           ms-vsliveshare.vsliveshare
           formulahendry.auto-rename-tag
           tomoki1207.pdf
