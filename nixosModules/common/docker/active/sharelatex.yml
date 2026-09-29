@@ -10,7 +10,7 @@ services:
       - traefik.http.routers.overleaf-https.tls.certresolver=myresolver
       - traefik.http.routers.overleaf-https.entrypoints=websecure
       - "traefik.http.routers.overleaf-https.rule=Host(`overleaf.maxlttr7.duckdns.org`) || Host(`overleaf.maxlttr.fr`)"
-      - traefik.http.services.overleaf-https.loadbalancer.server.port=80
+      - traefik.http.services.overleaf-https.loadbalancer.server.port=6060
     volumes:
       - ./overleaf/data:/var/lib/overleaf
       - ./overleaf/logs:/var/log/overleaf
