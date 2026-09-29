@@ -6,12 +6,6 @@
   ...
 }:
 
-let
-  githubTokenPath = "/home/${settings.username}/.cache/sops-nix/secrets/github-token";
-  webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
-  webhookDir = "/home/${settings.username}/.cache/sops-nix/secrets/";
-in
-
 {
   options = {
     custom.autoUpgrade.enable = lib.mkEnableOption "Enable automatic NixOS upgrades";
@@ -67,7 +61,8 @@ in
       postStop = ''
                 set -uox pipefail
 
-                url=$(cat ${webhookPath} || echo "")
+                url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
+                gotifyToken = $(cat ${settings.secretsCachePath}/gotify-token || echo "")
                 status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
 
                 if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
@@ -91,6 +86,8 @@ in
 
                 payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
                 ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
+                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$payload" -F "priority=5"
+
                 rm -f /tmp/nixos-upgrade-changes.txt
                 exit 0
       '';
@@ -104,9 +101,10 @@ in
       script = ''
         set -uo pipefail
 
-        mkdir -p ${webhookDir}
-        cp -f /home/${settings.username}/.config/sops-nix/secrets/github-token ${githubTokenPath}
-        cp -f /home/${settings.username}/.config/sops-nix/secrets/discord-webhook ${webhookPath}
+        mkdir -p ${settings.secretsPath}
+        cp -f ${settings.secretsPath}/github-token ${settings.secretsCachePath}/github-token 
+        cp -f ${settings.secretsPath}/discord-webhook ${settings.secretsCachePath}/discord-webhook
+        cp -f ${settings.secretsPath}/gotify-token ${settings.secretsCachePath}/gotify-token
       '';
       after = [ "sops-nix.service" ];
       wantedBy = [ "sops-nix.service" ];

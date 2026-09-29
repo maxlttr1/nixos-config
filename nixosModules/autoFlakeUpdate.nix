@@ -6,11 +6,6 @@
   ...
 }:
 
-let
-  githubTokenPath = "/home/${settings.username}/.cache/sops-nix/secrets/github-token";
-  webhookPath = "/home/${settings.username}/.cache/sops-nix/secrets/discord-webhook";
-in
-
 {
   options = {
     custom.autoFlakeUpdate.enable = lib.mkEnableOption "Enable automatic NixOS flake input updates";
@@ -60,11 +55,11 @@ in
         set -euo pipefail
         export PATH=${pkgs.git}/bin:$PATH # Needed for nix flake update
 
-        if [ ! -f ${githubTokenPath} ]; then
-          echo "GitHub token file not found at ${githubTokenPath}"
+        if [ ! -f ${settings.secretsCachePath}/github-token ]; then
+          echo "GitHub token file not found at ${settings.secretsCachePath}/github-token"
           exit 1
         fi
-        githubToken=$(cat ${githubTokenPath})
+        githubToken=$(cat ${settings.secretsCachePath}/github-token)
 
         if [ ! -d "nixos-config" ]; then
           ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
@@ -98,36 +93,38 @@ in
         rm -f ./result
 
         DATE=$(date +'%Y-%m-%d')
-        BRANCH="flake-auto-update-$DATE"
-        echo "Generated branch: $BRANCH"
+        # BRANCH="flake-auto-update-$DATE"
+        # echo "Generated branch: $BRANCH"
+        BRANCH="master"
         ${pkgs.git}/bin/git checkout -B "$BRANCH"
         ${pkgs.git}/bin/git commit -m "Update flake.lock" || true
         ${pkgs.git}/bin/git push origin "$BRANCH"
 
-        ${pkgs.curl}/bin/curl -L \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer $githubToken" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/maxlttr1/nixos-config/pulls \
-          -d "{
-            \"title\": \"Update to flake.lock on $DATE\",
-            \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH or sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\",
-            \"head\": \"$BRANCH\",
-            \"base\": \"master\"
-          }"
+        # ${pkgs.curl}/bin/curl -L \
+        #   -X POST \
+        #   -H "Accept: application/vnd.github+json" \
+        #   -H "Authorization: Bearer $githubToken" \
+        #   -H "X-GitHub-Api-Version: 2022-11-28" \
+        #   https://api.github.com/repos/maxlttr1/nixos-config/pulls \
+        #   -d "{
+        #     \"title\": \"Update to flake.lock on $DATE\",
+        #     \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH or sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\",
+        #     \"head\": \"$BRANCH\",
+        #     \"base\": \"master\"
+        #   }"
 
-        if ${pkgs.git}/bin/git branch --list "$BRANCH" | grep -q .; then
-          ${pkgs.git}/bin/git switch master
-          ${pkgs.git}/bin/git branch -D "$BRANCH"
-        fi
+        # if ${pkgs.git}/bin/git branch --list "$BRANCH" | grep -q .; then
+        #   ${pkgs.git}/bin/git switch master
+        #   ${pkgs.git}/bin/git branch -D "$BRANCH"
+        # fi
       '';
       postStop = ''
                 set -euox pipefail
                 DATE=$(date +'%Y-%m-%d')
                 BRANCH="flake-auto-update-$DATE"
                 
-                url=$(cat ${webhookPath})
+                url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
+                gotifyToken = $(cat ${settings.secretsCachePath}/gotify-token || echo "")
                 status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
                 if [ $status -eq 0 ]; then
@@ -141,6 +138,7 @@ in
 
                 payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
                 ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
+                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$payload" -F "priority=5"
       '';
     };
 
