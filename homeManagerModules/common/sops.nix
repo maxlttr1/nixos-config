@@ -23,6 +23,9 @@
         "discord-webhook" = {
           mode = "0600";
         };
+        "OVERLEAF_INVITE_TOKEN_SECRET" = {
+          mode = "0600";
+        };
       };
     };
   };
