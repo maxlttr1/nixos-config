@@ -62,7 +62,7 @@
                 set -uo pipefail
 
                 url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
-                gotifyToken=$(cat ${settings.secretsCachePath}/gotify-token || echo "")
+                gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
                 status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
 
                 if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then

@@ -124,7 +124,7 @@
                 BRANCH="flake-auto-update-$DATE"
                 
                 url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
-                gotifyToken=$(cat ${settings.secretsCachePath}/gotify-token || echo "")
+                gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
                 status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
                 if [ $status -eq 0 ]; then

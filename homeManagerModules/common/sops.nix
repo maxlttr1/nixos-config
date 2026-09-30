@@ -23,7 +23,7 @@
         "discord-webhook" = {
           mode = "0600";
         };
-        "gotify-token" = {
+        "gotify.nixos-upgrade" = {
           mode = "0600";
         };
       };
