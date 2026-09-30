@@ -58,7 +58,7 @@
         ${pkgs.nix}/bin/nix store diff-closures /var/run/current-system ./result > /tmp/nixos-upgrade-changes.txt
         rm -f ./result
       '';
-      postStop = ''
+      postStop = lib.mkAfter ''
                 set -uo pipefail
 
                 url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
