@@ -47,3 +47,7 @@ services:
     volumes:
       - ./overleaf/redis:/data
     restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
