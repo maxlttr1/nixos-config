@@ -23,7 +23,7 @@
         "discord-webhook" = {
           mode = "0600";
         };
-        "OVERLEAF_INVITE_TOKEN_SECRET" = {
+        "gotify-token" = {
           mode = "0600";
         };
       };
