@@ -69,6 +69,7 @@
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
         if [ ! -f $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET ]; then
+          mkdir -p $STATE_DIRECTORY/overleaf
           ${pkgs.openssl}/bin/openssl rand -base64 32 > $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
           chmod 600 $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
         fi
