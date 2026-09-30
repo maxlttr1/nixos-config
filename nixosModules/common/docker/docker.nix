@@ -68,8 +68,11 @@
         export PGID=$(id -g)
         export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
 
-        ${pkgs.openssl}/bin/openssl rand -base64 32 > /etc/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
-        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat /etc/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
+        if [ ! -f $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET ]; then
+          ${pkgs.openssl}/bin/openssl rand -base64 32 > $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
+          chmod 600 $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
+        fi
+        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
 
         cd nixos-config/
 
