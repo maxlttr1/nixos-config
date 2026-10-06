@@ -6,32 +6,6 @@
   ...
 }:
 
-let
-  tailscaleSystray = pkgs.writeTextFile {
-    name = "tailscale-systray.desktop";
-    destination = "/share/applications/tailscale-systray.desktop";
-    text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=Tailscale Systray
-      Exec=${pkgs.tailscale}/bin/tailscale systray
-      Terminal=false
-      X-KDE-autostart-after=panel
-    '';
-  };
-  tailscaleResetExitNode = pkgs.writeTextFile {
-    name = "tailscale-reset-exit-node.desktop";
-    destination = "/share/applications/tailscale-reset-exit-node.desktop";
-    text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=Tailscale Reset Exit Node
-      Exec=${pkgs.tailscale}/bin/tailscale set --exit-node=
-      Terminal=false
-    '';
-  };
-in
-
 {
   options.custom.xdgCustom.enable = lib.mkEnableOption "XDG base directory configuration";
 
@@ -39,8 +13,21 @@ in
     xdg.autostart = {
       enable = true;
       entries = [
-        "${tailscaleSystray}/share/applications/tailscale-systray.desktop"
-        "${tailscaleResetExitNode}/share/applications/tailscale-reset-exit-node.desktop"
+        (pkgs.writeText "tailscale-systray.desktop" ''
+          [Desktop Entry]
+          Type=Application
+          Name=Tailscale Systray
+          Exec=${pkgs.tailscale}/bin/tailscale systray
+          Terminal=false
+          X-KDE-autostart-after=panel
+        '')
+        (pkgs.writeText "tailscale-reset-exit-node.desktop" ''
+          [Desktop Entry]
+          Type=Application
+          Name=Tailscale Reset Exit Node
+          Exec=${pkgs.tailscale}/bin/tailscale set --exit-node=
+          Terminal=false
+        '')
       ]
       ++ lib.optionals (config.custom.pkgs.enable) [
         "${pkgs.signal-desktop}/share/applications/signal.desktop"
