@@ -48,7 +48,7 @@
         "com.google.Chrome"
         "io.github.finefindus.Hieroglyphic"
         "org.libreoffice.LibreOffice"
-        "io.gitlab.librewolf-community"
+        # "io.gitlab.librewolf-community"
         "io.github.mhogomchungu.media-downloader"
         "md.obsidian.Obsidian"
         # "com.github.jeromerobert.pdfarranger"
