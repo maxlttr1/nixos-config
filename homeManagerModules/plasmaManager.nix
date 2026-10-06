@@ -76,7 +76,7 @@ in
         temperature.day = 4500;
         temperature.night = 2500;
       };
-      krunner.position = "top";
+      krunner.position = "center";
       shortcuts = {
         kwin = {
           "Window Maximize" = "Meta+F";
