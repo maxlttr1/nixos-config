@@ -69,7 +69,7 @@
         PromptForDownloadLocation = true;
         SanitizeOnShutdown = true;
         SearchEngines = {
-          Default = "Ecosia";
+          Default = "DuckDuckGo";
           Remove = [
             "Google"
             "Bing"
