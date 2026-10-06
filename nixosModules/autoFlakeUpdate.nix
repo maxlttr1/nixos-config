@@ -119,26 +119,23 @@
         # fi
       '';
       postStop = ''
-                set -euox pipefail
-                DATE=$(date +'%Y-%m-%d')
-                BRANCH="flake-auto-update-$DATE"
-                
-                url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
-                gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
-                status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
+        set -euox pipefail
+        DATE=$(date +'%Y-%m-%d')
+        BRANCH="flake-auto-update-$DATE"
 
-                if [ $status -eq 0 ]; then
-                  msg="# ✅ Nix flake.lock updated and passed check.
-        Please test it locally and merge the PR:
-        \`sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH\`
-        \`sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\`"
-                else
-                  msg="# ❌ Nix flake update failed."
-                fi
+        url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
+        gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
+        status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
-                payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
-                ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
-                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$msg" -F "priority=5" || true
+        if [ $status -eq 0 ]; then
+          msg="# ✅ Nix flake.lock updated and passed check."
+        else
+          msg="# ❌ Nix flake update failed."
+        fi
+
+        payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
+        ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
+        ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$msg" -F "priority=5" || true
       '';
     };
 
