@@ -138,7 +138,7 @@
 
                 payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
                 ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
-                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$payload" -F "priority=5" || true
+                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$msg" -F "priority=5" || true
       '';
     };
 
