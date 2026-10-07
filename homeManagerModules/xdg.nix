@@ -11,6 +11,7 @@
 
   config = lib.mkIf config.custom.xdgCustom.enable {
     xdg = {
+      configFile."mimeapps.list".force = true;
       autostart = {
         enable = true;
         entries = [
