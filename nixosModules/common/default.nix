@@ -13,6 +13,7 @@
     ./kernel.nix
     ./networkManager.nix
     ./nix-optimise.nix
+    ./sops.nix
     ./stateVersion.nix
     ./syncthing.nix
     ./systemd.nix
@@ -33,6 +34,7 @@
   custom.firmware.enable = true;
   custom.networkManager.enable = true;
   custom.nix-optimise.enable = true;
+  custom.sops.enable = true;
   custom.syncthing.enable = true;
   custom.systemd.enable = true;
   custom.tailscale.enable = true;

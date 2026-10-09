@@ -7,7 +7,6 @@
   custom.pkgs.enable = true;
   custom.plasmaManager.enable = true;
   custom.shellAliases.enable = true;
-  custom.sops-more.enable = true;
   custom.ssh.enable = true;
   custom.vscode.enable = true;
   custom.xdgCustom.enable = true;

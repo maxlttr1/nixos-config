@@ -102,7 +102,7 @@
         inputs.lanzaboote.nixosModules.lanzaboote
       ];
 
-      mkHomeManagerConfig = homeFile: {
+      mkHomeManagerConfig = homeFile: hostname: {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
@@ -119,7 +119,7 @@
           ];
           backupFileExtension = "backup";
           extraSpecialArgs = {
-            inherit inputs settings;
+            inherit inputs settings hostname;
           };
         };
       };
@@ -133,7 +133,8 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
-            (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
+            (mkHomeManagerConfig ./hosts/${hostname}/home.nix hostname)
+            inputs.sops-nix.nixosModules.sops
           ]
           ++ modulesList;
         };
