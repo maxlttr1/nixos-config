@@ -101,13 +101,16 @@
       script = ''
         set -uo pipefail
 
-        mkdir -p ${settings.secretsPath}
+        mkdir -p ${settings.secretsCachePath}
         cp -f ${settings.secretsPath}/github-token ${settings.secretsCachePath}/github-token 
         cp -f ${settings.secretsPath}/discord-webhook ${settings.secretsCachePath}/discord-webhook
         cp -f ${settings.secretsPath}/gotify.nixos-upgrade ${settings.secretsCachePath}/gotify.nixos-upgrade
       '';
       after = [ "sops-nix.service" ];
-      wantedBy = [ "sops-nix.service" ];
+      wantedBy = [
+        "sops-nix.service"
+        "nixos-upgrade.service"
+      ];
     };
   };
 }
