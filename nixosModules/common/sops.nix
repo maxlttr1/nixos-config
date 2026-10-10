@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  settings,
+  ...
+}:
 
 {
   options.custom.sops.enable = lib.mkEnableOption "Essentials sops-nix secrets";
@@ -9,7 +14,20 @@
       defaultSopsFormat = "yaml";
       age.keyFile = "/etc/sops/age/keys.txt";
 
-      secrets = { };
+      secrets = {
+        "github-token" = {
+          owner = settings.username;
+          mode = "0600";
+        };
+        "discord-webhook" = {
+          owner = settings.username;
+          mode = "0600";
+        };
+        "gotify.nixos-upgrade" = {
+          owner = settings.username;
+          mode = "0600";
+        };
+      };
     };
   };
 }

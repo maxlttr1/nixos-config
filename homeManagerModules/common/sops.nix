@@ -32,7 +32,7 @@
           mode = "0600";
         };
       }
-      // lib.optionalAttrs (hostname == "terra-terra") {
+      // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
         "github.public" = {
           mode = "0640";
         };

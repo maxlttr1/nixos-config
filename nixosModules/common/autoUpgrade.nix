@@ -2,9 +2,12 @@
   lib,
   config,
   pkgs,
-  settings,
   ...
 }:
+
+let
+  notifyScript = import ./notify.nix { inherit pkgs config; };
+in
 
 {
   options = {
@@ -59,58 +62,36 @@
         rm -f ./result
       '';
       postStop = lib.mkAfter ''
-                set -uo pipefail
-
-                url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
-                gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
-                status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
-
-                if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
-                  changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
-                  total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
-                  summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
-                  
-                  if [ -n "$summary" ]; then
-                    msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*
-                    ## Summary:
-        \`\`\`$summary\`\`\`"
-                  else
-                    msg="# ✅ NixOS upgrade successful on \`${config.networking.hostName}\`: *$total packages changed*"
-                  fi
-                else
-                  error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
-                  msg="# ❌ NixOS upgrade failed on \`${config.networking.hostName}\`
-                  ## Error log:
-        \`\`\`$error_log\`\`\`"
-                fi
-
-                payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
-                ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
-                ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$msg" -F "priority=5" || true
-
-                rm -f /tmp/nixos-upgrade-changes.txt
-                exit 0
-      '';
-    };
-
-    systemd.user.services."copy-discord-webhook" = {
-      description = "Copy Discord webhook secret to user home directory";
-      serviceConfig = {
-        Type = "oneshot";
-      };
-      script = ''
         set -uo pipefail
 
-        mkdir -p ${settings.secretsCachePath}
-        cp -f ${settings.secretsPath}/github-token ${settings.secretsCachePath}/github-token 
-        cp -f ${settings.secretsPath}/discord-webhook ${settings.secretsCachePath}/discord-webhook
-        cp -f ${settings.secretsPath}/gotify.nixos-upgrade ${settings.secretsCachePath}/gotify.nixos-upgrade
+        status=$(systemctl show nixos-upgrade.service -p ExecMainStatus --value || echo 1)
+
+        if [ "$status" -eq 0 ] && [ -f /tmp/nixos-upgrade-changes.txt ]; then
+          changes=$(cat /tmp/nixos-upgrade-changes.txt || echo "")
+          total=$(echo "$changes" | grep -cve '^[[:space:]]*$')
+          summary=$(echo "$changes" | sed 's/\x1b\[[0-9;]*m//g' | grep -e plasma -e kde -e linux -e nixos | head -c 1900)
+
+          if [ -n "$summary" ]; then
+            msg=$(printf '%s\n%s\n%s\n' \
+              "**✅ NixOS upgrade successful on \`${config.networking.hostName}\`:** *$total packages changed*" \
+              "Summary:" \
+              "\`\`\`$summary\`\`\`")
+          else
+            msg="**✅ NixOS upgrade successful on \`${config.networking.hostName}\`:** *$total packages changed*"
+          fi
+        else
+          error_log=$(journalctl -u nixos-upgrade.service -n 50 --no-pager | tail -c 1900)
+          msg=$(printf '%s\n%s\n%s\n' \
+            "**❌ NixOS upgrade failed on \`${config.networking.hostName}\`:**" \
+            "Error log:" \
+            "\`\`\`$error_log\`\`\`")
+        fi
+
+        ${notifyScript}
+
+        rm -f /tmp/nixos-upgrade-changes.txt
+        exit 0
       '';
-      after = [ "sops-nix.service" ];
-      wantedBy = [
-        "sops-nix.service"
-        "nixos-upgrade.service"
-      ];
     };
   };
 }

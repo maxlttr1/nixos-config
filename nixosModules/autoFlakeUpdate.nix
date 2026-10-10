@@ -6,6 +6,10 @@
   ...
 }:
 
+let
+  notifyScript = import ./common/notify.nix { inherit pkgs config; };
+in
+
 {
   options = {
     custom.autoFlakeUpdate.enable = lib.mkEnableOption "Enable automatic NixOS flake input updates";
@@ -55,14 +59,10 @@
         set -euo pipefail
         export PATH=${pkgs.git}/bin:$PATH # Needed for nix flake update
 
-        if [ ! -f ${settings.secretsCachePath}/github-token ]; then
-          echo "GitHub token file not found at ${settings.secretsCachePath}/github-token"
-          exit 1
-        fi
-        githubToken=$(cat ${settings.secretsCachePath}/github-token)
-
         if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://$githubToken@github.com/maxlttr1/nixos-config.git ./nixos-config
+          ${pkgs.git}/bin/git clone https://$(cat ${
+            config.sops.secrets."github-token".path
+          })@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 
         cd nixos-config/
@@ -123,19 +123,15 @@
         DATE=$(date +'%Y-%m-%d')
         BRANCH="flake-auto-update-$DATE"
 
-        url=$(cat ${settings.secretsCachePath}/discord-webhook || echo "")
-        gotifyToken=$(cat ${settings.secretsCachePath}/gotify.nixos-upgrade || echo "")
         status=$(systemctl show nixos-flake-update.service -p ExecMainStatus --value)
 
         if [ $status -eq 0 ]; then
-          msg="# ✅ Nix flake.lock updated and passed check."
+          msg="✅ Nix flake.lock updated and passed check."
         else
-          msg="# ❌ Nix flake update failed."
+          msg="❌ Nix flake update failed."
         fi
 
-        payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{content: $msg}' || echo '{}')
-        ${pkgs.curl}/bin/curl -X POST "$url" -H "Content-Type: application/json" -d "$payload" || true
-        ${pkgs.curl}/bin/curl "https://gotify.maxlttr.fr/message" -H "X-Gotify-Key: $gotifyToken" -F "title=" -F "message=$msg" -F "priority=5" || true
+        ${notifyScript}
       '';
     };
 
