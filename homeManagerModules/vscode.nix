@@ -30,7 +30,6 @@
           # llvm-vs-code-extensions.vscode-clangd
 
           # Javascript
-          robole.javascript-snippets
           # christian-kohler.path-intellisense # autocompletes filenames
 
           # Java

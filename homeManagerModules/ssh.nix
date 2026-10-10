@@ -15,11 +15,11 @@
       Host nexus-nexus
           HostName nexus-nexus
           User ${settings.username}
-          IdentityFile /home/${settings.username}/.config/sops-nix/secrets/nixos_ssh_setup.private
+          IdentityFile ${config.sops.secrets."nixos_ssh_setup.private".path}
       Host fly2clean
           HostName videocompress.polytech.univ-nantes.prive
           User ptrans_fly2clean_2025
-          IdentityFile /home/${settings.username}/.ssh/fly2clean
+          IdentityFile ${config.sops.secrets."gitlab-univ-nantes.private".path}
     '';
   };
 }

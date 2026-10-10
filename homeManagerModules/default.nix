@@ -14,7 +14,6 @@
     ./plasmaManager.nix
     ./rsibreak.nix
     ./shellAliases.nix
-    ./sops-more.nix
     ./ssh.nix
     ./tmux.nix
     ./vscode.nix

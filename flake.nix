@@ -69,8 +69,6 @@
       settings = {
         username = "GabwfBjEgF";
         system = "x86_64-linux";
-        secretsPath = "/home/${settings.username}/.config/sops-nix/secrets";
-        secretsCachePath = "/home/${settings.username}/.cache/sops-nix/secrets";
       };
 
       myNixpkgs = import nixpkgs-stable {
@@ -97,12 +95,13 @@
         ./nixosModules
         ./disko
         inputs.home-manager.nixosModules.home-manager
+        inputs.sops-nix.nixosModules.sops
         inputs.disko.nixosModules.disko
         # inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
       ];
 
-      mkHomeManagerConfig = homeFile: {
+      mkHomeManagerConfig = homeFile: hostname: {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
@@ -119,7 +118,7 @@
           ];
           backupFileExtension = "backup";
           extraSpecialArgs = {
-            inherit inputs settings;
+            inherit inputs settings hostname;
           };
         };
       };
@@ -133,7 +132,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
-            (mkHomeManagerConfig ./hosts/${hostname}/home.nix)
+            (mkHomeManagerConfig ./hosts/${hostname}/home.nix hostname)
           ]
           ++ modulesList;
         };
