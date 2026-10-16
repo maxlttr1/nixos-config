@@ -2,6 +2,8 @@ services:
   nextcloud-releases:
     container_name: nextcloud-aio-mastercontainer
     image: ghcr.io/nextcloud-releases/all-in-one:latest
+    networks:
+      - proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
