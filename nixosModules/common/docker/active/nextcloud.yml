@@ -2,6 +2,7 @@ services:
   nextcloud-releases:
     container_name: nextcloud-aio-mastercontainer
     image: ghcr.io/nextcloud-releases/all-in-one:latest
+    init: true
     networks:
       - proxy
     volumes:
@@ -18,9 +19,6 @@ services:
       APACHE_IP_BINDING: "0.0.0.0"
       APACHE_ADDITIONAL_NETWORK: "proxy"
       SKIP_DOMAIN_VALIDATION: "false"
-    command: |
-      --init
-      --sig-proxy=false
     restart: always
 
 volumes:
