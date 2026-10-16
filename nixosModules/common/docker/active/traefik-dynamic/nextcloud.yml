@@ -1,0 +1,37 @@
+http:
+  routers:
+    nextcloud:
+      rule: "Host(`nextcloud.maxlttr7.duckdns.org`) || Host(`nextcloud.maxlttr.fr`)"
+      entrypoints:
+        - "websecure"
+      service: nextcloud
+      middlewares:
+        - nextcloud-chain
+      tls:
+        certresolver: "myresolver"
+
+  services:
+    nextcloud:
+      loadBalancer:
+        servers:
+          # - url: "http://localhost:11000"
+          - url: "http://nextcloud-aio-apache:11000"
+
+  middlewares:
+    nextcloud-secure-headers:
+      headers:
+        hostsProxyHeaders:
+          - "X-Forwarded-Host"
+        referrerPolicy: "same-origin"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+
+    https-redirect:
+      redirectscheme:
+        scheme: https
+
+    nextcloud-chain:
+      chain:
+        middlewares:
+          - https-redirect
+          - nextcloud-secure-headers

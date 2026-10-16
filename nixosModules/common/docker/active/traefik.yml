@@ -11,6 +11,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - $STATE_DIRECTORY/traefik/:/var/traefik/certs/:rw
+      - ./traefik-dynamic:/etc/traefik/dynamic:ro
       # touch $STATE_DIRECTORY/traefik/acme.json && chmod 600 $STATE_DIRECTORY/traefik/acme.json
     command:
       - "--global.sendAnonymousUsage=false"
@@ -27,6 +28,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=maxime.lettier@protonmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/var/traefik/certs/acme.json"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "providers.file.directory=/etc/traefik/dynamic"
     restart: unless-stopped
 
 networks:
