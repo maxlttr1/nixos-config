@@ -20,3 +20,11 @@ services:
       --init
       --sig-proxy=false
     restart: always
+
+volumes:
+  nextcloud_aio_mastercontainer:
+    name: nextcloud_aio_mastercontainer
+
+networks:
+  proxy:
+    external: true
