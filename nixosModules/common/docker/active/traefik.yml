@@ -28,7 +28,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=maxime.lettier@protonmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/var/traefik/certs/acme.json"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "providers.file.directory=/etc/traefik/dynamic"
+      - "--providers.file.directory=/etc/traefik/dynamic"
     restart: unless-stopped
 
 networks:

@@ -14,8 +14,8 @@ http:
     nextcloud:
       loadBalancer:
         servers:
-          - url: "http://localhost:11000"
-          # - url: "http://nextcloud-aio-apache:11000"
+          # - url: "http://localhost:11000"
+          - url: "http://nextcloud-aio-apache:11000"
 
   middlewares:
     nextcloud-secure-headers:
