@@ -29,6 +29,7 @@
         DNS = [
           # "194.242.2.4#base.dns.mullvad.net"
           # "9.9.9.9#dns.quad9.net"
+          # "1.1.1.3#family.cloudflare-dns.com" # Block malware and adult content
           "1.1.1.1#one.one.one.one"
           "8.8.8.8#dns.google"
         ];
