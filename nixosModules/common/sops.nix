@@ -15,16 +15,13 @@
       age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
-        "github-token" = {
-          owner = settings.username;
+        "github/token" = {
           mode = "0600";
         };
-        "discord-webhook" = {
-          owner = settings.username;
+        "discord/webhook" = {
           mode = "0600";
         };
-        "gotify.nixos-upgrade" = {
-          owner = settings.username;
+        "gotify/nixos-upgrade" = {
           mode = "0600";
         };
       };

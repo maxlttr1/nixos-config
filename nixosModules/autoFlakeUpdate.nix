@@ -61,7 +61,7 @@ in
 
         if [ ! -d "nixos-config" ]; then
           ${pkgs.git}/bin/git clone https://$(cat ${
-            config.sops.secrets."github-token".path
+            config.sops.secrets."github/token".path
           })@github.com/maxlttr1/nixos-config.git ./nixos-config
         fi
 

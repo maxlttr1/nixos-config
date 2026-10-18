@@ -16,49 +16,51 @@
       age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
-        "github-token" = {
+        "github/token" = {
           mode = "0600";
         };
-        "vpn.env" = {
+        "discord/webhook" = {
           mode = "0600";
         };
-        "suaps.env" = {
+        "gotify/nixos-upgrade" = {
           mode = "0600";
         };
-        "discord-webhook" = {
+        "env/vpn.env" = {
+          key = "env/vpn";
           mode = "0600";
         };
-        "gotify.nixos-upgrade" = {
+        "env/suaps.env" = {
+          key = "env/suaps";
           mode = "0600";
         };
       }
       // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
-        "github.public" = {
+        "ssh/github/private" = {
+          mode = "0600";
+        };
+        "ssh/github/public" = {
           mode = "0640";
         };
-        "github.private" = {
+        "ssh/nixos-setup/private" = {
           mode = "0600";
         };
-        "nixos_ssh_setup.public" = {
+        "ssh/nixos-setup/public" = {
           mode = "0640";
         };
-        "nixos_ssh_setup.private" = {
+        "ssh/racknerd/ip" = {
           mode = "0600";
         };
-        "racknerd_ip" = {
+        "ssh/racknerd/private" = {
           mode = "0600";
         };
-        "racknerd_ssh.public" = {
+        "ssh/racknerd/public" = {
           mode = "0640";
         };
-        "racknerd_ssh.private" = {
+        "ssh/gitlab-univ-nantes/private" = {
           mode = "0600";
         };
-        "gitlab-univ-nantes.public" = {
+        "ssh/gitlab-univ-nantes/public" = {
           mode = "0640";
-        };
-        "gitlab-univ-nantes.private" = {
-          mode = "0600";
         };
       };
     };
