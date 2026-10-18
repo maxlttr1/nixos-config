@@ -4,7 +4,7 @@ services:
     volumes:
       - $STATE_DIRECTORY/suaps/config.json:/app/config/config.json
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/suaps.env
+      - ${HOME}/.config/sops-nix/secrets/env/suaps.env
     ports:
       - 127.0.0.1:5000:5000
       - "${TAILSCALE_IP}:5000:5000"

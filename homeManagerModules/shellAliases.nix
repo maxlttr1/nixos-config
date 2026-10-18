@@ -18,8 +18,8 @@
       gl = "git log --oneline --decorate --all --graph";
       create-ubuntu = "docker build --no-cache --build-arg UID=$(id -u) --build-arg USERNAME=$(id -un) -t custom-ubuntu $HOME/Documents/nixos-config/nixosModules/common/docker/inactive/ubuntu/";
       run-ubuntu = "docker run -it --rm -u $(id -u):$(id -g) -v \"$HOME/:/home/$(id -un)/\" -w /home/$(id -un) custom-ubuntu /bin/bash";
-      ssh-vps = "ssh root@$(cat ${config.sops.secrets."racknerd_ip".path}) -i ${
-        config.sops.secrets."racknerd_ssh.private".path
+      ssh-vps = "ssh root@$(cat ${config.sops.secrets."ssh/racknerd/ip".path}) -i ${
+        config.sops.secrets."ssh/racknerd/private".path
       }";
       music-download-no-cookies = "nix run nixpkgs/nixpkgs-unstable#yt-dlp -- \"https://www.youtube.com/watch?v=AQ6iA-0CRL8&list=PLkF8ZEu4FB1kvxIhG9jLAEauSivb5JJGD\" --playlist-items 1:100 -f bestaudio --remux-video opus --embed-metadata --embed-thumbnail -o \"$HOME/mountedDisk/syncthing/music/New/%(title)s [%(id)s].%(ext)s\" --download-archive \"$HOME/mountedDisk/syncthing/music/downloaded.txt\"";
       music-download = "music-download-no-cookies --cookies  \"$HOME/mountedDisk/syncthing/music/cookies.firefox-private.txt\"";
