@@ -25,6 +25,21 @@
         "gotify/nixos-upgrade" = {
           mode = "0600";
         };
+        "borgbackup/docker-containers-volumes" = {
+          mode = "0600";
+        };
+        "borgbackup/borgbackup-job" = {
+          mode = "0600";
+        };
+        "nextcloud/url" = {
+          mode = "0600";
+        };
+        "nextcloud/secret" = {
+          mode = "0600";
+        };
+        "nextcloud/conversations/Monitoring.token" = {
+          mode = "0600";
+        };
         "env/vpn.env" = {
           key = "env/vpn";
           mode = "0600";
