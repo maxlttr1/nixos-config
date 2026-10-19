@@ -24,7 +24,7 @@
 
   if [ -f "${config.sops.secrets."nextcloud/secret".path}" ]; then
     NC_URL="$(cat ${config.sops.secrets."nextcloud/url".path})"
-    TOKEN="$(cat ${config.sops.secrets."nextcloud/conversations/Nixos-upgrade".path})"
+    TOKEN="$(cat ${config.sops.secrets."nextcloud/conversations/Nixos".path})"
     SECRET="$(cat ${config.sops.secrets."nextcloud/secret".path})"
 
     payload=$(${pkgs.jq}/bin/jq -n --arg msg "$msg" '{"message": $msg}' || echo '{}')

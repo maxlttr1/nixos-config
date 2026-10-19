@@ -35,7 +35,7 @@
         "nextcloud/secret" = {
           mode = "0600";
         };
-        "nextcloud/conversations/Nixos-upgrade" = {
+        "nextcloud/conversations/Nixos" = {
           mode = "0600";
         };
       };
