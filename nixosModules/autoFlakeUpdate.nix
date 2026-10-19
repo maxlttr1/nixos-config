@@ -85,7 +85,7 @@ in
 
         for hostname in "nexus-nexus" "terra-terra"; do
           rm -f ./result
-          if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake .#$hostname; then
+          if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --refresh --flake .#$hostname; then
             echo "Nixos-rebuild build failed for $hostname"
             exit 1
           fi

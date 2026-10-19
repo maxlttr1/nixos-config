@@ -34,7 +34,7 @@ in
         #"--update-input"
         #"nixpkgs-main"
         "-L" # Show logs
-        # "--refresh" # Force fresh fetch from GitHub
+        "--refresh" # Force fresh fetch from GitHub
       ];
       dates = config.custom.autoUpgrade.frequency;
       persistent = true;
@@ -47,13 +47,16 @@ in
     };
 
     systemd.services."nixos-upgrade" = {
-      after = [ "network-online.target" ];
+      after = [
+        "network-online.target"
+        "sops.service"
+      ];
       wants = [ "network-online.target" ];
       preStart = ''
         set -euox pipefail
 
         rm -f ./result
-        if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --flake github:maxlttr1/nixos-config; then
+        if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --refresh --flake github:maxlttr1/nixos-config; then
           echo "Failed to build new system configuration"
           exit 1
         fi
