@@ -25,6 +25,7 @@
       # lf
       magic-wormhole
       ncdu
+      nextcloud-client
       # powertop
       ripgrep-all
       unstable.signal-desktop # Because unverified on flathub

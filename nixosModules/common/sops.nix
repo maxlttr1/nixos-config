@@ -35,7 +35,7 @@
         "nextcloud/secret" = {
           mode = "0600";
         };
-        "nextcloud/conversations/Monitoring.token" = {
+        "nextcloud/conversations/Nixos-upgrade" = {
           mode = "0600";
         };
       };

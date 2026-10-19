@@ -35,6 +35,13 @@
           "${pkgs.signal-desktop}/share/applications/signal.desktop"
           # "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
           "/home/${settings.username}/.local/share/flatpak/exports/share/applications/dev.vencord.Vesktop.desktop"
+          (pkgs.writeText "nextcloud-client.desktop" ''
+            [Desktop Entry]
+            Type=Application
+            Name=Nextcloud Client
+            Exec=${pkgs.nextcloud-client}/bin/nextcloud
+            Terminal=false
+          '')
         ]
         ++ lib.optionals (config.custom.yakuake.enable) [
           "${pkgs.kdePackages.yakuake}/share/applications/org.kde.yakuake.desktop"

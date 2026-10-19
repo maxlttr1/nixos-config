@@ -58,7 +58,7 @@
             */
           };
         Homepage = {
-          URL = "about:blank";
+          URL = "https://nextcloud.maxlttr.fr/apps/dashboard/";
           StartPage = "previous-session";
         };
         HttpsOnlyMode = "force_enabled";

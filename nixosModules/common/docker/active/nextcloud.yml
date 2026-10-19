@@ -14,11 +14,12 @@ services:
       - "${TAILSCALE_IP}:7373:8080"
       # - 80:80
     environment:
-      # NEXTCLOUD_DATADIR: "/var/lib/nextcloud"
+      # NEXTCLOUD_DATADIR: "${HOME}/Syncthing"
       APACHE_PORT: "11000"
       APACHE_IP_BINDING: "0.0.0.0"
       APACHE_ADDITIONAL_NETWORK: "proxy"
       SKIP_DOMAIN_VALIDATION: "false"
+      BORG_RETENTION_POLICY: "--keep-within=7d --keep-weekly=4 --keep-monthly=6"
     restart: always
 
 volumes:

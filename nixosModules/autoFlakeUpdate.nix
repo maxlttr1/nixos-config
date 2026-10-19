@@ -15,10 +15,10 @@ in
     custom.autoFlakeUpdate.enable = lib.mkEnableOption "Enable automatic NixOS flake input updates";
     custom.autoFlakeUpdate.frequency = lib.mkOption {
       description = "Frequency of automatic flake input updates";
-      default = "Sat 2:00";
+      default = "Sat 3:00";
       type = lib.types.enum [
         "daily"
-        "Sat 2:00"
+        "Sat 3:00"
         "weekly"
         "monthly"
         "yearly"
