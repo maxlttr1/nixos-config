@@ -14,7 +14,7 @@
 
   config = lib.mkIf config.custom.borgbackup.enable {
     services.borgbackup.jobs = {
-      "borgbackup-job" = lib.mkIf config.custom.syncthing.enable {
+      "borgbackup-job" = lib.mkIf (config.custom.syncthing.enable && hostname == "nexus-nexus") {
         user = "${settings.username}";
         paths = "/home/${settings.username}/Syncthing";
         /*
