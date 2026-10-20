@@ -15,6 +15,9 @@ services:
       # - 80:80
     environment:
       # NEXTCLOUD_DATADIR: "${HOME}/Syncthing"
+      # NEXTCLOUD_MOUNT: "/mnt/Syncthing"
+      # docker exec -u www-data nextcloud-aio-nextcloud php occ config:system:set versions_retention_obligation --value="7, auto"
+      # docker exec -u www-data nextcloud-aio-nextcloud php occ config:system:set trashbin_retention_obligation --value="7, auto"
       APACHE_PORT: "11000"
       APACHE_IP_BINDING: "0.0.0.0"
       APACHE_ADDITIONAL_NETWORK: "proxy"

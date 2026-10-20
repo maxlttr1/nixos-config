@@ -2,6 +2,7 @@
   imports = [
     ./common
 
+    ./arduino.nix
     ./atd.nix
     ./auditd.nix
     ./autoAmpDL.nix
@@ -27,6 +28,7 @@
     ./samba.nix
     ./ssh.nix
     ./swap.nix
+    ./syncthing.nix
     ./tlp.nix
     ./touchpad.nix
     ./virtualbox.nix

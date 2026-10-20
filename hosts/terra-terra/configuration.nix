@@ -1,6 +1,7 @@
 { settings, ... }:
 
 {
+  custom.arduino.enable = true;
   custom.bluetooth.enable = true;
   custom.eduvpn.enable = true;
   custom.flatpak.enable = true;

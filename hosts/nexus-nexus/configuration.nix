@@ -10,4 +10,5 @@
     };
     zramSwap.enable = true;
   };
+  custom.syncthing.enable = true;
 }

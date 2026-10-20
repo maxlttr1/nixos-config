@@ -6,4 +6,5 @@
   # custom.flatpak.enable = true;
   custom.networkManager.enable = lib.mkForce true;
   custom.ssh.enable = true;
+  custom.syncthing.enable = true;
 }
