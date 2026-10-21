@@ -20,9 +20,6 @@
         "discord/webhook" = {
           mode = "0600";
         };
-        "gotify/nixos-upgrade" = {
-          mode = "0600";
-        };
         "borgbackup/docker-containers-volumes" = {
           mode = "0600";
         };

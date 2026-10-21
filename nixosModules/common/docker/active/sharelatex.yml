@@ -1,6 +1,6 @@
 services:
   sharelatex:
-    image: sharelatex/sharelatex
+    image: sharelatex/sharelatex:latest
     ports:
       - 127.0.0.1:6060:80
       - "${TAILSCALE_IP}:6060:80"

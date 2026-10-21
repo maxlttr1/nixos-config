@@ -1,6 +1,6 @@
 services:
   freshrss:
-    image: freshrss/freshrss
+    image: freshrss/freshrss:edge # Stable does not backport the latest security fixes
     volumes:
       - $STATE_DIRECTORY/freshrss/freshrss_extensions:/var/www/FreshRSS/extensions
       - $STATE_DIRECTORY/freshrss/freshrss_data:/var/www/FreshRSS/data
