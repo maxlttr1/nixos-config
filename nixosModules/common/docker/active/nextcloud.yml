@@ -23,6 +23,8 @@ services:
       APACHE_ADDITIONAL_NETWORK: "proxy"
       SKIP_DOMAIN_VALIDATION: "false"
       BORG_RETENTION_POLICY: "--keep-within=7d --keep-weekly=4 --keep-monthly=6"
+    devices:
+      - /dev/dri:/dev/dri
     restart: always
 
 volumes:
