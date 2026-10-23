@@ -10,5 +10,5 @@ services:
       - traefik.enable=true
       - traefik.http.routers.it-tools.rule=Host(`it-tools.local`)
       - traefik.http.routers.it-tools.entrypoints=internal
-      - traefik.http.services.it-tools-http.loadbalancer.server.port=80
+      - traefik.http.services.it-tools.loadbalancer.server.port=80
     restart: unless-stopped
