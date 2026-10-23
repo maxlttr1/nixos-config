@@ -4,10 +4,9 @@ services:
     command:
       - start
       - --provider.name=docker
+      - --provider.docker.strategy=stop
     ports:
       - "10000:10000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env:
-      - SABLIER_PROVIDER_DOCKER_STRATEGY=stop
     restart: unless-stopped
