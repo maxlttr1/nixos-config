@@ -19,6 +19,9 @@ services:
       - "--api.dashboard=true"
       - "--api.insecure=true"
       - "--api.debug=true"
+
+      - "--entrypoints.internal.address=:8081"
+
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"

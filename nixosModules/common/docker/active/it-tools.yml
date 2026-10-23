@@ -7,4 +7,8 @@ services:
     labels:
       - sablier.enable=true
       - sablier.group=mygroup
+      - traefik.enable=true
+      - traefik.http.routers.it-tools.rule=Host(`it-tools.local`)
+      - traefik.http.routers.it-tools.entrypoints=internal
+      - traefik.http.services.it-tools-http.loadbalancer.server.port=80
     restart: unless-stopped
