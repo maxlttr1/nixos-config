@@ -3,9 +3,9 @@ services:
     image: corentinth/it-tools:latest
     networks:
       - internal
-    ports:
-      - 127.0.0.1:8888:80
-      - "${TAILSCALE_IP}:8888:80"
+    # ports:
+    #  - 127.0.0.1:8888:80
+    #  - "${TAILSCALE_IP}:8888:80"
     labels:
       - sablier.enable=true
       - sablier.group=mygroup
