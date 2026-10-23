@@ -92,6 +92,11 @@
           ${pkgs.docker}/bin/docker network create proxy
         fi
 
+        # Create internal network if not present for traefik
+        if ! ${pkgs.docker}/bin/docker network inspect internal >/dev/null 2>&1; then
+          ${pkgs.docker}/bin/docker network create internal
+        fi
+
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
           ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
