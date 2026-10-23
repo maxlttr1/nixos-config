@@ -1,0 +1,13 @@
+services:
+  sablier:
+    image: sablierapp/sablier:latest
+    command:
+      - start
+      - --provider.name=docker
+    ports:
+      - "10000:10000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env:
+      - SABLIER_PROVIDER_DOCKER_STRATEGY=stop
+    restart: unless-stopped

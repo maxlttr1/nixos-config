@@ -4,4 +4,7 @@ services:
     ports:
       - 127.0.0.1:8888:80
       - "${TAILSCALE_IP}:8888:80"
+    labels:
+      - sablier.enable=true
+      - sablier.group=mygroup
     restart: unless-stopped
