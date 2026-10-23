@@ -16,5 +16,5 @@ services:
     restart: unless-stopped
 
 networks:
-  proxy:
+  internal:
     external: true
