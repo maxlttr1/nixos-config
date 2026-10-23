@@ -10,6 +10,7 @@ services:
       - sablier.enable=true
       - sablier.group=mygroup
       - traefik.enable=true
+      - traefik.docker.network=internal
       - traefik.http.routers.it-tools.rule=Host(`it-tools.home.arpa`)
       - traefik.http.routers.it-tools.entrypoints=internal
       - traefik.http.services.it-tools.loadbalancer.server.port=80
