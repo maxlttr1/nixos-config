@@ -2,7 +2,7 @@ services:
   it-tools:
     image: corentinth/it-tools:latest
     networks:
-      - local
+      - local_websecure
     ports:
       - 127.0.0.1:8888:80
       - "${TAILSCALE_IP}:8888:80"
@@ -17,5 +17,5 @@ services:
     restart: unless-stopped
 
 networks:
-  local:
+  local_websecure:
     external: true
