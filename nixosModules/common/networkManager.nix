@@ -11,16 +11,21 @@
   };
 
   config = lib.mkIf config.custom.networkManager.enable {
-    networking.networkmanager = {
-      enable = true;
-      ethernet.macAddress = "preserve";
-      dns = "systemd-resolved";
-      wifi = {
-        macAddress = "stable-ssid";
-        backend = "wpa_supplicant"; # Default
-        scanRandMacAddress = true;
+    networking = {
+      hosts = {
+        "100.68.245.10" = [ "it-tools.maxlttr.home" ];
       };
-      # logLevel = "DEBUG";
+      networkmanager = {
+        enable = true;
+        ethernet.macAddress = "preserve";
+        dns = "systemd-resolved";
+        wifi = {
+          macAddress = "stable-ssid";
+          backend = "wpa_supplicant"; # Default
+          scanRandMacAddress = true;
+        };
+        # logLevel = "DEBUG";
+      };
     };
 
     services.resolved = {

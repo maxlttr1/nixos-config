@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  settings,
   ...
 }:
 
@@ -16,24 +17,31 @@
       secrets = {
         "github/token" = {
           mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
         };
         "discord/webhook" = {
           mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
         };
         "borgbackup/docker-containers-volumes" = {
           mode = "0600";
         };
-        "borgbackup/borgbackup-job" = {
-          mode = "0600";
-        };
         "nextcloud/url" = {
           mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
         };
         "nextcloud/secret" = {
           mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
         };
         "nextcloud/conversations/Nixos" = {
           mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
         };
       };
     };

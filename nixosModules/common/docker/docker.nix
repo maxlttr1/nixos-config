@@ -24,11 +24,13 @@
         "docker.service"
         "network-online.target"
         "tailscaled.service"
+        "sops.service"
       ];
       wants = [
         "docker.service"
         "network-online.target"
         "tailscaled.service"
+        "sops.service"
       ];
       serviceConfig = {
         Type = "oneshot";
@@ -92,9 +94,9 @@
           ${pkgs.docker}/bin/docker network create proxy
         fi
 
-        # Create internal network if not present for traefik
-        if ! ${pkgs.docker}/bin/docker network inspect internal >/dev/null 2>&1; then
-          ${pkgs.docker}/bin/docker network create internal
+        # Create local network if not present for traefik
+        if ! ${pkgs.docker}/bin/docker network inspect local >/dev/null 2>&1; then
+          ${pkgs.docker}/bin/docker network create local
         fi
 
         for file in ./nixosModules/common/docker/active/*.yml; do

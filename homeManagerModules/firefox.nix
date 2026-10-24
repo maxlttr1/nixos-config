@@ -23,6 +23,7 @@
         DNSOverHTTPS = {
           Enabled = true;
           ProviderURL = "https://family.dns.mullvad.net/dns-query";
+          ExcludedDomains = [ "maxlttr.home" ];
           Locked = true;
         };
         EnableTrackingProtection = {
