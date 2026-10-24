@@ -94,9 +94,9 @@
           ${pkgs.docker}/bin/docker network create proxy
         fi
 
-        # Create local network if not present for traefik
-        if ! ${pkgs.docker}/bin/docker network inspect local >/dev/null 2>&1; then
-          ${pkgs.docker}/bin/docker network create local
+        # Create local_websecure network if not present for traefik
+        if ! ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1; then
+          ${pkgs.docker}/bin/docker network create local_websecure
         fi
 
         for file in ./nixosModules/common/docker/active/*.yml; do

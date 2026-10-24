@@ -3,9 +3,10 @@ services:
     image: traefik:latest
     networks:
       - proxy
-      - local
+      # - local
+      - local_websecure
     ports:
-      - 80:80
+      # - 80:80
       - 443:443
       - 444:444
       - 127.0.0.1:8080:8080
@@ -14,16 +15,18 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - $STATE_DIRECTORY/traefik/:/var/traefik/certs/:rw
       - ./traefik-dynamic:/etc/traefik/dynamic:ro
+      - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home.pem:/certs/_wildcard.maxlttr.home.pem:ro
+      - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home-key.pem:/certs/_wildcard.maxlttr.home-key.pem:ro
     command:
       - "--global.sendAnonymousUsage=false"
       - "--log.level=DEBUG"
       - "--api.dashboard=true"
       - "--api.insecure=true"
       - "--api.debug=true"
-      - "--entrypoints.local.address=:80"
-      - "--entrypoints.local_websecure.address=:444"
+      # - "--entrypoints.local.address=:80"
       # - "--entrypoints.local.http.redirections.entrypoint.to=websecure"
       # - "--entrypoints.local.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.local_websecure.address=:444"
       - "--entrypoints.websecure.address=:443"
       - "--providers.docker.endpoint=unix:///var/run/docker.sock"
       - "--providers.docker.exposedByDefault=false"
@@ -40,5 +43,7 @@ services:
 networks:
   proxy:
     external: true
-  local:
+  # local:
+  #   external: true
+  local_websecure:
     external: true

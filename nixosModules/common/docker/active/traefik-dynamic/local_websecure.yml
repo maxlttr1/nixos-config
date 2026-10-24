@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: /certs/_wildcard.maxlttr.home.pem
+      keyFile: /certs/_wildcard.maxlttr.home-key.pem
