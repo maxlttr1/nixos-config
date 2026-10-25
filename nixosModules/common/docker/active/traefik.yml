@@ -37,7 +37,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=ovh"
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/env/ovh.env
+      - ${HOME}/.config/sops-nix/secrets/env/ovh-perm.env
     restart: unless-stopped
 
 networks:
