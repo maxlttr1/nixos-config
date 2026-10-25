@@ -15,8 +15,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - $STATE_DIRECTORY/traefik/:/var/traefik/certs/:rw
       - ./traefik-dynamic:/etc/traefik/dynamic:ro
-      - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home.pem:/certs/_wildcard.maxlttr.home.pem:ro
-      - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home-key.pem:/certs/_wildcard.maxlttr.home-key.pem:ro
+      # - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home.pem:/certs/_wildcard.maxlttr.home.pem:ro
+      # - ${HOME}/.config/sops-nix/secrets/domain/_wildcard.maxlttr.home-key.pem:/certs/_wildcard.maxlttr.home-key.pem:ro
     command:
       - "--global.sendAnonymousUsage=false"
       - "--log.level=DEBUG"

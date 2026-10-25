@@ -10,9 +10,10 @@ services:
       - sablier.enable=true
       - sablier.group=mygroup
       - traefik.enable=true
-      - traefik.http.routers.it-tools.rule=Host(`it-tools.maxlttr.home`)
-      - traefik.http.routers.it-tools.entrypoints=local_websecure
       - traefik.http.routers.it-tools.tls=true
+      - traefik.http.routers.it-tools.tls.certresolver=myresolver
+      - traefik.http.routers.it-tools.entrypoints=local_websecure
+      - traefik.http.routers.it-tools.rule=Host(`it-tools.home.maxlttr.fr`)
       - traefik.http.services.it-tools.loadbalancer.server.port=80
     restart: unless-stopped
 
