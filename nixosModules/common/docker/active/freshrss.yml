@@ -11,7 +11,7 @@ services:
       - traefik.http.routers.freshrss-https.tls=true
       - traefik.http.routers.freshrss-https.tls.certresolver=myresolver
       - traefik.http.routers.freshrss-https.entrypoints=websecure
-      - "traefik.http.routers.freshrss-https.rule=Host(`freshrss.maxlttr7.duckdns.org`) || Host(`freshrss.maxlttr.fr`)"
+      - traefik.http.routers.freshrss-https.rule=Host(`freshrss.maxlttr.fr`)
       - traefik.http.services.freshrss-https.loadbalancer.server.port=80
     environment:
       - "CRON_MIN=1,31"

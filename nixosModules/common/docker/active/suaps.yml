@@ -1,6 +1,15 @@
 services:
   suaps:
     image: ghcr.io/flash2974/reservercreneausuaps-app:latest
+    networks:
+      - local_websecure
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.suaps.tls=true
+      - traefik.http.routers.suaps.tls.certresolver=myresolver
+      - traefik.http.routers.suaps.entrypoints=local_websecure
+      - traefik.http.routers.suaps.rule=Host(`suaps.home.maxlttr.fr`)
+      - traefik.http.services.suaps.loadbalancer.server.port=5000
     volumes:
       - $STATE_DIRECTORY/suaps/config.json:/app/config/config.json
     env_file:
@@ -9,3 +18,7 @@ services:
       - 127.0.0.1:5000:5000
       - "${TAILSCALE_IP}:5000:5000"
     restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true

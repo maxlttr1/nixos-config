@@ -1,6 +1,15 @@
 services:
   portainer:
     image: portainer/portainer-ce:latest
+    networks:
+      - local_websecure
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.tls=true
+      - traefik.http.routers.portainer.tls.certresolver=myresolver
+      - traefik.http.routers.portainer.entrypoints=local_websecure
+      - traefik.http.routers.portainer.rule=Host(`portainer.home.maxlttr.fr`)
+      - traefik.http.services.portainer.loadbalancer.server.port=9443
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -12,3 +21,7 @@ services:
       - 127.0.0.1:9443:9443
       - "${TAILSCALE_IP}:9443:9443"
     restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true

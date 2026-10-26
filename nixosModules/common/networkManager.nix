@@ -12,9 +12,6 @@
 
   config = lib.mkIf config.custom.networkManager.enable {
     networking = {
-      hosts = {
-        "100.68.245.10" = [ "it-tools.maxlttr.home" ];
-      };
       networkmanager = {
         enable = true;
         ethernet.macAddress = "preserve";

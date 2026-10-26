@@ -1,10 +1,23 @@
 services:
   openwebui:
     image: ghcr.io/open-webui/open-webui:ollama
+    networks:
+      - local_websecure
     ports:
       - 127.0.0.1:3030:8080
       - "${TAILSCALE_IP}:3030:8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.openwebui.tls=true
+      - traefik.http.routers.openwebui.tls.certresolver=myresolver
+      - traefik.http.routers.openwebui.entrypoints=local_websecure
+      - traefik.http.routers.openwebui.rule=Host(`openwebui.home.maxlttr.fr`)
+      - traefik.http.services.openwebui.loadbalancer.server.port=8080
     volumes:
       - $STATE_DIRECTORY/open-webui:/app/backend/data
       - $STATE_DIRECTORY/open-webui/.ollama:/root/.ollama
     restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true

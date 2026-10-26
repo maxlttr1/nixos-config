@@ -18,10 +18,6 @@
       secrets =
         { }
         // lib.optionalAttrs (hostname == "nexus-nexus") {
-          "env/ovh.env" = {
-            key = "env/ovh";
-            mode = "0600";
-          };
           "env/ovh-perm.env" = {
             key = "env/ovh-perm";
             mode = "0600";

@@ -1,6 +1,8 @@
 services:
   gluetun-deluge:
     image: qmcgaw/gluetun
+    networks:
+      - local_websecure
     cap_add:
       - NET_ADMIN
     devices:
@@ -15,6 +17,13 @@ services:
       - "${TAILSCALE_IP}:8112:8112"
       - 6881:6881
       - 6881:6881/udp
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gluetun-deluge.tls=true
+      - traefik.http.routers.gluetun-deluge.tls.certresolver=myresolver
+      - traefik.http.routers.gluetun-deluge.entrypoints=local_websecure
+      - traefik.http.routers.gluetun-deluge.rule=Host(`deluge.home.maxlttr.fr`)
+      - traefik.http.services.gluetun-deluge.loadbalancer.server.port=8112
     restart: unless-stopped
   deluge:
     image: lscr.io/linuxserver/deluge:latest
@@ -29,3 +38,7 @@ services:
       - $STATE_DIRECTORY/deluge/config:/config
       - $STATE_DIRECTORY/movies:/downloads
     restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true
