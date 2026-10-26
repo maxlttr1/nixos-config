@@ -34,12 +34,6 @@
             key = "env/suaps";
             mode = "0600";
           };
-          "domain/_wildcard.maxlttr.home.pem" = {
-            mode = "0600";
-          };
-          "domain/_wildcard.maxlttr.home-key.pem" = {
-            mode = "0600";
-          };
         }
         // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
           "ssh/github/private" = {
