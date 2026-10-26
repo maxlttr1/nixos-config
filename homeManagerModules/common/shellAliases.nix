@@ -25,6 +25,9 @@
       music-normalize = "${pkgs.rsgain}/bin/rsgain easy -p no_album --skip-existing \"$HOME/mountedDisk/Nextcloud/music/\"";
       music-full-no-cookies = "music-download-no-cookies; music-normalize";
       music-full = "music-download; music-normalize";
+      backup-nextcloud = "sudo ${pkgs.google-cloud-sdk}/bin/gcloud storage rsync --recursive --delete-unmatched-destination-objects $HOME/Nextcloud-backup/  gs://syncthing-backup";
+      backup-docker-containers = "sudo ${pkgs.google-cloud-sdk}/bin/gcloud storage rsync --recursive --delete-unmatched-destination-objects /var/lib/docker-containers-backup/ gs://syncthing-backup";
+      backup-all = "backup-nextcloud; backup-docker-containers";
     };
   };
 }
