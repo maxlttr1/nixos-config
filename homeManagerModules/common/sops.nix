@@ -22,6 +22,10 @@
             key = "env/ovh-perm";
             mode = "0600";
           };
+          "env/homarr.env" = {
+            key = "env/homarr";
+            mode = "0600";
+          };
           "env/vpn.env" = {
             key = "env/vpn";
             mode = "0600";

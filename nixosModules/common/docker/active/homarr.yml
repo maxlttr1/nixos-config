@@ -1,0 +1,25 @@
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    networks:
+      - local_websecure
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.homarr.tls=true
+      - traefik.http.routers.homarr.tls.certresolver=myresolver
+      - traefik.http.routers.homarr.entrypoints=local_websecure
+      - traefik.http.routers.homarr.rule=Host(`homarr.home.maxlttr.fr`)
+      - traefik.http.services.homarr.loadbalancer.server.port=7575
+    ports:
+      - 127.0.0.1:7575:7575
+      - "${TAILSCALE_IP}:7575:7575"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $STATE_DIRECTORY/homarr/appdata:/appdata
+    env_file:
+      - ${HOME}/.config/sops-nix/secrets/env/homarr.env
+    restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true
