@@ -3,7 +3,6 @@
     ./common
 
     ./firefox.nix
-    ./fish.nix
     ./fonts.nix
     ./git.nix
     ./hyprland.nix
@@ -13,7 +12,6 @@
     ./pkgs.nix
     ./plasmaManager.nix
     ./rsibreak.nix
-    ./shellAliases.nix
     ./ssh.nix
     ./tmux.nix
     ./vscode.nix

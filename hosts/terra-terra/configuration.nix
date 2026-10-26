@@ -45,8 +45,8 @@
       "noexec"
     ];
   };
-  fileSystems."/home/${settings.username}/mountedDisk/syncthing/Cours/polytech" = {
-    device = "/home/${settings.username}/mountedDisk/syncthing/Cours/polytech";
+  fileSystems."/home/${settings.username}/mountedDisk/Nextcloud/Cours/polytech" = {
+    device = "/home/${settings.username}/mountedDisk/Nextcloud/Cours/polytech";
     fsType = "none";
     options = [
       "bind"
