@@ -2,6 +2,7 @@ services:
   homarr:
     image: ghcr.io/homarr-labs/homarr:latest
     networks:
+      - default
       - local_websecure
     labels:
       - traefik.enable=true

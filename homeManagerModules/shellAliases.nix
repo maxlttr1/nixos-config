@@ -21,12 +21,11 @@
       ssh-vps = "ssh root@$(cat ${config.sops.secrets."ssh/racknerd/ip".path}) -i ${
         config.sops.secrets."ssh/racknerd/private".path
       }";
-      music-download-no-cookies = "nix run nixpkgs/nixpkgs-unstable#yt-dlp -- \"https://www.youtube.com/watch?v=AQ6iA-0CRL8&list=PLkF8ZEu4FB1kvxIhG9jLAEauSivb5JJGD\" --playlist-items 1:100 -f bestaudio --remux-video opus --embed-metadata --embed-thumbnail -o \"$HOME/mountedDisk/syncthing/music/New/%(title)s [%(id)s].%(ext)s\" --download-archive \"$HOME/mountedDisk/syncthing/music/downloaded.txt\"";
-      music-download = "music-download-no-cookies --cookies  \"$HOME/mountedDisk/syncthing/music/cookies.firefox-private.txt\"";
-      music-normalize = "${pkgs.rsgain}/bin/rsgain easy -p no_album --skip-existing \"$HOME/mountedDisk/syncthing/music/\"";
+      music-download-no-cookies = "nix run nixpkgs/nixpkgs-unstable#yt-dlp -- \"https://www.youtube.com/watch?v=AQ6iA-0CRL8&list=PLkF8ZEu4FB1kvxIhG9jLAEauSivb5JJGD\" --playlist-items 1:100 -f bestaudio --remux-video opus --embed-metadata --embed-thumbnail -o \"$HOME/mountedDisk/Nextcloud/music/New/%(title)s [%(id)s].%(ext)s\" --download-archive \"$HOME/mountedDisk/Nextcloud/music/downloaded.txt\"";
+      music-download = "music-download-no-cookies --cookies  \"$HOME/mountedDisk/Nextcloud/music/cookies.firefox-private.txt\"";
+      music-normalize = "${pkgs.rsgain}/bin/rsgain easy -p no_album --skip-existing \"$HOME/mountedDisk/Nextcloud/music/\"";
       music-full-no-cookies = "music-download-no-cookies; music-normalize";
       music-full = "music-download; music-normalize";
-      backup-syncthing = "tar cf - /home/${settings.username}/mountedDisk/syncthing | zstd -T0 | ${pkgs.age}/bin/age -p > /home/${settings.username}/mountedDisk/syncthing-backup-$(date +%d-%m-%Y).tar.zst.age";
     };
   };
 }
