@@ -9,7 +9,7 @@ services:
       - traefik.http.routers.portainer.tls.certresolver=myresolver
       - traefik.http.routers.portainer.entrypoints=local_websecure
       - traefik.http.routers.portainer.rule=Host(`portainer.home.maxlttr.fr`)
-      - traefik.http.services.portainer.loadbalancer.server.port=9443
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
