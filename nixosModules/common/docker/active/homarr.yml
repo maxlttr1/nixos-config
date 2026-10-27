@@ -6,6 +6,7 @@ services:
       - local_websecure
     labels:
       - traefik.enable=true
+      - traefik.docker.network=local_websecure
       - traefik.http.routers.homarr.tls=true
       - traefik.http.routers.homarr.tls.certresolver=myresolver
       - traefik.http.routers.homarr.entrypoints=local_websecure
