@@ -19,6 +19,9 @@
         "ssh/racknerd/ip" = {
           mode = "0600";
         };
+        "ssh/racknerd/private" = {
+          mode = "0600";
+        };
       }
       // lib.optionalAttrs (hostname == "nexus-nexus") {
         "env/ovh-perm.env" = {
@@ -39,29 +42,11 @@
         };
       }
       // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
-        "ssh/github/private" = {
-          mode = "0600";
-        };
-        "ssh/github/public" = {
-          mode = "0640";
-        };
         "ssh/nixos-setup/private" = {
           mode = "0600";
         };
-        "ssh/nixos-setup/public" = {
-          mode = "0640";
-        };
-        "ssh/racknerd/private" = {
-          mode = "0600";
-        };
-        "ssh/racknerd/public" = {
-          mode = "0640";
-        };
         "ssh/gitlab-univ-nantes/private" = {
           mode = "0600";
-        };
-        "ssh/gitlab-univ-nantes/public" = {
-          mode = "0640";
         };
       };
     };
