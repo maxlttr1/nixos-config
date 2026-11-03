@@ -27,6 +27,6 @@
   };
 
   environment.etc.crypttab.text = ''
-    crypted UUID=JZDKJDKJDLKDOKDLDFK /root/luks-keyfile
+    crypted UUID=a3aaa894-4616-403d-af66-dc3cd67fcce7 /root/luks-keyfile
   '';
 }
