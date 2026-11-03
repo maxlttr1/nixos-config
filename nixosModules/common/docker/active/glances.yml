@@ -14,13 +14,12 @@ services:
     ports:
       - 127.0.0.1:61208:61208
       - "${TAILSCALE_IP}:61208:61208"
-      - 127.0.0.1:61209:61209
-      - "${TAILSCALE_IP}:61209:61209"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/os-release:/etc/os-release:ro
+      - ./glances.conf:/etc/glances/glances.conf:ro
     environment:
-      - "GLANCES_OPT=-w --enable-plugin smart"
+      - "GLANCES_OPT=-w --enable-plugin smart --config /etc/glances/glances.conf"
     cap_add:
       - SYS_RAWIO
       - SYS_ADMIN
