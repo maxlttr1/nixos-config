@@ -24,7 +24,7 @@
         };
       }
       // lib.optionalAttrs (hostname == "nexus-nexus") {
-        "glances/password" = {
+        "glances/password_hash" = {
           mode = "0600";
         };
         "env/ovh-perm.env" = {
