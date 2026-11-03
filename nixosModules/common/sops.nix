@@ -28,6 +28,9 @@
         "borgbackup/docker-containers-volumes" = {
           mode = "0600";
         };
+        "borgbackup/docker-containers-volumes-external" = {
+          mode = "0600";
+        };
         "nextcloud/url" = {
           mode = "0600";
           owner = config.users.users."${settings.username}".name;

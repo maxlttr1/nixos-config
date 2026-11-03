@@ -75,6 +75,35 @@
               }
             '';
           };
+      "borgbackup-docker-containers-volumes-external" =
+        lib.mkIf (config.custom.docker.enable && hostname == "nexus-nexus")
+          {
+            user = "root";
+            paths = "/var/lib/docker-containers";
+            exclude = [
+              "/var/lib/docker-containers/movies"
+              "/var/lib/docker-containers/tvshows"
+              "/var/lib/docker-containers/i2p/i2ptorrents/*"
+            ];
+            encryption = {
+              mode = "repokey-blake2";
+              passCommand = "cat ${config.sops.secrets."borgbackup/docker-containers-volumes-external".path}";
+            };
+            repo = "/home/${settings.username}/mountedDisk/docker-containers-backup";
+            compression = "auto,zstd";
+            startAt = "daily";
+            prune.keep = {
+              daily = 7;
+              weekly = 4;
+              monthly = 3;
+            };
+            persistentTimer = true;
+            postHook = ''
+              ${pkgs.borgbackup}/bin/borg compact ${
+                config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".repo
+              }
+            '';
+          };
     };
   };
 }
