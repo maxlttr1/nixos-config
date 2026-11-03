@@ -1,6 +1,6 @@
 services:
   glances:
-    image: nicolargo/glances:ubuntu-latest-full
+    image: nicolargo/glances:latest-full
     pid: host
     networks:
       - local_websecure
@@ -20,15 +20,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/os-release:/etc/os-release:ro
     environment:
-      - "GLANCES_OPT=-w --password"
+      - "GLANCES_OPT=-w --enable-plugin smart"
+    cap_add:
+      - SYS_RAWIO
+      - SYS_ADMIN
+    devices:
+      - /dev/sda
+      - /dev/sdb
     restart: unless-stopped
-    secrets:
-      - source: glances_password
-        target: /root/.config/glances/glances.pwd
-
-secrets:
-  glances_password:
-    file: ${HOME}/.config/sops-nix/secrets/glances/password_hash
 
 networks:
   local_websecure:
