@@ -17,7 +17,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/os-release:/etc/os-release:ro
-      - ${HOME}/mountedDisk:/mnt:ro
+      - ${HOME}/mountedDisk/info.glances:/mnt/info.glances:ro
     environment:
       - "GLANCES_OPT=-w --enable-plugin smart"
     cap_add:
