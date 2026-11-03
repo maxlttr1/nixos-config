@@ -2,7 +2,7 @@ services:
   glances:
     image: nicolargo/glances:ubuntu-latest-full
     pid: host
-    network:
+    networks:
       - local_websecure
     labels:
       - traefik.enable=true
