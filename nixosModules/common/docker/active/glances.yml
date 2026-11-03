@@ -28,7 +28,7 @@ services:
 
 secrets:
   glances_password:
-    file: ${HOME}/.config/sops-nix/secrets/glances/password
+    file: ${HOME}/.config/sops-nix/secrets/glances/password_hash
 
 networks:
   local_websecure:
