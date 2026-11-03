@@ -24,6 +24,9 @@
         };
       }
       // lib.optionalAttrs (hostname == "nexus-nexus") {
+        "glances/password" = {
+          mode = "0600";
+        };
         "env/ovh-perm.env" = {
           key = "env/ovh-perm";
           mode = "0600";

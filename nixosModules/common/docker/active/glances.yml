@@ -1,0 +1,35 @@
+services:
+  glances:
+    image: nicolargo/glances:ubuntu-latest-full
+    pid: host
+    network:
+      - local_websecure
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.glances.tls=true
+      - traefik.http.routers.glances.tls.certresolver=myresolver
+      - traefik.http.routers.glances.entrypoints=local_websecure
+      - traefik.http.routers.glances.rule=Host(`glances.home.maxlttr.fr`)
+      - traefik.http.services.glances.loadbalancer.server.port=61208
+    ports:
+      - 127.0.0.1:61208:61208
+      - "${TAILSCALE_IP}:61208:61208"
+      - 127.0.0.1:61209:61209
+      - "${TAILSCALE_IP}:61209:61209"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/os-release:/etc/os-release:ro
+    environment:
+      - "GLANCES_OPT=-w --password"
+    restart: unless-stopped
+    secrets:
+      - source: glances_password
+        target: /root/.config/glances/glances.pwd
+
+secrets:
+  glances_password:
+    file: ${HOME}/.config/sops-nix/secrets/glances/password
+
+networks:
+  local_websecure:
+    external: true
