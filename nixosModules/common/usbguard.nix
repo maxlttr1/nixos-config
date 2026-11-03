@@ -28,6 +28,7 @@
             allow id 1d6b:0002 serial "0000:00:14.0" name "xHCI Host Controller" hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" parent-hash "rV9bfLq7c2eA4tYjVjwO4bxhm+y6GgZpl9J60L0fBkY=" with-interface 09:00:00 with-connect-type ""
             allow id 1d6b:0003 serial "0000:00:14.0" name "xHCI Host Controller" hash "3Wo3XWDgen1hD5xM3PSNl3P98kLp1RUTgGQ5HSxtf8k=" parent-hash "rV9bfLq7c2eA4tYjVjwO4bxhm+y6GgZpl9J60L0fBkY=" with-interface 09:00:00 with-connect-type ""
             allow id 0603:00f2 serial "" name "USB Keyboard" hash "JqYsz/XufeXZ0nBcRIov2hTAlUpRFJJH0ZXQNpV9O+o=" parent-hash "jEP/6WzviqdJ5VSeTUY8PatCNBKeaREvo2OqdplND/o=" with-interface { 03:01:01 03:00:00 } with-connect-type "hotplug"
+            allow id 1058:0740 serial "575842314139315632393431" name "My Passport 0740" hash "Jph/eDQhJlTSPJkPfPGOsmKcQOzT88FnmOlYWqNeqjo=" parent-hash "XCHNkqbiDxI/M86q3Xx/1NPsFNctpAcKPF2KF9AkPpY=" with-interface 08:06:50 with-connect-type "hotplug"
           ''
         else
           ''

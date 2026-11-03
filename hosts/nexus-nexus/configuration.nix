@@ -1,3 +1,5 @@
+{ settings, ... }:
+
 {
   custom.autoFlakeUpdate.enable = true;
   custom.borgbackup.enable = true;
@@ -11,4 +13,20 @@
     zramSwap.enable = true;
   };
   custom.syncthing.enable = true;
+
+  fileSystems."/home/${settings.username}/mountedDisk" = {
+    device = "/dev/mapper/crypted";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "nosuid"
+      "nodev"
+      "noatime"
+      "noexec"
+    ];
+  };
+
+  environment.etc.crypttab.text = ''
+    crypted UUID=JZDKJDKJDLKDOKDLDFK /root/luks-keyfile
+  '';
 }
