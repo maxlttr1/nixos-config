@@ -5,11 +5,22 @@ services:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.http.routers.jellyfin-https.tls=true
-      - traefik.http.routers.jellyfin-https.tls.certresolver=myresolver
-      - traefik.http.routers.jellyfin-https.entrypoints=websecure
-      - traefik.http.routers.jellyfin-https.rule=Host(`jellyfin.maxlttr.fr`)
-      - traefik.http.services.jellyfin-https.loadbalancer.server.port=8096
+      - traefik.http.routers.jellyfin.tls=true
+      - traefik.http.routers.jellyfin.tls.certresolver=myresolver
+      - traefik.http.routers.jellyfin.entrypoints=websecure
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.maxlttr.fr`)
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+      - sablier.enable=true
+      - sablier.group=jellyfin
+      - traefik.http.routers.jellyfin.middlewares=it-tools
+      - traefik.http.middlewares.jellyfin.plugin.sablier.group=jellyfin
+      - traefik.http.middlewares.jellyfin.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.displayName=Jellyfin
+      - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.showDetails=true
+      - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.theme=ghost
+      - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.refreshFrequency=5s
+      - traefik.docker.allownonrunning=true
+
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
