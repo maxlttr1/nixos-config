@@ -13,8 +13,21 @@
   };
 
   config = lib.mkIf config.custom.borgbackup.enable {
+    systemd.tmpfiles.rules = [
+      # "d /tmp 1777 root root 10d"
+      "d ${config.services.borgbackup.jobs."borgbackup-job".repo} 0700 ${
+        config.services.borgbackup.jobs."borgbackup-job".user
+      } users -"
+      "d ${config.services.borgbackup.jobs."borgbackup-docker-containers-volumes".repo} 0700 ${
+        config.services.borgbackup.jobs."borgbackup-docker-containers-volumes".user
+      } ${config.services.borgbackup.jobs."borgbackup-docker-containers-volumes".user} -"
+      "d ${config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".repo} 0700 ${
+        config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".user
+      } ${config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".user} -"
+    ];
+
     services.borgbackup.jobs = {
-      "borgbackup-job" = lib.mkIf (config.custom.syncthing.enable && hostname == "nexus-nexus") {
+      "borgbackup-job" = lib.mkIf (config.custom.syncthing.enable) {
         user = "${settings.username}";
         paths = "/home/${settings.username}/Syncthing";
         /*
@@ -46,64 +59,60 @@
           ${pkgs.borgbackup}/bin/borg compact ${config.services.borgbackup.jobs."borgbackup-job".repo}
         '';
       };
-      "borgbackup-docker-containers-volumes" =
-        lib.mkIf (config.custom.docker.enable && hostname == "nexus-nexus")
-          {
-            user = "root";
-            paths = "/var/lib/docker-containers";
-            exclude = [
-              "/var/lib/docker-containers/movies"
-              "/var/lib/docker-containers/tvshows"
-              "/var/lib/docker-containers/i2p/i2ptorrents/*"
-            ];
-            encryption = {
-              mode = "repokey-blake2";
-              passCommand = "cat ${config.sops.secrets."borgbackup/docker-containers-volumes".path}";
-            };
-            repo = "/var/lib/docker-containers-backup";
-            compression = "auto,zstd";
-            startAt = "daily";
-            prune.keep = {
-              daily = 7;
-              weekly = 4;
-              monthly = 3;
-            };
-            persistentTimer = true;
-            postHook = ''
-              ${pkgs.borgbackup}/bin/borg compact ${
-                config.services.borgbackup.jobs."borgbackup-docker-containers-volumes".repo
-              }
-            '';
-          };
-      "borgbackup-docker-containers-volumes-external" =
-        lib.mkIf (config.custom.docker.enable && hostname == "nexus-nexus")
-          {
-            user = "root";
-            paths = "/var/lib/docker-containers";
-            exclude = [
-              "/var/lib/docker-containers/movies"
-              "/var/lib/docker-containers/tvshows"
-              "/var/lib/docker-containers/i2p/i2ptorrents/*"
-            ];
-            encryption = {
-              mode = "repokey-blake2";
-              passCommand = "cat ${config.sops.secrets."borgbackup/docker-containers-volumes-external".path}";
-            };
-            repo = "/home/${settings.username}/mountedDisk/docker-containers-backup";
-            compression = "auto,zstd";
-            startAt = "daily";
-            prune.keep = {
-              daily = 7;
-              weekly = 4;
-              monthly = 3;
-            };
-            persistentTimer = true;
-            postHook = ''
-              ${pkgs.borgbackup}/bin/borg compact ${
-                config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".repo
-              }
-            '';
-          };
+      "borgbackup-docker-containers-volumes" = lib.mkIf (config.custom.docker.enable) {
+        user = "root";
+        paths = "/var/lib/docker-containers";
+        exclude = [
+          "/var/lib/docker-containers/movies"
+          "/var/lib/docker-containers/tvshows"
+          "/var/lib/docker-containers/i2p/i2ptorrents/*"
+        ];
+        encryption = {
+          mode = "repokey-blake2";
+          passCommand = "cat ${config.sops.secrets."borgbackup/docker-containers-volumes".path}";
+        };
+        repo = "/var/lib/docker-containers-backup";
+        compression = "auto,zstd";
+        startAt = "daily";
+        prune.keep = {
+          daily = 7;
+          weekly = 4;
+          monthly = 3;
+        };
+        persistentTimer = true;
+        postHook = ''
+          ${pkgs.borgbackup}/bin/borg compact ${
+            config.services.borgbackup.jobs."borgbackup-docker-containers-volumes".repo
+          }
+        '';
+      };
+      "borgbackup-docker-containers-volumes-external" = lib.mkIf (config.custom.docker.enable) {
+        user = "root";
+        paths = "/var/lib/docker-containers";
+        exclude = [
+          "/var/lib/docker-containers/movies"
+          "/var/lib/docker-containers/tvshows"
+          "/var/lib/docker-containers/i2p/i2ptorrents/*"
+        ];
+        encryption = {
+          mode = "repokey-blake2";
+          passCommand = "cat ${config.sops.secrets."borgbackup/docker-containers-volumes-external".path}";
+        };
+        repo = "/home/${settings.username}/mountedDisk/docker-containers-backup";
+        compression = "auto,zstd";
+        startAt = "daily";
+        prune.keep = {
+          daily = 7;
+          weekly = 4;
+          monthly = 3;
+        };
+        persistentTimer = true;
+        postHook = ''
+          ${pkgs.borgbackup}/bin/borg compact ${
+            config.services.borgbackup.jobs."borgbackup-docker-containers-volumes-external".repo
+          }
+        '';
+      };
     };
   };
 }
