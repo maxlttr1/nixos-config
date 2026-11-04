@@ -4,6 +4,7 @@ services:
     networks:
       - default
       - local_websecure
+      - proxy
     labels:
       - traefik.enable=true
       - traefik.docker.network=local_websecure
