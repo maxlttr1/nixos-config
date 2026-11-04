@@ -33,7 +33,7 @@
         "tailscaled.service"
         "sops.service"
       ];
-      wantedBy = lib.optional (hostname == "nexus-nexus") [
+      wantedBy = lib.optionals (hostname == "nexus-nexus") [
         "multi-user.target"
       ];
       serviceConfig = {
