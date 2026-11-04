@@ -17,6 +17,11 @@ services:
       - sablier.group=it-tools
       - traefik.http.routers.it-tools.middlewares=it-tools
       - traefik.http.middlewares.it-tools.plugin.sablier.group=it-tools
+      - traefik.http.middlewares.it-tools.plugin.sablier.sessionDuration=5m
+      - traefik.http.middlewares.it-tools.plugin.sablier.dynamic.displayName=IT Tools
+      - traefik.http.middlewares.it-tools.plugin.sablier.dynamic.showDetails=true
+      - traefik.http.middlewares.it-tools.plugin.sablier.dynamic.theme=hacker-terminal
+      - traefik.http.middlewares.it-tools.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
     restart: unless-stopped
 
