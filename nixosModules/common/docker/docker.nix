@@ -107,8 +107,6 @@
           name=$(basename "$file" .yml)
           ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
         done
-
-        ${pkgs.docker}/bin/docker system prune -a --volumes -f
       '';
       preStop = ''
         set -euo pipefail
@@ -119,6 +117,8 @@
         export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
 
         cd nixos-config/
+
+        ${pkgs.docker}/bin/docker system prune -a --volumes -f
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
