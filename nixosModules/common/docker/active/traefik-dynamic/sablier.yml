@@ -1,6 +1,0 @@
-http:
-  middlewares:
-    sablier:
-      plugin:
-        it-tools:
-          group: it-tools

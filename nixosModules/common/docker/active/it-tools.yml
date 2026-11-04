@@ -15,6 +15,9 @@ services:
       - traefik.http.services.it-tools.loadbalancer.server.port=80
       - sablier.enable=true
       - sablier.group=it-tools
+      - traefik.http.routers.it-tools.middlewares=mimicsablier
+      - traefik.http.middlewares.it-tools.plugin.sablier.group=it-tools
+      - traefik.docker.allownonrunning=true
     restart: unless-stopped
 
 networks:
