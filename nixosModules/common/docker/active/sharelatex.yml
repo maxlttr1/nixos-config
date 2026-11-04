@@ -6,11 +6,21 @@ services:
       - "${TAILSCALE_IP}:6060:80"
     labels:
       - traefik.enable=true
-      - traefik.http.routers.overleaf-https.tls=true
-      - traefik.http.routers.overleaf-https.tls.certresolver=myresolver
-      - traefik.http.routers.overleaf-https.entrypoints=websecure
-      - traefik.http.routers.overleaf-https.rule=Host(`overleaf.maxlttr.fr`)
-      - traefik.http.services.overleaf-https.loadbalancer.server.port=80
+      - traefik.http.routers.overleaf.tls=true
+      - traefik.http.routers.overleaf.tls.certresolver=myresolver
+      - traefik.http.routers.overleaf.entrypoints=websecure
+      - traefik.http.routers.overleaf.rule=Host(`overleaf.maxlttr.fr`)
+      - traefik.http.services.overleaf.loadbalancer.server.port=80
+      - sablier.enable=true
+      - sablier.group=overleaf
+      - traefik.http.routers.overleaf.middlewares=overleaf
+      - traefik.http.middlewares.overleaf.plugin.sablier.group=overleaf
+      - traefik.http.middlewares.overleaf.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.displayName=Overleaf
+      - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.showDetails=true
+      - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.theme=ghost
+      - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.refreshFrequency=5s
+      - traefik.docker.allownonrunning=true
     networks:
       - proxy
     volumes:

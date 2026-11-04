@@ -12,7 +12,7 @@ services:
       - traefik.http.services.jellyfin.loadbalancer.server.port=8096
       - sablier.enable=true
       - sablier.group=jellyfin
-      - traefik.http.routers.jellyfin.middlewares=it-tools
+      - traefik.http.routers.jellyfin.middlewares=jellyfin
       - traefik.http.middlewares.jellyfin.plugin.sablier.group=jellyfin
       - traefik.http.middlewares.jellyfin.plugin.sablier.sessionDuration=30m
       - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.displayName=Jellyfin

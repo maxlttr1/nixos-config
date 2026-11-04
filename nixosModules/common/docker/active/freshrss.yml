@@ -8,11 +8,21 @@ services:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.http.routers.freshrss-https.tls=true
-      - traefik.http.routers.freshrss-https.tls.certresolver=myresolver
-      - traefik.http.routers.freshrss-https.entrypoints=websecure
-      - traefik.http.routers.freshrss-https.rule=Host(`freshrss.maxlttr.fr`)
-      - traefik.http.services.freshrss-https.loadbalancer.server.port=80
+      - traefik.http.routers.freshrss.tls=true
+      - traefik.http.routers.freshrss.tls.certresolver=myresolver
+      - traefik.http.routers.freshrss.entrypoints=websecure
+      - traefik.http.routers.freshrss.rule=Host(`freshrss.maxlttr.fr`)
+      - traefik.http.services.freshrss.loadbalancer.server.port=80
+      - sablier.enable=true
+      - sablier.group=freshrss
+      - traefik.http.routers.freshrss.middlewares=freshrss
+      - traefik.http.middlewares.freshrss.plugin.sablier.group=freshrss
+      - traefik.http.middlewares.freshrss.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.freshrss.plugin.sablier.dynamic.displayName=FreshRSS
+      - traefik.http.middlewares.freshrss.plugin.sablier.dynamic.showDetails=true
+      - traefik.http.middlewares.freshrss.plugin.sablier.dynamic.theme=ghost
+      - traefik.http.middlewares.freshrss.plugin.sablier.dynamic.refreshFrequency=5s
+      - traefik.docker.allownonrunning=true
     environment:
       - "CRON_MIN=1,31"
       - TZ=Europe/Paris
