@@ -3,6 +3,7 @@
   settings,
   config,
   lib,
+  hostname,
   ...
 }:
 
@@ -31,6 +32,9 @@
         "network-online.target"
         "tailscaled.service"
         "sops.service"
+      ];
+      wantedBy = lib.optional (hostname == "nexus-nexus") [
+        "multi-user.target"
       ];
       serviceConfig = {
         Type = "oneshot";
@@ -64,7 +68,7 @@
         ${pkgs.git}/bin/git reset --hard origin/master
       '';
       script = ''
-        set -euox pipefail
+        set -euo pipefail
 
         export PUID=$(id -u)
         export PGID=$(id -g)
@@ -103,9 +107,11 @@
           name=$(basename "$file" .yml)
           ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
         done
+
+        ${pkgs.docker}/bin/docker system prune -a --volumes -f
       '';
       preStop = ''
-        set -euox pipefail
+        set -euo pipefail
 
         export PUID=$(id -u)
         export PGID=$(id -g)
@@ -118,8 +124,6 @@
           name=$(basename "$file" .yml)
           ${pkgs.docker}/bin/docker compose -p $name -f $file down --remove-orphans
         done
-
-        # ${pkgs.docker}/bin/docker system prune -a --volumes -f
       '';
     };
   };
