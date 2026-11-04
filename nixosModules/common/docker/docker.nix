@@ -118,7 +118,7 @@
 
         cd nixos-config/
 
-        ${pkgs.docker}/bin/docker system prune -a --volumes -f
+        # ${pkgs.docker}/bin/docker system prune -a --volumes -f
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
