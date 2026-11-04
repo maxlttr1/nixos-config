@@ -20,7 +20,6 @@ services:
       - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.theme=ghost
       - traefik.http.middlewares.jellyfin.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
-
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

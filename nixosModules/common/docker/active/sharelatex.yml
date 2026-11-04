@@ -41,6 +41,9 @@ services:
     image: mongo
     networks:
       - proxy
+    labels:
+      - sablier.enable=true
+      - sablier.group=overleaf
     command: --replSet overleaf
     volumes:
       - ./overleaf/mongo:/data/db
@@ -60,6 +63,9 @@ services:
     image: redis
     networks:
       - proxy
+    labels:
+      - sablier.enable=true
+      - sablier.group=overleaf
     volumes:
       - ./overleaf/redis:/data
     restart: unless-stopped
