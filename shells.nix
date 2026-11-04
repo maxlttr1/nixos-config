@@ -17,6 +17,7 @@
           matplotlib
           numpy
           pandas
+          pyserial
           requests
         ]
       ))

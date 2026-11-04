@@ -28,6 +28,7 @@
       backup-nextcloud = "sudo ${pkgs.google-cloud-sdk}/bin/gcloud storage rsync --recursive --delete-unmatched-destination-objects $HOME/Nextcloud-backup/  gs://syncthing-backup";
       backup-docker-containers = "sudo ${pkgs.google-cloud-sdk}/bin/gcloud storage rsync --recursive --delete-unmatched-destination-objects /var/lib/docker-containers-backup/ gs://syncthing-backup";
       backup-all = "backup-nextcloud; backup-docker-containers";
+      devshell-python = "nix develop github:maxlttr1/nixos-config#python";
     };
   };
 }
