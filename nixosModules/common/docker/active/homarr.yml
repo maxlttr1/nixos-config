@@ -12,6 +12,16 @@ services:
       - traefik.http.routers.homarr.entrypoints=local_websecure
       - traefik.http.routers.homarr.rule=Host(`homarr.home.maxlttr.fr`)
       - traefik.http.services.homarr.loadbalancer.server.port=7575
+      - sablier.enable=true
+      - sablier.group=homarr
+      - traefik.http.routers.homarr.middlewares=homarr
+      - traefik.http.middlewares.homarr.plugin.sablier.group=homarr
+      - traefik.http.middlewares.homarr.plugin.sablier.sessionDuration=5m
+      - traefik.http.middlewares.homarr.plugin.sablier.dynamic.displayName=Homarr
+      - traefik.http.middlewares.homarr.plugin.sablier.dynamic.showDetails=true
+      - traefik.http.middlewares.homarr.plugin.sablier.dynamic.theme=ghost
+      - traefik.http.middlewares.homarr.plugin.sablier.dynamic.refreshFrequency=5s
+      - traefik.docker.allownonrunning=true
     ports:
       - 127.0.0.1:7575:7575
       - "${TAILSCALE_IP}:7575:7575"

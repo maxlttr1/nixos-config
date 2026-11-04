@@ -15,7 +15,7 @@ services:
       - sablier.group=overleaf
       - traefik.http.routers.overleaf.middlewares=overleaf
       - traefik.http.middlewares.overleaf.plugin.sablier.group=overleaf
-      - traefik.http.middlewares.overleaf.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.overleaf.plugin.sablier.sessionDuration=10m
       - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.displayName=Overleaf
       - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.showDetails=true
       - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.theme=ghost

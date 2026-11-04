@@ -14,7 +14,7 @@ services:
       - sablier.group=portainer
       - traefik.http.routers.portainer.middlewares=portainer
       - traefik.http.middlewares.portainer.plugin.sablier.group=portainer
-      - traefik.http.middlewares.portainer.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.portainer.plugin.sablier.sessionDuration=5m
       - traefik.http.middlewares.portainer.plugin.sablier.dynamic.displayName=Portainer
       - traefik.http.middlewares.portainer.plugin.sablier.dynamic.showDetails=true
       - traefik.http.middlewares.portainer.plugin.sablier.dynamic.theme=ghost

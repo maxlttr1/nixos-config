@@ -17,7 +17,7 @@ services:
       - sablier.group=openwebui
       - traefik.http.routers.openwebui.middlewares=openwebui
       - traefik.http.middlewares.openwebui.plugin.sablier.group=openwebui
-      - traefik.http.middlewares.openwebui.plugin.sablier.sessionDuration=30m
+      - traefik.http.middlewares.openwebui.plugin.sablier.sessionDuration=5m
       - traefik.http.middlewares.openwebui.plugin.sablier.dynamic.displayName=OpenWebUI
       - traefik.http.middlewares.openwebui.plugin.sablier.dynamic.showDetails=true
       - traefik.http.middlewares.openwebui.plugin.sablier.dynamic.theme=ghost
