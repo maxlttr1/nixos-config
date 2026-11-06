@@ -10,7 +10,7 @@ services:
       - traefik.http.routers.gitlab.tls.certresolver=myresolver
       - traefik.http.routers.gitlab.entrypoints=websecure
       - traefik.http.routers.gitlab.rule=Host(`gitlab.maxlttr.fr`)
-      - traefik.http.services.gitlab.loadbalancer.server.port=443
+      - traefik.http.services.gitlab.loadbalancer.server.port=80
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
