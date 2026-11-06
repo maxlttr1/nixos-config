@@ -15,4 +15,4 @@ services:
       - $STATE_DIRECTORY/logs:/var/log/gitlab
       - $STATE_DIRECTORY/data:/var/opt/gitlab
     shm_size: "256m"
-  restart: unless-stopped
+    restart: unless-stopped
