@@ -1,15 +1,24 @@
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
-    hostname: "gitlab.example.com"
+    hostname: "gitlab.maxlttr.fr"
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitlab.tls=true
+      - traefik.http.routers.gitlab.tls.certresolver=myresolver
+      - traefik.http.routers.gitlab.entrypoints=websecure
+      - traefik.http.routers.gitlab.rule=Host(`gitlab.maxlttr.fr`)
+      - traefik.http.services.gitlab.loadbalancer.server.port=443
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
         external_url 'https://gitlab.example.com'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
-      - 80:80
-      - 443:443
+      # - 80:80
+      # - 443:443
       - "${TAILSCALE_IP}:2222:22"
     volumes:
       - $STATE_DIRECTORY/config:/etc/gitlab
@@ -17,3 +26,7 @@ services:
       - $STATE_DIRECTORY/data:/var/opt/gitlab
     shm_size: "256m"
     restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
