@@ -1,0 +1,23 @@
+services:
+  stalwart:
+    image: stalwartlabs/stalwart:latest # Latest stable release
+    init: true
+    networks:
+      - local_cloud
+    ports:
+      - 25:25 # SMTP, mail from other servers (STARTTLS)
+      # - 465:465 # SMTP, submission from clients	(Implicit TLS)
+      # - 993:993 # IMAP (Implicit TLS)
+      # - 995:995 # POP3S, secure POP3 mailbox download (Implicit TLS)
+      # - 4190:4190 # ManageSieve, mail filter script management (STARTTLS)
+      - 443:443 # HTTP: JMAP, CalDAV, CardDAV, WebDAV, WebUI, OAuth, autoconfiguration (Implicit TLS)
+      - 127.0.0.1:8080:8080 # HTTP admin/UI bound to localhost only
+      - "${TAILSCALE_IP}:8080:8080" # HTTP admin/UI bound to Tailscale IP only
+    volumes:
+      - $STATE_DIRECTORY/stalwart/stalwart-etc:/etc/stalwart
+      - $STATE_DIRECTORY/stalwart/stalwart-data:/var/lib/stalwart
+    restart: unless-stopped
+
+networks:
+  local_cloud:
+    external: true

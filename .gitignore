@@ -1,2 +1,4 @@
 .direnv
 *.kde*
+nixosModules/common/docker/inactive/homeAssistant/*
+nixosModules/common/docker/inactive/mosquitto/*

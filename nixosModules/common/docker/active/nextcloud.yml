@@ -5,6 +5,7 @@ services:
     init: true
     networks:
       - proxy
+      - local_cloud
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
@@ -31,4 +32,6 @@ volumes:
 
 networks:
   proxy:
+    external: true
+  local_cloud:
     external: true
