@@ -11,8 +11,8 @@ services:
       # - 995:995 # POP3S, secure POP3 mailbox download (Implicit TLS)
       # - 4190:4190 # ManageSieve, mail filter script management (STARTTLS)
       # - 443:443 # HTTP: JMAP, CalDAV, CardDAV, WebDAV, WebUI, OAuth, autoconfiguration (Implicit TLS)
-      - 127.0.0.1:8080:8080 # HTTP admin/UI bound to localhost only
-      - "${TAILSCALE_IP}:8080:8080" # HTTP admin/UI bound to Tailscale IP only
+      - 127.0.0.1:8081:8080 # HTTP admin/UI bound to localhost only
+      - "${TAILSCALE_IP}:8081:8080" # HTTP admin/UI bound to Tailscale IP only
     volumes:
       - $STATE_DIRECTORY/stalwart/stalwart-etc:/etc/stalwart
       - $STATE_DIRECTORY/stalwart/stalwart-data:/var/lib/stalwart
