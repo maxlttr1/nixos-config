@@ -6,10 +6,11 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
         external_url 'https://gitlab.example.com'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
       - 80:80
       - 443:443
-      - "${TAILSCALE_IP}:22:22"
+      - "${TAILSCALE_IP}:2222:22"
     volumes:
       - $STATE_DIRECTORY/config:/etc/gitlab
       - $STATE_DIRECTORY/logs:/var/log/gitlab
