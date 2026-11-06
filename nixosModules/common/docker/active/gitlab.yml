@@ -1,0 +1,18 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    hostname: "gitlab.example.com"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        external_url 'https://gitlab.example.com'
+    ports:
+      - 80:80
+      - 443:443
+      - "${TAILSCALE_IP}:22:22"
+    volumes:
+      - $STATE_DIRECTORY/config:/etc/gitlab
+      - $STATE_DIRECTORY/logs:/var/log/gitlab
+      - $STATE_DIRECTORY/data:/var/opt/gitlab
+    shm_size: "256m"
+  restart: unless-stopped
