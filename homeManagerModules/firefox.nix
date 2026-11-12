@@ -13,7 +13,7 @@
       policies = {
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
-        BlockAboutAddons = true;
+        BlockAboutAddons = false;
         DisableAppUpdate = true;
         DisableFirefoxStudies = true;
         DisableFirefoxAccounts = true;
@@ -33,7 +33,7 @@
             moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
           in
           {
-            "*".installation_mode = "blocked";
+            # "*".installation_mode = "blocked";
             "uBlock0@raymondhill.net" = {
               install_url = moz "ublock-origin";
               installation_mode = "force_installed";
@@ -50,12 +50,10 @@
               install_url = moz "youtube-recommended-videos"; # Unhook
               installation_mode = "force_installed";
             };
-            /*
-              "{a8cf72f7-09b7-4cd4-9aaa-7a023bf09916}" = {
-                install_url = moz "besttimetracker";
-                installation_mode = "force_installed";
-              };
-            */
+            "enhancerforyoutube@maximerf.addons.mozilla.org" = {
+              install_url = moz "enhancer-for-youtube";
+              installation_mode = "force_installed";
+            };
           };
         Homepage = {
           URL = "https://nextcloud.maxlttr.fr/apps/dashboard/";

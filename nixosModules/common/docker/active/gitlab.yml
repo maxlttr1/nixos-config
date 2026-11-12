@@ -14,7 +14,7 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-        external_url 'https://gitlab.example.com'
+        external_url 'https://gitlab.maxlttr.fr'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
       # - 80:80

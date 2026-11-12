@@ -1,6 +1,7 @@
 {
   imports = [
     ./docker/docker.nix
+    ./kubernetes/k3s.nix
     ./apparmor.nix
     ./autoUpgrade.nix
     ./boot.nix
