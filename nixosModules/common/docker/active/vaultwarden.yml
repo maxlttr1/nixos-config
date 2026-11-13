@@ -12,7 +12,7 @@ services:
       - traefik.http.services.vaultwarden.loadbalancer.server.port=80
     environment:
       DOMAIN: "https://vaultwarden.maxlttr.fr"
-      SIGNUPS_ALLOWED: "false"
+      # SIGNUPS_ALLOWED: "false"
 
     volumes:
       - $STATE_DIRECTORY/vaultwarden/vw-data/:/data/
