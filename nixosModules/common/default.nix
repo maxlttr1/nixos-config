@@ -32,6 +32,7 @@
   custom.fsOptimizations.enable = true;
   custom.firewall.enable = true;
   custom.firmware.enable = true;
+  custom.k3s.enable = false;
   custom.networkManager.enable = true;
   custom.nix-optimise.enable = true;
   custom.sops.enable = true;
