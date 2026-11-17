@@ -1,0 +1,8 @@
+name: home-stack
+
+working_dir: nixosModules/common/docker/active
+
+auto_discovery:
+  enabled: true
+  depth: 1
+  delete: false
