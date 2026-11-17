@@ -33,6 +33,9 @@
         "ssh/gitlab-univ-nantes/private" = {
           mode = "0600";
         };
+        "ssh/github/private" = {
+          mode = "0600";
+        };
       };
     };
   };

@@ -22,6 +22,11 @@
         Port 222
         IdentityFile ${config.sops.secrets."ssh/forgejo/private".path}
         IdentitiesOnly yes
+      Host github.com
+        HostName github.com
+        User git
+        IdentityFile ${config.sops.secrets."ssh/github/private".path}
+        IdentitiesOnly yes
     '';
   };
 }
