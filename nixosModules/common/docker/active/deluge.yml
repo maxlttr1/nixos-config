@@ -13,7 +13,6 @@ services:
     env_file:
       - ${HOME}/.config/sops-nix/secrets/env/vpn.env
     ports:
-      - 127.0.0.1:8112:8112
       - "${TAILSCALE_IP}:8112:8112"
       - 6881:6881
       - 6881:6881/udp

@@ -13,11 +13,9 @@ services:
     environment:
       DOMAIN: "https://vaultwarden.maxlttr.fr"
       # SIGNUPS_ALLOWED: "false"
-
     volumes:
       - $STATE_DIRECTORY/vaultwarden/vw-data/:/data/
     ports:
-      - 127.0.0.1:8000:80
       - "${TAILSCALE_IP}:8000:80"
     restart: unless-stopped
 

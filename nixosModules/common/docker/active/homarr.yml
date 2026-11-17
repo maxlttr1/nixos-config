@@ -24,7 +24,6 @@ services:
       - traefik.http.middlewares.homarr.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
     ports:
-      - 127.0.0.1:7575:7575
       - "${TAILSCALE_IP}:7575:7575"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

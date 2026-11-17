@@ -27,7 +27,6 @@ services:
       - "CRON_MIN=1,31"
       - TZ=Europe/Paris
     ports:
-      - 127.0.0.1:8088:80
       - "${TAILSCALE_IP}:8088:80"
     logging:
       driver: json-file

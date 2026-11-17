@@ -4,7 +4,6 @@ services:
     networks:
       - local_websecure
     ports:
-      - 127.0.0.1:8888:80
       - "${TAILSCALE_IP}:8888:80"
     labels:
       - traefik.enable=true

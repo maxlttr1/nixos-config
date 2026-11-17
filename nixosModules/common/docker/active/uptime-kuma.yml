@@ -14,7 +14,6 @@ services:
       - $STATE_DIRECTORY/uptime-kuma/uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 127.0.0.1:3001:3001
       - "${TAILSCALE_IP}:3001:3001"
     restart: unless-stopped
 

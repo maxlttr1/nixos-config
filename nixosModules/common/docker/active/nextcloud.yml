@@ -10,7 +10,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
     ports:
-      - 127.0.0.1:7373:8080
       - "${TAILSCALE_IP}:7373:8080"
     environment:
       # NEXTCLOUD_DATADIR: "${HOME}/Syncthing"

@@ -12,7 +12,6 @@ services:
       - traefik.http.routers.glances.rule=Host(`glances.home.maxlttr.fr`)
       - traefik.http.services.glances.loadbalancer.server.port=61208
     ports:
-      - 127.0.0.1:61208:61208
       - "${TAILSCALE_IP}:61208:61208"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
