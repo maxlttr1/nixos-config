@@ -61,7 +61,7 @@
         set -euox pipefail
 
         if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://github.com/maxlttr1/nixos-config.git ./nixos-config
+          ${pkgs.git}/bin/git clone git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git ./nixos-config
         fi
 
         cd nixos-config/

@@ -15,11 +15,6 @@
       age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
-        "github/token" = {
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
-        };
         "discord/webhook" = {
           mode = "0600";
           owner = config.users.users."${settings.username}".name;
@@ -42,6 +37,11 @@
           group = config.users.users."${settings.username}".group;
         };
         "nextcloud/conversations/Nixos" = {
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
+        "ssh/forgejo/token" = {
           mode = "0600";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;

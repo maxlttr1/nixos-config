@@ -61,13 +61,13 @@ in
 
         if [ ! -d "nixos-config" ]; then
           ${pkgs.git}/bin/git clone https://$(cat ${
-            config.sops.secrets."github/token".path
-          })@github.com/maxlttr1/nixos-config.git ./nixos-config
+            config.sops.secrets."ssh/forgejo/token".path
+          })@forgejo.maxlttr.fr/maxlttr/nixos-config.git ./nixos-config
         fi
 
         cd nixos-config/
         git config --local user.name "nixos-flake-update"
-        git config --local user.email "nixos-flake-update@users.noreply.github.com"
+        git config --local user.email "nixos-flake-update@maxlttr.fr"
         ${pkgs.git}/bin/git fetch origin master
         ${pkgs.git}/bin/git checkout master
         ${pkgs.git}/bin/git reset --hard origin/master
@@ -108,7 +108,7 @@ in
         #   https://api.github.com/repos/maxlttr1/nixos-config/pulls \
         #   -d "{
         #     \"title\": \"Update to flake.lock on $DATE\",
-        #     \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake github:maxlttr1/nixos-config?ref=$BRANCH or sudo nixos-rebuild test --flake github:maxlttr1/nixos-config?ref=$BRANCH\",
+        #     \"body\": \"Please test it locally and merge the PR: sudo -E nixos-rebuild build-vm --flake git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git?ref=$BRANCH or sudo nixos-rebuild test --flake git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git?ref=$BRANCH\",
         #     \"head\": \"$BRANCH\",
         #     \"base\": \"master\"
         #   }"

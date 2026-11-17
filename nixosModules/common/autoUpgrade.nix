@@ -29,7 +29,7 @@ in
   config = lib.mkIf config.custom.autoUpgrade.enable {
     system.autoUpgrade = {
       enable = true;
-      flake = "github:maxlttr1/nixos-config";
+      flake = "git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git";
       flags = [
         #"--update-input"
         #"nixpkgs-main"
@@ -56,7 +56,7 @@ in
         set -euox pipefail
 
         rm -f ./result
-        if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --refresh --flake github:maxlttr1/nixos-config; then
+        if ! ${pkgs.nixos-rebuild}/bin/nixos-rebuild build --refresh --flake ${config.system.autoUpgrade.flake}; then
           echo "Failed to build new system configuration"
           exit 1
         fi

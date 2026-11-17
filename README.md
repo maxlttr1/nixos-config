@@ -41,7 +41,7 @@ sudo nix run github:nix-community/nixos-anywhere -- \
   --generate-hardware-config nixos-generate-config ./hosts/terra-terra/hardware-configuration.nix \
   --disk-encryption-keys /tmp/disk-encryption.key <(pass DISK-ENCRYPTION-PASSWD) \
   --extra-files $root \
-  --flake github:maxlttr1/nixos-config#terra-terra \
+  --flake git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git#terra-terra \
   --target-host nixos@192.168.1.22
 ```
 
@@ -52,7 +52,7 @@ sudo nix run github:nix-community/nixos-anywhere -- \
 printf "DISK-ENCRYPTION-PASSWD" > /tmp/disk-encryption.key
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --mode destroy,format,mount \
-  --flake github:maxlttr1/nixos-config#terra-terra
+  --flake git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git#terra-terra
 ```
 ### 2. Import your ssh keys in `/mnt/etc/sops/age/keys.txt` and set permissions in order for nix-sops to work
 ```bash
@@ -61,5 +61,5 @@ sudo cp $PATH_TO_FILE/keys.txt /mnt/etc/sops/age/keys.txt && sudo chown 600 /mnt
 
 ### 3. Install Nixos (ensure having the correct hardware-configuration)
 ```bash
-sudo nixos-install --flake github:maxlttr1/nixos-config#terra-terra
+sudo nixos-install --flake git+https://forgejo.maxlttr.fr/maxlttr/nixos-config.git#terra-terra
 ```
