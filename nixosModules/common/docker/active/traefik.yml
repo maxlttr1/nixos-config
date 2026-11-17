@@ -30,7 +30,7 @@ services:
       - "--experimental.plugins.sablier.moduleName=github.com/sablierapp/sablier-traefik-plugin"
       - "--experimental.plugins.sablier.version=v1.4.0"
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/env/ovh-perm.env
+      - /run/secrets/env/ovh-perm.env
     restart: unless-stopped
 
 networks:

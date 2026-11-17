@@ -29,7 +29,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - $STATE_DIRECTORY/homarr/appdata:/appdata
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/env/homarr.env
+      - /run/secrets/env/homarr.env
     restart: unless-stopped
 
 networks:

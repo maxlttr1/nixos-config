@@ -13,7 +13,7 @@ services:
     volumes:
       - $STATE_DIRECTORY/suaps/config.json:/app/config/config.json
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/env/suaps.env
+      - /run/secrets/env/suaps.env
     ports:
       - "${TAILSCALE_IP}:5000:5000"
     restart: unless-stopped

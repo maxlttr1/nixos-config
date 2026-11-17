@@ -11,7 +11,7 @@ services:
       - VPN_SERVICE_PROVIDER=custom
       - VPN_TYPE=wireguard
     env_file:
-      - ${HOME}/.config/sops-nix/secrets/env/vpn.env
+      - /run/secrets/env/vpn.env
     ports:
       - "${TAILSCALE_IP}:8112:8112"
       - 6881:6881

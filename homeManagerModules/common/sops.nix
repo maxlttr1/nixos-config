@@ -23,24 +23,6 @@
           mode = "0600";
         };
       }
-      // lib.optionalAttrs (hostname == "nexus-nexus") {
-        "env/ovh-perm.env" = {
-          key = "env/ovh-perm";
-          mode = "0600";
-        };
-        "env/homarr.env" = {
-          key = "env/homarr";
-          mode = "0600";
-        };
-        "env/vpn.env" = {
-          key = "env/vpn";
-          mode = "0600";
-        };
-        "env/suaps.env" = {
-          key = "env/suaps";
-          mode = "0600";
-        };
-      }
       // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
         "ssh/forgejo/private" = {
           mode = "0600";

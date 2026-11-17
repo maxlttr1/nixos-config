@@ -2,6 +2,7 @@
   config,
   lib,
   settings,
+  hostname,
   ...
 }:
 
@@ -15,6 +16,7 @@
       age.keyFile = "/etc/sops/age/keys.txt";
 
       secrets = {
+        # Notifications for systemUpgrade
         "discord/webhook" = {
           mode = "0600";
           owner = config.users.users."${settings.username}".name;
@@ -41,6 +43,34 @@
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
+      }
+      // lib.optionalAttrs (hostname == "nexus-nexus") {
+        # Docker containers secrets
+        "env/ovh-perm.env" = {
+          key = "env/ovh-perm";
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
+        "env/homarr.env" = {
+          key = "env/homarr";
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
+        "env/vpn.env" = {
+          key = "env/vpn";
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
+        "env/suaps.env" = {
+          key = "env/suaps";
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
+        # For nixos-flake-update service
         "ssh/forgejo/token" = {
           mode = "0600";
           owner = config.users.users."${settings.username}".name;

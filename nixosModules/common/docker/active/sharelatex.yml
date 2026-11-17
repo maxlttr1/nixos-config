@@ -23,8 +23,8 @@ services:
     networks:
       - proxy
     volumes:
-      - ./overleaf/data:/var/lib/overleaf
-      - ./overleaf/logs:/var/log/overleaf
+      - $STATE_DIRECTORY/overleaf/data:/var/lib/overleaf
+      - $STATE_DIRECTORY/overleaf/logs:/var/log/overleaf
     environment:
       OVERLEAF_MONGO_URL: mongodb://mongo/sharelatex
       OVERLEAF_REDIS_HOST: redis
@@ -45,7 +45,7 @@ services:
       - sablier.group=overleaf
     command: --replSet overleaf
     volumes:
-      - ./overleaf/mongo:/data/db
+      - $STATE_DIRECTORY/overleaf/mongo:/data/db
     healthcheck:
       test:
         [
@@ -65,7 +65,7 @@ services:
       - sablier.enable=true
       - sablier.group=overleaf
     volumes:
-      - ./overleaf/redis:/data
+      - $STATE_DIRECTORY/overleaf/redis:/data
     restart: unless-stopped
 
 networks:

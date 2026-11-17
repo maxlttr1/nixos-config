@@ -26,14 +26,12 @@
         "network-online.target"
         "tailscaled.service"
         "sops.service"
-        "home-manager-${settings.username}.service"
       ];
       wants = [
         "docker.service"
         "network-online.target"
         "tailscaled.service"
         "sops.service"
-        "home-manager-${settings.username}.service"
       ];
       wantedBy = lib.optionals (hostname == "nexus-nexus") [
         "multi-user.target"

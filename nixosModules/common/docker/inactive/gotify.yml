@@ -11,11 +11,10 @@ services:
       - traefik.http.routers.gotify-https.rule=Host(`gotify.maxlttr.fr`)
     environment:
       TZ: "Europe/Paris"
-      GOTIFY_DEFAULTUSER_PASS: 'admin'
+      GOTIFY_DEFAULTUSER_PASS: "admin"
     volumes:
       - $STATE_DIRECTORY/gotify/gotify_data:/app/data
     ports:
-      - 127.0.0.1:8880:80
       - ${TAILSCALE_IP}:8880:80
     restart: unless-stopped
 
