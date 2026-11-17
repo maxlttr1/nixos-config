@@ -13,13 +13,15 @@
 
     home.file.".ssh/config".text = ''
       Host nexus-nexus
-          HostName nexus-nexus
-          User ${settings.username}
-          IdentityFile ${config.sops.secrets."ssh/nixos-setup/private".path}
-      Host fly2clean
-          HostName videocompress.polytech.univ-nantes.prive
-          User ptrans_fly2clean_2025
-          IdentityFile ${config.sops.secrets."ssh/gitlab-univ-nantes/private".path}
+        HostName nexus-nexus
+        User ${settings.username}
+        IdentityFile ${config.sops.secrets."ssh/nixos-setup/private".path}
+      Host forgejo.maxlttr.fr
+        HostName nexus-nexus
+        User git
+        Port 222
+        IdentityFile ${config.sops.secrets."ssh/forgejo/private".path}
+        IdentitiesOnly yes
     '';
   };
 }

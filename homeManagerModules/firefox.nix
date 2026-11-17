@@ -33,7 +33,7 @@
             moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
           in
           {
-            # "*".installation_mode = "blocked";
+            "*".installation_mode = "blocked";
             "uBlock0@raymondhill.net" = {
               install_url = moz "ublock-origin";
               installation_mode = "force_installed";
@@ -46,12 +46,12 @@
               install_url = moz "sponsorblock";
               installation_mode = "force_installed";
             };
-            "myallychou@gmail.com" = {
-              install_url = moz "youtube-recommended-videos"; # Unhook
-              installation_mode = "force_installed";
-            };
             "enhancerforyoutube@maximerf.addons.mozilla.org" = {
               install_url = moz "enhancer-for-youtube";
+              installation_mode = "force_installed";
+            };
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+              install_url = moz "bitwarden_password_manager";
               installation_mode = "force_installed";
             };
           };

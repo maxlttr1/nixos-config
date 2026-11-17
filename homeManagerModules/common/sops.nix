@@ -42,6 +42,9 @@
         };
       }
       // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
+        "ssh/forgejo/private" = {
+          mode = "0600";
+        };
         "ssh/nixos-setup/private" = {
           mode = "0600";
         };
