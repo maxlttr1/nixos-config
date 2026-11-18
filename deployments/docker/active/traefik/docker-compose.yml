@@ -1,3 +1,0 @@
-services:
-  hello:
-    image: traefik/whoami:v1.10.1
