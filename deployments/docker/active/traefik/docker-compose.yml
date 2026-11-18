@@ -10,7 +10,7 @@ services:
       - "${TAILSCALE_IP}:8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - traefik/:/var/traefik/certs/:rw
+      - traefik:/var/traefik/certs/:rw
       - ./traefik-dynamic:/etc/traefik/dynamic:ro
     command:
       - "--global.sendAnonymousUsage=false"
