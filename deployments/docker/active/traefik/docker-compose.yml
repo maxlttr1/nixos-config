@@ -10,7 +10,7 @@ services:
       - "${TAILSCALE_IP}:8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - $STATE_DIRECTORY/traefik/:/var/traefik/certs/:rw
+      - traefik/:/var/traefik/certs/:rw
       - ./traefik-dynamic:/etc/traefik/dynamic:ro
     command:
       - "--global.sendAnonymousUsage=false"
@@ -32,6 +32,11 @@ services:
     env_file:
       - /run/secrets/env/ovh-perm.env
     restart: unless-stopped
+
+volumes:
+  traefik:
+    name: traefik
+    external: true
 
 networks:
   proxy:

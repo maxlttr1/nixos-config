@@ -34,9 +34,17 @@ services:
       - PGID=${PGID}
       - TZ=Etc/UTC
     volumes:
-      - $STATE_DIRECTORY/deluge/config:/config
-      - $STATE_DIRECTORY/movies:/downloads
+      - deluge:/config
+      - shared_movies:/downloads
     restart: unless-stopped
+
+volumes:
+  deluge:
+    name: deluge
+    external: true
+  shared_movies:
+    name: shared_movies
+    external: true
 
 networks:
   local_websecure:

@@ -21,11 +21,19 @@ services:
       # - 443:443
       - "${TAILSCALE_IP}:2222:22"
     volumes:
-      - $STATE_DIRECTORY/config:/etc/gitlab
-      - $STATE_DIRECTORY/logs:/var/log/gitlab
-      - $STATE_DIRECTORY/data:/var/opt/gitlab
+      - gitlab_config:/etc/gitlab
+      - gitlab_logs:/var/log/gitlab
+      - gitlab_data:/var/opt/gitlab
     shm_size: "256m"
     restart: unless-stopped
+
+volumes:
+  gitlab_config:
+    name: gitlab_config
+  gitlab_logs:
+    name: gitlab_logs
+  gitlab_data:
+    name: gitlab_data
 
 networks:
   proxy:

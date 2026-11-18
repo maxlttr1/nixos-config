@@ -11,11 +11,16 @@ services:
       - traefik.http.routers.uptime-kuma.rule=Host(`uptime-kuma.home.maxlttr.fr`)
       - traefik.http.services.uptime-kuma.loadbalancer.server.port=3001
     volumes:
-      - $STATE_DIRECTORY/uptime-kuma/uptime-kuma:/app/data
+      - uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "${TAILSCALE_IP}:3001:3001"
     restart: unless-stopped
+
+volumes:
+  uptime-kuma:
+    name: uptime-kuma
+    external: true
 
 networks:
   local_websecure:

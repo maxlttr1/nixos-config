@@ -25,16 +25,30 @@ services:
       - PGID=${PGID}
       - TZ=Etc/UTC
     volumes:
-      - $STATE_DIRECTORY/jellyfin/library:/config
-      - $STATE_DIRECTORY/movies:/data/movies
-      - $STATE_DIRECTORY/i2p/i2ptorrents:/data/movies/i2p
-      - $STATE_DIRECTORY/tvshows:/data/tvshows
+      - jellyfin_library:/config
+      - shared_movies:/data/movies
+      - shared_i2ptorrents:/data/movies/i2p
+      - shared_tvshows:/data/tvshows
       - /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/Maxime/files/music:/data/music:ro
     ports:
       - "${TAILSCALE_IP}:8096:8096"
     devices:
       - /dev/dri:/dev/dri
     restart: unless-stopped
+
+volumes:
+  jellyfin_library:
+    name: jellyfin_library
+    external: true
+  shared_movies:
+    name: shared_movies
+    external: true
+  shared_tvshows:
+    name: shared_tvshows
+    external: true
+  shared_i2ptorrents:
+    name: shared_i2ptorrents
+    external: true
 
 networks:
   proxy:

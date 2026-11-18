@@ -24,7 +24,7 @@
             TZ = "Europe/Berlin";
             GIT_AUTH_DOMAINS = "- domains: [forgejo.maxlttr.fr, github.com]";
             POLL_CONFIG = ''
-              - url: https://forgejo.maxlttr.fr/maxlttr/nixos-config.git
+              - url: https://github.com/maxlttr1/nixos-config.git
                 reference: master
                 interval: 300
             '';

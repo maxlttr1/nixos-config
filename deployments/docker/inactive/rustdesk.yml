@@ -3,7 +3,7 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     volumes:
-      - $STATE_DIRECTORY/rustdesk/hbbs:/root
+      - rustdesk-hbbs:/root
     network_mode: "host"
 
     depends_on:
@@ -14,6 +14,12 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     volumes:
-      - $STATE_DIRECTORY/rustdesk/hbbr:/root
+      - rustdesk-hbbr:/root
     network_mode: "host"
     restart: unless-stopped
+
+volumes:
+  rustdesk-hbbs:
+    name: rustdesk-hbbs
+  rustdesk-hbbr:
+    name: rustdesk-hbbr

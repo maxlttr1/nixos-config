@@ -26,10 +26,15 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - $STATE_DIRECTORY/portainer/portainer_data:/data
+      - portainer_data:/data
     ports:
       - "${TAILSCALE_IP}:9443:9443"
     restart: unless-stopped
+
+volumes:
+  portainer_data:
+    name: portainer_data
+    external: true
 
 networks:
   local_websecure:

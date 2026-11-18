@@ -14,10 +14,15 @@ services:
       DOMAIN: "https://vaultwarden.maxlttr.fr"
       # SIGNUPS_ALLOWED: "false"
     volumes:
-      - $STATE_DIRECTORY/vaultwarden/vw-data/:/data/
+      - vaultwarden:/data/
     ports:
       - "${TAILSCALE_IP}:8000:80"
     restart: unless-stopped
+
+volumes:
+  vaultwarden:
+    name: vaultwarden
+    external: true
 
 networks:
   proxy:

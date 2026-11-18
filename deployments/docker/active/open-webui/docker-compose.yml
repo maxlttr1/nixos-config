@@ -23,9 +23,17 @@ services:
       - traefik.http.middlewares.openwebui.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
     volumes:
-      - $STATE_DIRECTORY/open-webui:/app/backend/data
-      - $STATE_DIRECTORY/open-webui/.ollama:/root/.ollama
+      - openwebui_data:/app/backend/data
+      - openwebui_ollama:/root/.ollama
     restart: unless-stopped
+
+volumes:
+  openwebui_data:
+    name: openwebui_data
+    external: true
+  openwebui_ollama:
+    name: openwebui_ollama
+    external: true
 
 networks:
   local_websecure:

@@ -11,12 +11,17 @@ services:
       - traefik.http.routers.suaps.rule=Host(`suaps.home.maxlttr.fr`)
       - traefik.http.services.suaps.loadbalancer.server.port=5000
     volumes:
-      - $STATE_DIRECTORY/suaps/config.json:/app/config/config.json
+      - suaps-config:/app/config/config.json
     env_file:
       - /run/secrets/env/suaps.env
     ports:
       - "${TAILSCALE_IP}:5000:5000"
     restart: unless-stopped
+
+volumes:
+  suaps-config:
+    name: suaps-config
+    external: true
 
 networks:
   local_websecure:
