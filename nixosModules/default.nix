@@ -12,6 +12,7 @@
     ./borgbackup.nix
     ./cups.nix
     ./disko.nix
+    ./doco-cd.nix
     ./eduvpn.nix
     ./fan.nix
     ./flatpak.nix
@@ -20,6 +21,7 @@
     ./hyprland.nix
     # ./impermanence.nix
     ./intel.nix
+    ./k3s.nix
     ./kdePlasma.nix
     ./ld.nix
     ./nvidia.nix
