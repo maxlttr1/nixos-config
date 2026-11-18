@@ -28,7 +28,8 @@ services:
     environment:
       OVERLEAF_MONGO_URL: mongodb://mongo/sharelatex
       OVERLEAF_REDIS_HOST: redis
-      OVERLEAF_INVITE_TOKEN_SECRET: ${OVERLEAF_INVITE_TOKEN_SECRET}
+    env_file:
+      - /run/secrets/env/overleaf.env
     depends_on:
       mongo:
         condition: service_healthy
