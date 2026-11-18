@@ -3,5 +3,5 @@ services:
     image: corentinth/it-tools:latest
     ports:
       - "${TAILSCALE_IP}:8888:80"
-      - 8888:80
+      - 8887:80
     restart: unless-stopped
