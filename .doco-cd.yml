@@ -1,6 +1,6 @@
 name: home-stack
 
-working_dir: nixosModules/common/docker/active
+working_dir: deployments/docker/active
 
 auto_discovery:
   enabled: true
