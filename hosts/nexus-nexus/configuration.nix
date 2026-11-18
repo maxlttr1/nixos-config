@@ -3,6 +3,7 @@
 {
   custom.autoFlakeUpdate.enable = true;
   custom.borgbackup.enable = true;
+  custom.doco-cd.enable = true;
   custom.intel.enable = true;
   custom.ssh.enable = true;
   custom.swap = {
