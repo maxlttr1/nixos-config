@@ -5,4 +5,11 @@ working_dir: deployments/docker/active
 auto_discovery:
   enabled: true
   depth: 1
-  delete: false
+  delete: true
+  remove_images: true
+
+compose_files:
+  - compose.yaml
+  - compose.yml
+  - docker-compose.yml
+  - docker-compose.yaml
