@@ -46,6 +46,12 @@
       }
       // lib.optionalAttrs (hostname == "nexus-nexus") {
         # Docker containers secrets
+        "env/overleaf.env" = {
+          key = "env/overleaf";
+          mode = "0600";
+          owner = config.users.users."${settings.username}".name;
+          group = config.users.users."${settings.username}".group;
+        };
         "env/ovh-perm.env" = {
           key = "env/ovh-perm";
           mode = "0600";
