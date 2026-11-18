@@ -26,8 +26,10 @@
             POLL_CONFIG = ''
               - url: https://forgejo.maxlttr.fr/maxlttr/nixos-config.git
                 reference: master
-                interval: 180
+                interval: 300
             '';
+            DEPLOY_CONFIG_BASE_DIR = "deployments/docker";
+            PASS_ENV = "true";
             TAILSCALE_IP = "100.68.245.10";
             PUID = lib.toString config.users.users."${settings.username}".uid;
             PGID = "100"; # Users group ID
@@ -47,34 +49,32 @@
       };
     };
 
-    /*
-      system.activationScripts = {
-        "init-docker-infra" = {
-          text = ''
-            # Networks
-            ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create proxy
-            ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create local_websecure
+    system.activationScripts = {
+      "init-docker-infra" = {
+        text = ''
+          # Networks
+          ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create proxy
+          ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create local_websecure
 
-            # Volumes
-            ${pkgs.docker}/bin/docker volume inspect shared_movies >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_movies
-            ${pkgs.docker}/bin/docker volume inspect shared_tvshows >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_tvshows
-            ${pkgs.docker}/bin/docker volume inspect shared_i2ptorrents >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_i2ptorrents
-            ${pkgs.docker}/bin/docker volume inspect suaps-config >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create suaps-config
+          # Volumes
+          ${pkgs.docker}/bin/docker volume inspect shared_movies >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_movies
+          ${pkgs.docker}/bin/docker volume inspect shared_tvshows >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_tvshows
+          ${pkgs.docker}/bin/docker volume inspect shared_i2ptorrents >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_i2ptorrents
+          ${pkgs.docker}/bin/docker volume inspect suaps-config >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create suaps-config
 
-            # Files initialization
-            ${pkgs.docker}/bin/docker run --rm -v suaps-config:/v alpine sh -c '
-              if [ ! -f /v/config.json ]; then
-                echo "{ \"ids_resa\": [] }" > /v/config.json
-              fi
-            '
-            ${pkgs.docker}/bin/docker run --rm -v traefik:/v alpine sh -c '
-              if [ ! -f /v/acme.json ]; then
-                touch /v/acme.json && chmod 600 /v/acme.json
-              fi
-            '
-          '';
-        };
+          # Files initialization
+          ${pkgs.docker}/bin/docker run --rm -v suaps-config:/v alpine sh -c '
+            if [ ! -f /v/config.json ]; then
+              echo "{ \"ids_resa\": [] }" > /v/config.json
+            fi
+          '
+          ${pkgs.docker}/bin/docker run --rm -v traefik:/v alpine sh -c '
+            if [ ! -f /v/acme.json ]; then
+              touch /v/acme.json && chmod 600 /v/acme.json
+            fi
+          '
+        '';
       };
-    */
+    };
   };
 }
