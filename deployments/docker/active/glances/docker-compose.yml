@@ -1,0 +1,32 @@
+services:
+  glances:
+    image: nicolargo/glances:latest-full
+    pid: host
+    networks:
+      - local_websecure
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.glances.tls=true
+      - traefik.http.routers.glances.tls.certresolver=myresolver
+      - traefik.http.routers.glances.entrypoints=local_websecure
+      - traefik.http.routers.glances.rule=Host(`glances.home.maxlttr.fr`)
+      - traefik.http.services.glances.loadbalancer.server.port=61208
+    ports:
+      - "${TAILSCALE_IP}:61208:61208"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/os-release:/etc/os-release:ro
+      - ${HOME}/mountedDisk/info.glances:/mnt/info.glances:ro
+    environment:
+      - "GLANCES_OPT=-w --enable-plugin smart"
+    cap_add:
+      - SYS_RAWIO
+      - SYS_ADMIN
+    devices:
+      - /dev/sda
+      - /dev/sdb
+    restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true

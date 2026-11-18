@@ -1,9 +1,7 @@
 {
-  pkgs,
   settings,
   config,
   lib,
-  hostname,
   ...
 }:
 
@@ -19,112 +17,114 @@
 
     users.users.${settings.username}.extraGroups = [ "docker" ];
 
-    systemd.services."docker-containers" = {
-      description = "Docker container management";
-      after = [
-        "docker.service"
-        "network-online.target"
-        "tailscaled.service"
-        "sops.service"
-      ];
-      wants = [
-        "docker.service"
-        "network-online.target"
-        "tailscaled.service"
-        "sops.service"
-      ];
-      wantedBy = lib.optionals (hostname == "nexus-nexus") [
-        "multi-user.target"
-      ];
-      serviceConfig = {
-        Type = "oneshot";
-        User = "${settings.username}";
+    /*
+      systemd.services."docker-containers" = {
+        description = "Docker container management";
+        after = [
+          "docker.service"
+          "network-online.target"
+          "tailscaled.service"
+          "sops.service"
+        ];
+        wants = [
+          "docker.service"
+          "network-online.target"
+          "tailscaled.service"
+          "sops.service"
+        ];
+        wantedBy = lib.optionals (hostname == "nexus-nexus") [
+          "multi-user.target"
+        ];
+        serviceConfig = {
+          Type = "oneshot";
+          User = "${settings.username}";
 
-        ProtectSystem = "strict";
-        ProtectHome = "read-only";
-        CacheDirectory = "docker-containers";
-        CacheDirectoryMode = "0700";
-        StateDirectory = "docker-containers";
-        StateDirectoryMode = "0700";
-        WorkingDirectory = "/var/cache/docker-containers";
+          ProtectSystem = "strict";
+          ProtectHome = "read-only";
+          CacheDirectory = "docker-containers";
+          CacheDirectoryMode = "0700";
+          StateDirectory = "docker-containers";
+          StateDirectoryMode = "0700";
+          WorkingDirectory = "/var/cache/docker-containers";
 
-        RemainAfterExit = true;
+          RemainAfterExit = true;
 
-        NoNewPrivileges = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
+          NoNewPrivileges = true;
+          ProtectKernelLogs = true;
+          ProtectKernelModules = true;
+          ProtectKernelTunables = true;
+        };
+        preStart = ''
+          set -euox pipefail
+
+          if [ ! -d "nixos-config" ]; then
+            ${pkgs.git}/bin/git clone https://forgejo.maxlttr.fr/maxlttr/nixos-config.git ./nixos-config
+          fi
+
+          cd nixos-config/
+          ${pkgs.git}/bin/git fetch origin master
+          ${pkgs.git}/bin/git checkout master
+          ${pkgs.git}/bin/git reset --hard origin/master
+        '';
+        script = ''
+          set -euo pipefail
+
+          export PUID=$(id -u)
+          export PGID=$(id -g)
+          export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
+
+          if [ ! -f $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET ]; then
+            mkdir -p $STATE_DIRECTORY/overleaf
+            ${pkgs.openssl}/bin/openssl rand -base64 32 > $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
+            chmod 600 $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
+          fi
+          export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
+
+          cd nixos-config/
+
+          if [ ! -f $STATE_DIRECTORY/suaps/config.json ]; then
+            mkdir -p $STATE_DIRECTORY/suaps
+            echo '{ "ids_resa": [] }' > $STATE_DIRECTORY/suaps/config.json
+          fi
+
+          if [ ! -f $STATE_DIRECTORY/traefik/acme.json ]; then
+            mkdir -p $STATE_DIRECTORY/traefik
+            touch $STATE_DIRECTORY/traefik/acme.json && chmod 600 $STATE_DIRECTORY/traefik/acme.json
+          fi
+
+          # Create proxy network if not present for traefik
+          if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
+            ${pkgs.docker}/bin/docker network create proxy
+          fi
+
+          # Create local_websecure network if not present for traefik
+          if ! ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1; then
+            ${pkgs.docker}/bin/docker network create local_websecure
+          fi
+
+          for file in ./nixosModules/common/docker/active/*.yml; do
+            name=$(basename "$file" .yml)
+            ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
+          done
+        '';
+        preStop = ''
+          set -euo pipefail
+
+          export PUID=$(id -u)
+          export PGID=$(id -g)
+          export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
+          export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
+
+          cd nixos-config/
+
+          # ${pkgs.docker}/bin/docker system prune -a --volumes -f # Prune all unused images + anonymous volumes
+
+          for file in ./nixosModules/common/docker/active/*.yml; do
+            name=$(basename "$file" .yml)
+            ${pkgs.docker}/bin/docker compose -p $name -f $file down --remove-orphans
+          done
+        '';
       };
-      preStart = ''
-        set -euox pipefail
-
-        if [ ! -d "nixos-config" ]; then
-          ${pkgs.git}/bin/git clone https://forgejo.maxlttr.fr/maxlttr/nixos-config.git ./nixos-config
-        fi
-
-        cd nixos-config/
-        ${pkgs.git}/bin/git fetch origin master
-        ${pkgs.git}/bin/git checkout master
-        ${pkgs.git}/bin/git reset --hard origin/master
-      '';
-      script = ''
-        set -euo pipefail
-
-        export PUID=$(id -u)
-        export PGID=$(id -g)
-        export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
-
-        if [ ! -f $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET ]; then
-          mkdir -p $STATE_DIRECTORY/overleaf
-          ${pkgs.openssl}/bin/openssl rand -base64 32 > $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
-          chmod 600 $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET
-        fi
-        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
-
-        cd nixos-config/
-
-        if [ ! -f $STATE_DIRECTORY/suaps/config.json ]; then
-          mkdir -p $STATE_DIRECTORY/suaps
-          echo '{ "ids_resa": [] }' > $STATE_DIRECTORY/suaps/config.json
-        fi
-
-        if [ ! -f $STATE_DIRECTORY/traefik/acme.json ]; then
-          mkdir -p $STATE_DIRECTORY/traefik
-          touch $STATE_DIRECTORY/traefik/acme.json && chmod 600 $STATE_DIRECTORY/traefik/acme.json
-        fi
-
-        # Create proxy network if not present for traefik
-        if ! ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1; then
-          ${pkgs.docker}/bin/docker network create proxy
-        fi
-
-        # Create local_websecure network if not present for traefik
-        if ! ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1; then
-          ${pkgs.docker}/bin/docker network create local_websecure
-        fi
-
-        for file in ./nixosModules/common/docker/active/*.yml; do
-          name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file up -d
-        done
-      '';
-      preStop = ''
-        set -euo pipefail
-
-        export PUID=$(id -u)
-        export PGID=$(id -g)
-        export TAILSCALE_IP=$(${pkgs.tailscale}/bin/tailscale ip -4)
-        export OVERLEAF_INVITE_TOKEN_SECRET=$(cat $STATE_DIRECTORY/overleaf/OVERLEAF_INVITE_TOKEN_SECRET)
-
-        cd nixos-config/
-
-        # ${pkgs.docker}/bin/docker system prune -a --volumes -f
-
-        for file in ./nixosModules/common/docker/active/*.yml; do
-          name=$(basename "$file" .yml)
-          ${pkgs.docker}/bin/docker compose -p $name -f $file down --remove-orphans
-        done
-      '';
-    };
+    */
   };
 }

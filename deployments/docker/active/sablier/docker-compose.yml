@@ -1,0 +1,21 @@
+services:
+  sablier:
+    image: sablierapp/sablier:latest
+    networks:
+      - local_websecure
+      - proxy
+    command:
+      - start
+      - --provider.name=docker
+      - --provider.docker.strategy=stop
+    ports:
+      - "10000:10000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+networks:
+  local_websecure:
+    external: true
+  proxy:
+    external: true
