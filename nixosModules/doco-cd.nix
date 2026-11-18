@@ -37,6 +37,7 @@
           volumes = [
             "/var/run/docker.sock:/var/run/docker.sock"
             "doco-cd:/data"
+            "/run/secrets:/run/secrets:ro"
           ];
           extraOptions = [
             "--cap-drop=ALL"
