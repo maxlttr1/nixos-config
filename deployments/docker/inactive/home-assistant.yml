@@ -2,7 +2,7 @@ services:
   home-assistant:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - $STATE_DIRECTORY/homeAssistant:/config
+      - homeAssistant:/config
       - /etc/localtime:/etc/localtime:ro
     #   - /run/dbus:/run/dbus:ro # For bluetooth support
     privileged: true
@@ -16,9 +16,19 @@ services:
     image: eclipse-mosquitto:2
     container_name: mosquitto
     volumes:
-      - $STATE_DIRECTORY/mosquitto/config:/mosquitto/config
-      - $STATE_DIRECTORY/mosquitto/data:/mosquitto/data
-      - $STATE_DIRECTORY/mosquitto/log:/mosquitto/log
+      - mosquitto_config:/mosquitto/config
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
     ports:
       - "1883:1883"
     restart: unless-stopped
+
+volumes:
+  homeAssistant:
+    name: homeAssistant
+  mosquitto_config:
+    name: mosquitto_config
+  mosquitto_data:
+    name: mosquitto_data
+  mosquitto_log:
+    name: mosquitto_log

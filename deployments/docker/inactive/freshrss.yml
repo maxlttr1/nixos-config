@@ -2,8 +2,8 @@ services:
   freshrss:
     image: freshrss/freshrss:edge # Stable does not backport the latest security fixes
     volumes:
-      - $STATE_DIRECTORY/freshrss/freshrss_extensions:/var/www/FreshRSS/extensions
-      - $STATE_DIRECTORY/freshrss/freshrss_data:/var/www/FreshRSS/data
+      - freshrss_extensions:/var/www/FreshRSS/extensions
+      - freshrss_data:/var/www/FreshRSS/data
     networks:
       - proxy
     labels:
@@ -33,6 +33,12 @@ services:
       options:
         max-size: 10m
     restart: unless-stopped
+
+volumes:
+  freshrss_extensions:
+    name: freshrss_extensions
+  freshrss_data:
+    name: freshrss_data
 
 networks:
   proxy:

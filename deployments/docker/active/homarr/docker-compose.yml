@@ -27,10 +27,15 @@ services:
       - "${TAILSCALE_IP}:7575:7575"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - $STATE_DIRECTORY/homarr/appdata:/appdata
+      - homarr:/appdata
     env_file:
       - /run/secrets/env/homarr.env
     restart: unless-stopped
+
+volumes:
+  homarr:
+    name: homarr
+    external: true
 
 networks:
   local_websecure:

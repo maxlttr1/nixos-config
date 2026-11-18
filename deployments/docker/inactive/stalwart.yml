@@ -13,9 +13,15 @@ services:
       # - 443:443 # HTTP: JMAP, CalDAV, CardDAV, WebDAV, WebUI, OAuth, autoconfiguration (Implicit TLS)
       - "${TAILSCALE_IP}:8081:8080" # HTTP admin/UI bound to Tailscale IP only
     volumes:
-      - $STATE_DIRECTORY/stalwart/stalwart-etc:/etc/stalwart
-      - $STATE_DIRECTORY/stalwart/stalwart-data:/var/lib/stalwart
+      - stalwart-etc:/etc/stalwart
+      - stalwart-data:/var/lib/stalwart
     restart: unless-stopped
+
+volumes:
+  stalwart-etc:
+    name: stalwart-etc
+  stalwart-data:
+    name: stalwart-data
 
 networks:
   local_cloud:

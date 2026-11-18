@@ -5,8 +5,8 @@ services:
       - JVM_XMX=512m
       - EXT_PORT=54323
     volumes:
-      - $STATE_DIRECTORY/i2p/i2pconfig:/i2p/.i2p
-      - $STATE_DIRECTORY/i2p/i2ptorrents:/i2psnark
+      - i2pconfig:/i2p/.i2p
+      - shared_i2ptorrents:/i2psnark
     ports:
       - "${TAILSCALE_IP}:4444:4444" # HTTP Proxy
       # - "127.0.0.1:4445:4445"   # HTTPS Proxy
@@ -20,3 +20,11 @@ services:
       - "54323:12345" # I2NP TCP
       - "54323:12345/udp" # I2NP UDP
     restart: unless-stopped
+
+volumes:
+  i2pconfig:
+    name: i2pconfig
+    external: true
+  shared_i2ptorrents:
+    name: shared_i2ptorrents
+    external: true

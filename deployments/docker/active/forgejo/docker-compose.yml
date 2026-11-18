@@ -14,12 +14,17 @@ services:
       - USER_UID=${PUID}
       - USER_GID=${PGID}
     volumes:
-      - $STATE_DIRECTORY/forgejo:/data
+      - forgejo:/data
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "${TAILSCALE_IP}:3000:3000"
       - "${TAILSCALE_IP}:222:22"
     restart: unless-stopped
+
+volumes:
+  forgejo:
+    name: forgejo
+    external: true
 
 networks:
   proxy:

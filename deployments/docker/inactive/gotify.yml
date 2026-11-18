@@ -13,10 +13,15 @@ services:
       TZ: "Europe/Paris"
       GOTIFY_DEFAULTUSER_PASS: "admin"
     volumes:
-      - $STATE_DIRECTORY/gotify/gotify_data:/app/data
+      - gotify_data:/app/data
     ports:
       - ${TAILSCALE_IP}:8880:80
     restart: unless-stopped
+
+volumes:
+  gotify_data:
+    name: gotify_data
+    external: true
 
 networks:
   proxy:
