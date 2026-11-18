@@ -1,0 +1,4 @@
+services:
+  placeholder:
+    image: alpine:latest
+    command: ["sh", "-c", "while true; do sleep 360000; done"]
