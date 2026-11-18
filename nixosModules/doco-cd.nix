@@ -57,10 +57,27 @@
           ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create local_websecure
 
           # Volumes
+          ${pkgs.docker}/bin/docker volume inspect deluge >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create deluge
           ${pkgs.docker}/bin/docker volume inspect shared_movies >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_movies
           ${pkgs.docker}/bin/docker volume inspect shared_tvshows >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_tvshows
+          ${pkgs.docker}/bin/docker volume inspect forgejo >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create forgejo
+          ${pkgs.docker}/bin/docker volume inspect homarr >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create homarr
+          ${pkgs.docker}/bin/docker volume inspect i2pconfig >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create i2pconfig
           ${pkgs.docker}/bin/docker volume inspect shared_i2ptorrents >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create shared_i2ptorrents
+          ${pkgs.docker}/bin/docker volume inspect jellyfin_library >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create jellyfin_library
+          ${pkgs.docker}/bin/docker volume inspect openwebui_data >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create openwebui_data
+          ${pkgs.docker}/bin/docker volume inspect openwebui_ollama >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create openwebui_ollama
+          ${pkgs.docker}/bin/docker volume inspect portainer_data >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create portainer_data
+          ${pkgs.docker}/bin/docker volume inspect overleaf-data >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create overleaf-data
+          ${pkgs.docker}/bin/docker volume inspect overleaf-logs >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create overleaf-logs
+          ${pkgs.docker}/bin/docker volume inspect overleaf-mongo >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create overleaf-mongo
+          ${pkgs.docker}/bin/docker volume inspect overleaf-redis >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create overleaf-redis
           ${pkgs.docker}/bin/docker volume inspect suaps-config >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create suaps-config
+          ${pkgs.docker}/bin/docker volume inspect traefik >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create traefik
+          ${pkgs.docker}/bin/docker volume inspect uptime-kuma >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create uptime-kuma
+          ${pkgs.docker}/bin/docker volume inspect vaultwarden >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create vaultwarden
+          ${pkgs.docker}/bin/docker volume inspect freshrss_extensions >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create freshrss_extensions
+          ${pkgs.docker}/bin/docker volume inspect freshrss_data >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create freshrss_data
 
           # Files initialization
           ${pkgs.docker}/bin/docker run --rm -v suaps-config:/v alpine sh -c '

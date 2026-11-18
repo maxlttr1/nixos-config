@@ -1,9 +1,9 @@
 {
-  pkgs,
   settings,
   config,
   lib,
   hostname,
+  pkgs,
   ...
 }:
 
@@ -118,7 +118,7 @@
 
         cd nixos-config/
 
-        # ${pkgs.docker}/bin/docker system prune -a --volumes -f
+        # ${pkgs.docker}/bin/docker system prune -a --volumes -f # Prune all unused images + anonymous volumes
 
         for file in ./nixosModules/common/docker/active/*.yml; do
           name=$(basename "$file" .yml)
