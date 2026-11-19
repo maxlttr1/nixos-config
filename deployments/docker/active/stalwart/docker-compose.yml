@@ -8,7 +8,7 @@ services:
       - traefik.http.routers.stalwart.tls.certresolver=myresolver
       - traefik.http.routers.stalwart.entrypoints=websecure
       - traefik.http.routers.stalwart.rule=Host(`mail.maxlttr.fr`)
-      - traefik.http.services.stalwart.loadbalancer.server.port=80
+      - traefik.http.services.stalwart.loadbalancer.server.port=8080
     networks:
       - proxy
     ports:
