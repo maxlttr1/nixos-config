@@ -13,5 +13,3 @@ compose_files:
   - compose.yml
   - docker-compose.yml
   - docker-compose.yaml
-
-force_recreate: true
