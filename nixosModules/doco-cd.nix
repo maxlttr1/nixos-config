@@ -40,7 +40,7 @@
             "doco-cd:/data"
             "/run/secrets:/run/secrets:ro"
             "/etc/os-release:/etc/os-release:ro"
-            "$HOME/mountedDisk/info.glances:/mnt/info.glances:ro"
+            "/home/${settings.username}/mountedDisk/info.glances:/home/${settings.username}/mountedDisk/info.glances:ro"
           ];
           extraOptions = [
             # "--cap-drop=ALL"
