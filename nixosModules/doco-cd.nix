@@ -33,11 +33,14 @@
             TAILSCALE_IP = "100.68.245.10";
             PUID = lib.toString config.users.users."${settings.username}".uid;
             PGID = "100"; # Users group ID
+            HOME = "/home/${settings.username}";
           };
           volumes = [
             "/var/run/docker.sock:/var/run/docker.sock"
             "doco-cd:/data"
             "/run/secrets:/run/secrets:ro"
+            "/etc/os-release:/etc/os-release:ro"
+            "$HOME/mountedDisk/info.glances:/mnt/info.glances:ro"
           ];
           extraOptions = [
             # "--cap-drop=ALL"
