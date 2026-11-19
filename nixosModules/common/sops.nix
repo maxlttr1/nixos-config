@@ -18,25 +18,25 @@
       secrets = {
         # Notifications for systemUpgrade
         "discord/webhook" = {
-          mode = "0600";
+          mode = "0400";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
         "borgbackup/borgbackup-job-home-stack" = {
-          mode = "0600";
+          mode = "0400";
         };
         "nextcloud/url" = {
-          mode = "0600";
+          mode = "0400";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
         "nextcloud/secret" = {
-          mode = "0600";
+          mode = "0400";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
         "nextcloud/conversations/Nixos" = {
-          mode = "0600";
+          mode = "0400";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
@@ -45,37 +45,27 @@
         # Docker containers secrets
         "env/overleaf.env" = {
           key = "env/overleaf";
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
+          mode = "0400";
         };
         "env/ovh-perm.env" = {
           key = "env/ovh-perm";
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
+          mode = "0400";
         };
         "env/homarr.env" = {
           key = "env/homarr";
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
+          mode = "0400";
         };
         "env/vpn.env" = {
           key = "env/vpn";
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
+          mode = "0400";
         };
         "env/suaps.env" = {
           key = "env/suaps";
-          mode = "0600";
-          owner = config.users.users."${settings.username}".name;
-          group = config.users.users."${settings.username}".group;
+          mode = "0400";
         };
         # For nixos-flake-update service
         "ssh/forgejo/token" = {
-          mode = "0600";
+          mode = "0400";
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };

@@ -17,24 +17,24 @@
 
       secrets = {
         "ssh/racknerd/ip" = {
-          mode = "0600";
+          mode = "0400";
         };
         "ssh/racknerd/private" = {
-          mode = "0600";
+          mode = "0400";
         };
       }
       // lib.optionalAttrs (hostname == "terra-terra" || hostname == "vm-desktop") {
         "ssh/forgejo/private" = {
-          mode = "0600";
+          mode = "0400";
         };
         "ssh/nixos-setup/private" = {
-          mode = "0600";
+          mode = "0400";
         };
         "ssh/gitlab-univ-nantes/private" = {
-          mode = "0600";
+          mode = "0400";
         };
         "ssh/github/private" = {
-          mode = "0600";
+          mode = "0400";
         };
       };
     };
