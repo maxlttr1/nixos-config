@@ -40,6 +40,10 @@
       };
     };
 
+    networking.hosts = {
+      "100.68.245.10" = [ "mail.maxlttr.fr" ];
+    };
+
     users.users."${settings.username}".extraGroups = [ "networkmanager" ];
   };
 }

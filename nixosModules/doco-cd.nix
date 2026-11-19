@@ -59,6 +59,7 @@
           # Networks
           ${pkgs.docker}/bin/docker network inspect proxy >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create proxy
           ${pkgs.docker}/bin/docker network inspect local_websecure >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create local_websecure
+          ${pkgs.docker}/bin/docker network inspect local_cloud >/dev/null 2>&1 || ${pkgs.docker}/bin/docker network create local_cloud
 
           # Volumes
           ${pkgs.docker}/bin/docker volume inspect deluge >/dev/null 2>&1 || ${pkgs.docker}/bin/docker volume create deluge
