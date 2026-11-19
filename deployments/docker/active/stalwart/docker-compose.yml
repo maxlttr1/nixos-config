@@ -4,6 +4,14 @@ services:
     init: true
     networks:
       - local_cloud
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.stalwart.tls=true
+      - traefik.http.routers.stalwart.tls.certresolver=myresolver
+      - traefik.http.routers.stalwart.entrypoints=websecure
+      - traefik.http.routers.stalwart.rule=Host(`mail.maxlttr.fr`)
+      - traefik.http.services.stalwart.loadbalancer.server.port=8080
     ports:
       - 25:25 # SMTP, mail from other servers (STARTTLS)
       # - 465:465 # SMTP, submission from clients	(Implicit TLS)
@@ -25,4 +33,6 @@ volumes:
 
 networks:
   local_cloud:
+    external: true
+  proxy:
     external: true

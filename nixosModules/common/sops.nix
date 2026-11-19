@@ -22,9 +22,6 @@
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
-        "borgbackup/borgbackup-job-home-stack" = {
-          mode = "0400";
-        };
         "nextcloud/url" = {
           mode = "0400";
           owner = config.users.users."${settings.username}".name;
@@ -42,6 +39,9 @@
         };
       }
       // lib.optionalAttrs (hostname == "nexus-nexus") {
+        "borgbackup/borgbackup-job-home-stack" = {
+          mode = "0400";
+        };
         # Docker containers secrets
         "env/overleaf.env" = {
           key = "env/overleaf";
