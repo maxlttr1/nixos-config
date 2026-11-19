@@ -22,10 +22,7 @@
           owner = config.users.users."${settings.username}".name;
           group = config.users.users."${settings.username}".group;
         };
-        "borgbackup/docker-containers-volumes" = {
-          mode = "0600";
-        };
-        "borgbackup/docker-containers-volumes-external" = {
+        "borgbackup/borgbackup-job-home-stack" = {
           mode = "0600";
         };
         "nextcloud/url" = {
