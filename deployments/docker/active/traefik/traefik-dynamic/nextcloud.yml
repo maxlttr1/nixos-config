@@ -1,7 +1,7 @@
 http:
   routers:
     nextcloud:
-      rule: "Host(`nextcloud.maxlttr7.duckdns.org`) || Host(`nextcloud.maxlttr.fr`)"
+      rule: Host(`nextcloud.maxlttr.fr`)
       entrypoints:
         - "websecure"
       service: nextcloud

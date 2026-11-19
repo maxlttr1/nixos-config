@@ -20,6 +20,7 @@ services:
       - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.theme=ghost
       - traefik.http.middlewares.overleaf.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
+      - cd.doco.deployment.autostart=false
     networks:
       - proxy
     volumes:

@@ -20,6 +20,7 @@ services:
       - traefik.http.middlewares.portainer.plugin.sablier.dynamic.theme=ghost
       - traefik.http.middlewares.portainer.plugin.sablier.dynamic.refreshFrequency=5s
       - traefik.docker.allownonrunning=true
+      - cd.doco.deployment.autostart=false
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
