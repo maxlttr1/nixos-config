@@ -43,7 +43,7 @@
           mode = "0400";
         };
         # Docker containers secrets
-        "env/watchtower/notification_urls" = {
+        "env/watchtower/notifications_urls" = {
           mode = "0400";
         };
         "env/overleaf.env" = {
