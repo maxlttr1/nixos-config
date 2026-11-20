@@ -3,8 +3,10 @@ services:
     image: nickfedor/watchtower:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /run/secret/env/watchtower/notification_urls:/run/secrets/notification_urls:ro
     environment:
-      - TZ=Europe/Paris
-      - WATCHTOWER_CLEANUP=true # Remove old images after update
-      - WATCHTOWER_REMOVE_VOLUMES=true # Remove all anonymous volumes from the container before restarting with a new image
+      TZ: Europe/Paris
+      WATCHTOWER_CLEANUP: true # Remove old images after update
+      WATCHTOWER_REMOVE_VOLUMES: true # Remove all anonymous volumes from the container before restarting with a new image
+      WATCHTOWER_NOTIFICATION_URL: /run/secrets/notification_urls
     restart: unless-stopped
