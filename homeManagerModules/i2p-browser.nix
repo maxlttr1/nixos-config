@@ -17,6 +17,9 @@
       enable = true;
       policies = {
         NoDefaultBookmarks = false;
+        Homepage = {
+          URL = "http://100.68.245.10:7657/home";
+        };
       };
       profiles.default = {
         settings = {
