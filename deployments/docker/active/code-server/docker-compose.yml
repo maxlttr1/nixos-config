@@ -1,0 +1,19 @@
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: code-server
+    ports:
+      - "${TAILSCALE_IP}:8088:8080"
+    user: "${PUID}:${PGID}"
+    volumes:
+      - code-server-local:/home/coder/.local
+      - code-server-config:/home/coder/.config
+      - code-server-project:/home/coder/project
+
+volumes:
+  code-server-local:
+    name: code-server-local
+  code-server-config:
+    name: code-server-config
+  code-server-project:
+    name: code-server-project
