@@ -13,3 +13,5 @@ compose_files:
   - compose.yml
   - docker-compose.yml
   - docker-compose.yaml
+
+force_image_pull: true
