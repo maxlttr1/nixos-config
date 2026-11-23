@@ -26,7 +26,7 @@
             POLL_CONFIG = ''
               - url: https://github.com/maxlttr1/nixos-config.git
                 reference: master
-                interval: 300
+                interval: "6h"
             '';
             DEPLOY_CONFIG_BASE_DIR = "deployments/docker";
             PASS_ENV = "true";

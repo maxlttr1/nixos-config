@@ -15,4 +15,4 @@ compose_files:
   - docker-compose.yaml
 
 force_image_pull: true
-force_recreate: true
+prune_images: true
