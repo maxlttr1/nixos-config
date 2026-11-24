@@ -14,5 +14,4 @@ compose_files:
   - docker-compose.yml
   - docker-compose.yaml
 
-force_image_pull: true
 prune_images: true
