@@ -65,13 +65,12 @@ in
           })@forgejo.maxlttr.fr/maxlttr/nixos-config.git ./nixos-config
         fi
 
+        cd nixos-config/
+        ${pkgs.git}/bin/git config --local user.name "nixos-flake-update"
+        ${pkgs.git}/bin/git config --local user.email "nixos-flake-update@maxlttr.fr"
         ${pkgs.git}/bin/git remote set-url origin "https://maxlttr:$(cat ${
           config.sops.secrets."ssh/forgejo/token".path
         })@forgejo.maxlttr.fr/maxlttr/nixos-config.git"
-
-        cd nixos-config/
-        git config --local user.name "nixos-flake-update"
-        git config --local user.email "nixos-flake-update@maxlttr.fr"
         ${pkgs.git}/bin/git fetch origin master
         ${pkgs.git}/bin/git checkout master
         ${pkgs.git}/bin/git reset --hard origin/master
