@@ -25,7 +25,7 @@ services:
       - traefik.http.services.gluetun-deluge.loadbalancer.server.port=8112
     restart: unless-stopped
   deluge:
-    image: lscr.io/linuxserver/deluge:latest
+    image: ghcr.io/linuxserver/deluge:latest
     depends_on:
       - gluetun-deluge
     network_mode: "service:gluetun-deluge"

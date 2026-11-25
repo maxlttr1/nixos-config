@@ -11,7 +11,7 @@ services:
       - traefik.http.routers.suaps.rule=Host(`suaps.home.maxlttr.fr`)
       - traefik.http.services.suaps.loadbalancer.server.port=5000
     volumes:
-      - suaps-config:/app/config/config.json
+      - suaps-config:/app/config
     env_file:
       - /run/secrets/env/suaps.env
     ports:
